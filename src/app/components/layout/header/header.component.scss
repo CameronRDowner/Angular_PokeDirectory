@@ -1,0 +1,21 @@
+#nav-container{
+    position: fixed;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+    img{
+        max-width: 5rem;
+        display: flex;
+    }
+
+    .nav-items{
+        color: 	#343434;
+        padding: 0rem 0.5rem;
+        font-weight: 800;
+    }
+    .nav-items:hover{
+        color: #BE3638;
+        cursor: pointer;
+    }
+}
