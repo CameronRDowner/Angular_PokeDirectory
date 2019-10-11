@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Pokemon} from '../models/pokemon';
 
@@ -7,7 +7,7 @@ import {Pokemon} from '../models/pokemon';
   providedIn: 'root'
 })
 export class PokemonOfTheDayService {
-  pokeApiUrl:string ='https://pokeapi.co/api/v2/pokemon/';
+  pokeApiUrl:string ='https://pokeapi.co/api/v2/pokemon';
 
   constructor(private http:HttpClient) { }
   private getDayOfYear():number{
@@ -18,7 +18,7 @@ export class PokemonOfTheDayService {
     return Math.floor(diff / oneDay);
   }
   getPokemonOfTheDay():Observable<Pokemon> {
-    return this.http.get<Pokemon>(`${this.pokeApiUrl}/${this.getDayOfYear}`);
+    return this.http.get<Pokemon>(`${this.pokeApiUrl}/${this.getDayOfYear()}`);
   }
 
 }
