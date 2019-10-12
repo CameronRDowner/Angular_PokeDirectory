@@ -3,6 +3,8 @@ import { PokemonSprites } from './pokemon-sprites';
 export class Pokemon {
     id:number;
     name:string;
+    height: number;
+    weight: number;
     sprites:PokemonSprites;
 
     constructor(_id?:number, _name?:string, _sprites?:PokemonSprites){
