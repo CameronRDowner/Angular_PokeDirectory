@@ -9,7 +9,7 @@ import {Pokemon} from '../models/pokemon';
 export class PokemonOfTheDayService {
   pokeApiUrl:string ='https://pokeapi.co/api/v2/pokemon';
 
-  constructor(private http:HttpClient) { }
+  constructor(private httpClient:HttpClient) { }
   private getDayOfYear():number{
     let now = new Date();
     let start = new Date(now.getFullYear(), 0, 0);
@@ -18,7 +18,7 @@ export class PokemonOfTheDayService {
     return Math.floor(diff / oneDay);
   }
   getPokemonOfTheDay():Observable<Pokemon> {
-    return this.http.get<Pokemon>(`${this.pokeApiUrl}/${this.getDayOfYear()}`);
+    return this.httpClient.get<Pokemon>(`${this.pokeApiUrl}/${this.getDayOfYear()}`);
   }
 
 }
