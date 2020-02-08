@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NamedAPIResourceList } from '../models/named-apiresource-list';
-import { HttpClient } from '@angular/common/http/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
