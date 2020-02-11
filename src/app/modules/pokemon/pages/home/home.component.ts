@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {PokemonOfTheDayComponent} from '../../components/pokemon-of-the-day/pokemon-of-the-day.component';
-
+import { TextButton } from 'src/app/shared/models/text-button/text-button'; 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+  searchButton: TextButton;
   constructor() { }
 
   ngOnInit() {
+    this.searchButton = new TextButton('Search');
   }
+  
 
 }

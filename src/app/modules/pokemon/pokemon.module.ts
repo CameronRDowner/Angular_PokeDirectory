@@ -9,11 +9,23 @@ import { PokemonMoveComponent } from './components/pokemon-move/pokemon-move.com
 import { PokemonLocationComponent } from './components/pokemon-location/pokemon-location.component';
 import { BrowseComponent } from './pages/browse/browse.component';
 import { DetailsComponent } from './pages/details/details.component';
+import { TextButtonComponent } from '../../shared/components/text-button/text-button.component'
 
 
 
 @NgModule({
-  declarations: [SearchControlsComponent, SortingControlsComponent, FilteringControlsComponent, SearchResultComponent, PokemonStatComponent, PokemonMoveComponent, PokemonLocationComponent, BrowseComponent, DetailsComponent],
+  declarations: [
+    SearchControlsComponent,
+    SortingControlsComponent,
+    FilteringControlsComponent,
+    SearchResultComponent, 
+    PokemonStatComponent, 
+    PokemonMoveComponent, 
+    PokemonLocationComponent, 
+    BrowseComponent, 
+    DetailsComponent,
+    TextButtonComponent
+  ],
   imports: [
     CommonModule
   ]
