@@ -1,4 +1,4 @@
-import { PokemonSprites } from './pokemon-sprites';
+import { PokemonSprites } from '../pokemon-sprites/pokemon-sprites';
 
 export class Pokemon {
     id:number;
