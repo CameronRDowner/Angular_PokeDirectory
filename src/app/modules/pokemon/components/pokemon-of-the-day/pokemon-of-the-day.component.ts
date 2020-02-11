@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {PokemonOfTheDayService} from '../../services/pokemon-of-the-day.service';
 import {Pokemon} from '../../models/pokemon';
-import { PokemonSprites } from 'src/app/models/pokemon-sprites';
+import { PokemonSprites } from '../../models/pokemon-sprites';
 @Component({
   selector: 'app-pokemon-of-the-day',
   templateUrl: './pokemon-of-the-day.component.html',
@@ -9,9 +8,9 @@ import { PokemonSprites } from 'src/app/models/pokemon-sprites';
 })
 export class PokemonOfTheDayComponent implements OnInit {
   pokemonOfTheDay: Pokemon;
-  constructor(private pokemonOfTheDayService: PokemonOfTheDayService) { }
+  constructor() { }
   ngOnInit() {
-    this.pokemonOfTheDayService.getPokemonOfTheDay().forEach(pokemon=>{this.pokemonOfTheDay = pokemon}); 
+     
   }
 
 }

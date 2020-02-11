@@ -8,7 +8,7 @@ import { PokemonStatComponent } from './components/pokemon-stat/pokemon-stat.com
 import { PokemonMoveComponent } from './components/pokemon-move/pokemon-move.component';
 import { PokemonLocationComponent } from './components/pokemon-location/pokemon-location.component';
 import { BrowseComponent } from './pages/browse/browse.component';
-import { DetailsComponent } from './components/details/details.component';
+import { DetailsComponent } from './pages/details/details.component';
 
 
 

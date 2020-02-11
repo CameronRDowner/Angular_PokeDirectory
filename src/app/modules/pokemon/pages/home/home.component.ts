@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PokemonOfTheDayComponent} from '../../pokemon-of-the-day/pokemon-of-the-day.component';
+import {PokemonOfTheDayComponent} from '../../components/pokemon-of-the-day/pokemon-of-the-day.component';
 
 @Component({
   selector: 'app-home',
