@@ -1,37 +1,35 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SearchControlsComponent } from './components/search-controls/search-controls.component';
-import { SortingControlsComponent } from './components/sorting-controls/sorting-controls.component';
-import { FilteringControlsComponent } from './components/filtering-controls/filtering-controls.component';
-import { SearchResultComponent } from './components/search-result/search-result.component';
 import { PokemonStatComponent } from './components/pokemon-stat/pokemon-stat.component';
 import { PokemonMoveComponent } from './components/pokemon-move/pokemon-move.component';
 import { PokemonLocationComponent } from './components/pokemon-location/pokemon-location.component';
-import { PokemonOfTheDayComponent } from './components/pokemon-of-the-day/pokemon-of-the-day.component'
-import { BrowseComponent } from './pages/browse/browse.component';
-import { DetailsComponent } from './pages/details/details.component';
-import { TextButtonComponent } from '../../shared/components/text-button/text-button.component';
-import { HomeComponent } from './pages/home/home.component';
+import { PokemonOfTheDayComponent } from './components/pokemon-of-the-day/pokemon-of-the-day.component';
+import { PokemonSearchResultComponent } from './components/pokemon-search-result/pokemon-search-result.component';
+import { PokemonPageComponent } from './pages/pokemon-page/pokemon-page.component';
+import { PokemonSortingControlsComponent } from './components/pokemon-sorting-controls/pokemon-sorting-controls.component';
+import { TextButtonComponent } from 'src/app/shared/components/text-button/text-button.component';
 
+export { PokemonOfTheDayComponent } from './components/pokemon-of-the-day/pokemon-of-the-day.component';
+export { TextButtonComponent } from 'src/app/shared/components/text-button/text-button.component';
 
 
 @NgModule({
-  declarations: [
-    SearchControlsComponent,
-    SortingControlsComponent,
-    FilteringControlsComponent,
-    SearchResultComponent, 
+  declarations: [ 
     PokemonStatComponent, 
     PokemonMoveComponent, 
     PokemonLocationComponent, 
-    BrowseComponent, 
-    DetailsComponent,
-    TextButtonComponent,
     PokemonOfTheDayComponent,
-    HomeComponent
+    PokemonSearchResultComponent,
+    PokemonPageComponent,
+    PokemonSortingControlsComponent,
+    TextButtonComponent
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    PokemonOfTheDayComponent,
+    TextButtonComponent
   ]
 })
 export class PokemonModule { }

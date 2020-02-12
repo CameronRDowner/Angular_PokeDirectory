@@ -3,9 +3,11 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PokemonModule } from './modules/pokemon/pokemon.module';
+
 import { PageHeaderComponent } from './shared/components/page-header/page-header.component';
 import { PageFooterComponent } from './shared/components/page-footer/page-footer.component';
+
+import { BrowseModule } from './modules/browse/browse.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,7 @@ import { PageFooterComponent } from './shared/components/page-footer/page-footer
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    PokemonModule
+    BrowseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
