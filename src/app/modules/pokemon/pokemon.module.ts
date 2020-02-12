@@ -7,9 +7,11 @@ import { SearchResultComponent } from './components/search-result/search-result.
 import { PokemonStatComponent } from './components/pokemon-stat/pokemon-stat.component';
 import { PokemonMoveComponent } from './components/pokemon-move/pokemon-move.component';
 import { PokemonLocationComponent } from './components/pokemon-location/pokemon-location.component';
+import { PokemonOfTheDayComponent } from './components/pokemon-of-the-day/pokemon-of-the-day.component'
 import { BrowseComponent } from './pages/browse/browse.component';
 import { DetailsComponent } from './pages/details/details.component';
-import { TextButtonComponent } from '../../shared/components/text-button/text-button.component'
+import { TextButtonComponent } from '../../shared/components/text-button/text-button.component';
+import { HomeComponent } from './pages/home/home.component';
 
 
 
@@ -24,7 +26,9 @@ import { TextButtonComponent } from '../../shared/components/text-button/text-bu
     PokemonLocationComponent, 
     BrowseComponent, 
     DetailsComponent,
-    TextButtonComponent
+    TextButtonComponent,
+    PokemonOfTheDayComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule
