@@ -8,10 +8,13 @@ import { TextButton } from 'src/app/shared/models/text-button/text-button';
 })
 export class SearchControlsComponent implements OnInit {
   searchButton: TextButton;
-  constructor() { }
+  searchTerm:string;
+  constructor() {
+   }
 
   ngOnInit(): void {
     this.searchButton = new TextButton('Search');
+    this.searchTerm = "";
   }
 
 }
