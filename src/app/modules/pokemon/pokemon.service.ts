@@ -3,26 +3,39 @@ import { Observable } from 'rxjs';
 import { NamedAPIResourceList } from '../../shared/models/named-apiresource-list/named-apiresource-list';
 import { HttpClient } from '@angular/common/http';
 import { Pokemon } from './models/pokemon/pokemon';
+import { NamedAPIResource } from 'src/app/shared/models/named-api-resource/named-apiresource';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
-  pokeApiUrl:string ='https://pokeapi.co/api/v2/pokemon/';
-  pokemonLimit:string='?offset=0&limit=964'
+  private pokeApiUrl:string ='https://pokeapi.co/api/v2/pokemon/';
+  private pokemonLimit:string='?offset=0&limit=964';
 
-  getAllPokemon():Observable<NamedAPIResourceList>{
-    return this.httpClient.get<NamedAPIResourceList>(`${this.pokeApiUrl}${this.pokemonLimit}`);
+  private allPokemon:NamedAPIResource[];
+
+  getAllPokemon(){
+    return this.allPokemon;
   }
-  getPokemon(pokemonId?:number, pokemonName?:string):Observable<Pokemon>{
+  private async retrieveAllPokemon(){
+    let queryResult:NamedAPIResourceList;
+    try{
+      queryResult = await this.httpClient.get<NamedAPIResourceList>(`${this.pokeApiUrl}${this.pokemonLimit}`).toPromise();
+    }
+    catch(e){
+      console.log(e);
+    }
+    this.allPokemon = queryResult.results
+    console.log(this.allPokemon);
+  }
+  retrievePokemon(pokemonId?:number, pokemonName?:string){
     if(pokemonName === undefined && pokemonId == undefined){
       console.log('Cannot retrieve pokemon without an Id or name');
-      return undefined
     }
     return this.httpClient.get<Pokemon>(`${this.pokeApiUrl}${pokemonId !== undefined? pokemonId : pokemonName }`);
   }
   getPokemonOfTheDay():Observable<Pokemon>{
-    return this.getPokemon(this.getDayOfYear());
+    return this.retrievePokemon(this.getDayOfYear());
   }
   private getDayOfYear():number{
     let now = new Date();
@@ -31,5 +44,7 @@ export class PokemonService {
     let oneDay = 1000 * 60 * 60 * 24;
     return Math.floor(diff / oneDay);
   }
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient) {
+    this.retrieveAllPokemon();
+   }
 }

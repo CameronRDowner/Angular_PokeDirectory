@@ -8,11 +8,10 @@ import { PokemonService } from 'src/app/modules/pokemon/pokemon.service';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  searchButton: TextButton;
+
   constructor(private pokemonService:PokemonService) { }
 
   ngOnInit(): void {
-    this.searchButton = new TextButton('Search');
   }
 
 }
