@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TextButton } from 'src/app/shared/models/text-button/text-button';
+import { BrowseService } from '../../browse.service';
 
 @Component({
   selector: 'app-search-controls',
@@ -8,13 +9,13 @@ import { TextButton } from 'src/app/shared/models/text-button/text-button';
 })
 export class SearchControlsComponent implements OnInit {
   searchButton: TextButton;
-  searchTerm:string;
-  constructor() {
+
+
+  constructor(private browseService:BrowseService) {
    }
 
   ngOnInit(): void {
     this.searchButton = new TextButton('Search');
-    this.searchTerm = "";
   }
 
 }
