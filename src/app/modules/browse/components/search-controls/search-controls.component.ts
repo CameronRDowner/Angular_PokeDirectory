@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TextButton } from 'src/app/shared/models/text-button/text-button';
 import { Router } from '@angular/router';
+import { BrowseService } from '../../browse.service';
 
 @Component({
   selector: 'app-search-controls',
@@ -14,12 +15,12 @@ export class SearchControlsComponent implements OnInit {
   openBrowsePage(){
     this.router.navigate(['browse'])
   }
-  constructor(private router: Router) {
-   }
+  constructor(private router: Router, browseService:BrowseService) {
 
+
+  }
   ngOnInit(): void {
     this.searchButton = new TextButton('Search');
-    this.searchTerm = "";
   }
 
 }
