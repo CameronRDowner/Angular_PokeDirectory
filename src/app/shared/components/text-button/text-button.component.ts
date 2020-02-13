@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { TextButton } from '../../models/text-button/text-button';
-import { EventEmitter } from 'protractor';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-text-button',

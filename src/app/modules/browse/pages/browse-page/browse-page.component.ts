@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PokemonService } from 'src/app/modules/pokemon/pokemon.service';
 
 @Component({
   selector: 'app-browse-page',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BrowsePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(pokemonService:PokemonService) { }
 
   ngOnInit(): void {
   }
