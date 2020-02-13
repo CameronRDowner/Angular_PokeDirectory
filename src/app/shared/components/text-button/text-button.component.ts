@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { TextButton } from '../../models/text-button/text-button';
+import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'app-text-button',
@@ -7,11 +8,13 @@ import { TextButton } from '../../models/text-button/text-button';
   styleUrls: ['./text-button.component.scss']
 })
 export class TextButtonComponent implements OnInit {
-
+  @Output() buttonClick = new EventEmitter();
   @Input() textButton: TextButton;
 
   constructor() { }
-
+  emitButtonClick(){
+    this.buttonClick.emit(null);
+  }
   ngOnInit(): void {
   }
 
