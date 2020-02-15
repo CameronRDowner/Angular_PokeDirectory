@@ -8,7 +8,7 @@ import { PokemonService } from 'src/app/modules/pokemon/pokemon.service';
 })
 export class PageHeaderComponent implements OnInit {
 
-  constructor(private pokemonService:PokemonService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

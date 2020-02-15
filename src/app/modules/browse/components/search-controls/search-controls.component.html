@@ -1,4 +1,5 @@
-<div>
-    <input type="text" [value]="searchTerm" name="search-box">    
+<div id="search-controls-wrapper">
+    <input type="text" [(ngModel)]="searchTerm" name="search-box">    
+    <app-text-button [textButton] = "searchButton" (buttonClick)="handleSearchButtonClick()"></app-text-button>
 </div>
-<app-text-button [textButton] = "searchButton" (buttonClick)="handleSearchButtonClick()"></app-text-button>
+

@@ -11,7 +11,7 @@ import { TextButtonComponent } from 'src/app/shared/components/text-button/text-
 
 export { PokemonOfTheDayComponent } from './components/pokemon-of-the-day/pokemon-of-the-day.component';
 export { TextButtonComponent } from 'src/app/shared/components/text-button/text-button.component';
-
+export { PokemonSearchResultComponent} from './components/pokemon-search-result/pokemon-search-result.component';
 
 @NgModule({
   declarations: [ 
@@ -29,7 +29,8 @@ export { TextButtonComponent } from 'src/app/shared/components/text-button/text-
   ],
   exports: [
     PokemonOfTheDayComponent,
-    TextButtonComponent
+    TextButtonComponent,
+    PokemonSearchResultComponent
   ]
 })
 export class PokemonModule { }

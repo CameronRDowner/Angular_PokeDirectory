@@ -1,6 +1,6 @@
 <div id="browse-page-wrapper">
-    <app-search-controls></app-search-controls>
+    <app-search-controls (searchButtonClick)="handleSearch()" ></app-search-controls>
     <div class="results-container">
-
+        <app-pokemon-search-result *ngFor="let result of resultsInView" [searchResult] = "result"></app-pokemon-search-result>
     </div>  
 </div>

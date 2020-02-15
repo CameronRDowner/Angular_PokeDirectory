@@ -18,36 +18,39 @@ export class BrowsePageComponent implements OnInit {
       this.loadNextResultsInView();
     }
     else{
-      this.searchList();
-      this.loadNextResultsInView();
+      this.handleSearch();
     }
-    console.log(this.resultsInView)
+  }
+  handleSearch(){
+    this.searchList();
+    this.loadNextResultsInView();
   }
   private searchList(){
-    let listToSearch; 
+    let listToSearch:NamedAPIResource[]; 
     if(this.browseService.searchList === 'allPokemon'){
       listToSearch = this.pokemonService.getAllPokemon();
     }
-    let searchTerm = this.browseService.searchTerm;
     let searchResults = listToSearch.filter(item => 
-      item.name.toLowerCase().includes(searchTerm));
-      console.log(searchResults);
+      item.name.toLowerCase().includes(this.browseService.searchTerm));
+    this.allResultsOffset = 0;
     this.allResults = searchResults;
   }
-  loadNextResultsInView(){
-    let amountToLoadIn = 20;
-    let nextResults;
-    while(this.allResultsOffset >= amountToLoadIn){
+  private loadNextResultsInView(){
+    const maxToLoadIn = 20;
+    const amountLeftToLoadIn = this.allResults.length - this.allResultsOffset;
+    let amountToLoadIn:number;
+    maxToLoadIn > amountLeftToLoadIn ? amountToLoadIn = amountLeftToLoadIn : amountToLoadIn = maxToLoadIn; 
+    let nextResults:NamedAPIResource[] = [];
+    while(this.allResultsOffset < amountToLoadIn){
       nextResults.push(this.allResults[this.allResultsOffset])
       this.allResultsOffset ++;
     }
-    console.log(nextResults.length);
     this.resultsInView = nextResults;
+    console.log(this.resultsInView);
   }
   constructor(private pokemonService:PokemonService, private browseService:BrowseService) {
     this.allResultsOffset = 0;
     this.initializeResultsInView();
-
    }
 
   ngOnInit(): void {

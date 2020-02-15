@@ -18,7 +18,8 @@ export class SearchControlsComponent implements OnInit {
     this.searchButtonClick.emit(null);
   }
   private updateServiceSearchTerm(){
-    this.browseService.searchTerm = this.searchTerm; 
+    this.browseService.searchTerm = this.searchTerm;
+
   }
   constructor(public browseService:BrowseService) {
     this.searchButton = new TextButton('Search');

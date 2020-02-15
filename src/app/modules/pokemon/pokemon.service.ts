@@ -10,7 +10,7 @@ import { NamedAPIResource } from 'src/app/shared/models/named-api-resource/named
 })
 export class PokemonService {
   private pokeApiUrl:string ='https://pokeapi.co/api/v2/pokemon/';
-  private pokemonLimit:string='?offset=0&limit=964';
+  private pokemonLimit:string='?offset=0&limit=809';
 
   private allPokemon:NamedAPIResource[];
 
@@ -25,8 +25,7 @@ export class PokemonService {
     catch(e){
       console.log(e);
     }
-    this.allPokemon = queryResult.results
-    console.log(this.allPokemon);
+    this.allPokemon = queryResult.results;
   }
   retrievePokemon(pokemonId?:number, pokemonName?:string){
     if(pokemonName === undefined && pokemonId == undefined){

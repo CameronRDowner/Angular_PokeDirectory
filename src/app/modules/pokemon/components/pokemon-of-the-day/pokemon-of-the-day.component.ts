@@ -11,9 +11,10 @@ export class PokemonOfTheDayComponent implements OnInit {
   setPokemonOfTheDay(){
     this.pokemonService.getPokemonOfTheDay().forEach(pokemon => this.pokemonOfTheDay = pokemon);
   }
-  constructor(private pokemonService:PokemonService) { }
+  constructor(private pokemonService:PokemonService) {
+    this.setPokemonOfTheDay()
+   }
   ngOnInit() {
-    this.setPokemonOfTheDay();
   }
 
 }

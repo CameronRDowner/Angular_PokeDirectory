@@ -1,7 +1,11 @@
 #browse-page-wrapper{
     margin-top: 6rem;
     max-width: 60%;
+}
+.results-container{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
 }
