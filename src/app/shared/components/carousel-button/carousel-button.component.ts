@@ -10,7 +10,9 @@ export class CarouselButtonComponent implements OnInit {
   @Output() buttonClick = new EventEmitter();
 
   iconClasses: string[];
-  
+  emitButtonClick(){
+    this.buttonClick.emit(null);
+  }
   constructor() {
     
    }

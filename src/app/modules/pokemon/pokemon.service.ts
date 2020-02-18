@@ -10,7 +10,7 @@ import { NamedAPIResource } from 'src/app/shared/models/named-api-resource/named
 })
 export class PokemonService {
   private pokeApiUrl:string ='https://pokeapi.co/api/v2/pokemon/';
-  private pokemonLimit:string='?offset=0&limit=809';
+  private pokemonLimit:string='?offset=0&limit=807';
 
   async getAllPokemon():Promise<NamedAPIResource[]>{
     let queryResult:NamedAPIResourceList;
