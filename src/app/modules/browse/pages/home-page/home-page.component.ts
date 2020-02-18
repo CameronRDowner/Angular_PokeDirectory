@@ -12,7 +12,7 @@ export class HomePageComponent implements OnInit {
   openBrowsePage(){
     this.router.navigate(['browse'])
   }
-  constructor(private router: Router, private pokemonService:PokemonService) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }

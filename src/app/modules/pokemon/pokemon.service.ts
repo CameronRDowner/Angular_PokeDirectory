@@ -12,12 +12,7 @@ export class PokemonService {
   private pokeApiUrl:string ='https://pokeapi.co/api/v2/pokemon/';
   private pokemonLimit:string='?offset=0&limit=809';
 
-  private allPokemon:NamedAPIResource[];
-
-  getAllPokemon(){
-    return this.allPokemon;
-  }
-  private async retrieveAllPokemon(){
+  async getAllPokemon():Promise<NamedAPIResource[]>{
     let queryResult:NamedAPIResourceList;
     try{
       queryResult = await this.httpClient.get<NamedAPIResourceList>(`${this.pokeApiUrl}${this.pokemonLimit}`).toPromise();
@@ -25,16 +20,16 @@ export class PokemonService {
     catch(e){
       console.log(e);
     }
-    this.allPokemon = queryResult.results;
+    return queryResult.results; 
   }
-  retrievePokemon(pokemonId?:number, pokemonName?:string){
+  async getPokemon(pokemonId?:number, pokemonName?:string):Promise<Pokemon>{
     if(pokemonName === undefined && pokemonId == undefined){
       console.log('Cannot retrieve pokemon without an Id or name');
     }
-    return this.httpClient.get<Pokemon>(`${this.pokeApiUrl}${pokemonId !== undefined? pokemonId : pokemonName }`);
+    return this.httpClient.get<Pokemon>(`${this.pokeApiUrl}${pokemonId !== undefined? pokemonId : pokemonName }`).toPromise();
   }
-  getPokemonOfTheDay():Observable<Pokemon>{
-    return this.retrievePokemon(this.getDayOfYear());
+  getPokemonOfTheDay():Promise<Pokemon>{
+    return this.getPokemon(this.getDayOfYear());
   }
   private getDayOfYear():number{
     let now = new Date();
@@ -44,6 +39,5 @@ export class PokemonService {
     return Math.floor(diff / oneDay);
   }
   constructor(private httpClient:HttpClient) {
-    this.retrieveAllPokemon();
    }
 }

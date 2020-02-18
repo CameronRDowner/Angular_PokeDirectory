@@ -12,13 +12,28 @@ export class BrowsePageComponent implements OnInit {
   private allResultsOffset:number;
   resultsInView:NamedAPIResource[];
   allResults:NamedAPIResource[];
-  private initializeResultsInView(){
+  allPokemon:NamedAPIResource[];
+  private async initializeResultsInView(){
+    try{
+      this.allPokemon = await this.pokemonService.getAllPokemon();
+    }
+    catch(e){
+      console.log(e);
+    }
     if(this.browseService.searchTerm === ""){
-      this.allResults = this.pokemonService.getAllPokemon();
+      this.allResults = this.allPokemon;
       this.loadNextResultsInView();
     }
     else{
       this.handleSearch();
+    }
+  }
+  async retrieveAllPokemon(){
+    try{
+      this.allPokemon = await this.pokemonService.getAllPokemon();
+    }
+    catch(e){
+      console.log(e);
     }
   }
   handleSearch(){
@@ -28,12 +43,15 @@ export class BrowsePageComponent implements OnInit {
   private searchList(){
     let listToSearch:NamedAPIResource[]; 
     if(this.browseService.searchList === 'allPokemon'){
-      listToSearch = this.pokemonService.getAllPokemon();
+      listToSearch = this.allPokemon;
     }
     let searchResults = listToSearch.filter(item => 
       item.name.toLowerCase().includes(this.browseService.searchTerm));
     this.allResultsOffset = 0;
     this.allResults = searchResults;
+  }
+  private loadPreviousResultsInView(){
+    
   }
   private loadNextResultsInView(){
     const maxToLoadIn = 20;

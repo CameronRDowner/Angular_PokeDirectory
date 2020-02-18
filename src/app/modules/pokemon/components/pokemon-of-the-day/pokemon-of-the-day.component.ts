@@ -8,8 +8,13 @@ import { PokemonService } from '../../pokemon.service';
 })
 export class PokemonOfTheDayComponent implements OnInit {
   pokemonOfTheDay: Pokemon;
-  setPokemonOfTheDay(){
-    this.pokemonService.getPokemonOfTheDay().forEach(pokemon => this.pokemonOfTheDay = pokemon);
+  async setPokemonOfTheDay(){
+    try{
+      this.pokemonOfTheDay = await this.pokemonService.getPokemonOfTheDay();
+    }
+    catch(e){
+      console.log(e);
+    }
   }
   constructor(private pokemonService:PokemonService) {
     this.setPokemonOfTheDay()

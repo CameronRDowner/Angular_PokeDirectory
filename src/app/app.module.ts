@@ -13,7 +13,7 @@ import { BrowseModule } from './modules/browse/browse.module';
   declarations: [
     AppComponent,
     PageHeaderComponent,
-    PageFooterComponent,
+    PageFooterComponent
   ],
   imports: [
     BrowserModule,
