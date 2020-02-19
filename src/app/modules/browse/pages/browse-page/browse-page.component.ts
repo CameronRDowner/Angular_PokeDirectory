@@ -14,6 +14,8 @@ export class BrowsePageComponent implements OnInit {
   allResults:NamedAPIResource[];
   allPokemon:NamedAPIResource[];
   maxResultsPerPage: number;
+  totalPages:number;
+  currentPage:number;
   private async initializeResultsInView(){
     try{
       this.allPokemon = await this.pokemonService.getAllPokemon();
@@ -23,11 +25,18 @@ export class BrowsePageComponent implements OnInit {
     }
     if(this.browseService.searchTerm === ""){
       this.allResults = this.allPokemon;
+      this.setTotalPages();
       this.loadNextResultsInView();
     }
     else{
       this.handleSearch();
     }
+  }
+  setTotalPages(){
+    this.totalPages = (Math.ceil(this.allResults.length / this.maxResultsPerPage));
+  }
+  updateCurrentPage(){
+    this.currentPage = this.allResultsOffset / this.maxResultsPerPage;
   }
   async retrieveAllPokemon(){
     try{
@@ -40,6 +49,7 @@ export class BrowsePageComponent implements OnInit {
   handleSearch(){
     this.searchList();
     this.loadNextResultsInView();
+    this.setTotalPages();
   }
   private searchList(){
     let listToSearch:NamedAPIResource[]; 
@@ -66,8 +76,9 @@ export class BrowsePageComponent implements OnInit {
         amountToLoadIn -=1;
         this.allResultsOffset +=1;
       }
-      this.resultsInView = previousResults; 
+      this.resultsInView = previousResults;
     }
+    this.updateCurrentPage(); 
   }
   loadNextResultsInView(){
     const allResultsLastIndex = this.allResults.length;
@@ -87,9 +98,16 @@ export class BrowsePageComponent implements OnInit {
     }
     this.resultsInView = nextResults;
     if(this.allResultsOffset === allResultsLastIndex){
-      this.allResultsOffset = (Math.ceil(allResultsLastIndex / this.maxResultsPerPage) * this.maxResultsPerPage);
+      this.allResultsOffset = (this.totalPages * this.maxResultsPerPage);
     }
     }
+    this.updateCurrentPage()
+  }
+  sortResultsById(){
+
+  }
+  sortResultsByName(){
+    
   }
   constructor(private pokemonService:PokemonService, private browseService:BrowseService) {
     this.allResultsOffset = 0;

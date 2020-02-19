@@ -5,6 +5,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BrowsePageComponent } from './pages/browse-page/browse-page.component';
 import { SearchControlsComponent } from '../browse/components/search-controls/search-controls.component';
 import { CarouselButtonComponent } from '../../shared/components/carousel-button/carousel-button.component';
+import { PageIndicatorComponent } from '../../shared/components/page-indicator/page-indicator.component';
 import { PokemonModule } from '../pokemon/pokemon.module';
 
 @NgModule({
@@ -12,7 +13,8 @@ import { PokemonModule } from '../pokemon/pokemon.module';
     HomePageComponent, 
     BrowsePageComponent,
     SearchControlsComponent,
-    CarouselButtonComponent
+    CarouselButtonComponent,
+    PageIndicatorComponent
   ],
   imports: [
     CommonModule,

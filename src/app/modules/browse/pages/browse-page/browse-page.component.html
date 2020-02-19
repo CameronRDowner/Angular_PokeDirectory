@@ -1,7 +1,12 @@
 <div id="browse-page-wrapper">
     <app-search-controls (searchButtonClick)="handleSearch()" ></app-search-controls>
-    <div class="results-container">
-        <app-pokemon-search-result *ngFor="let result of resultsInView" [searchResult] = "result"></app-pokemon-search-result>
+    <div>
+        <app-pokemon-sorting-controls (nameSortClick)="sortResultsByName()" (idSortClick)="sortResultsById()"></app-pokemon-sorting-controls>
+        <div class="results-container">
+            <app-pokemon-search-result *ngFor="let result of resultsInView" [searchResult] = "result"></app-pokemon-search-result>
+        </div>
+        <app-page-indicator [currentPage]="currentPage" [totalPages]="totalPages"></app-page-indicator>
+        <app-carousel-button [orientation]="'left'" (buttonClick)="loadPreviousResultsInView()"></app-carousel-button>  <app-carousel-button [orientation]="'right'" (buttonClick)="loadNextResultsInView()"></app-carousel-button>
     </div>
-    <app-carousel-button [orientation]="'left'" (buttonClick)="loadPreviousResultsInView()"></app-carousel-button>  <app-carousel-button [orientation]="'right'" (buttonClick)="loadNextResultsInView()"></app-carousel-button>
+    
 </div>
