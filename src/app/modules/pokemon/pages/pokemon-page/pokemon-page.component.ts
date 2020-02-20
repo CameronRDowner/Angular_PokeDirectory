@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Pokemon } from '../../models/pokemon/pokemon';
+import { PokemonService } from '../../pokemon.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-page',
@@ -6,8 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pokemon-page.component.scss']
 })
 export class PokemonPageComponent implements OnInit {
-
-  constructor() { }
+  pokemon:Pokemon;
+  async setPokemon(){
+    this.pokemon = await this.pokemonService.getPokemon(parseInt(this.router.url.substring(9)));
+  }
+  constructor(private pokemonService:PokemonService, private router: Router) {
+    this.setPokemon();
+   }
 
   ngOnInit(): void {
   }

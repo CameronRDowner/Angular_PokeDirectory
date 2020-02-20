@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NamedAPIResource } from 'src/app/shared/models/named-api-resource/named-apiresource';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-search-result',
@@ -19,7 +20,10 @@ export class PokemonSearchResultComponent implements OnInit {
   const fileExtension = ".png"
   return baseUrl + this.id.toString() + fileExtension;
   }
-  constructor() {
+  openPokemonPage(){
+    this.router.navigate(['/pokemon', this.id]);
+  }
+  constructor(private router: Router) {
 
    }
 
