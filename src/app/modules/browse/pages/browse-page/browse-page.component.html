@@ -1,7 +1,7 @@
 <div id="browse-page-wrapper">
     <app-search-controls (searchButtonClick)="handleSearch()" ></app-search-controls>
     <div>
-        <app-pokemon-sorting-controls (nameSortClick)="sortResultsByName()" (idSortClick)="sortResultsById()"></app-pokemon-sorting-controls>
+        <app-pokemon-sorting-controls (nameSortClick)="handleSortResultsByName()" (idSortClick)="handleSortResultsById()"></app-pokemon-sorting-controls>
         <div class="results-container">
             <app-pokemon-search-result *ngFor="let result of resultsInView" [searchResult] = "result"></app-pokemon-search-result>
         </div>

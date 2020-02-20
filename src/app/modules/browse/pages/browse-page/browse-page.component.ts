@@ -58,7 +58,8 @@ export class BrowsePageComponent implements OnInit {
     }
     let searchResults = listToSearch.filter(item => 
       item.name.toLowerCase().includes(this.browseService.searchTerm));
-    this.allResultsOffset = 0;
+    this.resetAllResultsOffset();
+    this.updateCurrentPage();
     this.allResults = searchResults;
   }
   loadPreviousResultsInView(){
@@ -103,11 +104,36 @@ export class BrowsePageComponent implements OnInit {
     }
     this.updateCurrentPage()
   }
+  resetAllResultsOffset(){
+    this.allResultsOffset = 0;
+  }
+  handleSortResultsById(){
+    this.sortResultsById();
+    this.resetAllResultsOffset();
+    this.loadNextResultsInView();
+    this.updateCurrentPage();
+  }
   sortResultsById(){
-
+    this.allResults.sort((resultA, resultB)=>{
+      let idA = parseInt(resultA.url.substring(34,resultA.url.length -1));
+      let idB = parseInt(resultB.url.substring(34,resultB.url.length -1));
+      return idA - idB;
+    })
+  }
+  handleSortResultsByName(){
+    this.sortResultsByName();
+    this.resetAllResultsOffset();
+    this.loadNextResultsInView();
+    this.updateCurrentPage();
   }
   sortResultsByName(){
-    
+    this.allResults.sort((resultA, resultB)=>{
+      let nameA = resultA.name.toLowerCase();
+      let nameB = resultB.name.toLowerCase();
+      if(nameA < nameB){ return -1;}
+      if(nameA > nameB){ return 1;}
+      return 0;
+    })
   }
   constructor(private pokemonService:PokemonService, private browseService:BrowseService) {
     this.allResultsOffset = 0;

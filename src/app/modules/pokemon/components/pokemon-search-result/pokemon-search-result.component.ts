@@ -11,8 +11,7 @@ export class PokemonSearchResultComponent implements OnInit {
   id:number;
   spriteUrl:string;
   private extractId(){
-    const substringEnd = this.searchResult.url.indexOf("/", 34);
-    const idString = this.searchResult.url.substring(34,substringEnd);
+    const idString = this.searchResult.url.substring(34,this.searchResult.url.length -1);
     return parseInt(idString, 10);
   }
   private generateSpriteUrl(){
