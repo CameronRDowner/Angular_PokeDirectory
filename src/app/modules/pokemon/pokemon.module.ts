@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MovesModule } from '../moves/moves.module'
+
 import { PokemonStatComponent } from './components/pokemon-stat/pokemon-stat.component';
 import { PokemonMoveComponent } from './components/pokemon-move/pokemon-move.component';
 import { PokemonLocationComponent } from './components/pokemon-location/pokemon-location.component';
@@ -26,7 +28,8 @@ export {PokemonSortingControlsComponent } from './components/pokemon-sorting-con
     TextButtonComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MovesModule
   ],
   exports: [
     PokemonOfTheDayComponent,
