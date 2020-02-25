@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PokemonMove } from '../../../../shared/models/pokemon-move/pokemon-move';
-import { Pokemon } from 'src/app/modules/pokemon/models/pokemon/pokemon';
 import { MovesService } from '../../moves.service';
+import { Move } from '../../models/move/move';
 
 @Component({
   selector: 'app-moveset',
@@ -9,7 +9,17 @@ import { MovesService } from '../../moves.service';
   styleUrls: ['./moveset.component.scss']
 })
 export class MovesetComponent implements OnInit {
-  @Input() inputPokemonMoves:PokemonMove;
+  @Input() inputPokemonMoves:PokemonMove[];
+  moveLists:Move;
+  initializeMoveLists(){
+
+  }
+  setMoveLists(){
+    this.inputPokemonMoves.
+  }
+  sortMoveListsByLevel(){
+
+  }
   
   constructor(private movesService:MovesService) { }
 
