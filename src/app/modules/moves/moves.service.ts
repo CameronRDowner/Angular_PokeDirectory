@@ -22,13 +22,15 @@ export class MovesService {
       console.log("Returning cached value");
       return this.movesCache[moveName];
     }
-    console.log("Returning value via API call");
-    this.cacheMove(this.httpClient.get<Move>(`${this.pokeApiUrl}${moveName}`).pipe(
-      shareReplay(1),
-      catchError(err=>{
-        delete this.movesCache[moveName];
-        return EMPTY;
-      })));
+    else{
+      console.log("Returning value via API call");
+      this.movesCache[moveName] = this.httpClient.get<Move>(`${this.pokeApiUrl}${moveName}`).pipe(
+        shareReplay(1),
+        catchError(err=>{
+          delete this.movesCache[moveName];
+          return EMPTY;
+        }));
+    }
   }
 
   constructor(private httpClient:HttpClient) {
