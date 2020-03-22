@@ -1,22 +1,18 @@
-#nav-container{
+.navbar{
     position: fixed;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    
-    img{
-        padding-left: 3rem;
-        max-width: 5rem;
-        display: flex;
-    }
+    width: 100%;
+}
+.navbar__logo--poke{
+display: inline-block;
 
-    .nav-items{
-        color: 	#343434;
-        padding: 0rem 0.5rem;
-        font-weight: 800;
-    }
-    .nav-items:hover{
-        color: #BE3638;
-        cursor: pointer;
-    }
+}
+.navbar__logo--directory{
+display: inline-block;
+}
+.navbar__link{
+
 }
