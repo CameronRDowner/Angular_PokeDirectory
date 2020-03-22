@@ -4,22 +4,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { PageHeaderComponent } from './shared/components/page-header/page-header.component';
-import { PageFooterComponent } from './shared/components/page-footer/page-footer.component';
-
-import { BrowseModule } from './modules/browse/browse.module';
+import { MainModule } from './modules/main/main.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageHeaderComponent,
-    PageFooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowseModule
+    MainModule
   ],
   providers: [],
   bootstrap: [AppComponent]

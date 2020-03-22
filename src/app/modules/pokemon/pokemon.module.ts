@@ -11,11 +11,6 @@ import { PokemonPageComponent } from './pages/pokemon-page/pokemon-page.componen
 import { PokemonSortingControlsComponent } from './components/pokemon-sorting-controls/pokemon-sorting-controls.component';
 import { TextButtonComponent } from 'src/app/shared/components/text-button/text-button.component';
 
-export { PokemonOfTheDayComponent } from './components/pokemon-of-the-day/pokemon-of-the-day.component';
-export { TextButtonComponent } from 'src/app/shared/components/text-button/text-button.component';
-export { PokemonSearchResultComponent} from './components/pokemon-search-result/pokemon-search-result.component';
-export {PokemonSortingControlsComponent } from './components/pokemon-sorting-controls/pokemon-sorting-controls.component'
-
 @NgModule({
   declarations: [ 
     PokemonStatComponent, 
