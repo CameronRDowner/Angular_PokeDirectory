@@ -1,8 +1,10 @@
 @import '../assets/sass/variables.scss';
 
 .app{
+    position: relative;
     max-width: 100rem;
     margin-top: 1rem;
     background-color: $medium-white;
     overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
 }

@@ -1,18 +1,28 @@
+@import '../../../../../assets/sass/variables';
+@import '../../../../../assets/sass/fonts';
 .navbar{
-    position: fixed;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    background-color: $dark-red;
+    height: 4rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    
 }
 .navbar__logo--poke{
 display: inline-block;
-
+font-family: 'pokemon-solid', 'Montserrat';
+color: $medium-yellow;
 }
 .navbar__logo--directory{
 display: inline-block;
+color: $white;
+font-weight: 700;
+font-style: italic;
 }
 .navbar__link{
-
+margin: 0 2rem;
+text-decoration: none;
 }
