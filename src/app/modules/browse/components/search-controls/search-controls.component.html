@@ -1,5 +1,8 @@
-<div id="search-controls-wrapper">
-    <input type="text" [(ngModel)]="searchTerm" name="search-box">    
+<div class="search-controls">
+    <input class="search-controls__textbox" type="text" [(ngModel)]="searchTerm" name="search-box">
+        <select class="search-controls__dropdown">    
+            <option>Pokemon</option>
+        </select>  
     <app-text-button [textButton] = "searchButton" (buttonClick)="handleSearchButtonClick()"></app-text-button>
 </div>
 

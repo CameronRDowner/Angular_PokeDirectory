@@ -1,3 +1,9 @@
-#search-controls-wrapper{
+@import '../../../../../assets/sass/variables';
+.search-controls{
     display: block;
+}
+.search-controls__textbox{
+    background-color: $dark-white;
+    box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.4);
+    height: 2rem;
 }
