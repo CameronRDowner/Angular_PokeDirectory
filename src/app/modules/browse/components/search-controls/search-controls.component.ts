@@ -11,6 +11,7 @@ import { EventEmitter } from '@angular/core';
 })
 export class SearchControlsComponent implements OnInit {
   @Output() searchButtonClick = new EventEmitter();
+  selectBoxOptionsList: string[];
   searchButton: TextButton;
   searchTerm: string;
   handleSearchButtonClick(){
@@ -24,9 +25,13 @@ export class SearchControlsComponent implements OnInit {
   constructor(public browseService:BrowseService) {
     this.searchButton = new TextButton('Search');
     this.searchTerm = "";
+    this.selectBoxOptionsList = [
+      "Pokemon"
+    ]
   }
 
   ngOnInit(): void {
+
   }
 
 }

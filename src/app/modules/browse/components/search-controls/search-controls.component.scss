@@ -1,9 +1,13 @@
 @import '../../../../../assets/sass/variables';
 .search-controls{
-    display: block;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 .search-controls__textbox{
     background-color: $dark-white;
     box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.4);
-    height: 2rem;
+    height: 3.2rem;
+    width: 28rem;
 }
