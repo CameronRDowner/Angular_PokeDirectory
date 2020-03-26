@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/modules/pokemon/pokemon.service';
 import { NamedAPIResource } from 'src/app/shared/models/named-api-resource/named-apiresource';
 import { BrowseService } from '../../browse.service';
+import { take } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-browse-page',
@@ -16,35 +18,30 @@ export class BrowsePageComponent implements OnInit {
   maxResultsPerPage: number;
   totalPages:number;
   currentPage:number;
-  private async initializeResultsInView(){
-    try{
-      this.allPokemon = await this.pokemonService.getAllPokemon();
-    }
-    catch(e){
-      console.log(e);
-    }
-    if(this.browseService.searchTerm === ""){
-      this.allResults = this.allPokemon;
-      this.setTotalPages();
-      this.loadNextResultsInView();
-    }
-    else{
-      this.handleSearch();
-    }
+  allPokemonSubscription:Subscription;
+  private initializeResultsInView() {
+    this.allPokemonSubscription = this.pokemonService.getAllPokemon().pipe(take(1)).subscribe(
+      (_allPokemon) => {
+        this.allPokemon = _allPokemon.results
+      },
+      (error) => {
+        console.log(error)
+      },
+      () => {
+        if (this.browseService.searchTerm === "") {
+          this.allResults = this.allPokemon;
+          this.setTotalPages();
+          this.loadNextResultsInView();
+        } else {
+          this.handleSearch();
+        }
+      });
   }
   setTotalPages(){
     this.totalPages = (Math.ceil(this.allResults.length / this.maxResultsPerPage));
   }
   updateCurrentPage(){
     this.currentPage = this.allResultsOffset / this.maxResultsPerPage;
-  }
-  async retrieveAllPokemon(){
-    try{
-      this.allPokemon = await this.pokemonService.getAllPokemon();
-    }
-    catch(e){
-      console.log(e);
-    }
   }
   handleSearch(){
     this.searchList();
@@ -143,6 +140,9 @@ export class BrowsePageComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+  ngOnDestroy(): void{
+    this.allPokemonSubscription.unsubscribe();
   }
 
 }

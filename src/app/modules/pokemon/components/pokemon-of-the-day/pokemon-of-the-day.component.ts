@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Pokemon} from '../../models/pokemon/pokemon';
 import { PokemonService } from '../../pokemon.service';
+import { Subscription } from 'rxjs';
+import { take} from 'rxjs/operators';
 @Component({
   selector: 'app-pokemon-of-the-day',
   templateUrl: './pokemon-of-the-day.component.html',
@@ -8,18 +10,20 @@ import { PokemonService } from '../../pokemon.service';
 })
 export class PokemonOfTheDayComponent implements OnInit {
   pokemonOfTheDay: Pokemon;
-  async setPokemonOfTheDay(){
-    try{
-      this.pokemonOfTheDay = await this.pokemonService.getPokemonOfTheDay();
-    }
-    catch(e){
-      console.log(e);
-    }
+  pokemonOfTheDaySubscription: Subscription;
+  setPokemonOfTheDay(){
+    this.pokemonOfTheDaySubscription = this.pokemonService.getPokemonOfTheDay().pipe(take(1))
+    .subscribe( 
+      (_pokemonOfTheDay)=>{ this.pokemonOfTheDay = _pokemonOfTheDay },
+      (error) => { console.log(error) }
+      );
   }
   constructor(private pokemonService:PokemonService) {
-    this.setPokemonOfTheDay()
    }
   ngOnInit() {
+    this.setPokemonOfTheDay();
   }
-
+  ngOnDestroy(): void {
+    this.pokemonOfTheDaySubscription.unsubscribe();
+  }
 }
