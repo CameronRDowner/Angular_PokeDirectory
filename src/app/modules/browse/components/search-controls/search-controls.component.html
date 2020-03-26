@@ -1,6 +1,6 @@
 <div class="search-controls">
     <input class="search-controls__textbox" type="text" [(ngModel)]="searchTerm" name="search-box">
     <app-select-box [optionsList] = "selectBoxOptionsList"></app-select-box>
-    <app-text-button [textButton] = "searchButton" (buttonClick)="handleSearchButtonClick()"></app-text-button>
+    <app-icon-button [iconClasses] = "searchButtonIconClasses" (buttonClick)="handleSearchButtonClick()"></app-icon-button>
 </div>
 

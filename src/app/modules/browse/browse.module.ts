@@ -6,6 +6,7 @@ import { SearchControlsComponent } from '../browse/components/search-controls/se
 import { CarouselButtonComponent } from '../../shared/components/carousel-button/carousel-button.component';
 import { PageIndicatorComponent } from '../../shared/components/page-indicator/page-indicator.component';
 import { SelectBoxComponent } from '../../shared/components/select-box/select-box.component';
+import { IconButtonComponent } from '../../shared/components/icon-button/icon-button.component';
 
 import { PokemonModule } from '../pokemon/pokemon.module';
 
@@ -15,7 +16,8 @@ import { PokemonModule } from '../pokemon/pokemon.module';
     SearchControlsComponent,
     CarouselButtonComponent,
     PageIndicatorComponent,
-    SelectBoxComponent
+    SelectBoxComponent,
+    IconButtonComponent
   ],
   imports: [
     CommonModule,

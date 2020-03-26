@@ -1,16 +1,17 @@
 @import '../../../../assets/sass/variables';
 .select-box{
+    display: inline-block;
     position: relative;
+    margin: 0;
 }
 .select-box__select{
     background-color: $medium-red;
-    height: 3.5rem;
+    height: 3.2rem;
     -webkit-appearance: none;
     -moz-appearance: none;
     padding: 0 3rem 0 1rem;
     color: $white;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.5);
-    border: solid 1px $medium-red;
     font-size: 1.5rem;    
     font-weight: bold;
 

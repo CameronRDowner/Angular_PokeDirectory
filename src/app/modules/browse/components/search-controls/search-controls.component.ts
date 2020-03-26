@@ -12,7 +12,7 @@ import { EventEmitter } from '@angular/core';
 export class SearchControlsComponent implements OnInit {
   @Output() searchButtonClick = new EventEmitter();
   selectBoxOptionsList: string[];
-  searchButton: TextButton;
+  searchButtonIconClasses: string;
   searchTerm: string;
   handleSearchButtonClick(){
     this.updateServiceSearchTerm();
@@ -23,7 +23,7 @@ export class SearchControlsComponent implements OnInit {
 
   }
   constructor(public browseService:BrowseService) {
-    this.searchButton = new TextButton('Search');
+    this.searchButtonIconClasses = "fas fa-search";
     this.searchTerm = "";
     this.selectBoxOptionsList = [
       "Pokemon"
