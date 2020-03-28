@@ -1,9 +1,12 @@
-<div id='pokemon-of-the-day-wrapper'>
-<h3>Pokemon Of The Day</h3>
-<img src={{this.pokemonOfTheDay.sprites.front_default}}>
-<h4>{{this.pokemonOfTheDay.name | titlecase}}</h4>
-<h5>(#{{this.pokemonOfTheDay.id}})</h5>
-<h5>Height: {{this.pokemonOfTheDay.height*0.1}}m<br>
-Weight: {{this.pokemonOfTheDay.weight*0.1}}kg
-</h5>
+<div class='pokemon-of-the-day'>
+<h2 class="pokemon-of-the-day__title">Pokemon Of The Day</h2>
+<div class="pokemon-of-the-day__panel">
+<div class="pokemon-of-the-day__wrapper">
+    <h3 class="pokemon-of-the-day__id">#{{this.pokemonOfTheDay.id.toString().padStart(3, '0')}}</h3>
+<img class="pokemon-of-the-day__sprite" src={{this.pokemonOfTheDay.sprites.front_default}}>
+<h3 class="pokemon-of-the-day__name">{{this.pokemonOfTheDay.name | titlecase}}</h3>
+<h3 class="pokemon-of-the-day__information-height">Height: {{this.pokemonOfTheDay.height*0.1}}m</h3>
+<h3 class="pokemon-of-the-day__information-weight">Weight: {{this.pokemonOfTheDay.weight*0.1}}kg</h3>
+</div>
+</div>
 </div>
