@@ -10,6 +10,7 @@ import { PokemonSearchResultComponent } from './components/pokemon-search-result
 import { PokemonPageComponent } from './pages/pokemon-page/pokemon-page.component';
 import { PokemonSortingControlsComponent } from './components/pokemon-sorting-controls/pokemon-sorting-controls.component';
 import { TextButtonComponent } from 'src/app/shared/components/text-button/text-button.component';
+import { PokemonTypeComponent } from './components/pokemon-type/pokemon-type.component';
 
 @NgModule({
   declarations: [ 
@@ -20,7 +21,8 @@ import { TextButtonComponent } from 'src/app/shared/components/text-button/text-
     PokemonSearchResultComponent,
     PokemonPageComponent,
     PokemonSortingControlsComponent,
-    TextButtonComponent
+    TextButtonComponent,
+    PokemonTypeComponent
   ],
   imports: [
     CommonModule,

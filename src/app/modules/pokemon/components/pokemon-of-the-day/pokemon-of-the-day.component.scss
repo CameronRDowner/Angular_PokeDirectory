@@ -7,24 +7,35 @@
 
 }
 .pokemon-of-the-day__panel{
-    box-sizing: border-box;
+    overflow: hidden;
     height: 33rem;
     background-color:$medium-gray;
     text-align: center;
     box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.6);
 }
 .pokemon-of-the-day__wrapper{
-    box-sizing: border-box;
-    margin: 3rem;
+    position: relative;
+    margin: 1rem;
+    overflow: hidden;
+    border: solid 2px $medium-black;
 }
 .pokemon-of-the-day__id{
-
+font-size: 4rem;
+margin: 0;
 }
-.pokemon-of-the-day__sprite{
-
+.pokemon-of-the-day__sprite-image{
+position: absolute;
+top: 40%;
+left: 50%;
+transform: translate(-50%, -50%);
+height: 23rem;
+}
+.pokemon-of-the-day__sprite-dummy-container{
+    height: 10rem;
 }
 .pokemon-of-the-day__name{
-
+font-size: 3rem;
+color: $medium-red;
 }
 .pokemon-of-the-day__information-height{
 
