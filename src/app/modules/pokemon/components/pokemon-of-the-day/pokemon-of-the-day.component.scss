@@ -8,8 +8,7 @@
 }
 .pokemon-of-the-day__panel{
     overflow: hidden;
-    height: 33rem;
-    background-color:$medium-gray;
+    background-color:$dark-white;
     text-align: center;
     box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.6);
 }
@@ -36,6 +35,10 @@ height: 23rem;
 .pokemon-of-the-day__name{
 font-size: 3rem;
 color: $medium-red;
+margin: 1rem;
+}
+.pokemon-of-the-day__information{
+    
 }
 .pokemon-of-the-day__information-height{
 

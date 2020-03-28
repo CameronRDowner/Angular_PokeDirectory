@@ -6,10 +6,31 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./pokemon-type.component.scss']
 })
 export class PokemonTypeComponent implements OnInit {
-  typeColors: string;
-  @Input() name: string;
+  typeColors: Object;
+  @Input() typeName: string;
 
-  constructor() { }
+  constructor() {
+    this.typeColors = {
+      fire: "#FF8024",
+      flying: "#CCBFF2",
+      normal: "#A9A878",
+      fairy: "#E8ACE7",
+      fighting: "#C74A43",
+      ghost: "#7F6D9B",
+      electric: "#F9D130",
+      steel: "#C1C1C1",
+      psychic: "#F66D96",
+      dark: "#887869",
+      dragon: "#936DF5",
+      rock: "#B6A038",
+      bug: "#A7B91E",
+      ground: "#DFC069",
+      poison: "#A673A5",
+      ice: "#98D8D7",
+      grass: "#7EAD67",
+      water: "#6C91F3"
+    }
+   }
 
   ngOnInit(): void {
   }

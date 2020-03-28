@@ -1,5 +1,6 @@
 import { PokemonSprites } from '../pokemon-sprites/pokemon-sprites';
 import { PokemonMove } from '../../../../shared/models/pokemon-move/pokemon-move';
+import { PokemonType } from '../pokemon-type/pokemon-type';
 
 export class Pokemon {
     id:number;
@@ -8,7 +9,7 @@ export class Pokemon {
     weight: number;
     sprites:PokemonSprites;
     moves:PokemonMove[];
-
+    types:PokemonType; 
     constructor(_id?:number, _name?:string, _sprites?:PokemonSprites, _moves?:PokemonMove[]){
         this.id = _id;
         this.name = _name;

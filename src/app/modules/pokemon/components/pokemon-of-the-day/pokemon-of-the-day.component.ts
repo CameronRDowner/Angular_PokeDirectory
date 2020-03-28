@@ -3,6 +3,7 @@ import {Pokemon} from '../../models/pokemon/pokemon';
 import { PokemonService } from '../../pokemon.service';
 import { Subscription } from 'rxjs';
 import { take} from 'rxjs/operators';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-pokemon-of-the-day',
   templateUrl: './pokemon-of-the-day.component.html',
@@ -18,7 +19,10 @@ export class PokemonOfTheDayComponent implements OnInit {
       (error) => { console.log(error) }
       );
   }
-  constructor(private pokemonService:PokemonService) {
+  openPokemonPage(){
+    this.router.navigate(['/pokemon', this.pokemonOfTheDay.id]);
+  }
+  constructor(private pokemonService:PokemonService, private router: Router) {
    }
   ngOnInit() {
     this.setPokemonOfTheDay();
