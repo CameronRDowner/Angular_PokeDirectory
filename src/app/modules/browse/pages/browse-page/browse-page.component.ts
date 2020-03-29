@@ -29,13 +29,17 @@ export class BrowsePageComponent implements OnInit {
       },
       () => {
         if (this.browseService.searchTerm === "") {
-          this.allResults = this.allPokemon;
+          this.setAllResults(this.allPokemon);
           this.setTotalPages();
           this.loadNextResultsInView();
-        } else {
+        } 
+        else {
           this.handleSearch();
         }
       });
+  }
+  setAllResults(newAllResults){
+    this.allResults = newAllResults;
   }
   setTotalPages(){
     this.totalPages = (Math.ceil(this.allResults.length / this.maxResultsPerPage));
@@ -53,11 +57,12 @@ export class BrowsePageComponent implements OnInit {
     if(this.browseService.searchList === 'allPokemon'){
       listToSearch = this.allPokemon;
     }
-    let searchResults = listToSearch.filter(item => 
-      item.name.toLowerCase().includes(this.browseService.searchTerm));
+    let searchResults = listToSearch.filter(
+      item => item.name.toLowerCase().includes(this.browseService.searchTerm)
+      );
     this.resetAllResultsOffset();
     this.updateCurrentPage();
-    this.allResults = searchResults;
+    this.setAllResults(searchResults);
   }
   loadPreviousResultsInView(){
     const amountLeftToLoadIn = this.allResultsOffset;
