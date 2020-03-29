@@ -1,10 +1,10 @@
 @import '../../../../../assets/sass/variables';
 .pokemon-of-the-day{
     text-align: center;
-    width: 25rem;
+    width: 23rem;
 }
 .pokemon-of-the-day__title{
-
+margin: 0rem 0rem 3rem 0rem;
 }
 .pokemon-of-the-day__panel{
     overflow: hidden;
@@ -27,10 +27,10 @@ position: absolute;
 top: 40%;
 left: 50%;
 transform: translate(-50%, -50%);
-height: 23rem;
+height: 15rem;
 }
 .pokemon-of-the-day__sprite-dummy-container{
-    height: 10rem;
+    height: 15rem;
 }
 .pokemon-of-the-day__name{
 font-size: 3rem;
