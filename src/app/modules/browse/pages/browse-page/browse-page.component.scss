@@ -1,6 +1,5 @@
 #browse-page-wrapper{
     margin-top: 6rem;
-    max-width: 65%;
 }
 .results-container{
     display: flex;
@@ -8,5 +7,6 @@
     align-items: flex-start;
     justify-content: center;
     flex-wrap: wrap;
-    height: 35rem;
+    max-width: 60rem;
+    margin: 0 auto;
 }

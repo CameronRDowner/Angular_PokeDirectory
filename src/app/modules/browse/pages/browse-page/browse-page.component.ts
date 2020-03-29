@@ -139,7 +139,7 @@ export class BrowsePageComponent implements OnInit {
   }
   constructor(private pokemonService:PokemonService, private browseService:BrowseService) {
     this.allResultsOffset = 0;
-    this.maxResultsPerPage = 20;
+    this.maxResultsPerPage = 15;
     this.initializeResultsInView();
    }
 
