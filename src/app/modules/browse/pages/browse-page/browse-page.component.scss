@@ -1,12 +1,20 @@
-#browse-page-wrapper{
+.browse-page{
     margin-top: 6rem;
 }
-.results-container{
+.search-results--panel{
+    margin: 0 auto;
+    box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.6);
+    padding: 1rem 0;
+    width: 53rem;
+    height: 42rem;
+}
+.search-results__container{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
     flex-wrap: wrap;
-    max-width: 60rem;
+    max-width: 53rem;
+    max-height: 39rem;
     margin: 0 auto;
 }
