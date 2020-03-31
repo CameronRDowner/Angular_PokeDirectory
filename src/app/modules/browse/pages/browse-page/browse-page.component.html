@@ -3,12 +3,11 @@
         <app-search-controls (searchButtonClick)="handleSearch()" ></app-search-controls>
         <app-radio-cluster></app-radio-cluster>
     </div>
-    <div>
-        <app-radio-cluster (nameSortClick)="handleSortResultsByName()" (idSortClick)="handleSortResultsById()"></app-radio-cluster>
-        <div class="results-container">
+        <div class="search-results--panel">
+            <div class="search-results__container">
             <app-pokemon-search-result *ngFor="let result of resultsInView" [searchResult] = "result"></app-pokemon-search-result>
+            </div>
+            <app-page-indicator [currentPage]="currentPage" [totalPages]="totalPages"></app-page-indicator>
         </div>
-        <app-page-indicator [currentPage]="currentPage" [totalPages]="totalPages"></app-page-indicator>
         <app-carousel-button [orientation]="'left'" (buttonClick)="loadPreviousResultsInView()"></app-carousel-button>  <app-carousel-button [orientation]="'right'" (buttonClick)="loadNextResultsInView()"></app-carousel-button>
     </div>
-</div>

@@ -5,7 +5,6 @@
 <div class="pokemon-of-the-day__wrapper">
     <h3 class="pokemon-of-the-day__id">#{{this.pokemonOfTheDay.id.toString().padStart(3, '0')}}</h3>
 <img class="pokemon-of-the-day__sprite-image" src={{this.pokemonOfTheDay.sprites.front_default}}>
-<div class="pokemon-of-the-day__sprite-dummy-container"></div>
 <h3 class="pokemon-of-the-day__name">{{this.pokemonOfTheDay.name | titlecase}}</h3>
 <div class="flex-container-row-center">
     <app-pokemon-type *ngFor="let pokemonType of pokemonOfTheDay.types" [typeName] = "pokemonType.type.name"></app-pokemon-type>
