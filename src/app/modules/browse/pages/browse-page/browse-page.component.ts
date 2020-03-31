@@ -109,6 +109,14 @@ export class BrowsePageComponent implements OnInit {
   resetAllResultsOffset(){
     this.allResultsOffset = 0;
   }
+  handleSortButtonClick(buttonName){
+    if(buttonName === "Id"){
+      this.handleSortResultsById();
+    }
+    else if(buttonName === "Name"){
+      this.handleSortResultsByName();
+    }
+  }
   handleSortResultsById(){
     this.sortResultsById();
     this.resetAllResultsOffset();

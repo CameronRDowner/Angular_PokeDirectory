@@ -1,6 +1,23 @@
-.radio-cluster{
+@import "../../../../assets/sass/variables";
 
+.radio-cluster{
+margin: 0 1rem;
 }
 .radio-cluster__button{
     display: inline-block;
+    margin: 0 0.25rem;
+    color: $white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    cursor: pointer;
+}
+.radio-cluster__button-toggled{
+box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.4);
+color: $medium-white;
+background-color: $medium-red;
+}
+.radio-cluster__button-untoggled{
+background-color: $medium-red;
+box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.5);
 }

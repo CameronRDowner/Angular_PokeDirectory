@@ -4,12 +4,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class BrowseService {
-
+  sortingButtons: Object;
   searchTerm: string;
   searchList: string;
   constructor() { 
     this.searchTerm = "";
     this.searchList = "allPokemon";
-
+    this.sortingButtons = {
+      pokemon: [ "Id", "Name" ]
+    }
   }
 }

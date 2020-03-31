@@ -7,14 +7,23 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class RadioClusterComponent implements OnInit {
   @Input() buttonNameList: string[];
-  @Output() buttonClick = new EventEmitter();
-  
-  emitButtonClick(){
-    this.buttonClick.emit(null);
+  @Output() radioButtonClick = new EventEmitter();
+  toggledButton: string;
+  setToggledButton(buttonName: string){
+    this.toggledButton = buttonName;
+  }
+  handleButtonClick(buttonName:string){
+    this.setToggledButton(buttonName);
+    this.emitButtonClick(buttonName);
+  }
+  emitButtonClick(buttonName:string){
+    console.log('radiobuttonclicked')
+    this.radioButtonClick.emit(buttonName);
   }
   constructor() { }
 
   ngOnInit(): void {
+    this.toggledButton = this.buttonNameList[0];
   }
 
 }
