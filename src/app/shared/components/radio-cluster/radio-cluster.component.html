@@ -1,0 +1,5 @@
+<div class="radio-cluster">   
+    <a *ngFor="let buttonName of buttonNameList" (click)="emitButtonClick(buttonName)">
+        <div class="radio-cluster__button">{{ buttonName }}</div>
+    </a>
+</div>
