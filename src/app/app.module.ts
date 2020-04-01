@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 import { MainModule } from './modules/main/main.module';
 import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
+
 
 @NgModule({
   declarations: [
@@ -17,8 +17,7 @@ import { EffectsModule } from '@ngrx/effects';
     AppRoutingModule,
     HttpClientModule,
     MainModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([])
+    StoreModule.forRoot({}),
   ],
   providers: [],
   bootstrap: [AppComponent]

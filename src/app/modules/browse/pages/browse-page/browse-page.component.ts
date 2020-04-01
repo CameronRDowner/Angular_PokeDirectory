@@ -19,6 +19,7 @@ export class BrowsePageComponent implements OnInit {
   totalPages:number;
   currentPage:number;
   allPokemonSubscription:Subscription;
+  sortingButtons: { pokemon: string[]; };
   private initializeResultsInView() {
     this.allPokemonSubscription = this.pokemonService.getAllPokemon().pipe(take(1)).subscribe(
       (_allPokemon) => {
@@ -148,6 +149,9 @@ export class BrowsePageComponent implements OnInit {
   constructor(private pokemonService:PokemonService, private browseService:BrowseService) {
     this.allResultsOffset = 0;
     this.maxResultsPerPage = 15;
+    this.sortingButtons = {
+      pokemon: [ "Id", "Name" ]
+    }
     this.initializeResultsInView();
    }
 

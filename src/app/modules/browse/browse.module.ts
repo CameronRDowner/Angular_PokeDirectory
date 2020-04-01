@@ -10,6 +10,7 @@ import { IconButtonComponent } from '../../shared/components/icon-button/icon-bu
 import { RadioClusterComponent } from '../../shared/components/radio-cluster/radio-cluster.component';
 
 import { PokemonModule } from '../pokemon/pokemon.module';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PokemonModule } from '../pokemon/pokemon.module';
   imports: [
     CommonModule,
     PokemonModule,
-    FormsModule
+    FormsModule,
+    StoreModule.forFeature('browse', {} ),
   ],
   exports: [
     SearchControlsComponent
