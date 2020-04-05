@@ -1,3 +1,3 @@
-export class MoveList {
-    ""
+export interface MoveList {
+    
 }
