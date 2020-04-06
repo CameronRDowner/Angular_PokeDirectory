@@ -13,9 +13,9 @@ margin: 1rem 1rem;
     cursor: pointer;
 }
 .radio-cluster__button--toggled{
-box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.4);
-color: $medium-white;
-background-color: $medium-red;
+box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.5);
+color: darken($white, 25%);
+background-color: darken($medium-red, 5%);
 }
 .radio-cluster__button--untoggled{
 background-color: $medium-red;

@@ -19,10 +19,10 @@ export class CarouselButtonComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.orientation === "left"){
-      this.iconClasses = ["fas", "fa-arrow-alt-circle-left"];
+      this.iconClasses = ["fas", "fa-caret-left"];
     }
     else if(this.orientation === "right"){
-      this.iconClasses = ["fas", "fa-arrow-alt-circle-right"];
+      this.iconClasses = ["fas", "fa-caret-right"];
     }
     else{
       console.log("please provide an orientation input value");

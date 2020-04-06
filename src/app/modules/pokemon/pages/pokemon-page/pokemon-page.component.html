@@ -1,6 +1,11 @@
-<div id="pokemon-page-wrapper">
-    <p>{{pokemon?.name}}</p>
-    <img [src]="pokemon?.sprites.front_default">
+<div class="pokemon-page">
+    <h1 class="pokemon-page__name">{{pokemon?.name | titlecase }}</h1>
+    <div class="pokemon-sprites flex-container-column-center">
+        <h2 class="pokemon-sprites__title">Sprites</h2>
+        <div class="pokemon-sprites__panel">
+            <img class="pokemon-sprites__sprite" [src]="pokemon?.sprites.front_default"> 
+        </div>
+    </div>
     <app-moveset [inputPokemonMoves]="pokemon.moves"></app-moveset>
 </div>
 
