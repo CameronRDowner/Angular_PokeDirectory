@@ -4,6 +4,8 @@ import { NamedAPIResource } from 'src/app/shared/models/named-api-resource/named
 import { BrowseService } from '../../browse.service';
 import { take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { RadioCluster } from '../../../../shared/models/radio-cluster/radio-cluster';
+
 
 @Component({
   selector: 'app-browse-page',
@@ -19,7 +21,7 @@ export class BrowsePageComponent implements OnInit {
   totalPages:number;
   currentPage:number;
   allPokemonSubscription:Subscription;
-  sortingButtons: { pokemon: string[]; };
+  pokemonSortingButtons: RadioCluster;
   private initializeResultsInView() {
     this.allPokemonSubscription = this.pokemonService.getAllPokemon().pipe(take(1)).subscribe(
       (_allPokemon) => {
@@ -149,9 +151,7 @@ export class BrowsePageComponent implements OnInit {
   constructor(private pokemonService:PokemonService, private browseService:BrowseService) {
     this.allResultsOffset = 0;
     this.maxResultsPerPage = 15;
-    this.sortingButtons = {
-      pokemon: [ "Id", "Name" ]
-    }
+    this.pokemonSortingButtons = new RadioCluster(["Id", "Name"], false);
     this.initializeResultsInView();
    }
 

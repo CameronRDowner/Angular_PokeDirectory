@@ -1,7 +1,7 @@
 <div class="browse-page">
     <div class="flex-container-row-center">
         <app-search-controls (searchButtonClick)="handleSearch()" ></app-search-controls>
-        <app-radio-cluster [buttonNameList]="sortingButtons.pokemon" (radioButtonClick)="handleSortButtonClick($event)"></app-radio-cluster>
+        <app-radio-cluster [buttonNameList]="pokemonSortingButtons.buttonNames" (radioButtonClick)="handleSortButtonClick($event)"></app-radio-cluster>
     </div >
         <div class="search-results--panel flex-container-column-center">
             <div class="search-results__container">
