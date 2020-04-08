@@ -1,5 +1,5 @@
 <div class="radio-cluster">   
-    <a *ngFor="let buttonName of buttonNameList" (click)="handleButtonClick(buttonName)" >
+    <a *ngFor="let buttonName of radioCluster.buttonNames" (click)="handleButtonClick(buttonName)" >
         <div class="radio-cluster__button" [ngClass]="toggledButton === buttonName ? 'radio-cluster__button--toggled' : 'radio-cluster__button--untoggled'">{{ buttonName }}</div>
     </a>
 </div>

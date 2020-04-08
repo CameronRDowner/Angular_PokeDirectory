@@ -10,6 +10,7 @@ import { PokemonSearchResultComponent } from './components/pokemon-search-result
 import { PokemonPageComponent } from './pages/pokemon-page/pokemon-page.component';
 import { TextButtonComponent } from 'src/app/shared/components/text-button/text-button.component';
 import { PokemonTypeComponent } from './components/pokemon-type/pokemon-type.component';
+import { RadioClusterComponent } from '../../shared/components/radio-cluster/radio-cluster.component';
 
 @NgModule({
   declarations: [ 
@@ -20,7 +21,8 @@ import { PokemonTypeComponent } from './components/pokemon-type/pokemon-type.com
     PokemonSearchResultComponent,
     PokemonPageComponent,
     TextButtonComponent,
-    PokemonTypeComponent
+    PokemonTypeComponent,
+    RadioClusterComponent
   ],
   imports: [
     CommonModule,
@@ -30,6 +32,7 @@ import { PokemonTypeComponent } from './components/pokemon-type/pokemon-type.com
     PokemonOfTheDayComponent,
     TextButtonComponent,
     PokemonSearchResultComponent,
+    RadioClusterComponent
   ]
 })
 export class PokemonModule { }

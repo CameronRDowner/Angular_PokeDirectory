@@ -7,7 +7,6 @@ import { CarouselButtonComponent } from '../../shared/components/carousel-button
 import { PageIndicatorComponent } from '../../shared/components/page-indicator/page-indicator.component';
 import { SelectBoxComponent } from '../../shared/components/select-box/select-box.component';
 import { IconButtonComponent } from '../../shared/components/icon-button/icon-button.component';
-import { RadioClusterComponent } from '../../shared/components/radio-cluster/radio-cluster.component';
 
 import { PokemonModule } from '../pokemon/pokemon.module';
 import { StoreModule } from '@ngrx/store';
@@ -19,8 +18,7 @@ import { StoreModule } from '@ngrx/store';
     CarouselButtonComponent,
     PageIndicatorComponent,
     SelectBoxComponent,
-    IconButtonComponent,
-    RadioClusterComponent
+    IconButtonComponent
   ],
   imports: [
     CommonModule,

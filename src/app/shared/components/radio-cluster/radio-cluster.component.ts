@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { RadioCluster } from '../../models/radio-cluster/radio-cluster';
 
 @Component({
   selector: 'app-radio-cluster',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./radio-cluster.component.scss']
 })
 export class RadioClusterComponent implements OnInit {
-  @Input() buttonNameList: string[];
+  @Input() radioCluster: RadioCluster;
   @Output() radioButtonClick = new EventEmitter();
   toggledButton: string;
   setToggledButton(buttonName: string){
@@ -23,7 +24,7 @@ export class RadioClusterComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.toggledButton = this.buttonNameList[0];
+    this.toggledButton = this.radioCluster.buttonNames[0];
   }
 
 }
