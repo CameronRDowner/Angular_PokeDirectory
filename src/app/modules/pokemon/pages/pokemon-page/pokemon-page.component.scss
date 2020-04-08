@@ -14,8 +14,9 @@
 }
 .pokemon-sprites__panel{
     background-color: $dark-white;
-    box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.6);  
+    box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.6);
+    padding-bottom: 1rem;  
 }
 .pokemon-sprites__sprite{
-    width: 20rem;
+    width: 25rem;
 }

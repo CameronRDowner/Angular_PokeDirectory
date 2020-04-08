@@ -1,5 +1,6 @@
-<div class="radio-cluster">   
+<div [ngClass]="radioCluster.alternateStyling ? 'radio-cluster--alternate' : 'radio-cluster' ">   
     <a *ngFor="let buttonName of radioCluster.buttonNames" (click)="handleButtonClick(buttonName)" >
-        <div class="radio-cluster__button" [ngClass]="toggledButton === buttonName ? 'radio-cluster__button--toggled' : 'radio-cluster__button--untoggled'">{{ buttonName }}</div>
+        <div *ngIf="!radioCluster.alternateStyling" class="radio-cluster__button" [ngClass]="toggledButton === buttonName ? 'radio-cluster__button--toggled' : 'radio-cluster__button--untoggled'">{{ buttonName }}</div>
+        <div *ngIf="radioCluster.alternateStyling" class="radio-cluster__button-alternate" [ngClass]="toggledButton === buttonName ? 'radio-cluster__button--alternate-toggled' : 'radio-cluster__button--alternate-untoggled'">{{ buttonName }}</div>
     </a>
 </div>

@@ -1,9 +1,9 @@
 export class RadioCluster {
-    alternativeStyling:boolean;
+    alternateStyling:boolean;
     buttonNames:string[];
 
-    constructor(_buttonNames:string[], _alternativeStyling:boolean){
-        this.alternativeStyling = _alternativeStyling;
+    constructor(_buttonNames:string[], _alternateStyling:boolean){
+        this.alternateStyling = _alternateStyling;
         this.buttonNames = _buttonNames
     }
 }
