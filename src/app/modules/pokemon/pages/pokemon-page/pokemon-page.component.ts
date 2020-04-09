@@ -31,8 +31,6 @@ export class PokemonPageComponent implements OnInit {
   }
   constructor(private pokemonService:PokemonService, private router: Router) {
     this.setPokemon();
-    this.orientationRadioCluster = new RadioCluster(["Front", "Back"], true);
-    this.colorRadioCluster = new RadioCluster(["Default", "Shiny"], true);
     this.gameSelectOptions = ["Red", "Blue"];
    }
 
