@@ -16,6 +16,7 @@ export class PokemonPageComponent implements OnInit {
   pokemonSubscription:Subscription;
   orientationRadioCluster:RadioCluster;
   colorRadioCluster:RadioCluster;
+  gameSelectOptions:string[];
   handleOrientationButtonClick(clickedButton: string){
     if (clickedButton === "Front"){
       
@@ -32,6 +33,7 @@ export class PokemonPageComponent implements OnInit {
     this.setPokemon();
     this.orientationRadioCluster = new RadioCluster(["Front", "Back"], true);
     this.colorRadioCluster = new RadioCluster(["Default", "Shiny"], true);
+    this.gameSelectOptions = ["Red", "Blue"];
    }
 
   ngOnInit(): void {

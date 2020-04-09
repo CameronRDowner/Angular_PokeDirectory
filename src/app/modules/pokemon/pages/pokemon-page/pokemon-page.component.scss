@@ -1,7 +1,5 @@
 @import '../../../../../assets/sass/variables';
 .pokemon-page{
-    margin-top: 6rem;
-    max-width: 65%;
 }
 .pokemon-page__name{
     color: $medium-red;
@@ -19,4 +17,7 @@
 }
 .pokemon-sprites__sprite{
     width: 25rem;
+}
+.pokemon-sprites__control-title{
+    margin: 0 0 0.2rem 0;
 }

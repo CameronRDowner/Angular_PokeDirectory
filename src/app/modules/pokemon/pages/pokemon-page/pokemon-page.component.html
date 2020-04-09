@@ -6,15 +6,19 @@
             <img class="pokemon-sprites__sprite" [src]="pokemon?.sprites.front_default">
             <div class="flex-container-row-center">
             <div class="flex-container-column-center">
-                <h5>Orientation</h5>
+                <h5 class="pokemon-sprites__control-title">Orientation</h5>
                 <app-radio-cluster [radioCluster]="orientationRadioCluster"></app-radio-cluster>
             </div>
-            <div class="flex-container-column-center">
-                <h5>Color</h5>
+            <div class="sprite-controls__control-wrapper flex-container-column-center">
+                <h5 class="pokemon-sprites__control-title">Color</h5>
                 <app-radio-cluster [radioCluster]="colorRadioCluster"></app-radio-cluster> 
             </div>
             </div>
         </div>
+    </div>
+    <div class="flex-container-column-center">
+        <app-select-box [optionsList] = "gameSelectOptions" ></app-select-box>
+        
     </div>
     <app-moveset [inputPokemonMoves]="pokemon.moves"></app-moveset>
 </div>

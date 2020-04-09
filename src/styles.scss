@@ -32,3 +32,9 @@ div, p, h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     flex-wrap: wrap;
 }
+.panel{
+    box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.6);
+    background-color:$dark-white;
+    padding: 2rem;
+    overflow: hidden;
+}
