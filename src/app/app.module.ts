@@ -5,8 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { MainModule } from './modules/main/main.module';
-import { StoreModule } from '@ngrx/store';
 
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,12 @@ import { StoreModule } from '@ngrx/store';
     HttpClientModule,
     MainModule,
     StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument({
+      name: 'PokeDirectory',
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]
