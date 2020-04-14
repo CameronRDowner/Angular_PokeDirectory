@@ -3,7 +3,7 @@
         <app-search-controls (searchButtonClick)="handleSearch()" ></app-search-controls>
         <app-radio-cluster [radioCluster]="pokemonSortingButtons" (radioButtonClick)="handleSortButtonClick($event)"></app-radio-cluster>
     </div >
-        <div class="search-results--panel flex-container-column-center">
+        <div class="search-results--panel panel flex-container-column-center">
             <div class="search-results__container">
             <app-pokemon-search-result *ngFor="let result of resultsInView" [searchResult] = "result"></app-pokemon-search-result>
             </div>

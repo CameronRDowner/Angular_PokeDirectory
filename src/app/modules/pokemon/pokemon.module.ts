@@ -11,6 +11,7 @@ import { PokemonPageComponent } from './pages/pokemon-page/pokemon-page.componen
 import { TextButtonComponent } from 'src/app/shared/components/text-button/text-button.component';
 import { PokemonTypeComponent } from './components/pokemon-type/pokemon-type.component';
 import { RadioClusterComponent } from '../../shared/components/radio-cluster/radio-cluster.component';
+import { PokemonSpritesComponent } from './components/pokemon-sprites/pokemon-sprites.component';
 
 @NgModule({
   declarations: [ 
@@ -22,7 +23,8 @@ import { RadioClusterComponent } from '../../shared/components/radio-cluster/rad
     PokemonPageComponent,
     TextButtonComponent,
     PokemonTypeComponent,
-    RadioClusterComponent
+    RadioClusterComponent,
+    PokemonSpritesComponent
   ],
   imports: [
     CommonModule,

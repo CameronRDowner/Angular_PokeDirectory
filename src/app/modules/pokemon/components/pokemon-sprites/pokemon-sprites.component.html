@@ -1,0 +1,16 @@
+<div class="pokemon-sprites">
+  <h2 class="pokemon-sprites__title">Sprites</h2>
+  <div class="panel flex-container-column-center">
+    <img class="pokemon-sprites__sprite" [src]="spriteInView">
+    <div class="flex-container-row-center">
+      <div class="flex-container-column-center">
+        <h5 class="pokemon-sprites__control-title">Orientation</h5>
+        <app-radio-cluster [radioCluster]="orientationRadioCluster"></app-radio-cluster>
+      </div>
+      <div class="sprite-controls__control-wrapper flex-container-column-center">
+        <h5 class="pokemon-sprites__control-title">Color</h5>
+        <app-radio-cluster [radioCluster]="colorRadioCluster"></app-radio-cluster>
+      </div>
+    </div>
+  </div>
+</div>
