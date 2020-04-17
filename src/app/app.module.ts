@@ -29,6 +29,8 @@ import { environment } from 'src/environments/environment';
     EffectsModule.forRoot([])
   ],
   providers: [],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -31,7 +31,7 @@ export class PokemonPageComponent implements OnInit {
   }
   constructor(private pokemonService:PokemonService, private router: Router) {
     this.setPokemon();
-    this.gameSelectOptions = ["Red", "Blue"];
+    this.gameSelectOptions = ["Pokemon Shield", "Pokemon Sword"];
    }
 
   ngOnInit(): void {

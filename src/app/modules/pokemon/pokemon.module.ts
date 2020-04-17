@@ -12,6 +12,8 @@ import { TextButtonComponent } from 'src/app/shared/components/text-button/text-
 import { PokemonTypeComponent } from './components/pokemon-type/pokemon-type.component';
 import { RadioClusterComponent } from '../../shared/components/radio-cluster/radio-cluster.component';
 import { PokemonSpritesComponent } from './components/pokemon-sprites/pokemon-sprites.component';
+import { SelectBoxComponent } from '../../shared/components/select-box/select-box.component';
+import { PokemonInfoComponent } from './components/pokemon-info/pokemon-info.component';
 
 @NgModule({
   declarations: [ 
@@ -24,7 +26,9 @@ import { PokemonSpritesComponent } from './components/pokemon-sprites/pokemon-sp
     TextButtonComponent,
     PokemonTypeComponent,
     RadioClusterComponent,
-    PokemonSpritesComponent
+    PokemonSpritesComponent,
+    SelectBoxComponent,
+    PokemonInfoComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +38,8 @@ import { PokemonSpritesComponent } from './components/pokemon-sprites/pokemon-sp
     PokemonOfTheDayComponent,
     TextButtonComponent,
     PokemonSearchResultComponent,
-    RadioClusterComponent
+    RadioClusterComponent,
+    SelectBoxComponent
   ]
 })
 export class PokemonModule { }
