@@ -9,10 +9,10 @@ import { RadioCluster } from '../../../../shared/models/radio-cluster/radio-clus
 
 @Component({
   selector: 'app-browse-page',
-  templateUrl: './browse-page.component.html',
-  styleUrls: ['./browse-page.component.scss']
+  templateUrl: './browse-page.container.html',
+  styleUrls: ['./browse-page.container.scss']
 })
-export class BrowsePageComponent implements OnInit {
+export class BrowsePageContainer implements OnInit {
   private allResultsOffset:number;
   resultsInView:NamedAPIResource[];
   allResults:NamedAPIResource[];
@@ -148,7 +148,7 @@ export class BrowsePageComponent implements OnInit {
       return 0;
     })
   }
-  constructor(private pokemonService:PokemonService, private browseService:BrowseService) {
+  constructor(private pokemonService:PokemonService) {
     this.allResultsOffset = 0;
     this.maxResultsPerPage = 15;
     this.pokemonSortingButtons = new RadioCluster(["Id", "Name"], false);

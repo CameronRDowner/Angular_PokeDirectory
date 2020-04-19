@@ -38,3 +38,11 @@ div, p, h1, h2, h3, h4, h5, h6 {
     padding: 1rem;
     overflow: hidden;
 }
+.textbox {
+    display: inline-block;
+    background-color: $dark-white;
+    box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.4);
+    height: 3.2rem;
+    width: 28rem;
+    margin: 0;
+}

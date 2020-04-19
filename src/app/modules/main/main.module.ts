@@ -18,8 +18,8 @@ import { fromEventPattern } from 'rxjs';
   imports: [
     AppRoutingModule,
     CommonModule,
-    BrowseModule,
-    PokemonModule
+    PokemonModule,
+    BrowseModule
   ],
   exports: [
     NavbarComponent

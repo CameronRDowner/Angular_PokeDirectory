@@ -1,6 +1,6 @@
 <div class="select-box">
     <i class="select-box__caret fas fa-caret-down"></i>
-    <select class="select-box__select">    
+    <select (change)="handleSelectBoxChange($event.target.value)" class="select-box__select">    
         <option *ngFor="let option of optionsList">{{ option }}</option>
     </select> 
 </div> 
