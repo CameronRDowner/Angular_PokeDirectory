@@ -4,9 +4,9 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 const getBrowseFeatureState = createFeatureSelector<browse.BrowseState>('browse');
 
-export const getSearchList = createSelector(
+export const getListToSearch = createSelector(
     getBrowseFeatureState,
-    state => state.searchList
+    state => state.listToSearch
 );
 export const getSearchTerm = createSelector(
     getBrowseFeatureState,

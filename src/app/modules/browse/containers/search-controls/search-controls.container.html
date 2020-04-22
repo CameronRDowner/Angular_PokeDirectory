@@ -1,6 +1,6 @@
 <div class="flex-container-row-center">
     <input class="textbox" type="text" (change)="setSearchTerm($event.target.value)" name="search-box">
-    <app-select-box (optionClick)="setSearchList($event)" [optionsList] = "selectBoxOptions"></app-select-box>
-    <app-icon-button [iconClasses] = "searchButtonIconClasses" (buttonClick)="handleSearchButtonClick()"></app-icon-button>
+    <app-select-box (optionClick)="setListToSearch($event)" [optionsList] = "selectBoxOptions"></app-select-box>
+    <app-icon-button [iconClasses] = "searchButtonIconClasses" (buttonClick)="openBrowsePage()"></app-icon-button>
 </div>
 

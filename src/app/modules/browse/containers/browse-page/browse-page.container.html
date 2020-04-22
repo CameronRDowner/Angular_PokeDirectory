@@ -5,7 +5,7 @@
     </div >
         <div class="search-results--panel panel flex-container-column-center">
             <div class="search-results__container">
-            <app-pokemon-search-result *ngFor="let result of resultsInView" [searchResult] = "result"></app-pokemon-search-result>
+            <app-pokemon-search-result *ngFor="let result of resultsInView | slice:offsetStart:offsetEnd" [searchResult] = "result"></app-pokemon-search-result>
             </div>
             <app-page-indicator [currentPage]="currentPage" [totalPages]="totalPages"></app-page-indicator>
         </div>

@@ -9,7 +9,7 @@ export interface BrowseState {
     totalPages: number,
     currentPage:number,
     searchTerm:string,
-    searchList:string
+    listToSearch:string
 }
 const initialState: BrowseState = {
     resultsInView: null,
@@ -19,7 +19,7 @@ const initialState: BrowseState = {
     totalPages: 0,
     currentPage: 0,
     searchTerm: "",
-    searchList: "Pokemon"
+    listToSearch: "Pokemon"
 };
 export function reducer(state = initialState, action: BrowseActions): BrowseState {
 
@@ -29,15 +29,16 @@ export function reducer(state = initialState, action: BrowseActions): BrowseStat
           ...state,
           resultsInView: action.payload
         };
-      case BrowseActionTypes.InitializeResultsInView:
+      case BrowseActionTypes.LoadAllPokemonSuccess:
         return {
           ...state,
-          resultsInView: action.payload
+          allPokemon: action.payload
         };
-      case BrowseActionTypes.SetSearchList:
+  
+      case BrowseActionTypes.SetListToSearch:
         return {
           ...state,
-          searchList: action.payload
+          listToSearch: action.payload
         };
   
       
