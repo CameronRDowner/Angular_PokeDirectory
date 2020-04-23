@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import * as app from './app.state';
+import { Store } from '@ngrx/store';
+import * as browseActions from './modules/browse/state/browse.actions';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-pokedex';
+
+  constructor(private store: Store<app.State>){}
+
+  ngOnInit(){
+    this.store.dispatch(new browseActions.LoadAllPokemon());
+  }
 }

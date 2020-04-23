@@ -15,8 +15,8 @@ export class BrowseEffects {
   loadAllPokemon$: Observable<Action> = this.actions$.pipe(
     ofType(browseActions.BrowseActionTypes.LoadAllPokemon),
     switchMap(action =>
-      this.pokemonService.getAllPokemon.pipe(
-        map(allPokemon => (new browseActions.LoadAllPokemonSuccess(allPokemon))),
+      this.pokemonService.getAllPokemon().pipe(
+        map(result => (new browseActions.LoadAllPokemonSuccess(result.results))),
         catchError(error=> of(new browseActions.LoadAllPokemonFailure(error)))
         )
   )

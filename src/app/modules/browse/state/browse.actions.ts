@@ -5,6 +5,7 @@ export enum BrowseActionTypes {
     SetResultsInView = '[Browse] Set Results In View',
     InitializeResultsInView = '[Browse] Initialize Results In View',
     SetSearchTerm = '[Browse] Set Search Term',
+    ClearSearchTerm = '[Browse] Clear Search Term',
     SetListToSearch = '[Browse] Set Search List',
     LoadAllPokemonSuccess = '[Browse] Load All Pokemon Success',
     LoadAllPokemonFailure = '[Browse] Load All Pokemon Failure',
@@ -43,10 +44,15 @@ export class LoadAllPokemonFailure implements Action {
 export class LoadAllPokemon implements Action {
     readonly type = BrowseActionTypes.LoadAllPokemon;
 }
+export class ClearSearchTerm implements Action {
+    readonly type = BrowseActionTypes.ClearSearchTerm;
+    constructor(){}
+}
 export type BrowseActions = SetResultsInView
   | InitializeResultsInView
   | SetListToSearch
   | SetSearchTerm
   | LoadAllPokemonSuccess
   | LoadAllPokemonFailure
-  | LoadAllPokemon;
+  | LoadAllPokemon
+  | ClearSearchTerm;

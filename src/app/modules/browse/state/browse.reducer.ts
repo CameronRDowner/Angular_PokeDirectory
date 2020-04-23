@@ -40,7 +40,11 @@ export function reducer(state = initialState, action: BrowseActions): BrowseStat
           ...state,
           listToSearch: action.payload
         };
-  
+      case BrowseActionTypes.ClearSearchTerm:
+        return {
+          ...state,
+          searchTerm: ""
+        };
       
   
       default:

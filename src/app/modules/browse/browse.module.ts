@@ -10,6 +10,8 @@ import { PokemonModule } from '../pokemon/pokemon.module';
 
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './state/browse.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { BrowseEffects } from './state/browse.effects';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,9 @@ import { reducer } from './state/browse.reducer';
     PokemonModule,
     FormsModule,
     StoreModule.forFeature('browse', reducer),
+    EffectsModule.forFeature(
+      [BrowseEffects]
+    )
   ],
   exports: [
     SearchControlsContainer

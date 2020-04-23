@@ -1,13 +1,13 @@
 <div class="browse-page">
     <div class="flex-container-row-center">
         <app-search-controls></app-search-controls>
-        <app-radio-cluster [radioCluster]="pokemonSortingButtons" (radioButtonClick)="handleSortButtonClick($event)"></app-radio-cluster>
+        <app-radio-cluster [radioCluster]="pokemonSortingButtons" ></app-radio-cluster>
     </div >
         <div class="search-results--panel panel flex-container-column-center">
             <div class="search-results__container">
-            <app-pokemon-search-result *ngFor="let result of resultsInView | slice:offsetStart:offsetEnd" [searchResult] = "result"></app-pokemon-search-result>
+            <app-pokemon-search-result *ngFor="let result of resultsInView | slice:startOffset:endOffset" [searchResult] = "result"></app-pokemon-search-result>
             </div>
             <app-page-indicator [currentPage]="currentPage" [totalPages]="totalPages"></app-page-indicator>
         </div>
-        <app-carousel-button [orientation]="'left'" (buttonClick)="loadPreviousResultsInView()"></app-carousel-button>  <app-carousel-button [orientation]="'right'" (buttonClick)="loadNextResultsInView()"></app-carousel-button>
+        <app-carousel-button [orientation]="'left'" (buttonClick)="handleLoadPreviousResults()"></app-carousel-button>  <app-carousel-button [orientation]="'right'" (buttonClick)="handleLoadNextResults()"></app-carousel-button>
     </div>
