@@ -5,9 +5,6 @@ export interface BrowseState {
     resultsInView: NamedAPIResource[],
     allResults:NamedAPIResource[],
     allPokemon:NamedAPIResource[],
-    allResultsOffset:number,
-    totalPages: number,
-    currentPage:number,
     searchTerm:string,
     listToSearch:string
 }
@@ -15,9 +12,6 @@ const initialState: BrowseState = {
     resultsInView: null,
     allResults: null,
     allPokemon: null,
-    allResultsOffset: 0,
-    totalPages: 0,
-    currentPage: 0,
     searchTerm: "",
     listToSearch: "Pokemon"
 };

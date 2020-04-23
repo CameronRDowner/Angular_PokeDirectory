@@ -16,3 +16,7 @@ export const getAllPokemon = createSelector(
     getBrowseFeatureState,
     state => state.allPokemon
 );
+export const getResultsInView = createSelector(
+    getBrowseFeatureState,
+    state => state.resultsInView
+);

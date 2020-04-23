@@ -35,11 +35,11 @@ export class BrowsePageContainer implements OnInit {
       
     }
   }
-  setTotalPages():void{
+  updateTotalPages():void{
     this.totalPages = (Math.ceil(this.resultsInView.length / this.maxResultsPerPage));
   }
   updateCurrentPage():void{
-    this.currentPage = this.startOffset / this.maxResultsPerPage;
+    this.currentPage = this.endOffset / this.maxResultsPerPage;
   }
   private searchList(list:NamedAPIResource[]):NamedAPIResource[]{ 
     return list.filter(
@@ -52,7 +52,7 @@ export class BrowsePageContainer implements OnInit {
     }
     this.initializeOffsets();
     this.updateCurrentPage();
-    this.setTotalPages();
+    this.updateTotalPages();
     this.clearSearchTerm();
   }
   setResultsInView(_resultsInView): void {
@@ -80,52 +80,52 @@ export class BrowsePageContainer implements OnInit {
     }
   }
   loadPreviousResultsPage(): void {
-    if(this.currentPage !== 0){
+    if(this.currentPage !== 1){
       this.endOffset = this.startOffset;
       this.startOffset -= this.maxResultsPerPage;
     }
   }
-  // handleSortButtonClick(buttonName):void{
-  //   if(buttonName === "Id"){
-  //     this.handleSortResultsById();
-  //   }
-  //   else if(buttonName === "Name"){
-  //     this.handleSortResultsByName();
-  //   }
-  // }
-  // // handleSortResultsById():void{
-  // //   this.sortResultsById();
-  // //   this.resetAllResultsOffset();
-  // //   this.loadNextResultsInView();
-  // //   this.updateCurrentPage();
-  // // }
-  // sortResultsById():void{
-  //   this.allResults.sort((resultA, resultB)=>{
-  //     let idA = parseInt(resultA.url.substring(34,resultA.url.length -1));
-  //     let idB = parseInt(resultB.url.substring(34,resultB.url.length -1));
-  //     return idA - idB;
-  //   })
-  // }
-  // handleSortResultsByName():void{
-  //   this.sortResultsByName();
-  //   this.resetAllResultsOffset();
-  //   this.loadNextResultsInView();
-  //   this.updateCurrentPage();
-  // }
-  // sortResultsByName():void{
-  //   this.allResults.sort((resultA, resultB)=>{
-  //     let nameA = resultA.name.toLowerCase();
-  //     let nameB = resultB.name.toLowerCase();
-  //     if(nameA < nameB){ return -1;}
-  //     if(nameA > nameB){ return 1;}
-  //     return 0;
-  //   })
-  // }
+  handleSortButtonClick(buttonName):void{
+    if(buttonName === "Id"){
+      this.handleSortResultsById();
+    }
+    else if(buttonName === "Name"){
+      this.handleSortResultsByName();
+    }
+  }
+  handleSortResultsById():void{
+    this.sortResultsById();
+    this.initializeOffsets();
+    this.updateCurrentPage();
+  }
+  sortResultsById():void{
+    this.resultsInView.sort((resultA, resultB)=>{
+      let idA = parseInt(resultA.url.substring(34,resultA.url.length -1));
+      let idB = parseInt(resultB.url.substring(34,resultB.url.length -1));
+      return idA - idB;
+    })
+  }
+  handleSortResultsByName():void{
+    console.log("it ran")
+    this.sortResultsByName();
+    this.initializeOffsets();
+    this.updateCurrentPage();
+  }
+  sortResultsByName():void{
+    this.resultsInView.sort((resultA, resultB)=>{
+      let nameA = resultA.name.toLowerCase();
+      let nameB = resultB.name.toLowerCase();
+      if(nameA < nameB){ return -1;}
+      if(nameA > nameB){ return 1;}
+      return 0;
+    })
+  }
   constructor(private pokemonService:PokemonService, private store: Store<app.State>) {
     this.initializeOffsets();
     this.maxResultsPerPage = 15;
     this.pokemonSortingButtons = new RadioCluster(["Id", "Name"], false);
     this.componentActive = true;
+    this.currentPage = 1;
    }
 
   ngOnInit(): void {
@@ -133,8 +133,8 @@ export class BrowsePageContainer implements OnInit {
     this.store.pipe(select(browseSelectors.getSearchTerm), takeWhile(()=>this.componentActive)).subscribe(_searchTerm => { this.searchTerm = _searchTerm });
     this.store.pipe(select(browseSelectors.getAllPokemon), takeWhile(()=> this.componentActive)).subscribe(_allPokemon => { 
       this.allPokemon = _allPokemon
-      console.log(this.allPokemon)
       this.initializeResultsInView()
+      this.updateTotalPages()
     });
     this.initializeOffsets();
   }
