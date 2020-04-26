@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PokemonMove } from '../../../../shared/models/pokemon-move/pokemon-move';
+import { PokemonMove } from '../../../../shared/models/pokemon-move';
 import { MovesService } from '../../moves.service';
-import { Move } from '../../models/move/move';
+import { Move } from '../../models/move';
 import { takeUntil, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 

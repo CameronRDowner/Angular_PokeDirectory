@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NamedAPIResource } from 'src/app/shared/models/named-api-resource/named-apiresource';
+import { NamedAPIResource } from 'src/app/shared/models/named-apiresource';
 import { Router } from '@angular/router';
 
 @Component({

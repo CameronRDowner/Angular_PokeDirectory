@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Move } from './models/move/move';
+import { Move } from './models/move';
 import { Observable, EMPTY } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { shareReplay } from 'rxjs/operators'

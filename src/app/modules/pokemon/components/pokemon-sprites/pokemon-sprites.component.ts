@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PokemonSprites } from '../../models/pokemon-sprites/pokemon-sprites';
+import { PokemonSprites } from '../../models/pokemon-sprites';
 import { RadioCluster } from '../../../../shared/models/radio-cluster/radio-cluster';
 @Component({
   selector: 'app-pokemon-sprites',

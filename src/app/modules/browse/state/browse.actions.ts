@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { NamedAPIResource } from 'src/app/shared/models/named-api-resource/named-apiresource';
+import { NamedAPIResource } from 'src/app/shared/models/named-apiresource';
 
 export enum BrowseActionTypes {
     SetResultsInView = '[Browse] Set Results In View',

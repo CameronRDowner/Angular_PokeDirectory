@@ -1,4 +1,4 @@
-import { NamedAPIResource } from 'src/app/shared/models/named-api-resource/named-apiresource';
+import { NamedAPIResource } from 'src/app/shared/models/named-apiresource';
 
 export interface PokemonMoveVersion {
     move_learn_method:NamedAPIResource;

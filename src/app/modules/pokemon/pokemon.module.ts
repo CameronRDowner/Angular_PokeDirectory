@@ -14,6 +14,7 @@ import { RadioClusterComponent } from '../../shared/components/radio-cluster/rad
 import { PokemonSpritesComponent } from './components/pokemon-sprites/pokemon-sprites.component';
 import { SelectBoxComponent } from '../../shared/components/select-box/select-box.component';
 import { PokemonInfoComponent } from './components/pokemon-info/pokemon-info.component';
+import { PokemonAbilitiesComponent } from './components/pokemon-abilities/pokemon-abilities.component';
 
 @NgModule({
   declarations: [ 
@@ -28,7 +29,8 @@ import { PokemonInfoComponent } from './components/pokemon-info/pokemon-info.com
     RadioClusterComponent,
     PokemonSpritesComponent,
     SelectBoxComponent,
-    PokemonInfoComponent
+    PokemonInfoComponent,
+    PokemonAbilitiesComponent
   ],
   imports: [
     CommonModule,

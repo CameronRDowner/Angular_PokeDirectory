@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Move } from '../../models/move/move';
+import { Move } from '../../models/move';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 

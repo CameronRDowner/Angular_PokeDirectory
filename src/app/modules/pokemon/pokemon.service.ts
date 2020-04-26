@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { NamedAPIResourceList } from '../../shared/models/named-apiresource-list/named-apiresource-list';
+import { NamedAPIResourceList } from '../../shared/models/named-apiresource-list';
 import { HttpClient } from '@angular/common/http';
-import { Pokemon } from './models/pokemon/pokemon';
-import { NamedAPIResource } from 'src/app/shared/models/named-api-resource/named-apiresource';
+import { Pokemon } from './models/pokemon';
+import { NamedAPIResource } from 'src/app/shared/models/named-apiresource';
 
 @Injectable({
   providedIn: 'root'

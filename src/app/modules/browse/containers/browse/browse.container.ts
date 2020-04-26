@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/modules/pokemon/pokemon.service';
-import { NamedAPIResource } from 'src/app/shared/models/named-api-resource/named-apiresource';
+import { NamedAPIResource } from 'src/app/shared/models/named-apiresource';
 import { take, takeWhile } from 'rxjs/operators';
 import { Subscription, Observable } from 'rxjs';
 import { RadioCluster } from '../../../../shared/models/radio-cluster/radio-cluster';
