@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PokemonSprites } from '../../models/pokemon-sprites';
 import { RadioCluster } from '../../../../shared/models/radio-cluster/radio-cluster';
 @Component({
-  selector: 'app-pokemon-sprites',
-  templateUrl: './pokemon-sprites.component.html',
-  styleUrls: ['./pokemon-sprites.component.scss']
+  selector: 'app-sprites',
+  templateUrl: './sprites.component.html',
+  styleUrls: ['./sprites.component.scss']
 })
-export class PokemonSpritesComponent implements OnInit {
+export class SpritesComponent implements OnInit {
   @Input() sprites:PokemonSprites;
   spriteInView:string;
   orientationRadioCluster: any;

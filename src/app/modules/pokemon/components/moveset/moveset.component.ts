@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PokemonMove } from '../../../../shared/models/pokemon-move';
-import { MovesService } from '../../moves.service';
 import { Move } from '../../models/move';
 import { takeUntil, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -21,7 +20,7 @@ export class MovesetComponent implements OnInit {
   setMoveLists(){
     this.inputPokemonMoves.map(move=>{ move.version_group_details.map(game =>{
       if(game.move_learn_method.name === "level-up" && game.version_group.name in this.moveLists){
-        this.moveLists[game.version_group.name].push({levelLearnedAt: game.level_learned_at, move: this.movesService.getMove(move.move.name)})
+        this.moveLists[game.version_group.name].push({levelLearnedAt: game.level_learned_at, move: "" })
       }
     })
     })
@@ -38,7 +37,7 @@ export class MovesetComponent implements OnInit {
       }
     }
   }
-  constructor(private movesService:MovesService) {
+  constructor() {
     this.moveLists = {
       "red-blue":[],
       "yellow":[],
