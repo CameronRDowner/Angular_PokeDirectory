@@ -11,11 +11,11 @@ import * as browseSelectors from '../../state';
 import * as browseActions from '../../state/browse.actions';
 
 @Component({
-  selector: 'app-browse-page',
-  templateUrl: './browse-page.container.html',
-  styleUrls: ['./browse-page.container.scss']
+  selector: 'app-browse',
+  templateUrl: './browse.container.html',
+  styleUrls: ['./browse.container.scss']
 })
-export class BrowsePageContainer implements OnInit {
+export class BrowseContainer implements OnInit {
   componentActive: boolean;
   resultsInView:NamedAPIResource[];
   allPokemon:NamedAPIResource[];

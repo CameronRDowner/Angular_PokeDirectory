@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { BrowsePageContainer } from './containers/browse-page/browse-page.container';
+import { BrowseContainer } from './containers/browse/browse.container';
 import { SearchControlsContainer } from './containers/search-controls/search-controls.container';
 import { CarouselButtonComponent } from '../../shared/components/carousel-button/carousel-button.component';
 import { PageIndicatorComponent } from '../../shared/components/page-indicator/page-indicator.component';
@@ -15,7 +15,7 @@ import { BrowseEffects } from './state/browse.effects';
 
 @NgModule({
   declarations: [
-    BrowsePageContainer,
+    BrowseContainer,
     SearchControlsContainer,
     CarouselButtonComponent,
     PageIndicatorComponent,

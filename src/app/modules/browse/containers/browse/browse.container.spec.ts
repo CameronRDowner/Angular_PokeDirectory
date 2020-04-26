@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BrowsePageContainer } from './browse-page.container';
+import { BrowsePageContainer } from './browse.container';
 
 describe('BrowsePageComponent', () => {
   let component: BrowsePageContainer;

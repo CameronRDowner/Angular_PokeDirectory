@@ -7,11 +7,11 @@ import { Subscription } from 'rxjs';
 import { RadioCluster } from 'src/app/shared/models/radio-cluster/radio-cluster';
 
 @Component({
-  selector: 'app-pokemon-page',
-  templateUrl: './pokemon-page.component.html',
-  styleUrls: ['./pokemon-page.component.scss']
+  selector: 'app-pokemon',
+  templateUrl: './pokemon.container.html',
+  styleUrls: ['./pokemon.container.scss']
 })
-export class PokemonPageComponent implements OnInit {
+export class PokemonContainer implements OnInit {
   pokemon:Pokemon;
   pokemonSubscription:Subscription;
   orientationRadioCluster:RadioCluster;

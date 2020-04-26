@@ -7,7 +7,7 @@ import { PokemonMoveComponent } from './components/pokemon-move/pokemon-move.com
 import { PokemonLocationComponent } from './components/pokemon-location/pokemon-location.component';
 import { PokemonOfTheDayComponent } from './components/pokemon-of-the-day/pokemon-of-the-day.component';
 import { PokemonSearchResultComponent } from './components/pokemon-search-result/pokemon-search-result.component';
-import { PokemonPageComponent } from './pages/pokemon-page/pokemon-page.component';
+import { PokemonContainer } from './containers/pokemon/pokemon.container';
 import { TextButtonComponent } from 'src/app/shared/components/text-button/text-button.component';
 import { PokemonTypeComponent } from './components/pokemon-type/pokemon-type.component';
 import { RadioClusterComponent } from '../../shared/components/radio-cluster/radio-cluster.component';
@@ -22,7 +22,7 @@ import { PokemonInfoComponent } from './components/pokemon-info/pokemon-info.com
     PokemonLocationComponent, 
     PokemonOfTheDayComponent,
     PokemonSearchResultComponent,
-    PokemonPageComponent,
+    PokemonContainer,
     TextButtonComponent,
     PokemonTypeComponent,
     RadioClusterComponent,

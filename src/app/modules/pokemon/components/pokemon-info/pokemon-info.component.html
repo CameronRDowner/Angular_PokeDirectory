@@ -1,3 +1,16 @@
-<div class="pokemon-info panel">
-    
+<div class="pokemon-info flex-container-row-center">
+    <div class="panel">
+        <h4>ID: {{'#' + pokemon.id.toString().padStart(3, '0')}}</h4>
+        <h4>Height: {{(pokemon.height * 0.1).toFixed(1) + 'm' + ' ' + '(' + (pokemon.height * 0.328084).toFixed(1) + 'ft' + ')' }}</h4>
+        <h4>Weight: {{(pokemon.weight * 0.1).toFixed(1) + 'kg' + ' ' + '(' + (pokemon.weight * 0.220462).toFixed(1) + 'lbs' + ')' }}</h4>
+        <h4>Leveling Rate:</h4>
+    </div>
+    <div class="panel">
+        <div class="flex-container-row-center">
+
+        </div>
+        <div class="flex-container-row-center">
+
+        </div>
+    </div>
 </div>
