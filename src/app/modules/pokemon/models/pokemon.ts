@@ -1,6 +1,7 @@
 import { PokemonSprites } from './pokemon-sprites';
 import { PokemonMove } from '../../../shared/models/pokemon-move';
 import { PokemonType } from './pokemon-type';
+import { PokemonAbility } from './pokemon-ability';
 
 export interface Pokemon {
     id:number;
@@ -9,7 +10,8 @@ export interface Pokemon {
     weight: number;
     sprites:PokemonSprites;
     moves:PokemonMove[];
-    types:PokemonType; 
+    types:PokemonType;
+    abilities:PokemonAbility[]; 
     
 }
 
