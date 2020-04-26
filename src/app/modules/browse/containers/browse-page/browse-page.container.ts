@@ -56,7 +56,7 @@ export class BrowsePageContainer implements OnInit {
     this.clearSearchTerm();
   }
   setResultsInView(_resultsInView): void {
-    this.resultsInView = _resultsInView; 
+    this.store.dispatch(new browseActions.SetResultsInView(_resultsInView)); 
   }
   initializeOffsets(): void {
     this.startOffset = 0;
@@ -94,31 +94,34 @@ export class BrowsePageContainer implements OnInit {
     }
   }
   handleSortResultsById():void{
-    this.sortResultsById();
+    this.setResultsInView(this.sortResultsById());
     this.initializeOffsets();
     this.updateCurrentPage();
   }
-  sortResultsById():void{
-    this.resultsInView.sort((resultA, resultB)=>{
+  sortResultsById():NamedAPIResource[]{
+    let _resultsInView = this.resultsInView.slice(0);
+    _resultsInView.sort((resultA, resultB)=>{
       let idA = parseInt(resultA.url.substring(34,resultA.url.length -1));
       let idB = parseInt(resultB.url.substring(34,resultB.url.length -1));
       return idA - idB;
     })
+    return _resultsInView
   }
   handleSortResultsByName():void{
-    console.log("it ran")
-    this.sortResultsByName();
+    this.setResultsInView(this.sortResultsByName());
     this.initializeOffsets();
     this.updateCurrentPage();
   }
-  sortResultsByName():void{
-    this.resultsInView.sort((resultA, resultB)=>{
+  sortResultsByName():NamedAPIResource[]{
+    let _resultsInView = this.resultsInView.slice(0);
+    _resultsInView.sort((resultA, resultB)=>{
       let nameA = resultA.name.toLowerCase();
       let nameB = resultB.name.toLowerCase();
       if(nameA < nameB){ return -1;}
       if(nameA > nameB){ return 1;}
       return 0;
     })
+    return _resultsInView
   }
   constructor(private pokemonService:PokemonService, private store: Store<app.State>) {
     this.initializeOffsets();
@@ -136,6 +139,7 @@ export class BrowsePageContainer implements OnInit {
       this.initializeResultsInView()
       this.updateTotalPages()
     });
+    this.store.pipe(select(browseSelectors.getResultsInView), takeWhile(()=>this.componentActive)).subscribe(_resultsInView => { this.resultsInView = _resultsInView });
     this.initializeOffsets();
   }
   ngOnDestroy(): void{
