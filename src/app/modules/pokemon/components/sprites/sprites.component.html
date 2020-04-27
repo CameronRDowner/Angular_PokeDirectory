@@ -5,7 +5,7 @@
     <div class="flex-container-row-center">
       <div class="flex-container-column-center">
         <h5 class="pokemon-sprites__control-title">Orientation</h5>
-        <app-radio-cluster [radioCluster]="orientationRadioCluster"></app-radio-cluster>
+        <app-radio-cluster [radioCluster]="orientationRadioCluster" (radioButtonClick)="handleOrientationButtonClick($event)"></app-radio-cluster>
       </div>
       <div class="sprite-controls__control-wrapper flex-container-column-center">
         <h5 class="pokemon-sprites__control-title">Color</h5>
