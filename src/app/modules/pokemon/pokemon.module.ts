@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { StatsComponent } from './components/stats/stats.component';
+import { StatListComponent } from './components/stat-list/stat-list.component';
 import { MoveComponent } from './components/move/move.component';
 import { MovesetComponent } from './components/moveset/moveset.component';
 import { CatchLocationComponent } from './components/catch-location/catch-location.component';
@@ -15,13 +15,14 @@ import { SpritesComponent } from './components/sprites/sprites.component';
 import { SelectBoxComponent } from '../../shared/components/select-box/select-box.component';
 import { PokemonInfoComponent } from './components/pokemon-info/pokemon-info.component';
 import { AbilityComponent } from './components/ability/ability.component';
+import { StatComponent } from './components/stat/stat.component';
 
 @NgModule({
   declarations: [ 
-    StatsComponent, 
+    StatListComponent, 
     MoveComponent,
     MovesetComponent, 
-    CatchLocationComponent, 
+    CatchLocationComponent,
     PokemonOfTheDayComponent,
     PokemonSearchResultComponent,
     PokemonContainer,
@@ -31,7 +32,8 @@ import { AbilityComponent } from './components/ability/ability.component';
     SpritesComponent,
     SelectBoxComponent,
     PokemonInfoComponent,
-    AbilityComponent
+    AbilityComponent,
+    StatComponent
   ],
   imports: [
     CommonModule

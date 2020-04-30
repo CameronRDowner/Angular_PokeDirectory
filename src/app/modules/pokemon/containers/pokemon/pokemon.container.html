@@ -8,7 +8,7 @@
         <h2>Game</h2>
         <app-select-box [optionsList] = "gameSelectOptions" ></app-select-box>
         <app-pokemon-info [pokemon]="pokemon"></app-pokemon-info>
-        
+        <app-stat-list [statList]="pokemon.stats"></app-stat-list>
     </div>
 </div>
     <app-moveset [inputPokemonMoves]="pokemon.moves"></app-moveset>

@@ -27,7 +27,6 @@ export class PokemonContainer implements OnInit {
   }
   setPokemon(){
   this.pokemonSubscription = this.pokemonService.getPokemon(parseInt(this.router.url.substring(9))).pipe(take(1)).subscribe(_pokemon=>{ this.pokemon = _pokemon });
-    console.log(this.pokemon);
   }
   constructor(private pokemonService:PokemonService, private router: Router) {
     this.setPokemon();
