@@ -21,6 +21,26 @@ export class StatComponent implements OnInit {
     console.log('ran')
     return styles;      
   }
+  getEstimatedStat(level:number, iV?:number, eV?:number):number{
+    if(iV === undefined || eV === undefined){
+      //this is a harmful nature effect (-10%)
+      const natureEffect = .9;
+      return Math.floor(((((2*this.stat.base_stat)*level)/100)+5)*natureEffect)
+    }
+    else{
+      //this is a helpful nature effect (+10%)
+      const natureEffect = 1.1;
+      return Math.floor((((((2*this.stat.base_stat)+iV+(eV/4))*level)/100)+5)*natureEffect)
+    }
+  }
+  getEstimatedHealth(level:number, iV?:number, eV?:number){
+    if(iV === undefined || eV === undefined){
+      return Math.floor(((((this.stat.base_stat)*2)*level)/100)+level+10)
+    }
+    else{
+      return Math.floor(((((this.stat.base_stat)*2+iV+(eV/4))*level)/100)+level+10)
+    }
+  }
   ngOnInit(): void {
   }
 
