@@ -17,8 +17,13 @@ import { PokemonInfoComponent } from './components/pokemon-info/pokemon-info.com
 import { AbilityComponent } from './components/ability/ability.component';
 import { StatComponent } from './components/stat/stat.component';
 
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './state/pokemon.reducer';
+import { PokemonEffects } from './state/pokemon.effects';
+import { EffectsModule } from '@ngrx/effects';
+
 @NgModule({
-  declarations: [ 
+  declarations: [
     StatListComponent, 
     MoveComponent,
     MovesetComponent, 
@@ -36,6 +41,10 @@ import { StatComponent } from './components/stat/stat.component';
     StatComponent
   ],
   imports: [
+    StoreModule.forFeature('pokemon', reducer),
+    EffectsModule.forFeature(
+      [ PokemonEffects ]
+    ), 
     CommonModule
   ],
   exports: [
