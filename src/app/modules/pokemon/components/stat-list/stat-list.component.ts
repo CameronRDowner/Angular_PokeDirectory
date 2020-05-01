@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { PokemonStat } from '../../models/pokemon-stat';
 
 @Component({
   selector: 'app-stat-list',
   templateUrl: './stat-list.component.html',
-  styleUrls: ['./stat-list.component.scss']
+  styleUrls: ['./stat-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StatListComponent implements OnInit {
   @Input() statList: PokemonStat[]

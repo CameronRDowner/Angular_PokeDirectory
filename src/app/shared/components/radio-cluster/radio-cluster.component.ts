@@ -24,7 +24,7 @@ export class RadioClusterComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.toggledButton = this.radioCluster.buttonNames[0];
+    this.setToggledButton(this.radioCluster.buttonNames[0])
   }
 
 }

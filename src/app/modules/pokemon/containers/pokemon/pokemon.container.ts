@@ -17,14 +17,6 @@ export class PokemonContainer implements OnInit {
   orientationRadioCluster:RadioCluster;
   colorRadioCluster:RadioCluster;
   gameSelectOptions:string[];
-  handleOrientationButtonClick(clickedButton: string){
-    if (clickedButton === "Front"){
-      
-    }
-    else if(clickedButton === "Back"){
-
-    }
-  }
   setPokemon(){
   this.pokemonSubscription = this.pokemonService.getPokemon(parseInt(this.router.url.substring(9))).pipe(take(1)).subscribe(_pokemon=>{ this.pokemon = _pokemon });
   }

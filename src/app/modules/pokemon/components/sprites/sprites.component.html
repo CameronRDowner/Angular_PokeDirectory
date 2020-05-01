@@ -9,7 +9,7 @@
       </div>
       <div class="sprite-controls__control-wrapper flex-container-column-center">
         <h5 class="pokemon-sprites__control-title">Color</h5>
-        <app-radio-cluster [radioCluster]="colorRadioCluster"></app-radio-cluster>
+        <app-radio-cluster [radioCluster]="colorRadioCluster" (radioButtonClick)="handleColorButtonClick($event)"></app-radio-cluster>
       </div>
     </div>
   </div>

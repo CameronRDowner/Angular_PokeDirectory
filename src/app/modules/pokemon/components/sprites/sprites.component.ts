@@ -13,19 +13,22 @@ export class SpritesComponent implements OnInit {
   colorToggled: string;
   orientationRadioCluster: any;
   colorRadioCluster: any;
-  handleOrientationButtonClick(buttonClicked):void {
-    if(buttonClicked === "Front"){
-      
-    }
-    else {
-
-    }
+  handleOrientationButtonClick(buttonClicked:string):void{
+    this.setOrientationToggled(buttonClicked);
+    this.updateSpriteInView();
+  }
+  handleColorButtonClick(buttonClicked:string):void{
+    this.setColorToggled(buttonClicked);
+    this.updateSpriteInView();
   }
   setColorToggled(_colorToggled): void{
     this.colorToggled = _colorToggled;
   }
   setOrientationToggled(_orientationToggled):void {
     this.orientationToggled = _orientationToggled;
+  }
+  updateSpriteInView(){
+    this.spriteInView = this.sprites[`${this.orientationToggled.toLowerCase()}_${this.colorToggled.toLowerCase()}`];
   } 
   constructor() {
     this.orientationRadioCluster = new RadioCluster(["Front", "Back"], true);
