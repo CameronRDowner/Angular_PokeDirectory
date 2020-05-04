@@ -1,11 +1,14 @@
 import { PokemonActionTypes, PokemonActions } from './pokemon.actions';
+import { Pokemon } from '../models/pokemon';
 
 export interface PokemonState {
-    selectedGame: string
+    selectedGame: string,
+    pokemon:Pokemon,
 }
 
 const initialState: PokemonState = {
-    selectedGame: null
+    selectedGame: null,
+    pokemon: null
 }
 
 export function reducer(state = initialState, action: PokemonActions): PokemonState {
@@ -14,6 +17,11 @@ export function reducer(state = initialState, action: PokemonActions): PokemonSt
             return {
                 ...state,
                 selectedGame: action.payload
+            };
+        case PokemonActionTypes.LoadPokemonSuccess:
+            return {
+                ...state,
+                pokemon: action.payload
             };
         default:
             return state;
