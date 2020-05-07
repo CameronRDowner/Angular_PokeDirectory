@@ -11,55 +11,12 @@ import { Observable } from 'rxjs';
   styleUrls: ['./moveset.component.scss']
 })
 export class MovesetComponent implements OnInit {
-  @Input() inputPokemonMoves:PokemonMove[];
-  moveLists:any;
-  currentList:string;
-  initializeMoveLists(){
-
-  }
-  setMoveLists(){
-    this.inputPokemonMoves.map(move=>{ move.version_group_details.map(game =>{
-      if(game.move_learn_method.name === "level-up" && game.version_group.name in this.moveLists){
-        this.moveLists[game.version_group.name].push({levelLearnedAt: game.level_learned_at, move: "" })
-      }
-    })
-    })
-    console.log(this.moveLists);
-  }
-  sortMoveListsByLevel(){
-
-  }
-  setCurrentList(){
-    for(let game in this.moveLists){
-      if(this.moveLists[game].length !== 0){
-        this.currentList = game;
-        break;
-      }
-    }
-  }
+  @Input() moveList:PokemonMove[];
   constructor() {
-    this.moveLists = {
-      "red-blue":[],
-      "yellow":[],
-      "gold-silver":[],
-      "crystal":[],
-      "ruby-sapphire":[],
-      "emerald":[],
-      "firered-leafgreen":[],
-      "diamond-pearl":[],
-      "platinum":[],
-      "heartgold-soulsilver":[],
-      "black-white":[],
-      "black-2-white-2":[],
-      "x-y":[],
-      "omega-ruby-alpha-sapphire":[],
-      "sun-moon":[],
-      "ultra-sun-ultra-moon":[]
-    }
+    
   }
   ngOnInit(): void {
-    this.setMoveLists();
-    this.setCurrentList();  
+  
   }
 
 }

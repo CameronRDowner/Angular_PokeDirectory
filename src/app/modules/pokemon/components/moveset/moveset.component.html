@@ -1,6 +1,6 @@
-<div id="moveset-wrapper">
+<div class="moveset">
     <p>Moveset:</p>
-    <div id="moves-container">
-        <app-move  *ngFor="let move of moveLists[currentList]" [inputMove]="move.move" [levelLearnedAt]="move.levelLearnedAt" > </app-move>
+    <div class="panel">
+        <app-move  *ngFor="let move of moveList"   > </app-move>
     </div>
 </div>

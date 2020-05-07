@@ -13,9 +13,9 @@ constructor(private pokemonService: PokemonService, private actions$: Actions) {
     
 @Effect()
   loadPokemon$: Observable<Action> = this.actions$.pipe(
-    ofType(pokemonActions.PokemonActionTypes.LoadPokemon),
-    switchMap( pokemonId =>
-      this.pokemonService.getPokemon(pokemonId).pipe(
+    ofType<pokemonActions.LoadPokemon>(pokemonActions.PokemonActionTypes.LoadPokemon),
+    switchMap( action =>
+      this.pokemonService.getPokemon(action.payload).pipe(
         map(result => (new pokemonActions.LoadPokemonSuccess(result))),
         catchError(error=> of(new pokemonActions.LoadPokemonFailure(error)))
         )

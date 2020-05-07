@@ -12,3 +12,11 @@ export const getSelectedGame = createSelector(
     getPokemonFeatureState,
     state => state.selectedGame
 );
+export const getGameMoveLists = createSelector(
+    getPokemonFeatureState,
+    state => state.gameMoveLists
+)
+export const getPokemon = createSelector(
+    getPokemonFeatureState,
+    state => state.pokemon
+)

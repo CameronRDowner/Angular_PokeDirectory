@@ -10,15 +10,10 @@ import { take } from 'rxjs/operators';
 })
 export class MoveComponent implements OnInit {
   @Input() levelLearnedAt:number;
-  @Input() inputMove:Observable<Move>;
-  move:Move;
-  initializeMove(){
-    this.inputMove.pipe(take(1)).subscribe(_move=> this.move = _move);
-  }
+  @Input() move:Move;
   constructor() {
 
    }
   ngOnInit(): void {
-    this.initializeMove()
   }
 }
