@@ -17,129 +17,87 @@ import * as browseActions from '../../state/browse.actions';
 })
 export class BrowseContainer implements OnInit {
   componentActive: boolean;
-  resultsInView:NamedAPIResource[];
-  allPokemon:NamedAPIResource[];
-  maxResultsPerPage: number;
-  totalPages:number;
-  currentPage:number;
+  resultsInView$:Observable<NamedAPIResource[]>;
+  allPokemon$:Observable<NamedAPIResource[]>;
+  totalPages$:Observable<number>;
+  currentPage$:Observable<number>;
   pokemonSortingButtons: RadioCluster;
-  searchTerm: string;
-  listToSearch: string;
-  startOffset: number;
-  endOffset: number;
+  searchTerm$: Observable<string>;
+  listToSearch$: Observable<string>;
+  startOffset$: Observable<number>;
+  endOffset$: Observable<number>;
   initializeResultsInView(): void {
-    if(this.searchTerm === ""){
-      this.setResultsInView(this.allPokemon);
-    }
-    else{
-      
-    }
+    this.searchTerm$.pipe(takeWhile(()=>this.componentActive)).subscribe(searchTerm=>{
+      if(searchTerm === ""){
+        this.setResultsInView(this.allPokemon$);
+      }
+
+    })
   }
-  updateTotalPages():void{
-    this.totalPages = (Math.ceil(this.resultsInView.length / this.maxResultsPerPage));
-  }
-  updateCurrentPage():void{
-    this.currentPage = this.endOffset / this.maxResultsPerPage;
-  }
-  private searchList(list:NamedAPIResource[]):NamedAPIResource[]{ 
-    return list.filter(
-      item => item.name.toLowerCase().includes(this.searchTerm)
-      );
-  }
-  handleSearch():void{
-    if(this.listToSearch === "Pokemon"){
-      this.setResultsInView(this.searchList(this.allPokemon))
-    }
-    this.initializeOffsets();
-    this.updateCurrentPage();
-    this.updateTotalPages();
-    this.clearSearchTerm();
-  }
-  setResultsInView(_resultsInView): void {
-    this.store.dispatch(new browseActions.SetResultsInView(_resultsInView)); 
-  }
-  initializeOffsets(): void {
-    this.startOffset = 0;
-    this.endOffset = this.maxResultsPerPage;
+  // handleSearch():void{
+  //   if(this.listToSearch === "Pokemon"){
+  //     this.setResultsInView(this.searchList(this.allPokemon))
+  //   }
+  //   this.initializeOffsets();
+  //   this.updateCurrentPage();
+  //   this.updateTotalPages();
+  //   this.clearSearchTerm();
+  // }
+  setResultsInView(_resultsInView$:Observable<NamedAPIResource[]>): void {
+    _resultsInView$.pipe(takeWhile(()=>this.componentActive)).subscribe(_resultsInView=>{
+      this.store.dispatch(new browseActions.SetResultsInView(_resultsInView));
+    })
   }
   clearSearchTerm(): void {
     this.store.dispatch(new browseActions.ClearSearchTerm());
   }
-  handleLoadNextResults(): void {
-    this.loadNextResultsPage();
-    this.updateCurrentPage();
+  loadNextPage(): void {
+    this.store.dispatch(new browseActions.LoadNextPage());
   }
-  handleLoadPreviousResults(){
-    this.loadPreviousResultsPage();
-    this.updateCurrentPage();
+  loadPreviousPage(): void {
+    this.store.dispatch(new browseActions.LoadPreviousPage());
   }
-  loadNextResultsPage(): void {
-    if(this.currentPage !== this.totalPages){
-      this.startOffset = this.endOffset;
-      this.endOffset += this.maxResultsPerPage;
-    }
+  updateCurrentPage(): void {
+    this.store.dispatch(new browseActions.UpdateCurrentPage());
   }
-  loadPreviousResultsPage(): void {
-    if(this.currentPage !== 1){
-      this.endOffset = this.startOffset;
-      this.startOffset -= this.maxResultsPerPage;
-    }
+  updateTotalPages(): void {
+    this.store.dispatch(new browseActions.UpdateTotalPages());
   }
-  handleSortButtonClick(buttonName):void{
+  initializeOffsets(): void {
+    this.store.dispatch(new browseActions.InitializeOffsets());
+  }
+  handlePokemonSort(buttonName):void{
     if(buttonName === "Id"){
-      this.handleSortResultsById();
+      this.sortPokemonById();
     }
     else if(buttonName === "Name"){
-      this.handleSortResultsByName();
+      this.sortPokemonByName();
     }
   }
-  handleSortResultsById():void{
-    this.setResultsInView(this.sortResultsById());
-    this.initializeOffsets();
-    this.updateCurrentPage();
+  sortPokemonById():void{
+    this.store.dispatch(new browseActions.SortPokemonById)
   }
-  sortResultsById():NamedAPIResource[]{
-    let _resultsInView = this.resultsInView.slice(0);
-    _resultsInView.sort((resultA, resultB)=>{
-      let idA = parseInt(resultA.url.substring(34,resultA.url.length -1));
-      let idB = parseInt(resultB.url.substring(34,resultB.url.length -1));
-      return idA - idB;
-    })
-    return _resultsInView
-  }
-  handleSortResultsByName():void{
-    this.setResultsInView(this.sortResultsByName());
-    this.initializeOffsets();
-    this.updateCurrentPage();
-  }
-  sortResultsByName():NamedAPIResource[]{
-    let _resultsInView = this.resultsInView.slice(0);
-    _resultsInView.sort((resultA, resultB)=>{
-      let nameA = resultA.name.toLowerCase();
-      let nameB = resultB.name.toLowerCase();
-      if(nameA < nameB){ return -1;}
-      if(nameA > nameB){ return 1;}
-      return 0;
-    })
-    return _resultsInView
+  sortPokemonByName():void{
+    this.store.dispatch(new browseActions.SortPokemonByName)
   }
   constructor(private pokemonService:PokemonService, private store: Store<app.State>) {
-    this.initializeOffsets();
-    this.maxResultsPerPage = 15;
     this.pokemonSortingButtons = new RadioCluster(["Id", "Name"], false);
     this.componentActive = true;
-    this.currentPage = 1;
    }
 
   ngOnInit(): void {
-    this.store.pipe(select(browseSelectors.getListToSearch), takeWhile(()=>this.componentActive)).subscribe(_listToSearch => { this.listToSearch = _listToSearch });
-    this.store.pipe(select(browseSelectors.getSearchTerm), takeWhile(()=>this.componentActive)).subscribe(_searchTerm => { this.searchTerm = _searchTerm });
-    this.store.pipe(select(browseSelectors.getAllPokemon), takeWhile(()=> this.componentActive)).subscribe(_allPokemon => { 
-      this.allPokemon = _allPokemon
+    this.listToSearch$ = this.store.pipe(select(browseSelectors.getListToSearch));
+    this.searchTerm$ = this.store.pipe(select(browseSelectors.getSearchTerm));
+    this.allPokemon$ = this.store.pipe(select(browseSelectors.getAllPokemon));
+    this.startOffset$ = this.store.pipe(select(browseSelectors.getStartOffset));
+    this.endOffset$ = this.store.pipe(select(browseSelectors.getEndOffset));
+    this.currentPage$ = this.store.pipe(select(browseSelectors.getCurrentPage));
+    this.totalPages$ = this.store.pipe(select(browseSelectors.getTotalPages));
+    this.resultsInView$ = this.store.pipe(select(browseSelectors.getResultsInView), takeWhile(()=>this.componentActive));
+    this.allPokemon$.pipe(takeWhile(()=>this.componentActive)).subscribe(allPokemon=>{ 
       this.initializeResultsInView()
       this.updateTotalPages()
-    });
-    this.store.pipe(select(browseSelectors.getResultsInView), takeWhile(()=>this.componentActive)).subscribe(_resultsInView => { this.resultsInView = _resultsInView });
+     })
     this.initializeOffsets();
   }
   ngOnDestroy(): void{

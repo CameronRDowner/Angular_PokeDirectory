@@ -20,3 +20,23 @@ export const getResultsInView = createSelector(
     getBrowseFeatureState,
     state => state.resultsInView
 );
+export const getStartOffset = createSelector(
+    getBrowseFeatureState,
+    state => state.startOffset
+)
+export const getEndOffset = createSelector(
+    getBrowseFeatureState,
+    state => state.endOffset
+)
+export const getMaxResultsPerPage = createSelector(
+    getBrowseFeatureState,
+    state => state.maxResultsPerPage
+)
+export const getCurrentPage = createSelector(
+    getBrowseFeatureState,
+    state => state.currentPage
+)
+export const getTotalPages = createSelector(
+    getBrowseFeatureState,
+    state => state.totalPages
+)

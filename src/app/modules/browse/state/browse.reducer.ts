@@ -6,41 +6,146 @@ export interface BrowseState {
     allResults:NamedAPIResource[],
     allPokemon:NamedAPIResource[],
     searchTerm:string,
-    listToSearch:string
+    listToSearch:string,
+    startOffset:number,
+    endOffset:number,
+    maxResultsPerPage: number,
+    totalPages:number,
+    currentPage:number
 }
 const initialState: BrowseState = {
     resultsInView: null,
     allResults: null,
     allPokemon: null,
     searchTerm: "",
-    listToSearch: "Pokemon"
+    listToSearch: "Pokemon",
+    startOffset: 0,
+    endOffset: 15,
+    maxResultsPerPage: 15,
+    currentPage: 1,
+    totalPages: null
 };
 export function reducer(state = initialState, action: BrowseActions): BrowseState {
 
     switch (action.type) {
-      case BrowseActionTypes.SetResultsInView:
+      case BrowseActionTypes.SetResultsInView: {
         return {
           ...state,
           resultsInView: action.payload
         };
-      case BrowseActionTypes.LoadAllPokemonSuccess:
+      }
+      case BrowseActionTypes.LoadAllPokemonSuccess: {
         return {
           ...state,
           allPokemon: action.payload
         };
-  
-      case BrowseActionTypes.SetListToSearch:
+      }
+      case BrowseActionTypes.SetListToSearch: {
         return {
           ...state,
           listToSearch: action.payload
         };
-      case BrowseActionTypes.ClearSearchTerm:
+      }
+      case BrowseActionTypes.ClearSearchTerm: {
         return {
           ...state,
           searchTerm: ""
         };
-      
-  
+      }
+      case BrowseActionTypes.SearchPokemon: {
+        let searchResults = state.allPokemon.filter(
+        item => item.name.toLowerCase().includes(state.searchTerm)
+        );
+      }
+      case BrowseActionTypes.UpdateTotalPages: {
+        const _totalPages = Math.ceil(state.resultsInView.length / state.maxResultsPerPage)
+        return {
+          ...state,
+          totalPages: _totalPages
+        };
+      }
+      case BrowseActionTypes.UpdateCurrentPage: {
+        const _currentPage = state.endOffset / state.maxResultsPerPage;
+        return {
+          ...state,
+          currentPage: _currentPage
+        };
+      }
+      case BrowseActionTypes.InitializeOffsets: {
+        const _maxResultsPerPage = state.maxResultsPerPage
+        return {
+          ...state,
+          startOffset: 0,
+          endOffset: _maxResultsPerPage
+        };
+      }
+      case BrowseActionTypes.LoadNextPage: {
+        if(state.currentPage !== state.totalPages){
+          const _currentPage = state.endOffset / state.maxResultsPerPage;
+          const _startOffset = state.endOffset;
+          const _endOffset = state.endOffset + state.maxResultsPerPage;
+          return{
+            ...state,
+            startOffset: _startOffset,
+            endOffset: _endOffset,
+            currentPage: _currentPage
+          }
+        }
+        else{
+          return {
+            ...state
+          };
+        }
+      }
+      case BrowseActionTypes.LoadPreviousPage: {
+        if(state.currentPage !== 1){
+          const _currentPage = state.endOffset / state.maxResultsPerPage;
+          const _startOffset = state.startOffset - state.maxResultsPerPage;
+          const _endOffset = state.endOffset + state.maxResultsPerPage;
+          return{
+            ...state,
+            startOffset: _startOffset,
+            endOffset: _endOffset,
+            currentPage: _currentPage
+          }
+        }
+        else{
+          return {
+            ...state
+          };
+        }
+      }
+      case BrowseActionTypes.SortPokemonById: {
+        const _endOffset = state.maxResultsPerPage
+        const _resultsInView = state.resultsInView.slice(0);
+        _resultsInView.sort((resultA, resultB)=>{
+          let idA = parseInt(resultA.url.substring(34,resultA.url.length -1));
+          let idB = parseInt(resultB.url.substring(34,resultB.url.length -1));
+          return idA - idB;
+        })
+        return {
+          ...state,
+          resultsInView: _resultsInView,
+          currentPage: 1,
+          startOffset: 0,
+          endOffset: _endOffset
+        }
+      }
+      case BrowseActionTypes.SortPokemonById: {
+        const _endOffset = state.maxResultsPerPage;
+        const _resultsInView = state.resultsInView.slice(0);
+        _resultsInView.sort((resultA, resultB)=>{
+          let idA = parseInt(resultA.url.substring(34,resultA.url.length -1));
+          let idB = parseInt(resultB.url.substring(34,resultB.url.length -1));
+          return idA - idB;
+        })
+        return {
+          ...state,
+          resultsInView : _resultsInView,
+          startOffset: 0,
+          endOffset: _endOffset
+        }
+      }
       default:
         return state;
     }

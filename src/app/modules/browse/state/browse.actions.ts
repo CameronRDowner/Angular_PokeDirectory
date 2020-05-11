@@ -9,7 +9,18 @@ export enum BrowseActionTypes {
     SetListToSearch = '[Browse] Set Search List',
     LoadAllPokemonSuccess = '[Browse] Load All Pokemon Success',
     LoadAllPokemonFailure = '[Browse] Load All Pokemon Failure',
-    LoadAllPokemon = '[Browse] Load All Pokemon'
+    LoadAllPokemon = '[Browse] Load All Pokemon',
+    SearchPokemon = '[Browse] Search Pokemon',
+    UpdateTotalPages = '[Browse] Update Total Pages',
+    UpdateCurrentPage = '[Browse] Update Current Page',
+    InitializeOffsets = '[Browse] Initialize Offsets',
+    LoadNextPage = '[Browse] Load Next Page',
+    LoadPreviousPage = '[Browse] Load Previous Page',
+    SortPokemonByName = '[Browse] Browse Pokemon By Name',
+    SortPokemonById = '[Browse] Browse Pokemon By Id'
+}
+export class SearchPokemon implements Action {
+    readonly type = BrowseActionTypes.SearchPokemon;
 }
 export class SetResultsInView implements Action {
     readonly type = BrowseActionTypes.SetResultsInView;
@@ -46,7 +57,27 @@ export class LoadAllPokemon implements Action {
 }
 export class ClearSearchTerm implements Action {
     readonly type = BrowseActionTypes.ClearSearchTerm;
-    constructor(){}
+}
+export class UpdateTotalPages implements Action {
+    readonly type = BrowseActionTypes.UpdateTotalPages;
+}
+export class UpdateCurrentPage implements Action {
+    readonly type = BrowseActionTypes.UpdateCurrentPage;
+}
+export class InitializeOffsets implements Action {
+    readonly type = BrowseActionTypes.InitializeOffsets;
+}
+export class LoadNextPage implements Action {
+    readonly type = BrowseActionTypes.LoadNextPage;
+}
+export class LoadPreviousPage implements Action {
+    readonly type = BrowseActionTypes.LoadPreviousPage;
+}
+export class SortPokemonByName implements Action {
+    readonly type = BrowseActionTypes.SortPokemonByName;
+}
+export class SortPokemonById implements Action {
+    readonly type = BrowseActionTypes.SortPokemonById;
 }
 export type BrowseActions = SetResultsInView
   | InitializeResultsInView
@@ -55,4 +86,12 @@ export type BrowseActions = SetResultsInView
   | LoadAllPokemonSuccess
   | LoadAllPokemonFailure
   | LoadAllPokemon
-  | ClearSearchTerm;
+  | ClearSearchTerm
+  | SearchPokemon
+  | UpdateTotalPages
+  | UpdateCurrentPage
+  | InitializeOffsets
+  | LoadNextPage
+  | LoadPreviousPage
+  | SortPokemonByName
+  | SortPokemonById;
