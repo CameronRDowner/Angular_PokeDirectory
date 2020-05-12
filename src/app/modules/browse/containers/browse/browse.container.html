@@ -1,7 +1,7 @@
 <div class="browse-page">
     <div class="flex-container-row-center">
         <app-search-controls></app-search-controls>
-        <app-radio-cluster ngIf="(listToSearch$ | async) === 'pokemon'" [radioCluster]="pokemonSortingButtons" (radioButtonClick)="handlePokemonSort($event)"></app-radio-cluster>
+        <app-radio-cluster *ngIf="(listToSearch$ | async) === 'Pokemon' " [radioCluster]="pokemonSortingButtons" (radioButtonClick)="handlePokemonSort($event)"></app-radio-cluster>
     </div >
         <div class="search-results--panel panel flex-container-column-center">
             <div class="search-results__container">

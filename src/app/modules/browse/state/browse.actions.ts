@@ -16,8 +16,8 @@ export enum BrowseActionTypes {
     InitializeOffsets = '[Browse] Initialize Offsets',
     LoadNextPage = '[Browse] Load Next Page',
     LoadPreviousPage = '[Browse] Load Previous Page',
-    SortPokemonByName = '[Browse] Browse Pokemon By Name',
-    SortPokemonById = '[Browse] Browse Pokemon By Id'
+    SortPokemonByName = '[Browse] Sort Pokemon By Name',
+    SortPokemonById = '[Browse] Sort Pokemon By Id'
 }
 export class SearchPokemon implements Action {
     readonly type = BrowseActionTypes.SearchPokemon;
