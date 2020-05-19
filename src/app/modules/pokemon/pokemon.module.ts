@@ -22,6 +22,9 @@ import { reducer } from './state/pokemon.reducer';
 import { PokemonEffects } from './state/pokemon.effects';
 import { EffectsModule } from '@ngrx/effects';
 
+import { ReversePipe } from './pipes/reverse-array.pipe';
+import { ReplaceDashPipe } from './pipes/replace-dash-string';
+
 @NgModule({
   declarations: [
     StatListComponent, 
@@ -38,7 +41,9 @@ import { EffectsModule } from '@ngrx/effects';
     SelectBoxComponent,
     PokemonInfoComponent,
     AbilityComponent,
-    StatComponent
+    StatComponent,
+    ReversePipe,
+    ReplaceDashPipe
   ],
   imports: [
     StoreModule.forFeature('pokemon', reducer),

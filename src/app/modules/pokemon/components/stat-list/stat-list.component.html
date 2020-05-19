@@ -1,5 +1,5 @@
 <div class="stat-list panel">
     <div class="flex-container-row-center"><h4 class="stat-list__text--bold">Base</h4><h4 class="stat-list__text--bold">At Lv. 50</h4><h4 class="stat-list__text--bold">At Lv. 100</h4></div>
-    <app-stat *ngFor="let stat of statList.reverse()" [stat]="stat"></app-stat>
+    <app-stat *ngFor="let stat of (statList | reverse )" [stat]="stat"></app-stat>
     <h4>Total: {{ getBaseStatTotal() }}</h4>
 </div>

@@ -26,6 +26,11 @@ export function reducer(state = initialState, action: PokemonActions): PokemonSt
                 ...state,
                 pokemon: action.payload
             };
+        case PokemonActionTypes.LoadPokemonFailure:
+            console.log(action.payload);
+            return {
+                ...state
+            }
         case PokemonActionTypes.SetGameLists:
             return {
                 ...state,

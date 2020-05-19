@@ -19,7 +19,6 @@ import { Store, select } from '@ngrx/store';
 export class PokemonContainer implements OnInit {
   componentActive: boolean;
   pokemon$:Observable<Pokemon>;
-  pokemonSubscription:Subscription;
   orientationRadioCluster:RadioCluster;
   colorRadioCluster:RadioCluster;
   gameSelectOptions:string[];
@@ -58,7 +57,6 @@ export class PokemonContainer implements OnInit {
     this.setGameMoveLists(this.buildMoveLists())
   }
   ngOnDestroy(): void{
-    this.pokemonSubscription.unsubscribe
     this.componentActive = false;
   }
 }
