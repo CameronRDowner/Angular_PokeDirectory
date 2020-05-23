@@ -18,7 +18,6 @@ export class StatComponent implements OnInit {
       'background-color' : this.barColors[this.stat.stat.name],
       'width' : `${Math.round((255/this.stat.base_stat)*10)}%`
     }
-    console.log('ran')
     return styles;      
   }
   getEstimatedStat(level:number, iV?:number, eV?:number):number{

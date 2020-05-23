@@ -22,8 +22,9 @@ import { reducer } from './state/pokemon.reducer';
 import { PokemonEffects } from './state/pokemon.effects';
 import { EffectsModule } from '@ngrx/effects';
 
-import { ReversePipe } from './pipes/reverse-array.pipe';
-import { ReplaceDashPipe } from './pipes/replace-dash-string';
+import { ReversePipe } from '../../shared/pipes/reverse-array.pipe';
+import { ReplaceDashPipe } from '../../shared/pipes/replace-dash-string';
+import { KeysArrayPipe } from '../../shared/pipes/keys-array.pipe';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ReplaceDashPipe } from './pipes/replace-dash-string';
     AbilityComponent,
     StatComponent,
     ReversePipe,
-    ReplaceDashPipe
+    ReplaceDashPipe,
+    KeysArrayPipe
   ],
   imports: [
     StoreModule.forFeature('pokemon', reducer),
