@@ -9,9 +9,9 @@ export interface PokemonState {
 }
 
 const initialState: PokemonState = {
-    selectedGame: null,
-    pokemon: null,
-    gameMoveLists: null
+    selectedGame: "",
+    pokemon: {} as Pokemon,
+    gameMoveLists: {} as MoveLists
 }
 
 export function reducer(state = initialState, action: PokemonActions): PokemonState {
@@ -41,26 +41,9 @@ export function reducer(state = initialState, action: PokemonActions): PokemonSt
             }
         }
         case PokemonActionTypes.BuildGameMoveLists: {
-            let gameMoveNames = {
-                "red-blue":[],
-                "yellow":[],
-                "gold-silver":[],
-                "crystal":[],
-                "ruby-sapphire":[],
-                "emerald":[],
-                "firered-leafgreen":[],
-                "diamond-pearl":[],
-                "platinum":[],
-                "heartgold-soulsilver":[],
-                "black-white":[],
-                "black-2-white-2":[],
-                "x-y":[],
-                "omega-ruby-alpha-sapphire":[],
-                "sun-moon":[],
-                "ultra-sun-ultra-moon":[]
-            }
+            
             return {
-                ...state,
+                ...state
             }
         }
         default:
