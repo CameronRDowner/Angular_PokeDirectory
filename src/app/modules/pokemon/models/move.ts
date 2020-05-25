@@ -1,10 +1,9 @@
-import { NamedAPIResource } from 'src/app/shared/models/named-apiresource';
+import { MoveInfo } from './move-info';
+import { Observable } from 'rxjs';
 
 export interface Move {
-    id: number;
-    name: string;
-    pp: number;
-    power: number;
-    damage_class:NamedAPIResource;
+    levelLearnedAt: number,
+    moveInfo:Observable<MoveInfo>
+    
     
 }

@@ -2,14 +2,18 @@ import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import { PokemonService } from '../pokemon.service';
-import { Action } from '@ngrx/store';
+import { Action, Store, select } from '@ngrx/store';
 import * as pokemonActions from './pokemon.actions';
-import { switchMap, map, catchError } from 'rxjs/operators';
+import { State } from '../../../app.state'
+import { switchMap, map, catchError, withLatestFrom, concatMap } from 'rxjs/operators';
+import * as pokemonSelectors from '../state'
+import { MoveLists } from '../models/move-lists';
+import { Move } from '../models/move';
 
 @Injectable()
 export class PokemonEffects {
 
-constructor(private pokemonService: PokemonService, private actions$: Actions) { }
+constructor(private pokemonService: PokemonService, private actions$: Actions, private store$: Store<State>) { }
     
 @Effect()
   loadPokemon$: Observable<Action> = this.actions$.pipe(
@@ -21,4 +25,30 @@ constructor(private pokemonService: PokemonService, private actions$: Actions) {
         )
   )
   );    
+@Effect()
+loadMoves$ = this.actions$.pipe(
+  ofType<pokemonActions.LoadMoveLists>(pokemonActions.PokemonActionTypes.LoadMoveLists),
+
+  concatMap(action =>
+    of(action).pipe(
+      withLatestFrom(this.store$.pipe(select(pokemonSelectors.getPokemon)))
+    )
+  ),
+  map(([action, pokemon]) => {
+    let moveLists = {} as MoveLists
+    pokemon.moves.map(pokemonMove=>{ pokemonMove.version_group_details.map(game =>{
+
+      if(game.move_learn_method.name === "level-up" && game.version_group.name in moveLists){
+        const move = {levelLearnedAt: game.level_learned_at, moveInfo: this.pokemonService.getMove(pokemonMove.move.url) } as Move
+        console.log('the assembled move is: ', move)
+        moveLists[game.version_group.name].push(move);
+      }
+    })
+
+  })
+    new pokemonActions.SetMoveLists(moveLists);
+    console.log('the new game move list is: ', moveLists)
+  })
+)
+
 }

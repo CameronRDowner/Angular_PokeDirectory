@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Pokemon } from './models/pokemon';
 import { Move } from './models/move';
 import { shareReplay, catchError } from 'rxjs/operators';
+import { MoveInfo } from './models/move-info';
 
 @Injectable({
   providedIn: 'root'
@@ -36,17 +37,17 @@ export class PokemonService {
   }
 
   
-  getMove(moveName:string):Observable<Move>{
-    if(this.movesCache[moveName]){
-      console.log("Returning cached value");
-      return this.movesCache[moveName];
+  getMove(moveUrl:string):Observable<MoveInfo>{
+    if(this.movesCache[moveUrl]){
+      console.log("Returning cached move");
+      return this.movesCache[moveUrl];
     }
     else{
-      console.log("Returning value via API call");
-      this.movesCache[moveName] = this.httpClient.get<Move>(`${this.movesApiUrl}${moveName}`).pipe(
+      console.log("Returning move via API call");
+      this.movesCache[moveUrl] = this.httpClient.get<MoveInfo>(moveUrl).pipe(
         shareReplay(1),
         catchError(err=>{
-          delete this.movesCache[moveName];
+          delete this.movesCache[moveUrl];
           return EMPTY;
         }));
     }

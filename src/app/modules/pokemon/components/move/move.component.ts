@@ -9,7 +9,6 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./move.component.scss']
 })
 export class MoveComponent implements OnInit {
-  @Input() levelLearnedAt:number;
   @Input() move:Move;
   constructor() {
 

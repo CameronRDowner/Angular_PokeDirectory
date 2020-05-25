@@ -5,13 +5,13 @@ import { MoveLists } from '../models/move-lists';
 export interface PokemonState {
     selectedGame: string,
     pokemon:Pokemon,
-    gameMoveLists:MoveLists,
+    moveLists:MoveLists,
 }
 
 const initialState: PokemonState = {
     selectedGame: "",
     pokemon: {} as Pokemon,
-    gameMoveLists: {} as MoveLists
+    moveLists: {} as MoveLists
 }
 
 export function reducer(state = initialState, action: PokemonActions): PokemonState {
@@ -34,16 +34,10 @@ export function reducer(state = initialState, action: PokemonActions): PokemonSt
                 ...state
             }
         }
-        case PokemonActionTypes.SetGameLists: {
+        case PokemonActionTypes.SetMoveLists: {
             return {
                 ...state,
-                gameMoveLists: action.payload
-            }
-        }
-        case PokemonActionTypes.BuildGameMoveLists: {
-            
-            return {
-                ...state
+                moveLists: action.payload
             }
         }
         default:

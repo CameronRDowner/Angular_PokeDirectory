@@ -1,5 +1,5 @@
 <div>
-    <label>{{levelLearnedAt}}</label>
-    <label>{{move?.name}}</label>
+    <label>{{move.levelLearnedAt}}</label>
+    <label>{{(move?.moveInfo | async)?.name }}</label>
     <label></label>
 </div>

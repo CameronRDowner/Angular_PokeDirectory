@@ -36,9 +36,11 @@ export class SpritesComponent implements OnInit {
     this.orientationToggled = "Front";
     this.colorToggled = "Default";
    }
-
+  ngOnChanges(): void {
+    this.spriteInView = this.sprites?.front_default;
+  }
   ngOnInit(): void {
-    this.spriteInView = this.sprites.front_default;
+    
   }
 
 }

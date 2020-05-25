@@ -24,20 +24,18 @@ export class PokemonContainer implements OnInit {
   gameSelectOptions:string[];
   selectedGame$:Observable<string>;
   gameMoveLists$:Observable<MoveLists>;
-  buildMoveLists(): MoveLists{
-    let gameMoveLists = {} as MoveLists;
-    this.pokemon$.pipe(takeWhile(()=>this.componentActive)).subscribe(pokemon => { pokemon.moves.map(move=>{ move.version_group_details.map(game =>{
-      if(game.move_learn_method.name === "level-up" && game.version_group.name in gameMoveLists){
-        gameMoveLists[game.version_group.name].push({levelLearnedAt: game.level_learned_at, move: "" })
-      }
-    })
-    })
-  })
-    return gameMoveLists
-  }
-  setGameMoveLists(_gameMoveLists: MoveLists):void {
-    this.store.dispatch(new pokemonActions.SetGameMoveLists(_gameMoveLists))
-  }
+  // buildMoveLists(): MoveLists{
+  //   let gameMoveLists = new MoveLists();
+  //   this.pokemon$.pipe(takeWhile(()=>this.componentActive)).subscribe(pokemon => { pokemon.moves.map(move=>{ move.version_group_details.map(game =>{
+  //     if(game.move_learn_method.name === "level-up" && game.version_group.name in gameMoveLists){
+  //       gameMoveLists[game.version_group.name].push({levelLearnedAt: game.level_learned_at, move: "" })
+  //     }
+  //   })
+  //   })
+  // })
+  //   console.log(gameMoveLists)
+  //   return gameMoveLists
+  // }
   setSelectedGame(_selectedGame:string){
     this.store.dispatch(new pokemonActions.SetSelectedGame(_selectedGame));
   }
@@ -51,10 +49,14 @@ export class PokemonContainer implements OnInit {
     
     this.componentActive = true;
     this.store.dispatch(new pokemonActions.LoadPokemon(this.retrievePokemonId()));
-    this.gameMoveLists$ = this.store.pipe(select(pokemonSelectors.getGameMoveLists));
+    this.gameMoveLists$ = this.store.pipe(select(pokemonSelectors.getMoveLists));
     this.pokemon$ = this.store.pipe(select(pokemonSelectors.getPokemon));
     this.selectedGame$ = this.store.pipe(select(pokemonSelectors.getSelectedGame));
-    this.setGameMoveLists(this.buildMoveLists())
+    this.pokemon$.subscribe(pokemon=>{
+      if(pokemon.name !== undefined){
+        this.store.dispatch(new pokemonActions.LoadMoveLists())
+      }
+    })
   }
   ngOnDestroy(): void{
     this.componentActive = false;

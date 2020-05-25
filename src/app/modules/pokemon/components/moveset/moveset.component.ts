@@ -3,6 +3,7 @@ import { PokemonMove } from '../../../../shared/models/pokemon-move';
 import { Move } from '../../models/move';
 import { takeUntil, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { MoveLists } from '../../models/move-lists';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./moveset.component.scss']
 })
 export class MovesetComponent implements OnInit {
-  @Input() moveList:PokemonMove[];
+  @Input() moveList:MoveLists[];
   constructor() {
     
   }
