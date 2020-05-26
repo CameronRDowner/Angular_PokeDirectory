@@ -23,19 +23,7 @@ export class PokemonContainer implements OnInit {
   colorRadioCluster:RadioCluster;
   gameSelectOptions:string[];
   selectedGame$:Observable<string>;
-  gameMoveLists$:Observable<MoveLists>;
-  // buildMoveLists(): MoveLists{
-  //   let gameMoveLists = new MoveLists();
-  //   this.pokemon$.pipe(takeWhile(()=>this.componentActive)).subscribe(pokemon => { pokemon.moves.map(move=>{ move.version_group_details.map(game =>{
-  //     if(game.move_learn_method.name === "level-up" && game.version_group.name in gameMoveLists){
-  //       gameMoveLists[game.version_group.name].push({levelLearnedAt: game.level_learned_at, move: "" })
-  //     }
-  //   })
-  //   })
-  // })
-  //   console.log(gameMoveLists)
-  //   return gameMoveLists
-  // }
+  moveLists$:Observable<MoveLists>;
   setSelectedGame(_selectedGame:string){
     this.store.dispatch(new pokemonActions.SetSelectedGame(_selectedGame));
   }
@@ -49,7 +37,7 @@ export class PokemonContainer implements OnInit {
     
     this.componentActive = true;
     this.store.dispatch(new pokemonActions.LoadPokemon(this.retrievePokemonId()));
-    this.gameMoveLists$ = this.store.pipe(select(pokemonSelectors.getMoveLists));
+    this.moveLists$ = this.store.pipe(select(pokemonSelectors.getMoveLists));
     this.pokemon$ = this.store.pipe(select(pokemonSelectors.getPokemon));
     this.selectedGame$ = this.store.pipe(select(pokemonSelectors.getSelectedGame));
     this.pokemon$.subscribe(pokemon=>{

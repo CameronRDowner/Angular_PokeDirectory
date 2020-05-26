@@ -35,12 +35,10 @@ loadMoves$ = this.actions$.pipe(
     )
   ),
   map(([action, pokemon]) => {
-    let moveLists = {} as MoveLists
+    let moveLists = new MoveLists();
     pokemon.moves.map(pokemonMove=>{ pokemonMove.version_group_details.map(game =>{
-
       if(game.move_learn_method.name === "level-up" && game.version_group.name in moveLists){
         const move = {levelLearnedAt: game.level_learned_at, moveInfo: this.pokemonService.getMove(pokemonMove.move.url) } as Move
-        console.log('the assembled move is: ', move)
         moveLists[game.version_group.name].push(move);
       }
     })
