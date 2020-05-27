@@ -28,7 +28,6 @@ constructor(private pokemonService: PokemonService, private actions$: Actions, p
 @Effect()
 loadMoves$ = this.actions$.pipe(
   ofType<pokemonActions.LoadMoveLists>(pokemonActions.PokemonActionTypes.LoadMoveLists),
-
   concatMap(action =>
     of(action).pipe(
       withLatestFrom(this.store$.pipe(select(pokemonSelectors.getPokemon)))
@@ -44,8 +43,8 @@ loadMoves$ = this.actions$.pipe(
     })
 
   })
-    new pokemonActions.SetMoveLists(moveLists);
-    console.log('the new game move list is: ', moveLists)
+  return  (new pokemonActions.SetMoveLists(moveLists));
+
   })
 )
 
