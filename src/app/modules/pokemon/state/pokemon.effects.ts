@@ -51,4 +51,9 @@ loadMoves$ = this.actions$.pipe(
     withLatestFrom(this.store$.pipe(select(pokemonSelectors.getMoveLists))),
     map(([action, moveLists])=> new pokemonActions.SetGamesFeatured(Object.keys(moveLists).filter(key=> moveLists[key].length !== 0)))
   )
+@Effect()
+  initializeSelectedGame$: Observable<Action> = this.actions$.pipe(
+    ofType<pokemonActions.SetMoveLists>(pokemonActions.PokemonActionTypes.SetMoveLists),
+    map(action => new pokemonActions.SetSelectedGame(action.payload[0]))
+  )
 }
