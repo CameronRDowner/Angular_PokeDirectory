@@ -5,7 +5,7 @@ import { PokemonService } from '../pokemon.service';
 import { Action, Store, select } from '@ngrx/store';
 import * as pokemonActions from './pokemon.actions';
 import { State } from '../../../app.state'
-import { switchMap, map, catchError, withLatestFrom, concatMap } from 'rxjs/operators';
+import { switchMap, map, catchError, withLatestFrom, concatMap, mapTo } from 'rxjs/operators';
 import * as pokemonSelectors from '../state'
 import { MoveLists } from '../models/move-lists';
 import { Move } from '../models/move';
@@ -30,9 +30,7 @@ loadMoves$ = this.actions$.pipe(
   ofType<pokemonActions.LoadMoveLists>(pokemonActions.PokemonActionTypes.LoadMoveLists),
   concatMap(action =>
     of(action).pipe(
-      withLatestFrom(this.store$.pipe(select(pokemonSelectors.getPokemon)))
-    )
-  ),
+      withLatestFrom(this.store$.pipe(select(pokemonSelectors.getPokemon))))),
   map(([action, pokemon]) => {
     let moveLists = new MoveLists();
     pokemon.moves.map(pokemonMove=>{ pokemonMove.version_group_details.map(game =>{
@@ -47,5 +45,10 @@ loadMoves$ = this.actions$.pipe(
 
   })
 )
-
+@Effect()
+  buildGamesFeatured$: Observable<Action> = this.actions$.pipe(
+    ofType<pokemonActions.SetMoveLists>(pokemonActions.PokemonActionTypes.SetMoveLists),
+    withLatestFrom(this.store$.pipe(select(pokemonSelectors.getMoveLists))),
+    map(([action, moveLists])=> new pokemonActions.SetGamesFeatured(Object.keys(moveLists).filter(key=> moveLists[key].length !== 0)))
+  )
 }

@@ -39,11 +39,9 @@ export class PokemonService {
   
   getMove(moveUrl:string):Observable<MoveInfo>{
     if(this.movesCache[moveUrl]){
-      console.log("Returning cached move");
       return this.movesCache[moveUrl];
     }
     else{
-      console.log("Returning move via API call");
       this.movesCache[moveUrl] = this.httpClient.get<MoveInfo>(moveUrl).pipe(
         shareReplay(1),
         catchError(err=>{

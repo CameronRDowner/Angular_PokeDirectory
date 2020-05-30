@@ -24,6 +24,7 @@ export class PokemonContainer implements OnInit {
   gameSelectOptions:string[];
   selectedGame$:Observable<string>;
   moveLists$:Observable<MoveLists>;
+  gamesFeatured$:Observable<Array<string>>;
   setSelectedGame(_selectedGame:string){
     this.store.dispatch(new pokemonActions.SetSelectedGame(_selectedGame));
   }
@@ -40,6 +41,7 @@ export class PokemonContainer implements OnInit {
     this.moveLists$ = this.store.pipe(select(pokemonSelectors.getMoveLists));
     this.pokemon$ = this.store.pipe(select(pokemonSelectors.getPokemon));
     this.selectedGame$ = this.store.pipe(select(pokemonSelectors.getSelectedGame));
+    this.gamesFeatured$ = this.store.pipe(select(pokemonSelectors.getGamesFeatured));
     this.pokemon$.subscribe(pokemon=>{
       if(pokemon.name !== undefined){
         this.store.dispatch(new pokemonActions.LoadMoveLists())

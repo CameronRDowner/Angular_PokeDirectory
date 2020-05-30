@@ -6,12 +6,14 @@ export interface PokemonState {
     selectedGame: string,
     pokemon:Pokemon,
     moveLists:MoveLists,
+    gamesFeatured:Array<string>
 }
 
 const initialState: PokemonState = {
     selectedGame: "",
     pokemon: {} as Pokemon,
-    moveLists: {} as MoveLists
+    moveLists: {} as MoveLists,
+    gamesFeatured: []
 }
 
 export function reducer(state = initialState, action: PokemonActions): PokemonState {
@@ -38,6 +40,12 @@ export function reducer(state = initialState, action: PokemonActions): PokemonSt
             return {
                 ...state,
                 moveLists: action.payload
+            }
+        }
+        case PokemonActionTypes.SetGamesFeatured: {
+            return {
+                ...state,
+                gamesFeatured: action.payload
             }
         }
         default:

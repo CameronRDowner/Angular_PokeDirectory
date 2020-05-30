@@ -9,7 +9,8 @@ export enum PokemonActionTypes {
     LoadPokemonFailure = '[Pokemon] Load Pokemon Failure',
     SetGameLists = '[Pokemon] Load Game Lists',
     LoadMoveLists = '[Pokemon] Load Move Lists',
-    SetMoveLists = '[Pokemon] Set Move Lists'
+    SetMoveLists = '[Pokemon] Set Move Lists',
+    SetGamesFeatured = '[Pokemon] Set Games Featured'
 }
 export class SetSelectedGame implements Action {
     readonly type = PokemonActionTypes.SetSelectedGame;
@@ -39,9 +40,15 @@ export class SetMoveLists implements Action {
 export class LoadMoveLists implements Action {
   readonly type = PokemonActionTypes.LoadMoveLists;
 }
+export class SetGamesFeatured implements Action {
+  readonly type = PokemonActionTypes.SetGamesFeatured;
+
+  constructor(public payload: Array<string>){}
+}
 export type PokemonActions = SetSelectedGame
 | LoadPokemon
 | LoadPokemonFailure
 | LoadPokemonSuccess
 | SetMoveLists
-| LoadMoveLists;
+| LoadMoveLists
+| SetGamesFeatured;
