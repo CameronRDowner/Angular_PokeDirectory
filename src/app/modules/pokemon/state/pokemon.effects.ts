@@ -27,13 +27,10 @@ constructor(private pokemonService: PokemonService, private actions$: Actions, p
   );    
 @Effect()
 loadMoves$ = this.actions$.pipe(
-  ofType<pokemonActions.LoadMoveLists>(pokemonActions.PokemonActionTypes.LoadMoveLists),
-  concatMap(action =>
-    of(action).pipe(
-      withLatestFrom(this.store$.pipe(select(pokemonSelectors.getPokemon))))),
-  map(([action, pokemon]) => {
+  ofType<pokemonActions.LoadPokemonSuccess>(pokemonActions.PokemonActionTypes.LoadPokemonSuccess),
+  map(action => {
     let moveLists = new MoveLists();
-    pokemon.moves.map(pokemonMove=>{ pokemonMove.version_group_details.map(game =>{
+    action.payload.moves.map(pokemonMove=>{ pokemonMove.version_group_details.map(game =>{
       if(game.move_learn_method.name === "level-up" && game.version_group.name in moveLists){
         const move = {levelLearnedAt: game.level_learned_at, moveInfo: this.pokemonService.getMove(pokemonMove.move.url) } as Move
         moveLists[game.version_group.name].push(move);
@@ -53,7 +50,7 @@ loadMoves$ = this.actions$.pipe(
   )
 @Effect()
   initializeSelectedGame$: Observable<Action> = this.actions$.pipe(
-    ofType<pokemonActions.SetMoveLists>(pokemonActions.PokemonActionTypes.SetMoveLists),
+    ofType<pokemonActions.SetGamesFeatured>(pokemonActions.PokemonActionTypes.SetGamesFeatured),
     map(action => new pokemonActions.SetSelectedGame(action.payload[0]))
   )
 }

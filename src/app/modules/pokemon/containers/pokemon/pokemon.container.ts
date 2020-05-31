@@ -42,11 +42,6 @@ export class PokemonContainer implements OnInit {
     this.pokemon$ = this.store.pipe(select(pokemonSelectors.getPokemon));
     this.selectedGame$ = this.store.pipe(select(pokemonSelectors.getSelectedGame));
     this.gamesFeatured$ = this.store.pipe(select(pokemonSelectors.getGamesFeatured));
-    this.pokemon$.subscribe(pokemon=>{
-      if(pokemon.name !== undefined){
-        this.store.dispatch(new pokemonActions.LoadMoveLists())
-      }
-    })
   }
   ngOnDestroy(): void{
     this.componentActive = false;
