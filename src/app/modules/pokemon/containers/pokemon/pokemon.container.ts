@@ -22,7 +22,6 @@ export class PokemonContainer implements OnInit {
   pokemon$:Observable<Pokemon>;
   orientationRadioCluster:RadioCluster;
   colorRadioCluster:RadioCluster;
-  gameSelectOptions:string[];
   selectedGame$:Observable<string>;
   moveLists$:Observable<MoveLists>;
   gamesFeatured$:Observable<Array<string>>;
