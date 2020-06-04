@@ -6,6 +6,7 @@ import { Pokemon } from './models/pokemon';
 import { Move } from './models/move';
 import { shareReplay, catchError } from 'rxjs/operators';
 import { MoveInfo } from './models/move-info';
+import { LocationAreaEncounter } from './models/location-area-encounter';
 
 @Injectable({
   providedIn: 'root'
@@ -35,8 +36,6 @@ export class PokemonService {
     let oneDay = 1000 * 60 * 60 * 24;
     return Math.floor(diff / oneDay);
   }
-
-  
   getMove(moveUrl:string):Observable<MoveInfo>{
     if(this.movesCache[moveUrl]){
       return this.movesCache[moveUrl];
@@ -49,6 +48,9 @@ export class PokemonService {
           return EMPTY;
         }));
     }
+  }
+  getEncounters(encounterUrl:string):Observable<Array<LocationAreaEncounter>>{
+    return this.httpClient.get<Array<LocationAreaEncounter>>(encounterUrl);
   }
   constructor(private httpClient:HttpClient) {
     this.movesCache = {};

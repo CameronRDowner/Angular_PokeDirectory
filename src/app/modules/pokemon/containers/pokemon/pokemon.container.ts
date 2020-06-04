@@ -10,6 +10,7 @@ import { MoveLists } from '../../models/move-lists';
 import * as pokemonActions from '../../state/pokemon.actions';
 import * as pokemonSelectors from '../../state/';
 import { Store, select } from '@ngrx/store';
+import { LocationAreaEncounter } from '../../models/location-area-encounter';
 
 @Component({
   selector: 'app-pokemon',
@@ -25,6 +26,7 @@ export class PokemonContainer implements OnInit {
   selectedGame$:Observable<string>;
   moveLists$:Observable<MoveLists>;
   gamesFeatured$:Observable<Array<string>>;
+  encounters$:Observable<Array<LocationAreaEncounter>>
   setSelectedGame(_selectedGame:string){
     this.store.dispatch(new pokemonActions.SetSelectedGame(_selectedGame));
   }
@@ -42,6 +44,7 @@ export class PokemonContainer implements OnInit {
     this.pokemon$ = this.store.pipe(select(pokemonSelectors.getPokemon));
     this.selectedGame$ = this.store.pipe(select(pokemonSelectors.getSelectedGame));
     this.gamesFeatured$ = this.store.pipe(select(pokemonSelectors.getGamesFeatured));
+    this.encounters$ = this.store.pipe(select(pokemonSelectors.getEncounters));
   }
   ngOnDestroy(): void{
     this.componentActive = false;

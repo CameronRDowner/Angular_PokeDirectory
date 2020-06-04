@@ -24,3 +24,7 @@ export const getGamesFeatured = createSelector(
     getPokemonFeatureState,
     state => state.gamesFeatured
 );
+export const getEncounters = createSelector(
+    getPokemonFeatureState,
+    state => state.encounters
+);
