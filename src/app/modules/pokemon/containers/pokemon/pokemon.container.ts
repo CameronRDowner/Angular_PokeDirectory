@@ -30,7 +30,7 @@ export class PokemonContainer implements OnInit {
     this.store.dispatch(new pokemonActions.SetSelectedGame(_selectedGame));
   }
   constructor(private router: Router, private store: Store<pokemonSelectors.State>) {
-  
+    this.store.dispatch(new pokemonActions.LoadPokemon(this.retrievePokemonId()));
    }
   retrievePokemonId(): number {
     return parseInt(this.router.url.split('/')[2])
@@ -38,7 +38,6 @@ export class PokemonContainer implements OnInit {
   ngOnInit(): void {
     
     this.componentActive = true;
-    this.store.dispatch(new pokemonActions.LoadPokemon(this.retrievePokemonId()));
     this.moveLists$ = this.store.pipe(select(pokemonSelectors.getMoveLists));
     this.pokemon$ = this.store.pipe(select(pokemonSelectors.getPokemon));
     this.selectedGame$ = this.store.pipe(select(pokemonSelectors.getSelectedGame));

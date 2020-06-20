@@ -10,10 +10,6 @@
         <app-pokemon-info [pokemon]="pokemon$ | async"></app-pokemon-info>
         <app-stat-list [statList]="(pokemon$ | async)?.stats"></app-stat-list>
     </div>
-    <div class="flex-container-column-center">
-        <app-catch-location></app-catch-location>
-        <app-moveset [moveList]="(moveLists$ | async )[selectedGame$ | async]"></app-moveset>
-    </div>
 </div> 
 </div>
 

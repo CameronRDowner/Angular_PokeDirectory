@@ -63,6 +63,13 @@ export function reducer(state = initialState, action: PokemonActions): PokemonSt
                 ...state
             }
         }
+        case PokemonActionTypes.LoadMoveListSuccess: {
+
+            return {
+                ...state,
+                moveLists: action.payload
+            }
+        }
         default:
             return state;
     }
