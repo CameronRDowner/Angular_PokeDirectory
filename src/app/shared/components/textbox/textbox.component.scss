@@ -1,0 +1,13 @@
+@import '../../../../assets/sass/variables';
+
+.textbox {
+    display: inline-block;
+    background-color: $dark-white;
+    box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.4);
+    border: none;
+    height: 3.5rem;
+    width: 24rem;
+    margin: 0;
+    font-size: 2rem;
+    padding: 0 1rem;
+}

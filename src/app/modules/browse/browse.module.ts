@@ -7,6 +7,7 @@ import { CarouselButtonComponent } from '../../shared/components/carousel-button
 import { PageIndicatorComponent } from '../../shared/components/page-indicator/page-indicator.component';
 import { IconButtonComponent } from '../../shared/components/icon-button/icon-button.component';
 import { PokemonModule } from '../pokemon/pokemon.module';
+import { TextboxComponent } from '../../shared/components/textbox/textbox.component';
 
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './state/browse.reducer';
@@ -19,7 +20,8 @@ import { BrowseEffects } from './state/browse.effects';
     SearchControlsContainer,
     CarouselButtonComponent,
     PageIndicatorComponent,
-    IconButtonComponent
+    IconButtonComponent,
+    TextboxComponent
   ],
   imports: [
     CommonModule,
