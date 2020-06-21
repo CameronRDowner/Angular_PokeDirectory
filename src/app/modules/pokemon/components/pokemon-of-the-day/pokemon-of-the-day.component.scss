@@ -13,23 +13,19 @@ margin: 0rem 0rem 3rem 0rem;
     border: solid 2px $medium-black;
 }
 .pokemon-of-the-day__id{
-font-size: 4rem;
+font-size: 3rem;
 margin: 0;
+padding: 0;
 }
 .pokemon-of-the-day__sprite-image{
-height: 15rem;
+width: 10rem;
 }
 .pokemon-of-the-day__name{
-font-size: 3rem;
+font-size: 2.5rem;
 color: $medium-red;
-margin: 1rem;
+margin-bottom: 1rem;
 }
 .pokemon-of-the-day__information{
-    
-}
-.pokemon-of-the-day__information-height{
-
-}
-.pokemon-of-the-day__information-weight{
-
+    font-size: 0.9rem;
+    padding: 0.2rem;
 }
