@@ -95,8 +95,13 @@ export class BrowseContainer implements OnInit {
     this.totalPages$ = this.store.pipe(select(browseSelectors.getTotalPages));
     this.resultsInView$ = this.store.pipe(select(browseSelectors.getResultsInView), takeWhile(()=>this.componentActive));
     this.allPokemon$.pipe(takeWhile(()=>this.componentActive)).subscribe(allPokemon=>{ 
-      this.initializeResultsInView()
-      this.updateTotalPages()
+      if(allPokemon === null){
+        this.store.dispatch(new browseActions.LoadAllPokemon)
+      }
+      else{
+        this.initializeResultsInView()
+        this.updateTotalPages()
+      }
      })
     this.initializeOffsets();
   }
