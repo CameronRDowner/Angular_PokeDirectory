@@ -1,13 +1,33 @@
+.stat--wrapper{
+    display: grid;
+    grid-template-columns: 5rem 2rem 30rem 6rem 6rem;
+    grid-template-rows: 3rem;
+    grid-template-areas: 
+    "stat-name stat-base stat-bar stat-50 stat-100";
+}
+.stat__name{
+    grid-area: stat-name;
+}
+.stat_stat-base{
+    grid-area: stat-base;
+}
 .stat__bar{
     height: 2rem;
 }
 .stat__bar-container{
     display: inline-block;
     width: 20rem;
+    grid-area: stat-bar;
 }
 .stat__text{
     display: inline-block;
 }
 .stat__text--bold{
     font-weight: 900;
+}
+.stat__stat-50{
+    grid-area: stat-50;
+}
+.stat__stat-100{
+    grid-area: stat-100;
 }
