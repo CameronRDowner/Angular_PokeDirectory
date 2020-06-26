@@ -2,8 +2,8 @@
     display: grid;
     justify-items: center;
     align-items: center;
-    grid-template-columns: 5rem 4rem 20rem 6rem 6rem;
-    grid-template-rows: 3rem;
+    grid-template-columns: 7rem 4rem 10rem 6rem 6rem;
+    grid-template-rows: 2.5rem;
     grid-template-areas: 
     "stat-name stat-base stat-bar stat-50 stat-100";
 }
@@ -15,11 +15,11 @@
     grid-area: stat-base;
 }
 .stat__bar{
-    height: 2rem;
+    height: 1.5rem;
 }
 .stat__bar-container{
     display: inline-block;
-    width: 20rem;
+    width: 10rem;
     grid-area: stat-bar;
 }
 .stat__text{

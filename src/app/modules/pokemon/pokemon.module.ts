@@ -25,6 +25,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ReversePipe } from '../../shared/pipes/reverse-array.pipe';
 import { ReplaceDashPipe } from '../../shared/pipes/replace-dash-string';
 import { KeysArrayPipe } from '../../shared/pipes/keys-array.pipe';
+import { AbbrevSpecialStringPipe } from './pipes/abbrev-special-string.pipe';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { KeysArrayPipe } from '../../shared/pipes/keys-array.pipe';
     StatComponent,
     ReversePipe,
     ReplaceDashPipe,
-    KeysArrayPipe
+    KeysArrayPipe,
+    AbbrevSpecialStringPipe
   ],
   imports: [
     StoreModule.forFeature('pokemon', reducer),
