@@ -1,5 +1,33 @@
 .stat-list{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 5rem 4rem 20rem 6rem 6rem;
+    grid-template-rows: 3rem auto 3rem;
+    grid-template-areas: 
+    "empty1 base-header empty2 50-header 100-header"
+    "stats stats stats stats stats"
+    "total-title total-base empty3 empty4 empty5";
+}
+.stat-list__base-header{
+    grid-area: base-header;
+}
+.stat-list__stats{
+    grid-area: stats;
 }
 .stat-list__text--bold{
     font-weight: 900;
+}
+.stat-list__total-base{
+    grid-area: total-base;
+}
+.stat-list__total-title{
+    grid-area: total-title;
+    justify-self: right;
+}
+.stat-list__50-header{
+    grid-area: 50-header;
+}
+.stat-list__100-header{
+    grid-area: 100-header;
 }

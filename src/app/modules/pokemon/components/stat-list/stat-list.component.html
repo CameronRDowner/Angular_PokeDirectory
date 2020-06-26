@@ -1,5 +1,5 @@
 <div class="stat-list panel">
-    <div class="flex-container-row-center"><h4 class="stat-list__text--bold">Base</h4><h4 class="stat-list__text--bold">At Lv. 50</h4><h4 class="stat-list__text--bold">At Lv. 100</h4></div>
-    <app-stat *ngFor="let stat of (statList | reverse )" [stat]="stat"></app-stat>
-    <h4>Total: {{ getBaseStatTotal() }}</h4>
+    <div><h4 class="stat-list__text--bold stat-list__base-header">Base</h4><h4 class="stat-list__text--bold stat-list__50-header">At Lv. 50</h4><h4 class="stat-list__text--bold stat-list__100-header">At Lv. 100</h4></div>
+    <div class="stat-list__stats"><app-stat *ngFor="let stat of (statList | reverse )" [stat]="stat"></app-stat></div>
+    <h4 class="stat-list__total-title">Total:</h4><h4 class="stat-list__total-base">{{ getBaseStatTotal() }}</h4>
 </div>

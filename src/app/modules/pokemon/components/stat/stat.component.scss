@@ -1,12 +1,15 @@
 .stat--wrapper{
     display: grid;
-    grid-template-columns: 5rem 2rem 30rem 6rem 6rem;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 5rem 4rem 20rem 6rem 6rem;
     grid-template-rows: 3rem;
     grid-template-areas: 
     "stat-name stat-base stat-bar stat-50 stat-100";
 }
 .stat__name{
     grid-area: stat-name;
+    justify-self: right;
 }
 .stat_stat-base{
     grid-area: stat-base;
