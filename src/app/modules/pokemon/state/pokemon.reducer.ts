@@ -2,13 +2,17 @@ import { PokemonActionTypes, PokemonActions } from './pokemon.actions';
 import { Pokemon } from '../models/pokemon';
 import { MoveLists } from '../models/move-lists';
 import { LocationAreaEncounter } from '../models/location-area-encounter';
+import { PokemonAbility } from '../models/pokemon-ability';
 
 export interface PokemonState {
     selectedGame: string,
     pokemon:Pokemon,
     moveLists:MoveLists,
     gamesFeatured:Array<string>,
-    encounters:Array<LocationAreaEncounter>
+    encounters:Array<LocationAreaEncounter>,
+    abilities:Array<PokemonAbility>,
+    hiddenAbilities: Array<PokemonAbility>
+
 }
 
 const initialState: PokemonState = {
@@ -16,7 +20,9 @@ const initialState: PokemonState = {
     pokemon: {} as Pokemon,
     moveLists: {} as MoveLists,
     gamesFeatured: [],
-    encounters: []
+    encounters: [],
+    abilities:[],
+    hiddenAbilities:[]
 }
 
 export function reducer(state = initialState, action: PokemonActions): PokemonState {
@@ -68,6 +74,20 @@ export function reducer(state = initialState, action: PokemonActions): PokemonSt
             return {
                 ...state,
                 moveLists: action.payload
+            }
+        }
+        case PokemonActionTypes.SetAbilities: {
+
+            return {
+                ...state,
+                abilities: action.payload
+            }
+        }
+        case PokemonActionTypes.SetHiddenAbilities: {
+
+            return {
+                ...state,
+                hiddenAbilities: action.payload
             }
         }
         default:

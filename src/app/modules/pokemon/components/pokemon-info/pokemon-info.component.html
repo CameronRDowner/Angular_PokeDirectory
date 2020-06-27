@@ -10,7 +10,8 @@
                 <app-pokemon-type *ngFor="let pokemonType of (pokemon?.types | reverse)" [size]="'small'" [typeName]="pokemonType.type.name"></app-pokemon-type>
             </div>
         <div class="flex-container-row-center">
-            <app-ability *ngFor="let ability of pokemon.abilities" [pokemonAbility]="ability"></app-ability>
+            <div class="flex-container-column-center"><h5>Abilities</h5><app-ability *ngFor="let ability of abilities" [pokemonAbility]="ability"></app-ability></div>
+            <div class="flex-container-column-center"><h5>Hidden<br>Abilities</h5><app-ability *ngFor="let hiddenAbility of hiddenAbilities" [pokemonAbility]="hiddenAbility"></app-ability></div>
         </div>
     </div>
 </div>

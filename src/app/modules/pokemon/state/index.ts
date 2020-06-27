@@ -28,3 +28,11 @@ export const getEncounters = createSelector(
     getPokemonFeatureState,
     state => state.encounters
 );
+export const getAbilities = createSelector(
+    getPokemonFeatureState,
+    state => state.abilities
+);
+export const getHiddenAbilities = createSelector(
+    getPokemonFeatureState,
+    state => state.hiddenAbilities
+);

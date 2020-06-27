@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Pokemon } from '../../models/pokemon';
+import { PokemonAbility } from '../../models/pokemon-ability';
 
 @Component({
   selector: 'app-pokemon-info',
@@ -8,6 +9,8 @@ import { Pokemon } from '../../models/pokemon';
 })
 export class PokemonInfoComponent implements OnInit {
   @Input() pokemon : Pokemon
+  @Input() abilities : Array<PokemonAbility>
+  @Input() hiddenAbilities: Array<PokemonAbility>
   constructor() { }
 
   ngOnInit(): void {
