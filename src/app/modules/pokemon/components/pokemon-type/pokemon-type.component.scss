@@ -1,9 +1,15 @@
 .pokemon-type{
-    width: 7rem;
-    
+    margin: 0 0.25rem 0 0.25rem;
 }
 .pokemon-type__name{
     text-align: center;
-    padding: 0.5rem 0 0.5rem 0;
-    margin: 0;
+}
+.pokemon-type__name--medium{
+    padding: 0.5rem 0;
+    width: 7rem;
+}
+.pokemon-type__name--small{
+    padding: 0.5rem 0;
+    width: 5rem;
+    font-size: 0.9rem;
 }

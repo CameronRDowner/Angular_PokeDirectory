@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../../models/pokemon';
-import { PokemonService } from '../../pokemon.service';
 import { Router } from '@angular/router';
 import { take, takeWhile } from 'rxjs/operators';
 import { Subscription, Observable } from 'rxjs';
@@ -11,6 +10,7 @@ import * as pokemonActions from '../../state/pokemon.actions';
 import * as pokemonSelectors from '../../state/';
 import { Store, select } from '@ngrx/store';
 import { LocationAreaEncounter } from '../../models/location-area-encounter';
+import { PokemonAbility } from '../../models/pokemon-ability';
 
 @Component({
   selector: 'app-pokemon',
@@ -26,6 +26,8 @@ export class PokemonContainer implements OnInit {
   moveLists$:Observable<MoveLists>;
   gamesFeatured$:Observable<Array<string>>;
   encounters$:Observable<Array<LocationAreaEncounter>>
+  abilities$:Observable<Array<PokemonAbility>>
+  hiddenAbilities$:Observable<Array<PokemonAbility>>
   setSelectedGame(_selectedGame:string){
     this.store.dispatch(new pokemonActions.SetSelectedGame(_selectedGame));
   }
@@ -43,6 +45,8 @@ export class PokemonContainer implements OnInit {
     this.selectedGame$ = this.store.pipe(select(pokemonSelectors.getSelectedGame));
     this.gamesFeatured$ = this.store.pipe(select(pokemonSelectors.getGamesFeatured));
     this.encounters$ = this.store.pipe(select(pokemonSelectors.getEncounters));
+    this.abilities$ = this.store.pipe(select(pokemonSelectors.getAbilities));
+    this.hiddenAbilities$ = this.store.pipe(select(pokemonSelectors.getHiddenAbilities));
   }
   ngOnDestroy(): void{
     this.componentActive = false;

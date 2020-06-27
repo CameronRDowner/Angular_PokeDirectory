@@ -8,7 +8,16 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PokemonTypeComponent implements OnInit {
   typeColors: Object;
   @Input() typeName: string;
+  @Input() size: string;
 
+  getSizeClass():string {
+    if(this.size === "small"){
+      return "pokemon-type__name--small"
+    }
+    else{
+      return "pokemon-type__name--medium"
+    }
+  }
   constructor() {
     this.typeColors = {
       fire: "#FF8024",
@@ -30,6 +39,7 @@ export class PokemonTypeComponent implements OnInit {
       grass: "#7EAD67",
       water: "#6C91F3"
     }
+    this.size = "medium"
    }
 
   ngOnInit(): void {

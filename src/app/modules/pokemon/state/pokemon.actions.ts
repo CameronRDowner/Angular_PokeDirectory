@@ -2,6 +2,7 @@ import { Action } from '@ngrx/store';
 import { Pokemon } from '../models/pokemon';
 import { MoveLists } from '../models/move-lists';
 import { LocationAreaEncounter } from '../models/location-area-encounter';
+import { PokemonAbility } from '../models/pokemon-ability';
 
 export enum PokemonActionTypes {
     SetSelectedGame = '[Pokemon] Set Selected Game',
@@ -14,7 +15,9 @@ export enum PokemonActionTypes {
     SetGamesFeatured = '[Pokemon] Set Games Featured',
     LoadEncounters = '[Pokemon] Load Encounters',
     LoadEncountersSuccess = '[Pokemon] Load Encounters Success',
-    LoadEncountersFailure = '[Pokemon] Load Encounters Failure'
+    LoadEncountersFailure = '[Pokemon] Load Encounters Failure',
+    SetAbilities = '[Pokemon] Set Abilities',
+    SetHiddenAbilities = '[Pokemon] Set Hidden Abilities'
 }
 export class SetSelectedGame implements Action {
     readonly type = PokemonActionTypes.SetSelectedGame;
@@ -66,6 +69,14 @@ export class LoadEncountersFailure implements Action {
   readonly type = PokemonActionTypes.LoadEncountersFailure;
   constructor(public payload: Array<LocationAreaEncounter>){}
 }
+export class SetAbilities implements Action {
+  readonly type = PokemonActionTypes.SetAbilities;
+  constructor(public payload: Array<PokemonAbility>){}
+}
+export class SetHiddenAbilities implements Action {
+  readonly type = PokemonActionTypes.SetHiddenAbilities;
+  constructor(public payload: Array<PokemonAbility>){}
+}
 export type PokemonActions = LoadPokemon
 | LoadPokemonFailure
 | LoadPokemonSuccess
@@ -76,4 +87,6 @@ export type PokemonActions = LoadPokemon
 | LoadEncounters
 | LoadEncountersSuccess
 | LoadEncountersFailure
-| SetSelectedGame;
+| SetSelectedGame
+| SetAbilities
+| SetHiddenAbilities;

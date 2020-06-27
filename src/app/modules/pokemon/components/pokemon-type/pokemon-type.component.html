@@ -1,1 +1,1 @@
-<div class="pokemon-type" [style.background-color]="typeColors[typeName]"><h3 class="pokemon-type__name">{{typeName}}</h3></div>
+<div class="pokemon-type" [style.background-color]="typeColors[typeName]"><h3 [class]="getSizeClass()" class="pokemon-type__name">{{typeName | titlecase }}</h3></div>
