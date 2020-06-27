@@ -2,11 +2,11 @@
     <h1 class="pokemon-page__name">{{(pokemon$ | async )?.name | titlecase}}</h1>
 <div class="flex-container-row-center">
     <div class="flex-container-column-center">
+        <h2>Game</h2>
+        <app-select-box [optionsList]="gamesFeatured$ | async" (optionClick)="setSelectedGame($event)"></app-select-box>
         <app-sprites [sprites]="(pokemon$ | async ).sprites"></app-sprites>
     </div>
     <div class="flex-container-column-center">
-        <h2>Game</h2>
-        <app-select-box [optionsList]="gamesFeatured$ | async" (optionClick)="setSelectedGame($event)"></app-select-box>
         <app-pokemon-info [pokemon]="pokemon$ | async"></app-pokemon-info>
         <app-stat-list [statList]="(pokemon$ | async)?.stats"></app-stat-list>
     </div>

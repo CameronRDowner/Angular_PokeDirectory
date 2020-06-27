@@ -16,7 +16,7 @@ export class StatComponent implements OnInit {
   getBarStyles():any{
     let styles = {
       'background-color' : this.barColors[this.stat.stat.name],
-      'width' : `${Math.round((255/this.stat.base_stat)*10)}%`
+      'width' : `${Math.round((this.stat.base_stat/255)*100)}%`
     }
     return styles;      
   }
