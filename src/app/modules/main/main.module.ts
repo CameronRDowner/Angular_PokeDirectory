@@ -7,13 +7,12 @@ import { PokemonModule } from '../pokemon/pokemon.module';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 
-import { HomePageComponent } from './pages/home-page/home-page.component';
-import { fromEventPattern } from 'rxjs';
+import { HomeContainer } from './containers/home/home.container';
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    HomePageComponent
+    HomeContainer
   ],
   imports: [
     AppRoutingModule,
