@@ -10,6 +10,7 @@ export interface Pokemon {
     name:string;
     height: number;
     weight: number;
+    order:number;
     sprites:PokemonSprites;
     moves:PokemonMove[];
     types:PokemonType;
