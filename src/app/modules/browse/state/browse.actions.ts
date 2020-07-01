@@ -6,11 +6,13 @@ export enum BrowseActionTypes {
     InitializeResultsInView = '[Browse] Initialize Results In View',
     SetSearchTerm = '[Browse] Set Search Term',
     ClearSearchTerm = '[Browse] Clear Search Term',
-    SetListToSearch = '[Browse] Set Search List',
+    SetCurrentList = '[Browse] Set Current List',
     LoadAllPokemonSuccess = '[Browse] Load All Pokemon Success',
     LoadAllPokemonFailure = '[Browse] Load All Pokemon Failure',
     LoadAllPokemon = '[Browse] Load All Pokemon',
     SearchPokemon = '[Browse] Search Pokemon',
+    SearchPokemonSuccess = '[Browse] Search Pokemon Success',
+    SearchPokemonFailure = '[Browse] Search Pokemon Failure',
     UpdateTotalPages = '[Browse] Update Total Pages',
     UpdateCurrentPage = '[Browse] Update Current Page',
     InitializeOffsets = '[Browse] Initialize Offsets',
@@ -21,6 +23,7 @@ export enum BrowseActionTypes {
 }
 export class SearchPokemon implements Action {
     readonly type = BrowseActionTypes.SearchPokemon;
+    constructor(public payload: string) { }
 }
 export class SetResultsInView implements Action {
     readonly type = BrowseActionTypes.SetResultsInView;
@@ -37,8 +40,8 @@ export class SetSearchTerm implements Action {
   
     constructor(public payload: string) { }
 }
-export class SetListToSearch implements Action {
-    readonly type = BrowseActionTypes.SetListToSearch;
+export class SetCurrentList implements Action {
+    readonly type = BrowseActionTypes.SetCurrentList;
   
     constructor(public payload: string) { }
 }
@@ -81,7 +84,7 @@ export class SortPokemonById implements Action {
 }
 export type BrowseActions = SetResultsInView
   | InitializeResultsInView
-  | SetListToSearch
+  | SetCurrentList
   | SetSearchTerm
   | LoadAllPokemonSuccess
   | LoadAllPokemonFailure

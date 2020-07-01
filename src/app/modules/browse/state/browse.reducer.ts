@@ -6,7 +6,7 @@ export interface BrowseState {
     allResults:NamedAPIResource[],
     allPokemon:NamedAPIResource[],
     searchTerm:string,
-    listToSearch:string,
+    currentList:string,
     startOffset:number,
     endOffset:number,
     maxResultsPerPage: number,
@@ -18,7 +18,7 @@ const initialState: BrowseState = {
     allResults: null,
     allPokemon: null,
     searchTerm: "",
-    listToSearch: "Pokemon",
+    currentList: "Pokemon",
     startOffset: 0,
     endOffset: 15,
     maxResultsPerPage: 15,
@@ -40,10 +40,10 @@ export function reducer(state = initialState, action: BrowseActions): BrowseStat
           allPokemon: action.payload
         };
       }
-      case BrowseActionTypes.SetListToSearch: {
+      case BrowseActionTypes.SetCurrentList: {
         return {
           ...state,
-          listToSearch: action.payload
+          currentList: action.payload
         };
       }
       case BrowseActionTypes.ClearSearchTerm: {
@@ -51,11 +51,6 @@ export function reducer(state = initialState, action: BrowseActions): BrowseStat
           ...state,
           searchTerm: ""
         };
-      }
-      case BrowseActionTypes.SearchPokemon: {
-        let searchResults = state.allPokemon.filter(
-        item => item.name.toLowerCase().includes(state.searchTerm)
-        );
       }
       case BrowseActionTypes.UpdateTotalPages: {
         const _totalPages = Math.ceil(state.resultsInView.length / state.maxResultsPerPage)

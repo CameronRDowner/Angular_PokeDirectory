@@ -18,8 +18,8 @@ export class SearchControlsContainer implements OnInit {
   componentActive: boolean;
   selectBoxOptions: string[];
   searchButtonIconClasses: string;
-  setListToSearch(_listToSearch): void{
-    this.store.dispatch(new browseActions.SetListToSearch(_listToSearch));
+  setCurrentList(_listToSearch): void{
+    this.store.dispatch(new browseActions.SetCurrentList(_listToSearch));
   }
   setSearchTerm(_searchTerm:string): void {
     this.store.dispatch(new browseActions.SetSearchTerm(_searchTerm));
@@ -36,7 +36,7 @@ export class SearchControlsContainer implements OnInit {
   }
 
   ngOnInit(): void {
-     this.store.pipe(select(browse.getListToSearch), takeWhile(()=>this.componentActive)).subscribe(searchlist => console.log(searchlist));
+     this.store.pipe(select(browse.getCurrentList), takeWhile(()=>this.componentActive)).subscribe(searchlist => console.log(searchlist));
      this.store.pipe(select(browse.getSearchTerm), takeWhile(()=>this.componentActive)).subscribe(searchterm=> console.log(searchterm));
   }
   ngOnDestroy():void {

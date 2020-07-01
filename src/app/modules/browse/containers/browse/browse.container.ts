@@ -23,15 +23,14 @@ export class BrowseContainer implements OnInit {
   currentPage$:Observable<number>;
   pokemonSortingButtons: RadioCluster;
   searchTerm$: Observable<string>;
-  listToSearch$: Observable<string>;
+  currentList$: Observable<string>;
   startOffset$: Observable<number>;
   endOffset$: Observable<number>;
   initializeResultsInView(): void {
-    this.searchTerm$.pipe(takeWhile(()=>this.componentActive)).subscribe(searchTerm=>{
-      if(searchTerm === ""){
+    this.currentList$.subscribe(currentList => {
+      if(currentList=== "Pokemon"){
         this.setResultsInView(this.allPokemon$);
       }
-
     })
   }
   // handleSearch():void{
@@ -86,7 +85,7 @@ export class BrowseContainer implements OnInit {
    }
 
   ngOnInit(): void {
-    this.listToSearch$ = this.store.pipe(select(browseSelectors.getListToSearch));
+    this.currentList$ = this.store.pipe(select(browseSelectors.getCurrentList));
     this.searchTerm$ = this.store.pipe(select(browseSelectors.getSearchTerm));
     this.allPokemon$ = this.store.pipe(select(browseSelectors.getAllPokemon));
     this.startOffset$ = this.store.pipe(select(browseSelectors.getStartOffset));
