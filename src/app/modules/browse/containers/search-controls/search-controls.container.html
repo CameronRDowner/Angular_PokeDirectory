@@ -1,5 +1,5 @@
 <div class="flex-container-row-center">
-    <app-textbox (textboxChange)="setSearchTerm($event)"></app-textbox>
+    <app-textbox [clearButton]="true" (textboxChange)="setSearchTerm($event)"></app-textbox>
     <app-select-box (optionClick)="setListToSearch($event)" [optionsList] = "selectBoxOptions"></app-select-box>
     <app-icon-button [iconClasses] = "searchButtonIconClasses" (buttonClick)="openBrowsePage()"></app-icon-button>
 </div>

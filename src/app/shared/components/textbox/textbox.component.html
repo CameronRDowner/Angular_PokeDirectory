@@ -1,1 +1,4 @@
-<input class="textbox" type="text" (change)="emitChange($event.target.value)" name="search-box">
+<div class="textbox--wrapper">
+    <input class="textbox__textbox" type="text" (change)="emitChange($event.target.value)" name="search-box">
+    <a *ngIf="clearButton" class="textbox__clear-button">x</a>
+</div>  
