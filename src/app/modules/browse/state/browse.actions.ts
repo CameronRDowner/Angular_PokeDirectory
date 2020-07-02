@@ -4,8 +4,6 @@ import { NamedAPIResource } from 'src/app/shared/models/named-apiresource';
 export enum BrowseActionTypes {
     SetResultsInView = '[Browse] Set Results In View',
     InitializeResultsInView = '[Browse] Initialize Results In View',
-    SetSearchTerm = '[Browse] Set Search Term',
-    ClearSearchTerm = '[Browse] Clear Search Term',
     SetCurrentList = '[Browse] Set Current List',
     LoadAllPokemonSuccess = '[Browse] Load All Pokemon Success',
     LoadAllPokemonFailure = '[Browse] Load All Pokemon Failure',
@@ -19,10 +17,27 @@ export enum BrowseActionTypes {
     LoadNextPage = '[Browse] Load Next Page',
     LoadPreviousPage = '[Browse] Load Previous Page',
     SortPokemonByName = '[Browse] Sort Pokemon By Name',
-    SortPokemonById = '[Browse] Sort Pokemon By Id'
+    SortPokemonById = '[Browse] Sort Pokemon By Id',
+    OpenAlertModal = '[Browse] Open Alert Modal',
+    CloseAlertModal = '[Browse] Close Alert Modal'
+}
+export class CloseAlertModal implements Action {
+    readonly type = BrowseActionTypes.CloseAlertModal;
+}
+export class OpenAlertModal implements Action {
+    readonly type = BrowseActionTypes.OpenAlertModal;
+    constructor(public payload:string){ }
 }
 export class SearchPokemon implements Action {
     readonly type = BrowseActionTypes.SearchPokemon;
+    constructor(public payload: string) { }
+}
+export class SearchPokemonSuccess implements Action {
+    readonly type = BrowseActionTypes.SearchPokemonSuccess;
+    constructor(public payload: Array<NamedAPIResource>) { }
+}
+export class SearchPokemonFailure implements Action {
+    readonly type = BrowseActionTypes.SearchPokemonFailure;
     constructor(public payload: string) { }
 }
 export class SetResultsInView implements Action {
@@ -34,11 +49,6 @@ export class InitializeResultsInView implements Action {
     readonly type = BrowseActionTypes.InitializeResultsInView;
   
     constructor(public payload: NamedAPIResource[]) { }
-}
-export class SetSearchTerm implements Action {
-    readonly type = BrowseActionTypes.SetSearchTerm;
-  
-    constructor(public payload: string) { }
 }
 export class SetCurrentList implements Action {
     readonly type = BrowseActionTypes.SetCurrentList;
@@ -57,9 +67,6 @@ export class LoadAllPokemonFailure implements Action {
 }
 export class LoadAllPokemon implements Action {
     readonly type = BrowseActionTypes.LoadAllPokemon;
-}
-export class ClearSearchTerm implements Action {
-    readonly type = BrowseActionTypes.ClearSearchTerm;
 }
 export class UpdateTotalPages implements Action {
     readonly type = BrowseActionTypes.UpdateTotalPages;
@@ -85,12 +92,12 @@ export class SortPokemonById implements Action {
 export type BrowseActions = SetResultsInView
   | InitializeResultsInView
   | SetCurrentList
-  | SetSearchTerm
   | LoadAllPokemonSuccess
   | LoadAllPokemonFailure
   | LoadAllPokemon
-  | ClearSearchTerm
   | SearchPokemon
+  | SearchPokemonSuccess
+  | SearchPokemonFailure
   | UpdateTotalPages
   | UpdateCurrentPage
   | InitializeOffsets

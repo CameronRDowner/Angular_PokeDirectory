@@ -22,33 +22,24 @@ export class BrowseContainer implements OnInit {
   totalPages$:Observable<number>;
   currentPage$:Observable<number>;
   pokemonSortingButtons: RadioCluster;
-  searchTerm$: Observable<string>;
   currentList$: Observable<string>;
   startOffset$: Observable<number>;
   endOffset$: Observable<number>;
+  alertModalMessage$:Observable<string>;
+  alertModalVisible$:Observable<boolean>;
   initializeResultsInView(): void {
-    this.currentList$.subscribe(currentList => {
-      if(currentList=== "Pokemon"){
+    this.resultsInView$.pipe(takeWhile(()=>this.componentActive)).subscribe(resultsInView=>{
+    this.currentList$.pipe(takeWhile(()=>this.componentActive)).subscribe(currentList => {
+      if(currentList === "Pokemon" && resultsInView === null){
         this.setResultsInView(this.allPokemon$);
       }
     })
+  })
   }
-  // handleSearch():void{
-  //   if(this.listToSearch === "Pokemon"){
-  //     this.setResultsInView(this.searchList(this.allPokemon))
-  //   }
-  //   this.initializeOffsets();
-  //   this.updateCurrentPage();
-  //   this.updateTotalPages();
-  //   this.clearSearchTerm();
-  // }
   setResultsInView(_resultsInView$:Observable<NamedAPIResource[]>): void {
     _resultsInView$.pipe(takeWhile(()=>this.componentActive)).subscribe(_resultsInView=>{
       this.store.dispatch(new browseActions.SetResultsInView(_resultsInView));
     })
-  }
-  clearSearchTerm(): void {
-    this.store.dispatch(new browseActions.ClearSearchTerm());
   }
   loadNextPage(): void {
     this.store.dispatch(new browseActions.LoadNextPage());
@@ -86,7 +77,6 @@ export class BrowseContainer implements OnInit {
 
   ngOnInit(): void {
     this.currentList$ = this.store.pipe(select(browseSelectors.getCurrentList));
-    this.searchTerm$ = this.store.pipe(select(browseSelectors.getSearchTerm));
     this.allPokemon$ = this.store.pipe(select(browseSelectors.getAllPokemon));
     this.startOffset$ = this.store.pipe(select(browseSelectors.getStartOffset));
     this.endOffset$ = this.store.pipe(select(browseSelectors.getEndOffset));

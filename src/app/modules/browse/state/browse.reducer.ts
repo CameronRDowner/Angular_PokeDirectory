@@ -5,29 +5,37 @@ export interface BrowseState {
     resultsInView: NamedAPIResource[],
     allResults:NamedAPIResource[],
     allPokemon:NamedAPIResource[],
-    searchTerm:string,
     currentList:string,
     startOffset:number,
     endOffset:number,
     maxResultsPerPage: number,
     totalPages:number,
-    currentPage:number
+    currentPage:number,
+    alertModalVisible:boolean,
+    alertModalMessage:string
 }
 const initialState: BrowseState = {
     resultsInView: null,
     allResults: null,
     allPokemon: null,
-    searchTerm: "",
     currentList: "Pokemon",
     startOffset: 0,
     endOffset: 15,
     maxResultsPerPage: 15,
     currentPage: 1,
-    totalPages: null
+    totalPages: null,
+    alertModalMessage: "",
+    alertModalVisible: false
 };
 export function reducer(state = initialState, action: BrowseActions): BrowseState {
 
     switch (action.type) {
+      case BrowseActionTypes.SearchPokemonSuccess: {
+        return {
+          ...state,
+          resultsInView: action.payload
+        };
+      }
       case BrowseActionTypes.SetResultsInView: {
         return {
           ...state,
@@ -44,12 +52,6 @@ export function reducer(state = initialState, action: BrowseActions): BrowseStat
         return {
           ...state,
           currentList: action.payload
-        };
-      }
-      case BrowseActionTypes.ClearSearchTerm: {
-        return {
-          ...state,
-          searchTerm: ""
         };
       }
       case BrowseActionTypes.UpdateTotalPages: {

@@ -8,10 +8,6 @@ export const getCurrentList = createSelector(
     getBrowseFeatureState,
     state => state.currentList
 );
-export const getSearchTerm = createSelector(
-    getBrowseFeatureState,
-    state => state.searchTerm
-);
 export const getAllPokemon = createSelector(
     getBrowseFeatureState,
     state => state.allPokemon

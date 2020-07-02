@@ -9,6 +9,7 @@ import * as browse from '../../state';
 import * as browseActions from '../../state/browse.actions';
 import { Store, select } from '@ngrx/store';
 import { takeWhile } from 'rxjs/operators';
+import * as browseSelectors from '../../state';
 
 @Component({
   selector: 'app-search-controls',
@@ -18,17 +19,28 @@ export class SearchControlsContainer implements OnInit {
   componentActive: boolean;
   selectBoxOptions: string[];
   searchButtonIconClasses: string;
+  searchTerm: string;
+  currentList$: Observable<string>;
   setCurrentList(_listToSearch): void{
     this.store.dispatch(new browseActions.SetCurrentList(_listToSearch));
   }
   setSearchTerm(_searchTerm:string): void {
-    this.store.dispatch(new browseActions.SetSearchTerm(_searchTerm));
+    this.searchTerm = _searchTerm;
+  }
+  searchForPokemon(){
+    this.store.dispatch(new browseActions.SearchPokemon(this.searchTerm))
+  }
+  handleSearchButtonClick(){
+    this.searchForPokemon();
+    this.openBrowsePage();
   }
   openBrowsePage(): void{
     this.router.navigate(['browse'])
   }
   constructor(private router: Router, private store: Store<app.State>) {
+    this.currentList$ = this.store.pipe(select(browseSelectors.getCurrentList))
     this.componentActive = true;
+    this.searchTerm = "";
     this.searchButtonIconClasses = "fas fa-search";
     this.selectBoxOptions = [
       "Pokemon"
@@ -36,8 +48,6 @@ export class SearchControlsContainer implements OnInit {
   }
 
   ngOnInit(): void {
-     this.store.pipe(select(browse.getCurrentList), takeWhile(()=>this.componentActive)).subscribe(searchlist => console.log(searchlist));
-     this.store.pipe(select(browse.getSearchTerm), takeWhile(()=>this.componentActive)).subscribe(searchterm=> console.log(searchterm));
   }
   ngOnDestroy():void {
     this.componentActive = false;

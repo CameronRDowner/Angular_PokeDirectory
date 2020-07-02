@@ -1,7 +1,8 @@
 <div class="browse-page">
     <div class="flex-container-row-center">
+        <app-alert-modal [alertMessage]="alertModalMessage$ | async" [modalVisible]="alertModalVisible$ | async" ></app-alert-modal>
         <app-search-controls></app-search-controls>
-        <app-radio-cluster *ngIf="(listToSearch$ | async) === 'Pokemon' " [radioCluster]="pokemonSortingButtons" (radioButtonClick)="handlePokemonSort($event)"></app-radio-cluster>
+        <app-radio-cluster *ngIf="(currentList$ | async) === 'Pokemon' " [radioCluster]="pokemonSortingButtons" (radioButtonClick)="handlePokemonSort($event)"></app-radio-cluster>
     </div >
     <div class="flex-container-row-center search-results--wrapper">
         <app-carousel-button [orientation]="'left'" (buttonClick)="loadPreviousPage()"></app-carousel-button> 

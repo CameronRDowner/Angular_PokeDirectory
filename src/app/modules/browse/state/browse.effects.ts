@@ -3,7 +3,7 @@ import { PokemonService } from '../../pokemon/pokemon.service';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import * as browseActions from './browse.actions';
-import { switchMap, map, catchError } from 'rxjs/operators';
+import { switchMap, map, catchError, withLatestFrom } from 'rxjs/operators';
 import { Action, Store } from '@ngrx/store';
 import { State } from '../../../app.state';
 import * as browseSelectors from '../state/'
@@ -26,32 +26,26 @@ export class BrowseEffects {
   @Effect()
   searchPokemon$: Observable<Action> = this.actions$.pipe(
     ofType<browseActions.SearchPokemon>(browseActions.BrowseActionTypes.SearchPokemon),
-    map(action=> action.payload),
-    switchMap(payload=>
-      new browseActions.
+    withLatestFrom(
+      this.store$.select(browseSelectors.getAllPokemon)
+    ),
+    map(([action, allPokemon]) => {
+      const searchResults = allPokemon.filter(pokemon => pokemon.name.includes(action.payload))
+      if(action.payload === ""){
+        return (new browseActions.SearchPokemonFailure("Please add a searchterm to the search box"))
+      }
+      else if(searchResults.length === 0){
+        return (new browseActions.SearchPokemonFailure("No Pokemon were found matching that name"))
+      }
+      else{
+        return (new browseActions.SearchPokemonSuccess(searchResults))
+      }
+    }
       )
   )
-  // @Effect()
-//   loadMoveList$: Observable<Action> = this.actions$.pipe(
-//     ofType(pokemonActions.PokemonActionTypes.SetSelectedGame),
-//     withLatestFrom(
-//       this.store$.select(pokemonSelectors.getMoveLists), 
-//       this.store$.select(pokemonSelectors.getSelectedGame),
-//       ),
-//     map(([action, moveLists, selectedGame])=> {
-//       let newMoveList = []
-//       if(moveLists[selectedGame][0].moveInfo === null){
-//         moveLists[selectedGame].map(_move=>{
-//           this.pokemonService.getMoveTest(_move.moveUrl).subscribe(_moveInfo => {
-//             console.log(_moveInfo)
-//             newMoveList.push({..._move, moveInfo: _moveInfo } as Move)
-//           })
-//         })
-//       }
-//       console.log('movelist', newMoveList)
-//       const newMoveLists = {...moveLists, [selectedGame]: newMoveList} as MoveLists
-//       console.log('moveLists', newMoveLists)
-//       return new pokemonActions.LoadMoveListSuccess(newMoveLists)
-//     })
-//   )
+  @Effect()
+  searchPokemonFailure$: Observable<Action> = this.actions$.pipe(
+    ofType<browseActions.SearchPokemonFailure>(browseActions.BrowseActionTypes.SearchPokemonFailure),
+    map(action => new browseActions.OpenAlertModal(action.payload))
+  )
 }
