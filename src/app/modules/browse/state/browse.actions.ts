@@ -8,6 +8,8 @@ export enum BrowseActionTypes {
     LoadAllPokemonSuccess = '[Browse] Load All Pokemon Success',
     LoadAllPokemonFailure = '[Browse] Load All Pokemon Failure',
     LoadAllPokemon = '[Browse] Load All Pokemon',
+    SetSearchTerm = '[Browse] Set Search Term',
+    ClearSearchTerm = '[Browse] Clear Search Term',
     SearchPokemon = '[Browse] Search Pokemon',
     SearchPokemonSuccess = '[Browse] Search Pokemon Success',
     SearchPokemonFailure = '[Browse] Search Pokemon Failure',
@@ -35,6 +37,13 @@ export class SearchPokemon implements Action {
 export class SearchPokemonSuccess implements Action {
     readonly type = BrowseActionTypes.SearchPokemonSuccess;
     constructor(public payload: Array<NamedAPIResource>) { }
+}
+export class SetSearchTerm implements Action {
+    readonly type = BrowseActionTypes.SetSearchTerm;
+    constructor(public payload: string) { }
+}
+export class ClearSearchTerm implements Action {
+    readonly type = BrowseActionTypes.ClearSearchTerm;
 }
 export class SearchPokemonFailure implements Action {
     readonly type = BrowseActionTypes.SearchPokemonFailure;
@@ -98,6 +107,8 @@ export type BrowseActions = SetResultsInView
   | SearchPokemon
   | SearchPokemonSuccess
   | SearchPokemonFailure
+  | SetSearchTerm
+  | ClearSearchTerm
   | UpdateTotalPages
   | UpdateCurrentPage
   | InitializeOffsets
