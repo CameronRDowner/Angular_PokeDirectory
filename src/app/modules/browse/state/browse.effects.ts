@@ -27,11 +27,12 @@ export class BrowseEffects {
   searchPokemon$: Observable<Action> = this.actions$.pipe(
     ofType<browseActions.SearchPokemon>(browseActions.BrowseActionTypes.SearchPokemon),
     withLatestFrom(
-      this.store$.select(browseSelectors.getAllPokemon)
+      this.store$.select(browseSelectors.getAllPokemon),
+      this.store$.select(browseSelectors.getSearchTerm)
     ),
-    map(([action, allPokemon]) => {
-      const searchResults = allPokemon.filter(pokemon => pokemon.name.includes(action.payload))
-      if(action.payload === ""){
+    map(([action, allPokemon, searchTerm]) => {
+      const searchResults = allPokemon.filter(pokemon => pokemon.name.includes(searchTerm))
+      if(searchTerm === null){
         return (new browseActions.SearchPokemonFailure("Please add a searchterm to the search box"))
       }
       else if(searchResults.length === 0){

@@ -32,7 +32,6 @@ export class OpenAlertModal implements Action {
 }
 export class SearchPokemon implements Action {
     readonly type = BrowseActionTypes.SearchPokemon;
-    constructor(public payload: string) { }
 }
 export class SearchPokemonSuccess implements Action {
     readonly type = BrowseActionTypes.SearchPokemonSuccess;

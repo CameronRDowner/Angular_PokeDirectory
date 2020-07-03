@@ -19,16 +19,16 @@ export class SearchControlsContainer implements OnInit {
   componentActive: boolean;
   selectBoxOptions: string[];
   searchButtonIconClasses: string;
-  searchTerm: string;
+  searchTerm$: Observable<string>;
   currentList$: Observable<string>;
   setCurrentList(_listToSearch): void{
     this.store.dispatch(new browseActions.SetCurrentList(_listToSearch));
   }
   setSearchTerm(_searchTerm:string): void {
-    this.searchTerm = _searchTerm;
+    this.store.dispatch(new browseActions.SetSearchTerm(_searchTerm))
   }
   searchForPokemon(){
-    this.store.dispatch(new browseActions.SearchPokemon(this.searchTerm))
+    this.store.dispatch(new browseActions.SearchPokemon())
   }
   handleSearchButtonClick(){
     this.searchForPokemon();
@@ -38,9 +38,9 @@ export class SearchControlsContainer implements OnInit {
     this.router.navigate(['browse'])
   }
   constructor(private router: Router, private store: Store<app.State>) {
-    this.currentList$ = this.store.pipe(select(browseSelectors.getCurrentList))
+    this.currentList$ = this.store.pipe(select(browseSelectors.getCurrentList));
+    this.searchTerm$ = this.store.pipe(select(browseSelectors.getSearchTerm))
     this.componentActive = true;
-    this.searchTerm = "";
     this.searchButtonIconClasses = "fas fa-search";
     this.selectBoxOptions = [
       "Pokemon"
