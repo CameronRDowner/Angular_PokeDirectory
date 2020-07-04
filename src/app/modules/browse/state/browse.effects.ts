@@ -32,10 +32,7 @@ export class BrowseEffects {
     ),
     map(([action, allPokemon, searchTerm]) => {
       const searchResults = allPokemon.filter(pokemon => pokemon.name.includes(searchTerm))
-      if(searchTerm === null){
-        return (new browseActions.SearchPokemonFailure("Please add a searchterm to the search box"))
-      }
-      else if(searchResults.length === 0){
+      if(searchResults.length === 0){
         return (new browseActions.SearchPokemonFailure("No Pokemon were found matching that name"))
       }
       else{
