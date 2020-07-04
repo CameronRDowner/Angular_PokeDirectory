@@ -7,17 +7,26 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class TextboxComponent implements OnInit {
   @Input() length: string;
-  @Input() clearButton: boolean; 
+  @Input() clearButton: boolean;
+  @Output() clearButtonClick = new EventEmitter(); 
   @Output() textboxChange = new EventEmitter()
   textboxValue: string;
   emitChange(newText:string):void {
-    this.textboxChange.emit(newText)
+    this.textboxChange.emit(newText);
+  }
+  emitClearButtonClick():void{
+    this.clearButtonClick.emit(null);
+  }
+  clearTextbox():void {
+    this.textboxValue = ""
+  }
+  setTextboxValue(_textboxValue:string):void{
+    this.textboxValue = _textboxValue;
   }
   handleChange():void{
     this.emitChange(this.textboxValue);
   }
   initializeTextboxValue(){
-    console.log("ran")
     this.textboxValue = ""
   }
   constructor() {
