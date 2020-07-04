@@ -23,6 +23,10 @@ export class TextboxComponent implements OnInit {
   setTextboxValue(_textboxValue:string):void{
     this.textboxValue = _textboxValue;
   }
+  handleClearButtonClick():void {
+    this.emitClearButtonClick();
+    this.initializeTextboxValue();
+  }
   handleChange():void{
     this.emitChange(this.textboxValue);
   }

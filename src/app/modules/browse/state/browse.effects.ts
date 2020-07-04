@@ -49,4 +49,12 @@ export class BrowseEffects {
     ofType<browseActions.SearchPokemonFailure>(browseActions.BrowseActionTypes.SearchPokemonFailure),
     map(action => new browseActions.OpenAlertModal(action.payload))
   )
+  @Effect()
+  resetPokemonResults$: Observable<Action> = this.actions$.pipe(
+    ofType<browseActions.ClearSearchTerm>(browseActions.BrowseActionTypes.ClearSearchTerm),
+    withLatestFrom(
+      this.store$.select(browseSelectors.getAllPokemon)
+    ),
+    map(([action, allPokemon]) => new browseActions.SetResultsInView(allPokemon))
+  )
 }

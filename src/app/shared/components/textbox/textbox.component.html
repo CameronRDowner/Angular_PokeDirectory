@@ -1,4 +1,4 @@
 <div class="textbox--wrapper">
     <input class="textbox__textbox" type="text" (change)="handleChange()" name="search-box" [(ngModel)]="textboxValue">
-    <a (click)="initializeTextboxValue()" *ngIf="textboxValue !== '' && clearButton === true" class="textbox__clear-button" >x</a>
+    <a (click)="handleClearButtonClick()" *ngIf="textboxValue !== '' && clearButton === true" class="textbox__clear-button" >x</a>
 </div>  
