@@ -9,11 +9,7 @@ export class TextboxComponent implements OnInit {
   @Input() length: string;
   @Input() clearButton: boolean;
   @Output() clearButtonClick = new EventEmitter(); 
-  @Output() textboxChange = new EventEmitter()
   textboxValue: string;
-  emitChange(newText:string):void {
-    this.textboxChange.emit(newText);
-  }
   emitClearButtonClick():void{
     this.clearButtonClick.emit(null);
   }
@@ -26,9 +22,6 @@ export class TextboxComponent implements OnInit {
   handleClearButtonClick():void {
     this.emitClearButtonClick();
     this.initializeTextboxValue();
-  }
-  handleChange():void{
-    this.emitChange(this.textboxValue);
   }
   initializeTextboxValue(){
     this.textboxValue = ""

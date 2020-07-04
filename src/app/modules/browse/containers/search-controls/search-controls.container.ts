@@ -40,6 +40,7 @@ export class SearchControlsContainer implements OnInit {
     this.store.dispatch(new browseActions.SearchPokemon())
   }
   handleSearchButtonClick(){
+    this.setSearchTerm(this.textbox.textboxValue)
     this.searchForPokemon();
     this.openBrowsePage();
   }
