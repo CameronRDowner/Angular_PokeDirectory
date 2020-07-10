@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PokemonService } from 'src/app/modules/pokemon/pokemon.service';
 import { NamedAPIResource } from 'src/app/shared/models/named-apiresource';
-import { take, takeWhile } from 'rxjs/operators';
-import { Subscription, Observable } from 'rxjs';
+import { takeWhile } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { RadioCluster } from '../../../../shared/models/radio-cluster/radio-cluster';
 
 import { Store, select } from '@ngrx/store';
@@ -27,30 +26,32 @@ export class BrowseContainer implements OnInit {
   endOffset$: Observable<number>;
   alertModalMessage$:Observable<string>;
   alertModalVisible$:Observable<boolean>;
-  initializeResultsInView(): void {
-    this.resultsInView$.pipe(takeWhile(()=>this.componentActive)).subscribe(resultsInView=>{
-    this.currentList$.pipe(takeWhile(()=>this.componentActive)).subscribe(currentList => {
-      if(currentList === "Pokemon" && resultsInView === null){
-        this.setResultsInView(this.allPokemon$);
-      }
-    })
-  })
-  }
-  setResultsInView(_resultsInView$:Observable<NamedAPIResource[]>): void {
-    _resultsInView$.pipe(takeWhile(()=>this.componentActive)).subscribe(_resultsInView=>{
+  setResultsInView(_resultsInView:NamedAPIResource[]): void {
       this.store.dispatch(new browseActions.SetResultsInView(_resultsInView));
-    })
   }
   loadNextPage(): void {
     this.store.dispatch(new browseActions.LoadNextPage());
   }
+  handleLoadNextPage():void{
+  let currentPage = null;
+  let totalPages = null;
+  this.currentPage$.pipe(takeWhile(()=>this.componentActive)).subscribe(_currentPage =>{ currentPage = _currentPage  })
+  this.totalPages$.pipe(takeWhile(()=>this.componentActive)).subscribe(_totalPages =>{ totalPages = _totalPages  })
+    if(currentPage !== totalPages){
+      this.loadNextPage();
+    }
+  }
   loadPreviousPage(): void {
     this.store.dispatch(new browseActions.LoadPreviousPage());
   }
-  initializeOffsets(): void {
-    this.store.dispatch(new browseActions.InitializeOffsets());
-  }
-  handlePokemonSort(buttonName):void{
+  handleLoadPreviousPage():void{
+    let currentPage = null
+    this.currentPage$.pipe(takeWhile(()=>this.componentActive)).subscribe(_currentPage =>{ currentPage = _currentPage  })
+      if(currentPage !== 1){
+        this.loadPreviousPage();
+      }
+    }
+  handlePokemonSort(buttonName:string):void{
     if(buttonName === "Id"){
       this.sortPokemonById();
     }
@@ -64,7 +65,7 @@ export class BrowseContainer implements OnInit {
   sortPokemonByName():void{
     this.store.dispatch(new browseActions.SortPokemonByName)
   }
-  constructor(private pokemonService:PokemonService, private store: Store<app.State>) {
+  constructor(private store: Store<app.State>) {
     this.pokemonSortingButtons = new RadioCluster(["Id", "Name"], false);
     this.componentActive = true;
    }
@@ -76,16 +77,12 @@ export class BrowseContainer implements OnInit {
     this.endOffset$ = this.store.pipe(select(browseSelectors.getEndOffset));
     this.currentPage$ = this.store.pipe(select(browseSelectors.getCurrentPage));
     this.totalPages$ = this.store.pipe(select(browseSelectors.getTotalPages));
-    this.resultsInView$ = this.store.pipe(select(browseSelectors.getResultsInView), takeWhile(()=>this.componentActive));
+    this.resultsInView$ = this.store.pipe(select(browseSelectors.getResultsInView));
     this.allPokemon$.pipe(takeWhile(()=>this.componentActive)).subscribe(allPokemon=>{ 
       if(allPokemon === null){
         this.store.dispatch(new browseActions.LoadAllPokemon)
       }
-      else{
-        this.initializeResultsInView()
-      }
      })
-    this.initializeOffsets();
   }
   ngOnDestroy(): void{
     this.componentActive = false;

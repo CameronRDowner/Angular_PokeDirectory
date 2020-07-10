@@ -3,7 +3,7 @@ import { PokemonService } from '../../pokemon/pokemon.service';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import * as browseActions from './browse.actions';
-import { switchMap, map, catchError, withLatestFrom } from 'rxjs/operators';
+import { switchMap, map, catchError, withLatestFrom, concatMap, mapTo } from 'rxjs/operators';
 import { Action, Store } from '@ngrx/store';
 import { State } from '../../../app.state';
 import * as browseSelectors from '../state/'
@@ -50,7 +50,11 @@ export class BrowseEffects {
   )
   @Effect()
   updateCurrentPage$: Observable<Action> = this.actions$.pipe(
-    ofType<browseActions.LoadNextPage>(browseActions.BrowseActionTypes.LoadNextPage),
+    ofType<browseActions.LoadNextPage>(
+      browseActions.BrowseActionTypes.LoadNextPage, 
+      browseActions.BrowseActionTypes.LoadPreviousPage, 
+      browseActions.BrowseActionTypes.SortPokemonById, 
+      browseActions.BrowseActionTypes.SortPokemonByName),
     withLatestFrom(
       this.store$.select(browseSelectors.getMaxResultsPerPage),
       this.store$.select(browseSelectors.getEndOffset)
@@ -70,6 +74,29 @@ export class BrowseEffects {
     map(([action, maxResultsPerPage])=>{
       const totalPages = Math.ceil(action.payload.length / maxResultsPerPage)
       return new browseActions.SetTotalPages(totalPages);
+    })
+  )
+  @Effect()
+  initializeOffsets$: Observable<Action> = this.actions$.pipe(
+    ofType(browseActions.BrowseActionTypes.SortPokemonById, browseActions.BrowseActionTypes.SortPokemonByName),
+    withLatestFrom(this.store$.select(browseSelectors.getMaxResultsPerPage)),
+    concatMap(([action, maxResultsPerPage])=>[
+      new browseActions.SetStartOffset(0),
+      new browseActions.SetEndOffset(maxResultsPerPage)
+    ])
+  )
+  @Effect()
+  initializeResultsInView$: Observable<Action> = this.actions$.pipe(
+    ofType(browseActions.BrowseActionTypes.LoadAllPokemonSuccess),
+    withLatestFrom(
+      this.store$.select(browseSelectors.getCurrentList),
+      this.store$.select(browseSelectors.getResultsInView),
+      this.store$.select(browseSelectors.getAllPokemon),
+    ),
+    map(([action, currentList, resultsInView, allPokemon])=>{
+      if(currentList === "Pokemon" && resultsInView === null){
+        return new browseActions.SetResultsInView(allPokemon)
+      }
     })
   )
 }

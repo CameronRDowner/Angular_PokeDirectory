@@ -5,13 +5,13 @@
         <app-radio-cluster *ngIf="(currentList$ | async) === 'Pokemon' " [radioCluster]="pokemonSortingButtons" (radioButtonClick)="handlePokemonSort($event)"></app-radio-cluster>
     </div >
     <div class="flex-container-row-center search-results--wrapper">
-        <app-carousel-button [orientation]="'left'" (buttonClick)="loadPreviousPage()"></app-carousel-button> 
+        <app-carousel-button [orientation]="'left'" (buttonClick)="handleLoadPreviousPage()"></app-carousel-button> 
         <div class="search-results__panel panel flex-container-column-center">
             <div class="search-results__container">
             <app-pokemon-search-result *ngFor="let result of resultsInView$ | async | slice:(startOffset$ | async):(endOffset$ | async)" [searchResult] = "result"></app-pokemon-search-result>
             </div>
             <app-page-indicator [currentPage]="currentPage$ | async" [totalPages]="totalPages$ | async"></app-page-indicator>
         </div>
-        <app-carousel-button [orientation]="'right'" (buttonClick)="loadNextPage()"></app-carousel-button>
+        <app-carousel-button [orientation]="'right'" (buttonClick)="handleLoadNextPage()"></app-carousel-button>
     </div>
 </div>
