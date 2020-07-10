@@ -48,4 +48,28 @@ export class BrowseEffects {
     ofType<browseActions.SearchPokemonFailure>(browseActions.BrowseActionTypes.SearchPokemonFailure),
     map(action => new browseActions.OpenAlertModal(action.payload))
   )
+  @Effect()
+  updateCurrentPage$: Observable<Action> = this.actions$.pipe(
+    ofType<browseActions.LoadNextPage>(browseActions.BrowseActionTypes.LoadNextPage),
+    withLatestFrom(
+      this.store$.select(browseSelectors.getMaxResultsPerPage),
+      this.store$.select(browseSelectors.getEndOffset)
+    ),
+    map(([action, maxResultsPerPage, endOffset])=>{
+      const currentPage = endOffset / maxResultsPerPage;
+      return new browseActions.SetCurrentPage(currentPage)
+    })
+
+  )
+  @Effect()
+  initializeTotalPages$: Observable<Action> = this.actions$.pipe(
+    ofType<browseActions.SetResultsInView>(browseActions.BrowseActionTypes.SetResultsInView),
+    withLatestFrom(
+      this.store$.select(browseSelectors.getMaxResultsPerPage)
+    ),
+    map(([action, maxResultsPerPage])=>{
+      const totalPages = Math.ceil(action.payload.length / maxResultsPerPage)
+      return new browseActions.SetTotalPages(totalPages);
+    })
+  )
 }

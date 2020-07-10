@@ -11,8 +11,8 @@ export enum BrowseActionTypes {
     SearchPokemon = '[Browse] Search Pokemon',
     SearchPokemonSuccess = '[Browse] Search Pokemon Success',
     SearchPokemonFailure = '[Browse] Search Pokemon Failure',
-    UpdateTotalPages = '[Browse] Update Total Pages',
-    UpdateCurrentPage = '[Browse] Update Current Page',
+    SetTotalPages = '[Browse] Set Total Pages',
+    SetCurrentPage = '[Browse] Set Current Page',
     InitializeOffsets = '[Browse] Initialize Offsets',
     LoadNextPage = '[Browse] Load Next Page',
     LoadPreviousPage = '[Browse] Load Previous Page',
@@ -68,11 +68,13 @@ export class LoadAllPokemonFailure implements Action {
 export class LoadAllPokemon implements Action {
     readonly type = BrowseActionTypes.LoadAllPokemon;
 }
-export class UpdateTotalPages implements Action {
-    readonly type = BrowseActionTypes.UpdateTotalPages;
+export class SetTotalPages implements Action {
+    readonly type = BrowseActionTypes.SetTotalPages;
+    constructor(public payload: number){}
 }
-export class UpdateCurrentPage implements Action {
-    readonly type = BrowseActionTypes.UpdateCurrentPage;
+export class SetCurrentPage implements Action {
+    readonly type = BrowseActionTypes.SetCurrentPage;
+    constructor(public payload: number){}
 }
 export class InitializeOffsets implements Action {
     readonly type = BrowseActionTypes.InitializeOffsets;
@@ -98,8 +100,8 @@ export type BrowseActions = SetResultsInView
   | SearchPokemon
   | SearchPokemonSuccess
   | SearchPokemonFailure
-  | UpdateTotalPages
-  | UpdateCurrentPage
+  | SetTotalPages
+  | SetCurrentPage
   | InitializeOffsets
   | LoadNextPage
   | LoadPreviousPage

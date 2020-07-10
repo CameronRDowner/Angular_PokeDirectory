@@ -54,18 +54,16 @@ export function reducer(state = initialState, action: BrowseActions): BrowseStat
           currentList: action.payload
         };
       }
-      case BrowseActionTypes.UpdateTotalPages: {
-        const _totalPages = Math.ceil(state.resultsInView.length / state.maxResultsPerPage)
+      case BrowseActionTypes.SetTotalPages: {
         return {
           ...state,
-          totalPages: _totalPages
+          totalPages: action.payload
         };
       }
-      case BrowseActionTypes.UpdateCurrentPage: {
-        const _currentPage = state.endOffset / state.maxResultsPerPage;
+      case BrowseActionTypes.SetCurrentPage: {
         return {
           ...state,
-          currentPage: _currentPage
+          currentPage: action.payload
         };
       }
       case BrowseActionTypes.InitializeOffsets: {

@@ -47,12 +47,6 @@ export class BrowseContainer implements OnInit {
   loadPreviousPage(): void {
     this.store.dispatch(new browseActions.LoadPreviousPage());
   }
-  updateCurrentPage(): void {
-    this.store.dispatch(new browseActions.UpdateCurrentPage());
-  }
-  updateTotalPages(): void {
-    this.store.dispatch(new browseActions.UpdateTotalPages());
-  }
   initializeOffsets(): void {
     this.store.dispatch(new browseActions.InitializeOffsets());
   }
@@ -89,7 +83,6 @@ export class BrowseContainer implements OnInit {
       }
       else{
         this.initializeResultsInView()
-        this.updateTotalPages()
       }
      })
     this.initializeOffsets();
