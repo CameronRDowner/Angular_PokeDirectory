@@ -24,7 +24,7 @@ const initialState: BrowseState = {
     maxResultsPerPage: 15,
     currentPage: 1,
     totalPages: null,
-    alertModalMessage: "",
+    alertModalMessage: null,
     alertModalVisible: false
 };
 export function reducer(state = initialState, action: BrowseActions): BrowseState {
@@ -121,6 +121,20 @@ export function reducer(state = initialState, action: BrowseActions): BrowseStat
           ...state,
           resultsInView : _resultsInView,
         }
+      }
+      case BrowseActionTypes.OpenAlertModal: {
+        return {
+          ...state,
+          alertModalVisible: true,
+          alertModalMessage: action.payload
+        };
+      }
+      case BrowseActionTypes.CloseAlertModal: {
+        return {
+          ...state,
+          alertModalVisible: false,
+          alertModalMessage: null
+        };
       }
       default:
         return state;

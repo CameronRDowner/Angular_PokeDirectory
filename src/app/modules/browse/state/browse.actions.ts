@@ -106,4 +106,6 @@ export type BrowseActions = SetResultsInView
   | LoadNextPage
   | LoadPreviousPage
   | SortPokemonByName
-  | SortPokemonById;
+  | SortPokemonById
+  | OpenAlertModal
+  | CloseAlertModal;

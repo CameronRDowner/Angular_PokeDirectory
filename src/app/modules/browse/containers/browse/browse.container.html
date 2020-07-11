@@ -1,6 +1,6 @@
 <div class="browse-page">
     <div class="flex-container-row-center">
-        <app-alert-modal [alertMessage]="alertModalMessage$ | async" [modalVisible]="alertModalVisible$ | async" ></app-alert-modal>
+        <app-alert-modal [message]="alertModalMessage$ | async" [modalVisible]="alertModalVisible$ | async" (closeModalClicks)="closeModal()"></app-alert-modal>
         <app-search-controls></app-search-controls>
         <app-radio-cluster *ngIf="(currentList$ | async) === 'Pokemon' " [radioCluster]="pokemonSortingButtons" (radioButtonClick)="handlePokemonSort($event)"></app-radio-cluster>
     </div >

@@ -51,6 +51,9 @@ export class BrowseContainer implements OnInit {
         this.loadPreviousPage();
       }
     }
+  closeModal():void{
+    this.store.dispatch(new browseActions.CloseAlertModal())
+  }
   handlePokemonSort(buttonName:string):void{
     if(buttonName === "Id"){
       this.sortPokemonById();
@@ -78,11 +81,16 @@ export class BrowseContainer implements OnInit {
     this.currentPage$ = this.store.pipe(select(browseSelectors.getCurrentPage));
     this.totalPages$ = this.store.pipe(select(browseSelectors.getTotalPages));
     this.resultsInView$ = this.store.pipe(select(browseSelectors.getResultsInView));
+    this.alertModalVisible$ = this.store.pipe(select(browseSelectors.getAlertModalVisible));
+    this.alertModalMessage$ = this.store.pipe(select(browseSelectors.getAlertModalMessage));
     this.allPokemon$.pipe(takeWhile(()=>this.componentActive)).subscribe(allPokemon=>{ 
       if(allPokemon === null){
         this.store.dispatch(new browseActions.LoadAllPokemon)
       }
      })
+    this.alertModalVisible$.subscribe(visibility=>{
+      console.log(visibility);
+    })
   }
   ngOnDestroy(): void{
     this.componentActive = false;

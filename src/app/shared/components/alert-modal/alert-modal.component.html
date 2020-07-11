@@ -1,4 +1,5 @@
-<div v-if="modalVisible" class="alert-modal--backdrop"></div>
-<div class="alert-modal--modal">
-    <p class="alert-modal__message">{{ alertMessage }}</p>
+<div *ngIf="modalVisible" class="alert-modal--backdrop" (click)="emitCloseModal()"></div>
+<div *ngIf="modalVisible" class="alert-modal--modal">
+    <a class="alert-modal__close-button" (click)="emitCloseModal()">x</a>
+    <p class="alert-modal__message">{{ message }}</p>
 </div>

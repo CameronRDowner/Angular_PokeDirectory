@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-alert-modal',
@@ -7,12 +7,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AlertModalComponent implements OnInit {
   @Input() modalVisible: boolean
-  @Input() alertMessage: string;
+  @Input() message: string;
+  @Output() closeModalClicks = new EventEmitter();
+  emitCloseModal():void{
+    this.closeModalClicks.emit(null);
+  }
   constructor() {
-    this.modalVisible = true;
    }
 
   ngOnInit(): void {
+    console.log(this.modalVisible)
   }
 
 }
