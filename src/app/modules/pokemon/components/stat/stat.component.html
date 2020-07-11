@@ -1,4 +1,4 @@
-<div class="stat--wrapper">
+<div class="stat--wrapper" [ngStyle]="getWrapperStyles()">
     <h4 class="stat__name stat__text stat__text--bold">{{ stat.stat.name | abbrevSpecialString | titlecase }}: </h4>
     <h4 class="stat__stat-base stat__text">{{ stat.base_stat }}</h4>
         <div class="stat__bar-container"><div [ngStyle]="getBarStyles()" class="stat__bar"></div></div>

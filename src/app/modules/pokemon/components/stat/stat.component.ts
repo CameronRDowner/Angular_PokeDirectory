@@ -9,16 +9,28 @@ import { StatBarColors } from '../../models/stat-bar-colors/stat-bar-colors';
 })
 export class StatComponent implements OnInit {
   @Input() stat : PokemonStat;
+  @Input() statIndex: number;
   barColors : StatBarColors;
   constructor() {
     this.barColors = new StatBarColors()
    }
   getBarStyles():any{
-    let styles = {
+    return{
       'background-color' : this.barColors[this.stat.stat.name],
       'width' : `${Math.round((this.stat.base_stat/255)*100)}%`
+    }     
+  }
+  getWrapperStyles():any{
+    let wrapperColor = null;
+    if(this.statIndex % 2 === 0){
+      wrapperColor = "#D0D0D0"
     }
-    return styles;      
+    else{
+      wrapperColor = "#E9E9E9"
+    }
+    return {
+      'background-color' : wrapperColor
+    }
   }
   getEstimatedStat(level:number, iV?:number, eV?:number):number{
     if(iV === undefined || eV === undefined){
@@ -41,6 +53,7 @@ export class StatComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+    console.log(this.statIndex)
   }
 
 }
