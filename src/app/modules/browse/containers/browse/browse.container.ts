@@ -54,6 +54,9 @@ export class BrowseContainer implements OnInit {
   closeModal():void{
     this.store.dispatch(new browseActions.CloseAlertModal())
   }
+  clearSearchTerm():void {
+    this.store.dispatch(new browseActions.ClearSearchTerm());
+  }
   handlePokemonSort(buttonName:string):void{
     if(buttonName === "Id"){
       this.sortPokemonById();
@@ -68,6 +71,10 @@ export class BrowseContainer implements OnInit {
   sortPokemonByName():void{
     this.store.dispatch(new browseActions.SortPokemonByName)
   }
+  clearResultsInView():void{
+    this.store.dispatch(new browseActions.ClearResultsInView)
+  }
+
   constructor(private store: Store<app.State>) {
     this.pokemonSortingButtons = new RadioCluster(["Id", "Name"], false);
     this.componentActive = true;
@@ -88,12 +95,11 @@ export class BrowseContainer implements OnInit {
         this.store.dispatch(new browseActions.LoadAllPokemon)
       }
      })
-    this.alertModalVisible$.subscribe(visibility=>{
-      console.log(visibility);
-    })
   }
   ngOnDestroy(): void{
     this.componentActive = false;
+    this.clearResultsInView();
+    this.clearSearchTerm();
   }
 
 }

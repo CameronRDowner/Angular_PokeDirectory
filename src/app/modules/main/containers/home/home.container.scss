@@ -1,14 +1,24 @@
-.home-page{
-    padding: 5rem;
+.home-container{
+    padding: 3rem 0rem 3rem 0rem;
     align-items: flex-start;
 }
-.home-page-header{
+.home-container__header{
 text-align: center;
 padding-right: 5rem;
-margin: 3rem 0rem;
+margin: 3rem 0 1rem 0rem;
 }
-.home-page-paragraph{
-padding-right: 5rem;
+.home-container__paragraph{
 line-height: 2rem;
-max-width: 65rem;
+word-wrap:break-word;
+max-width: 35rem;
+padding: 1rem;
+}
+.home-container__list{
+    margin: 0.5rem 0 1rem 0;
+}
+.home-container__list-title{
+margin: 0 0 0 1rem;
+}
+.home-container__list-item{
+padding: 0.5rem 0;
 }

@@ -32,6 +32,12 @@ const initialState: BrowseState = {
 export function reducer(state = initialState, action: BrowseActions): BrowseState {
 
     switch (action.type) {
+      case BrowseActionTypes.ClearResultsInView: {
+        return {
+          ...state,
+          resultsInView: null
+        };
+      }
       case BrowseActionTypes.SearchPokemonSuccess: {
         return {
           ...state,

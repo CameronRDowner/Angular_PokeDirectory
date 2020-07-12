@@ -88,7 +88,7 @@ export class BrowseEffects {
   )
   @Effect()
   initializeResultsInView$: Observable<Action> = this.actions$.pipe(
-    ofType(browseActions.BrowseActionTypes.LoadAllPokemonSuccess),
+    ofType(browseActions.BrowseActionTypes.LoadAllPokemonSuccess, browseActions.BrowseActionTypes.ClearResultsInView),
     withLatestFrom(
       this.store$.select(browseSelectors.getCurrentList),
       this.store$.select(browseSelectors.getResultsInView),

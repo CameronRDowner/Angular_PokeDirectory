@@ -21,7 +21,8 @@ export enum BrowseActionTypes {
     SortPokemonByName = '[Browse] Sort Pokemon By Name',
     SortPokemonById = '[Browse] Sort Pokemon By Id',
     OpenAlertModal = '[Browse] Open Alert Modal',
-    CloseAlertModal = '[Browse] Close Alert Modal'
+    CloseAlertModal = '[Browse] Close Alert Modal',
+    ClearResultsInView = '[Browse] Clear Results In View'
 }
 export class CloseAlertModal implements Action {
     readonly type = BrowseActionTypes.CloseAlertModal;
@@ -99,6 +100,9 @@ export class SortPokemonByName implements Action {
 export class SortPokemonById implements Action {
     readonly type = BrowseActionTypes.SortPokemonById;
 }
+export class ClearResultsInView implements Action {
+    readonly type = BrowseActionTypes.ClearResultsInView;
+}
 export type BrowseActions = SetResultsInView
   | SetCurrentList
   | LoadAllPokemonSuccess
@@ -116,4 +120,7 @@ export type BrowseActions = SetResultsInView
   | SortPokemonByName
   | SortPokemonById
   | OpenAlertModal
-  | CloseAlertModal;
+  | CloseAlertModal
+  | SetSearchTerm
+  | ClearSearchTerm
+  | ClearResultsInView;
