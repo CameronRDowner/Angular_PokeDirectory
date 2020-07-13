@@ -2,7 +2,7 @@
 .pokemon-of-the-day{
     margin: 0 1rem 1rem 1rem;
     text-align: center;
-    width: 23rem;
+    width: 20rem;
 }
 .pokemon-of-the-day__title{
 margin: 0rem 0rem 3rem 0rem;
@@ -24,9 +24,10 @@ width: 10rem;
 .pokemon-of-the-day__name{
 font-size: 2.5rem;
 color: $medium-red;
-margin-bottom: 1rem;
+margin: 0 0 0rem 0;
 }
 .pokemon-of-the-day__information{
     font-size: 0.9rem;
     padding: 0.2rem;
+    margin: 0;
 }

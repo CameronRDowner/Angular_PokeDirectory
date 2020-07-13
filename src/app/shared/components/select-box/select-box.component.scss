@@ -16,8 +16,9 @@
     font-size: 1.5rem;    
     font-weight: bold;
     margin-bottom: 0rem;
-
-    
+    &:focus{
+        outline: none;
+    }    
 }
 .select-box__caret{
     position: absolute;
