@@ -46,7 +46,7 @@ export class SearchControlsContainer implements OnInit {
   }
   constructor(private router: Router, private store: Store<app.State>) {
     this.componentActive = true;
-    this.searchButtonIconClasses = "fas fa-search";
+    this.searchButtonIconClasses = "fa fa-search";
     this.selectBoxOptions = [
       "Pokemon"
     ]
