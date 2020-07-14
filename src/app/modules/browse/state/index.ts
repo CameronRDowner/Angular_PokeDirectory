@@ -40,3 +40,11 @@ export const getTotalPages = createSelector(
     getBrowseFeatureState,
     state => state.totalPages
 )
+export const getAlertModalVisible = createSelector(
+    getBrowseFeatureState,
+    state => state.alertModalVisible
+)
+export const getAlertModalMessage = createSelector(
+    getBrowseFeatureState,
+    state => state.alertModalMessage
+)

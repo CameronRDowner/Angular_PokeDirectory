@@ -1,8 +1,9 @@
 @import '../../../../assets/sass/variables';
+@import '../../../../assets/sass/animations';
 .select-box{
     display: inline-block;
     position: relative;
-    margin: 0;
+    margin: 0 0 0.3rem 0;
 }
 .select-box__select{
     background-color: $medium-red;
@@ -11,21 +12,24 @@
     -moz-appearance: none;
     padding: 0 3rem 0 1rem;
     border-bottom: solid 1px $medium-red;
+    border-right: solid 1px $medium-red;
+    border-left: solid 1px $medium-red;
     color: $white;
-    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.5);
     font-size: 1.5rem;    
     font-weight: bold;
     margin-bottom: 0rem;
-
-    
+    cursor: pointer;
+    &:focus{
+        outline: none;
+    }    
 }
 .select-box__caret{
     position: absolute;
-    color: $dark-red;
-    text-shadow: 2px 3px 8px rgba(59, 37, 17, 0.35) inset; 
-    font-size: 2rem;
+    color: rgba(0,0,0,0);
+    text-shadow: 1px 2px 6px $medium-red, 0 0 0 rgba(26,26,26,0.8), 1px 4px 6px;
+    font-size: 2.4rem;
     right: 1rem;
-    bottom: 0.7rem;
+    bottom: 0.5rem;
 
 
 }

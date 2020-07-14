@@ -6,7 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.container.scss']
 })
 export class HomeContainer implements OnInit {
-  constructor() { }
+  newFeatureList:Array<string>;
+  upcomingFeatureList:Array<string>;
+  constructor() {
+    this.newFeatureList = [
+      "Pokemon Of The Day",
+      "search all Pokemon by name",
+      "Pokemon Stats",
+      "Pokemon Info",
+      "view Pokemon Sprites"
+  ]
+    this.upcomingFeatureList = [
+      "mobile support"
+    ]
+   }
 
   ngOnInit(): void {
   }

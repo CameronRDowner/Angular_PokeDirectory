@@ -3,7 +3,6 @@ import { NamedAPIResource } from 'src/app/shared/models/named-apiresource';
 
 export enum BrowseActionTypes {
     SetResultsInView = '[Browse] Set Results In View',
-    InitializeResultsInView = '[Browse] Initialize Results In View',
     SetCurrentList = '[Browse] Set Current List',
     LoadAllPokemonSuccess = '[Browse] Load All Pokemon Success',
     LoadAllPokemonFailure = '[Browse] Load All Pokemon Failure',
@@ -13,15 +12,17 @@ export enum BrowseActionTypes {
     SearchPokemon = '[Browse] Search Pokemon',
     SearchPokemonSuccess = '[Browse] Search Pokemon Success',
     SearchPokemonFailure = '[Browse] Search Pokemon Failure',
-    UpdateTotalPages = '[Browse] Update Total Pages',
-    UpdateCurrentPage = '[Browse] Update Current Page',
-    InitializeOffsets = '[Browse] Initialize Offsets',
+    SetTotalPages = '[Browse] Set Total Pages',
+    SetCurrentPage = '[Browse] Set Current Page',
+    SetStartOffset = '[Browse] Set Start Offset',
+    SetEndOffset = '[Browse] Set End Offset',
     LoadNextPage = '[Browse] Load Next Page',
     LoadPreviousPage = '[Browse] Load Previous Page',
     SortPokemonByName = '[Browse] Sort Pokemon By Name',
     SortPokemonById = '[Browse] Sort Pokemon By Id',
     OpenAlertModal = '[Browse] Open Alert Modal',
-    CloseAlertModal = '[Browse] Close Alert Modal'
+    CloseAlertModal = '[Browse] Close Alert Modal',
+    ClearResultsInView = '[Browse] Clear Results In View'
 }
 export class CloseAlertModal implements Action {
     readonly type = BrowseActionTypes.CloseAlertModal;
@@ -53,11 +54,6 @@ export class SetResultsInView implements Action {
   
     constructor(public payload: NamedAPIResource[]) { }
 }
-export class InitializeResultsInView implements Action {
-    readonly type = BrowseActionTypes.InitializeResultsInView;
-  
-    constructor(public payload: NamedAPIResource[]) { }
-}
 export class SetCurrentList implements Action {
     readonly type = BrowseActionTypes.SetCurrentList;
   
@@ -76,14 +72,21 @@ export class LoadAllPokemonFailure implements Action {
 export class LoadAllPokemon implements Action {
     readonly type = BrowseActionTypes.LoadAllPokemon;
 }
-export class UpdateTotalPages implements Action {
-    readonly type = BrowseActionTypes.UpdateTotalPages;
+export class SetTotalPages implements Action {
+    readonly type = BrowseActionTypes.SetTotalPages;
+    constructor(public payload: number){}
 }
-export class UpdateCurrentPage implements Action {
-    readonly type = BrowseActionTypes.UpdateCurrentPage;
+export class SetCurrentPage implements Action {
+    readonly type = BrowseActionTypes.SetCurrentPage;
+    constructor(public payload: number){}
 }
-export class InitializeOffsets implements Action {
-    readonly type = BrowseActionTypes.InitializeOffsets;
+export class SetStartOffset implements Action {
+    readonly type = BrowseActionTypes.SetStartOffset;
+    constructor(public payload: number){}
+}
+export class SetEndOffset implements Action {
+    readonly type = BrowseActionTypes.SetEndOffset;
+    constructor(public payload: number){}
 }
 export class LoadNextPage implements Action {
     readonly type = BrowseActionTypes.LoadNextPage;
@@ -97,8 +100,10 @@ export class SortPokemonByName implements Action {
 export class SortPokemonById implements Action {
     readonly type = BrowseActionTypes.SortPokemonById;
 }
+export class ClearResultsInView implements Action {
+    readonly type = BrowseActionTypes.ClearResultsInView;
+}
 export type BrowseActions = SetResultsInView
-  | InitializeResultsInView
   | SetCurrentList
   | LoadAllPokemonSuccess
   | LoadAllPokemonFailure
@@ -106,12 +111,16 @@ export type BrowseActions = SetResultsInView
   | SearchPokemon
   | SearchPokemonSuccess
   | SearchPokemonFailure
-  | SetSearchTerm
-  | ClearSearchTerm
-  | UpdateTotalPages
-  | UpdateCurrentPage
-  | InitializeOffsets
+  | SetTotalPages
+  | SetCurrentPage
+  | SetStartOffset
+  | SetEndOffset
   | LoadNextPage
   | LoadPreviousPage
   | SortPokemonByName
-  | SortPokemonById;
+  | SortPokemonById
+  | OpenAlertModal
+  | CloseAlertModal
+  | SetSearchTerm
+  | ClearSearchTerm
+  | ClearResultsInView;

@@ -26,12 +26,18 @@ const initialState: BrowseState = {
     maxResultsPerPage: 15,
     currentPage: 1,
     totalPages: null,
-    alertModalMessage: "",
+    alertModalMessage: null,
     alertModalVisible: false
 };
 export function reducer(state = initialState, action: BrowseActions): BrowseState {
 
     switch (action.type) {
+      case BrowseActionTypes.ClearResultsInView: {
+        return {
+          ...state,
+          resultsInView: null
+        };
+      }
       case BrowseActionTypes.SearchPokemonSuccess: {
         return {
           ...state,
@@ -68,66 +74,49 @@ export function reducer(state = initialState, action: BrowseActions): BrowseStat
           currentList: action.payload
         };
       }
-      case BrowseActionTypes.UpdateTotalPages: {
-        const _totalPages = Math.ceil(state.resultsInView.length / state.maxResultsPerPage)
+      case BrowseActionTypes.SetTotalPages: {
         return {
           ...state,
-          totalPages: _totalPages
+          totalPages: action.payload
         };
       }
-      case BrowseActionTypes.UpdateCurrentPage: {
-        const _currentPage = state.endOffset / state.maxResultsPerPage;
+      case BrowseActionTypes.SetCurrentPage: {
         return {
           ...state,
-          currentPage: _currentPage
+          currentPage: action.payload
         };
       }
-      case BrowseActionTypes.InitializeOffsets: {
-        const _maxResultsPerPage = state.maxResultsPerPage
+      case BrowseActionTypes.SetStartOffset: {
         return {
           ...state,
-          startOffset: 0,
-          endOffset: _maxResultsPerPage
+          startOffset: action.payload,
+        };
+      }
+      case BrowseActionTypes.SetEndOffset: {
+        return {
+          ...state,
+          endOffset: action.payload,
         };
       }
       case BrowseActionTypes.LoadNextPage: {
-        if(state.currentPage !== state.totalPages){
-          const _currentPage = state.endOffset / state.maxResultsPerPage;
           const _startOffset = state.endOffset;
           const _endOffset = state.endOffset + state.maxResultsPerPage;
           return{
             ...state,
             startOffset: _startOffset,
             endOffset: _endOffset,
-            currentPage: _currentPage
           }
-        }
-        else{
-          return {
-            ...state
-          };
-        }
       }
       case BrowseActionTypes.LoadPreviousPage: {
-        if(state.currentPage !== 1){
-          const _currentPage = state.endOffset / state.maxResultsPerPage;
           const _startOffset = state.startOffset - state.maxResultsPerPage;
-          const _endOffset = state.endOffset + state.maxResultsPerPage;
+          const _endOffset = state.endOffset - state.maxResultsPerPage;
           return{
             ...state,
             startOffset: _startOffset,
-            endOffset: _endOffset,
-            currentPage: _currentPage
+            endOffset: _endOffset
           }
-        }
-        else{
-          return {
-            ...state
-          };
-        }
       }
       case BrowseActionTypes.SortPokemonById: {
-        const _endOffset = state.maxResultsPerPage
         const _resultsInView = state.resultsInView.slice(0);
         _resultsInView.sort((resultA, resultB)=>{
           let idA = parseInt(resultA.url.substring(34,resultA.url.length -1));
@@ -136,14 +125,10 @@ export function reducer(state = initialState, action: BrowseActions): BrowseStat
         })
         return {
           ...state,
-          resultsInView: _resultsInView,
-          currentPage: 1,
-          startOffset: 0,
-          endOffset: _endOffset
+          resultsInView: _resultsInView
         }
       }
       case BrowseActionTypes.SortPokemonByName: {
-        const _endOffset = state.maxResultsPerPage;
         let _resultsInView = state.resultsInView.slice(0);
         _resultsInView.sort((resultA, resultB)=>{
           let nameA = resultA.name.toLowerCase();
@@ -155,10 +140,21 @@ export function reducer(state = initialState, action: BrowseActions): BrowseStat
         return {
           ...state,
           resultsInView : _resultsInView,
-          currentPage: 1,
-          startOffset: 0,
-          endOffset: _endOffset
         }
+      }
+      case BrowseActionTypes.OpenAlertModal: {
+        return {
+          ...state,
+          alertModalVisible: true,
+          alertModalMessage: action.payload
+        };
+      }
+      case BrowseActionTypes.CloseAlertModal: {
+        return {
+          ...state,
+          alertModalVisible: false,
+          alertModalMessage: null
+        };
       }
       default:
         return state;

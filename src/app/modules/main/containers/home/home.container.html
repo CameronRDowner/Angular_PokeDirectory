@@ -1,11 +1,21 @@
-<div class="home-page flex-container-row-center">
-        <div>
-            <app-search-controls></app-search-controls>
+<div class="home-container">
+    <app-search-controls></app-search-controls>
+    <h1 class="home-container__header">Welcome to PokeDirectory!</h1>
+        <div class="flex-container-row-start">
             <div>
-                <h1 class="home-page-header">Welcome to PokeDirectory!</h1>
-                <p class="home-page-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam cursus euismod semper. Curabitur sagittis odio eget lacus convallis vestibulum. Suspendisse eu felis in neque scelerisque varius. Quisque et aliquam ipsum. Nunc iaculis condimentum convallis. Integer quis massa a urna aliquam interdum sit amet ac velit. Morbi a euismod sem. Cras massa elit, auctor vel ornare quis, faucibus at massa. Aenean aliquam urna ac quam lobortis, eu maximus risus efficitur. Proin a orci vel felis sollicitudin auctor. Suspendisse potenti. Ut ultricies consectetur erat vel bibendum. Pellentesque sed aliquam lectus.</p>
-                <p class="home-page-paragraph">Mauris scelerisque, velit et accumsan dignissim, dolor dolor euismod magna, eu sollicitudin nisi felis eget orci. Etiam et diam eget nulla egestas bibendum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed dignissim lectus eget vulputate molestie. Vivamus vel lacus facilisis, ultricies lacus sed, tristique felis. Aliquam erat volutpat. Etiam id diam sit amet sem congue maximus. Maecenas dignissim lacus quis scelerisque semper. Pellentesque sed sem placerat, congue nibh sed, fermentum urna. Nunc eu consequat diam. Sed pretium urna ac fringilla feugiat. Etiam scelerisque sodales erat sed laoreet. Nullam sit amet nisl rutrum, tempor nibh at, sodales sem. Maecenas tempus bibendum nulla non lacinia. Aliquam porta quam congue accumsan mollis. Ut quis interdum neque.</p>
+                <p class="home-container__paragraph">Built upon the RESTful PokeAPI, this app has access to a myriad of information on the Pokemon games. New features are constantly being added so be sure to stop by and check them out.</p>
+                <h3 class="home-container__list-title">Whats New</h3>
+                <ul class="home-container__list">
+                    <li class="home-container__list-item" *ngFor="let newFeature of newFeatureList">{{ newFeature }}</li>
+                </ul>
+                <h3 class="home-container__list-title">Coming Soon</h3>
+                <ul class="home-container__list">
+                    <li class="home-container__list-item" *ngFor="let upcomingFeature of upcomingFeatureList">{{ upcomingFeature }}</li>
+                </ul>
+            </div>
+            <div class="flex-container-column-center">
+            <h2>Pokemon Of The Day</h2>    
+            <app-pokemon-of-the-day></app-pokemon-of-the-day>
             </div>
         </div>
-        <app-pokemon-of-the-day></app-pokemon-of-the-day>
 </div>

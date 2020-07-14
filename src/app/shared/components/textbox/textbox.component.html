@@ -1,4 +1,4 @@
 <div class="textbox--wrapper">
-    <input class="textbox__textbox" type="text" name="search-box" [(ngModel)]="textboxValue">
+    <input class="textbox__textbox" autocomplete="off" type="text" name="search-box" [(ngModel)]="textboxValue">
     <a (click)="handleClearButtonClick()" *ngIf="textboxValue !== '' && clearButton === true" class="textbox__clear-button" >x</a>
 </div>  

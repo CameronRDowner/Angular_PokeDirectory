@@ -1,14 +1,11 @@
-import { Component, OnInit, Output, ViewChild } from '@angular/core';
-import { TextButton } from 'src/app/shared/models/text-button/text-button';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import * as app from '../../../../app.state';
-import * as browse from '../../state';
 import * as browseActions from '../../state/browse.actions';
 import { Store, select } from '@ngrx/store';
-import { takeWhile, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import * as browseSelectors from '../../state';
 import { TextboxComponent } from 'src/app/shared/components/textbox/textbox.component';
 
@@ -31,7 +28,7 @@ export class SearchControlsContainer implements OnInit {
   }
   handleClearTextbox():void{
     this.clearSearchTerm();
-    this.textbox.clearTextbox();
+    
   }
   clearSearchTerm():void {
     this.store.dispatch(new browseActions.ClearSearchTerm())
@@ -51,7 +48,7 @@ export class SearchControlsContainer implements OnInit {
   }
   constructor(private router: Router, private store: Store<app.State>) {
     this.componentActive = true;
-    this.searchButtonIconClasses = "fas fa-search";
+    this.searchButtonIconClasses = "fa fa-search";
     this.selectBoxOptions = [
       "Pokemon"
     ]

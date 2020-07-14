@@ -1,8 +1,6 @@
-<div class="flex-container-column-center">
-    <h2>Stats</h2>
 <div class="stat-list panel">
     <h4 class="stat-list__text--bold stat-list__base-header">Base</h4><h4 class="stat-list__text--bold stat-list__50-header">At Lv. 50</h4><h4 class="stat-list__text--bold stat-list__100-header">At Lv. 100</h4>
-    <div class="stat-list__stats"><app-stat *ngFor="let stat of statList" [stat]="stat"></app-stat></div>
+    <div class="stat-list__stats"><app-stat *ngFor="let stat of statList; let indexOfStat = index;" [stat]="stat" [statIndex]="indexOfStat"></app-stat></div>
     <h4 class="stat-list__total-title">Total:</h4><h4 class="stat-list__total-base">{{ getBaseStatTotal() }}</h4>
 </div>
-</div>
+

@@ -11,6 +11,7 @@ export class TextboxComponent implements OnInit {
   @Output() clearButtonClick = new EventEmitter(); 
   textboxValue: string;
   emitClearButtonClick():void{
+    console.log('clear ran')
     this.clearButtonClick.emit(null);
   }
   clearTextbox():void {

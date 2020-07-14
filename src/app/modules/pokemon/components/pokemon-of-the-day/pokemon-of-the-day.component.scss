@@ -1,19 +1,27 @@
 @import '../../../../../assets/sass/variables';
 .pokemon-of-the-day{
+    margin: 0 1rem 1rem 1rem;
     text-align: center;
-    width: 23rem;
+    width: 19rem;
 }
 .pokemon-of-the-day__title{
-margin: 0rem 0rem 3rem 0rem;
+margin: 0rem;
 }
 .pokemon-of-the-day__wrapper{
+    display: block;
     position: relative;
-    margin: 2rem;
+    margin: 1rem;
+    padding: 0.5rem;
     overflow: hidden;
     border: solid 2px $medium-black;
+    cursor: pointer;
+    
+    &:hover{
+        border: solid 2px $medium-red;
+    }
 }
 .pokemon-of-the-day__id{
-font-size: 3rem;
+font-size: 3.5rem;
 margin: 0;
 padding: 0;
 }
@@ -23,9 +31,10 @@ width: 10rem;
 .pokemon-of-the-day__name{
 font-size: 2.5rem;
 color: $medium-red;
-margin-bottom: 1rem;
+margin: 0;
 }
 .pokemon-of-the-day__information{
     font-size: 0.9rem;
     padding: 0.2rem;
+    margin: 0;
 }
