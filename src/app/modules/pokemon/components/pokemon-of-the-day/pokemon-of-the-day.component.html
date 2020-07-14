@@ -1,7 +1,6 @@
 
 <div class="panel pokemon-of-the-day">
-<a (click)="openPokemonPage()" >
-<div class="pokemon-of-the-day__wrapper">
+<a (click)="openPokemonPage()" class="pokemon-of-the-day__wrapper">
     <h3 class="pokemon-of-the-day__id">#{{this.pokemonOfTheDay?.id.toString().padStart(3, '0')}}</h3>
 <img class="pokemon-of-the-day__sprite-image" src={{this.pokemonOfTheDay?.sprites.front_default}}>
 <h3 class="pokemon-of-the-day__name">{{this.pokemonOfTheDay?.name | titlecase}}</h3>
@@ -11,7 +10,6 @@
 <div class="flex-container-row-center">
 <h3 class="pokemon-of-the-day__information">Height: {{(this.pokemonOfTheDay.height*0.1).toFixed(1)}}m</h3>
 <h3 class="pokemon-of-the-day__information">Weight: {{(this.pokemonOfTheDay.weight*0.1).toFixed(1)}}kg</h3>
-</div>
 </div>
 </a>
 </div>

@@ -33,7 +33,11 @@
 .radio-cluster__button--alternate-untoggled{
     color: $medium-black;
     background-color: $dark-white;
-    margin-bottom: 1rem;
+    cursor: pointer;
+    &:hover{
+        background-color: $medium-black;
+        color: $dark-white;
+    }
 }
 .radio-cluster__button--toggled{
 margin: 0 0.25rem;
