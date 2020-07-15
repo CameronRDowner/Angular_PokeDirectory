@@ -16,6 +16,7 @@ import { SelectBoxComponent } from '../../shared/components/select-box/select-bo
 import { PokemonInfoComponent } from './components/pokemon-info/pokemon-info.component';
 import { AbilityComponent } from './components/ability/ability.component';
 import { StatComponent } from './components/stat/stat.component';
+import { IconButtonComponent } from '../../shared/components/icon-button/icon-button.component';
 
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './state/pokemon.reducer';
@@ -47,7 +48,8 @@ import { AbbrevSpecialStringPipe } from './pipes/abbrev-special-string.pipe';
     ReversePipe,
     ReplaceDashPipe,
     KeysArrayPipe,
-    AbbrevSpecialStringPipe
+    AbbrevSpecialStringPipe,
+    IconButtonComponent
   ],
   imports: [
     StoreModule.forFeature('pokemon', reducer),
@@ -61,7 +63,8 @@ import { AbbrevSpecialStringPipe } from './pipes/abbrev-special-string.pipe';
     TextButtonComponent,
     PokemonSearchResultComponent,
     RadioClusterComponent,
-    SelectBoxComponent
+    SelectBoxComponent,
+    IconButtonComponent
   ]
 })
 export class PokemonModule { }

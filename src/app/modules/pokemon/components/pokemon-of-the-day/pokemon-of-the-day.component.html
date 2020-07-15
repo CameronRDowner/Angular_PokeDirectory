@@ -1,6 +1,6 @@
 
-<div class="panel pokemon-of-the-day">
-<a (click)="openPokemonPage()" class="pokemon-of-the-day__wrapper">
+<div class="panel pokemon-of-the-day inset-shadow-sink animation-delay-500ms">
+<a (click)="openPokemonPage()" class="pokemon-of-the-day__wrapper fade-in animation-delay-1000ms">
     <h3 class="pokemon-of-the-day__id">#{{this.pokemonOfTheDay?.id.toString().padStart(3, '0')}}</h3>
 <img class="pokemon-of-the-day__sprite-image" src={{this.pokemonOfTheDay?.sprites.front_default}}>
 <h3 class="pokemon-of-the-day__name">{{this.pokemonOfTheDay?.name | titlecase}}</h3>

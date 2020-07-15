@@ -28,6 +28,9 @@ export class PokemonContainer implements OnInit {
   encounters$:Observable<Array<LocationAreaEncounter>>
   abilities$:Observable<Array<PokemonAbility>>
   hiddenAbilities$:Observable<Array<PokemonAbility>>
+  openBrowsePage(): void{
+    this.router.navigate(['browse'])
+  }
   setSelectedGame(_selectedGame:string){
     this.store.dispatch(new pokemonActions.SetSelectedGame(_selectedGame));
   }

@@ -6,8 +6,8 @@
     </div >
     <div class="flex-container-row-center search-results--wrapper">
         <app-carousel-button [orientation]="'left'" (buttonClick)="handleLoadPreviousPage()"></app-carousel-button> 
-        <div class="search-results__panel panel flex-container-column-center">
-            <div class="search-results__container">
+        <div class="search-results__panel panel flex-container-column-center inset-shadow-sink animation-delay-500ms">
+            <div class="search-results__container fade-in animation-delay-1000ms">
             <app-pokemon-search-result *ngFor="let result of resultsInView$ | async | slice:(startOffset$ | async):(endOffset$ | async)" [searchResult] = "result"></app-pokemon-search-result>
             </div>
             <app-page-indicator [currentPage]="currentPage$ | async" [totalPages]="totalPages$ | async"></app-page-indicator>

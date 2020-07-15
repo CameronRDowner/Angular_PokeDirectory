@@ -1,3 +1,4 @@
+/* hover animations */
   .shadow-drop-red {
     -webkit-transform: perspective(0px) translateZ(0);
     transform: perspective(0) translateZ(0);
@@ -36,3 +37,57 @@
     -webkit-transform: translateY(-2px);
     transform: translateY(-2px);
   }
+/* enter animations */
+.fade-in {
+  opacity: 0;
+	-webkit-animation: fade-in 0.5s ease-out forwards;
+	        animation: fade-in 0.5s ease-out forwards;
+}
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.inset-shadow-sink{
+  opacity: 0;
+  -webkit-animation: inset-shadow-sink 0.5s ease-out forwards;
+	        animation: inset-shadow-sink 0.5s ease-out forwards;
+}
+@-webkit-keyframes inset-shadow-sink {
+  0% {
+    opacity: 1;
+    box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0.6);
+  }
+  100% {
+    opacity: 1;
+    box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.6);
+  }
+}
+@keyframes inset-shadow-sink {
+  0% {
+    opacity: 1;
+    box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0.6);
+  }
+  100% {
+    opacity: 1;
+    box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.6);
+  }
+}
+/* animation delays */
+.animation-delay-500ms{
+  animation-delay: 500ms;
+}
+.animation-delay-1000ms{
+  animation-delay: 1000ms;
+} 

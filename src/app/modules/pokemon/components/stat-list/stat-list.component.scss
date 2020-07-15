@@ -1,5 +1,6 @@
-.stat-list{
-    margin: 0 1.5rem 1.5rem 1.5rem;
+@import '../../../../../assets/sass/animations';
+.stat-list__wrapper{
+    margin: 0;
     display: grid;
     justify-items: center;
     align-items: center;
