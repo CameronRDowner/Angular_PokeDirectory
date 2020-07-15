@@ -4,14 +4,20 @@
         <div class="flex-container-row-start">
             <div>
                 <p class="home-container__paragraph">Built upon the RESTful PokeAPI, this app has access to a myriad of information on the Pokemon games. New features are constantly being added so be sure to stop by and check them out.</p>
-                <h3 class="home-container__list-title">Whats New</h3>
-                <ul class="home-container__list">
-                    <li class="home-container__list-item" *ngFor="let newFeature of newFeatureList">{{ newFeature }}</li>
-                </ul>
-                <h3 class="home-container__list-title">Coming Soon</h3>
-                <ul class="home-container__list">
-                    <li class="home-container__list-item" *ngFor="let upcomingFeature of upcomingFeatureList">{{ upcomingFeature }}</li>
-                </ul>
+                <div class="flex-container-row-start">
+                <div>
+                    <h3 class="home-container__list-title">Whats New</h3>
+                    <ul class="home-container__list">
+                        <li class="home-container__list-item" *ngFor="let newFeature of newFeatureList">{{ newFeature }}</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="home-container__list-title">Coming Soon</h3>
+                    <ul class="home-container__list">
+                        <li class="home-container__list-item" *ngFor="let upcomingFeature of upcomingFeatureList">{{ upcomingFeature }}</li>
+                    </ul>
+                </div>
+                </div>
             </div>
             <div class="flex-container-column-center">
             <h2>Pokemon Of The Day</h2>    
