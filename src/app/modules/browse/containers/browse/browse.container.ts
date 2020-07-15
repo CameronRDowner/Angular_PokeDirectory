@@ -98,7 +98,6 @@ export class BrowseContainer implements OnInit {
   }
   ngOnDestroy(): void{
     this.componentActive = false;
-    this.clearResultsInView();
     this.clearSearchTerm();
   }
 

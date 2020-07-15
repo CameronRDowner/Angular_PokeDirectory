@@ -87,6 +87,11 @@ export class BrowseEffects {
     ])
   )
   @Effect()
+  clearResultsInView$: Observable<Action> = this.actions$.pipe(
+    ofType(browseActions.BrowseActionTypes.ClearSearchTerm),
+    mapTo( new browseActions.ClearResultsInView)
+  )
+  @Effect()
   initializeResultsInView$: Observable<Action> = this.actions$.pipe(
     ofType(browseActions.BrowseActionTypes.LoadAllPokemonSuccess, browseActions.BrowseActionTypes.ClearResultsInView),
     withLatestFrom(

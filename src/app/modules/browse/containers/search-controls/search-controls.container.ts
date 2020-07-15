@@ -44,6 +44,21 @@ export class SearchControlsContainer implements OnInit {
   openBrowsePage(): void{
     this.router.navigate(['browse'])
   }
+  loadAllPokemon():void{
+    this.store.dispatch(new browseActions.LoadAllPokemon());
+  }
+  checkIfAllPokemonLoaded():boolean {
+    let allPokemonLoaded = null;
+    this.store.pipe(select(browseSelectors.getAllPokemon)).subscribe(allPokemon=>{
+      if(allPokemon === null){
+        allPokemonLoaded = false
+      }
+      else{
+        allPokemonLoaded = true
+      }
+    })
+    return allPokemonLoaded
+  }
   constructor(private router: Router, private store: Store<app.State>) {
     this.componentActive = true;
     this.searchButtonIconClasses = "fa fa-search";
@@ -55,6 +70,9 @@ export class SearchControlsContainer implements OnInit {
   ngOnInit(): void {
     this.currentList$ = this.store.pipe(select(browseSelectors.getCurrentList));
     this.searchTerm$ = this.store.pipe(select(browseSelectors.getSearchTerm));
+    if(!this.checkIfAllPokemonLoaded()){
+      this.loadAllPokemon();
+    }
   }
   ngAfterViewInit(){
     this.searchTerm$.pipe(take(1)).subscribe(searchTerm=>{
