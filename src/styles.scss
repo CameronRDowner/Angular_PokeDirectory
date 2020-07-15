@@ -10,7 +10,7 @@ body{
     background: rgb(126,0,0);
     background: linear-gradient(0deg, rgba(126,0,0,1) 0%, rgba(228,66,97,1) 100%);
     background-repeat: no-repeat;
-    height: 100vh;
+    min-height: 100vh;
 }
 .results-container{
     display: flex;

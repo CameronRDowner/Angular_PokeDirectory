@@ -37,9 +37,11 @@ export class SearchControlsContainer implements OnInit {
     this.store.dispatch(new browseActions.SearchPokemon())
   }
   handleSearchButtonClick(){
-    this.setSearchTerm(this.textbox.textboxValue)
-    this.searchForPokemon();
-    this.openBrowsePage();
+    if(this.textbox.textboxValue !== ""){
+      this.setSearchTerm(this.textbox.textboxValue)
+      this.searchForPokemon();
+      this.openBrowsePage();
+    }
   }
   openBrowsePage(): void{
     this.router.navigate(['browse'])
