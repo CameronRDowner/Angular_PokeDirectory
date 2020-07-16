@@ -1,9 +1,9 @@
-<div class="select-box shadow-drop-red">
-    <div (click)="toggleOptionsVisibility()" class="select-box__box flex-container-row-center">    
+<div class="select-box">
+    <div (click)="toggleOptionsVisibility()" class="select-box__box flex-container-row-center shadow-drop-red">    
         <span class="select-box__selected-title">{{ selectedOption }}</span>
         <i class="select-box__caret fa fa-caret-down"></i>
     </div>
-    <ul *ngIf="optionsVisible" class="select-box__list">
+    <ul @fadeInY *ngIf="optionsVisible" class="select-box__list">
     <li (click)="handleOptionClick(option)" class="select-box__list-option" *ngFor="let option of optionsList" [value]="option"><span>{{ option | replaceDash | titlecase }}</span></li>
     </ul>
     </div> 

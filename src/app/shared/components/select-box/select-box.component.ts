@@ -1,10 +1,33 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, ElementRef, HostListener } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-select-box',
   templateUrl: './select-box.component.html',
-  styleUrls: ['./select-box.component.scss']
+  styleUrls: ['./select-box.component.scss'],
+  animations: [
+    trigger('fadeInY', [
+      transition('void => *', [ 
+      style({ 
+          opacity: 0,
+          transform: 'translateY(-50px)'
+        }),
+        animate('0.2s ease-out', 
+        style({ 
+          opacity: 1,
+          transform: 'translateY(0)' 
+        }))
+      ]),
+      transition('* => void', [
+        animate('0.2s ease-in', 
+        style({ 
+          opacity: 0,
+          transform: 'translateY(-50px)' 
+        }))
+      ])
+    ])
+  ]
 })
 export class SelectBoxComponent implements OnInit {
   optionsVisible: boolean;
@@ -20,6 +43,7 @@ export class SelectBoxComponent implements OnInit {
   handleOptionClick(optionClicked:string):void{
     this.setSelectedOption(optionClicked);
     this.emitSelectBoxChange(optionClicked);
+    this.toggleOptionsVisibility();
   }
   setSelectedOption(option:string):void{
     this.selectedOption = option;
@@ -27,7 +51,7 @@ export class SelectBoxComponent implements OnInit {
   initializeSelectedOption():void{
     this.selectedOption = this.optionsList[0];
   }
-  constructor() {
+  constructor(private elementRef:ElementRef ) {
     this.optionsVisible = false;
    }
   ngOnInit(): void {
