@@ -12,10 +12,10 @@ export class PokemonTypeComponent implements OnInit {
 
   getSizeClass():string {
     if(this.size === "small"){
-      return "pokemon-type__name--small"
+      return "pokemon-type--wrapper--small"
     }
     else{
-      return "pokemon-type__name--medium"
+      return "pokemon-type--wrapper--medium"
     }
   }
   constructor() {

@@ -1,16 +1,18 @@
-.pokemon-type{
-    margin: 0.5rem 0.4rem;
+.pokemon-type--wrapper{
+    margin: 0.5rem 0.25rem;
+    text-align: center;
+}
+.pokemon-type--wrapper--medium{
+    padding: 0.5rem 0;
+    width: 6rem;
+}
+.pokemon-type--wrapper--small{
+    padding: 0.3rem 0rem;
+    font-size: 0.9rem;
+    width: 5rem;
 }
 .pokemon-type__name{
-    text-align: center;
+    display: block;
     margin: 0;
-}
-.pokemon-type__name--medium{
-    padding: 0.5rem 0;
-    width: 7rem;
-}
-.pokemon-type__name--small{
-    padding: 0.5rem 0;
-    width: 5rem;
-    font-size: 0.9rem;
+    font-weight: bold;
 }
