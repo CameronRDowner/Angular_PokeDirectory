@@ -51,8 +51,8 @@ export class BrowseEffects {
     ofType<browseActions.LoadNextPage>(
       browseActions.BrowseActionTypes.LoadNextPage, 
       browseActions.BrowseActionTypes.LoadPreviousPage, 
-      browseActions.BrowseActionTypes.SortPokemonById, 
-      browseActions.BrowseActionTypes.SortPokemonByName),
+      browseActions.BrowseActionTypes.SetResultsInView
+      ),
     withLatestFrom(
       this.store$.select(browseSelectors.getMaxResultsPerPage),
       this.store$.select(browseSelectors.getEndOffset)
@@ -100,6 +100,40 @@ export class BrowseEffects {
       if(currentList === "Pokemon" && resultsInView === null){
         return new browseActions.SetResultsInView(allPokemon)
       }
+    })
+  )
+  @Effect()
+  sortPokemonById$: Observable<Action> = this.actions$.pipe(
+    ofType(browseActions.BrowseActionTypes.SortPokemonById),
+    withLatestFrom(
+      this.store$.select(browseSelectors.getResultsInView)
+    ),
+    map(([action, resultsInView])=>{
+      const sortedResults = resultsInView.slice(0);
+        sortedResults.sort((resultA, resultB)=>{
+          let idA = parseInt(resultA.url.substring(34,resultA.url.length -1));
+          let idB = parseInt(resultB.url.substring(34,resultB.url.length -1));
+          return idA - idB;
+        })
+        return new browseActions.SetResultsInView(sortedResults);
+    })
+  )
+  @Effect()
+  sortPokemonByName$: Observable<Action> = this.actions$.pipe(
+    ofType(browseActions.BrowseActionTypes.SortPokemonByName),
+    withLatestFrom(
+      this.store$.select(browseSelectors.getResultsInView)
+    ),
+    map(([action, resultsInView])=>{
+      const sortedResults = resultsInView.slice(0);
+      sortedResults.sort((resultA, resultB)=>{
+        let nameA = resultA.name.toLowerCase();
+        let nameB = resultB.name.toLowerCase();
+        if(nameA < nameB){ return -1;}
+        if(nameA > nameB){ return 1;}
+        return 0;
+      })
+        return new browseActions.SetResultsInView(sortedResults);
     })
   )
 }

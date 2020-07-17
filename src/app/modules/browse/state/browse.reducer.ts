@@ -116,32 +116,6 @@ export function reducer(state = initialState, action: BrowseActions): BrowseStat
             endOffset: _endOffset
           }
       }
-      case BrowseActionTypes.SortPokemonById: {
-        const _resultsInView = state.resultsInView.slice(0);
-        _resultsInView.sort((resultA, resultB)=>{
-          let idA = parseInt(resultA.url.substring(34,resultA.url.length -1));
-          let idB = parseInt(resultB.url.substring(34,resultB.url.length -1));
-          return idA - idB;
-        })
-        return {
-          ...state,
-          resultsInView: _resultsInView
-        }
-      }
-      case BrowseActionTypes.SortPokemonByName: {
-        let _resultsInView = state.resultsInView.slice(0);
-        _resultsInView.sort((resultA, resultB)=>{
-          let nameA = resultA.name.toLowerCase();
-          let nameB = resultB.name.toLowerCase();
-          if(nameA < nameB){ return -1;}
-          if(nameA > nameB){ return 1;}
-          return 0;
-        })
-        return {
-          ...state,
-          resultsInView : _resultsInView,
-        }
-      }
       case BrowseActionTypes.OpenAlertModal: {
         return {
           ...state,
