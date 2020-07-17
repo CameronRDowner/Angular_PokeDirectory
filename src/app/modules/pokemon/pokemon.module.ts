@@ -27,6 +27,7 @@ import { ReversePipe } from '../../shared/pipes/reverse-array.pipe';
 import { ReplaceDashPipe } from '../../shared/pipes/replace-dash-string';
 import { KeysArrayPipe } from '../../shared/pipes/keys-array.pipe';
 import { AbbrevSpecialStringPipe } from './pipes/abbrev-special-string.pipe';
+import { TrimNameStringPipe } from './pipes/trim-name-string.pipe';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { AbbrevSpecialStringPipe } from './pipes/abbrev-special-string.pipe';
     ReplaceDashPipe,
     KeysArrayPipe,
     AbbrevSpecialStringPipe,
-    IconButtonComponent
+    IconButtonComponent,
+    TrimNameStringPipe
   ],
   imports: [
     StoreModule.forFeature('pokemon', reducer),
@@ -64,7 +66,8 @@ import { AbbrevSpecialStringPipe } from './pipes/abbrev-special-string.pipe';
     PokemonSearchResultComponent,
     RadioClusterComponent,
     SelectBoxComponent,
-    IconButtonComponent
+    IconButtonComponent,
+    TrimNameStringPipe
   ]
 })
 export class PokemonModule { }
