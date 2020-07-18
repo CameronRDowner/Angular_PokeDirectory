@@ -11,10 +11,12 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { environment } from 'src/environments/environment';
+import { ClickedOutsideDirective } from './shared/directives/clicked-outside.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ClickedOutsideDirective,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -32,6 +34,7 @@ import { environment } from 'src/environments/environment';
   ],
   providers: [],
   exports: [
+    ClickedOutsideDirective
   ],
   bootstrap: [AppComponent]
 })
