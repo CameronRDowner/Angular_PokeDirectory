@@ -51,6 +51,11 @@ export class SelectBoxComponent implements OnInit {
   initializeSelectedOption():void{
     this.selectedOption = this.optionsList[0];
   }
+  handleClickOutside():void{
+    if(this.optionsVisible){
+      this.toggleOptionsVisibility();
+    }
+  }
   constructor(private elementRef:ElementRef ) {
     this.optionsVisible = false;
    }

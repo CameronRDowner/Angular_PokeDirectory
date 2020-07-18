@@ -8,8 +8,8 @@
     <app-pokemon-type *ngFor="let pokemonType of (pokemonOfTheDay?.types | reverse)" [typeName] = "pokemonType.type.name"></app-pokemon-type>
 </div>
 <div class="flex-container-row-center">
-<h3 class="pokemon-of-the-day__information">Height: {{(this.pokemonOfTheDay.height*0.1).toFixed(1)}}m</h3>
-<h3 class="pokemon-of-the-day__information">Weight: {{(this.pokemonOfTheDay.weight*0.1).toFixed(1)}}kg</h3>
+<h3 class="pokemon-of-the-day__information">Height: {{(this.pokemonOfTheDay?.height*0.1).toFixed(1)}}m</h3>
+<h3 class="pokemon-of-the-day__information">Weight: {{(this.pokemonOfTheDay?.weight*0.1).toFixed(1)}}kg</h3>
 </div>
 </a>
 </div>

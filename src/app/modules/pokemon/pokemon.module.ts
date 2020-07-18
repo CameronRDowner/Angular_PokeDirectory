@@ -28,6 +28,7 @@ import { ReplaceDashPipe } from '../../shared/pipes/replace-dash-string';
 import { KeysArrayPipe } from '../../shared/pipes/keys-array.pipe';
 import { AbbrevSpecialStringPipe } from './pipes/abbrev-special-string.pipe';
 import { TrimNameStringPipe } from './pipes/trim-name-string.pipe';
+import { ClickedOutsideDirective } from '../../shared/directives/clicked-outside.directive';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { TrimNameStringPipe } from './pipes/trim-name-string.pipe';
     KeysArrayPipe,
     AbbrevSpecialStringPipe,
     IconButtonComponent,
-    TrimNameStringPipe
+    TrimNameStringPipe,
+    ClickedOutsideDirective
   ],
   imports: [
     StoreModule.forFeature('pokemon', reducer),
@@ -67,7 +69,8 @@ import { TrimNameStringPipe } from './pipes/trim-name-string.pipe';
     RadioClusterComponent,
     SelectBoxComponent,
     IconButtonComponent,
-    TrimNameStringPipe
+    TrimNameStringPipe,
+    ClickedOutsideDirective
   ]
 })
 export class PokemonModule { }
