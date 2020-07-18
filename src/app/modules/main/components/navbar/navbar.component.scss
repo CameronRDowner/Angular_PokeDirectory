@@ -5,10 +5,13 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    max-width: 75rem;
+    margin: 0 auto;
     background-color: $medium-red;
     height: 6.25rem;
     box-shadow: 0px 2px 3px rgba(75,11,24,0.9);
+    position: relative;
+    z-index: 2;
     
 }
 .navbar__logo--poke{

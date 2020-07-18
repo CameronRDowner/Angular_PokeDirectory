@@ -6,9 +6,9 @@ import { PokemonContainer } from './modules/pokemon/containers/pokemon/pokemon.c
 
 
 const routes: Routes = [
-{path: '',  component: HomeContainer,},
-{path: 'browse', component: BrowseContainer,},
-{path: 'pokemon/:id', component: PokemonContainer}
+{path: '',  component: HomeContainer, data:{ animation:'isLeft' }},
+{path: 'browse', component: BrowseContainer },
+{path: 'pokemon/:id', component: PokemonContainer, data:{ animation: 'isRight'}}
 ];
 
 @NgModule({

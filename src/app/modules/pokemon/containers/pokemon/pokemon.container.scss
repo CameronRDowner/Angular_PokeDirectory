@@ -1,11 +1,13 @@
 @import '../../../../../assets/sass/variables';
 .pokemon-container{
-    padding-bottom: 3rem;
+    margin: 0;
+    padding: 2rem 0 3rem 0;
 }
 .pokemon-container__name{
     color: $medium-red;
     text-align: center;
     font-size: 3rem;
+    margin:0 0 1rem 0;
 }
 .pokemon-container__back-button-wrapper{
     position: absolute;
