@@ -15,23 +15,21 @@
     
 }
 .navbar__logo--poke{
-display: inline-block;
 font-family: 'pokemon-solid', 'Montserrat';
 color: $medium-yellow;
 }
 .navbar__logo--directory{
-display: inline-block;
-color: $white;
+color: $light-white;
 font-weight: 700;
 font-style: italic;
 }
 .navbar__logo{
-font-size: 2rem;
+font-size: 3rem;
 margin: 0 2rem;
 }
 .navbar__link{
 margin: 0 2rem;
-color: $white;
-font-size: 1.75rem;
+color: $light-white;
+font-size: 2rem;
 font-weight: 500;
 }

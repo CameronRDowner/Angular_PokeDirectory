@@ -11,7 +11,7 @@
 }
 .radio-cluster__button{
     display: inline-block;
-    color: $white;
+    color: $light-white;
     font-size: 1.5rem;
     font-weight: 600;
     padding: 0.8rem;
@@ -42,7 +42,7 @@
 .radio-cluster__button--toggled{
 margin: 0 0.25rem;
 box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.5);
-color: darken($white, 25%);
+color: darken($light-white, 25%);
 background-color: darken($medium-red, 5%);
 }
 .radio-cluster__button--untoggled{
