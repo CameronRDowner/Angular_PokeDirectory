@@ -3,8 +3,9 @@
         <app-icon-button [iconClasses]="'fa fa-arrow-left'" (buttonClick)="openBrowsePage()"></app-icon-button>
     </div>
     <h1 class="pokemon-container__name">{{(pokemon$ | async )?.name | titlecase}}</h1>
-<div class="flex-container-row-start">
+<main class="flex-container-row-start">
     <div class="flex-container-column-center">
+        <h2>Sprites</h2>
         <app-sprites [sprites]="(pokemon$ | async ).sprites"></app-sprites>
     </div>
     <div class="flex-container-column-center">
@@ -13,6 +14,6 @@
         <h2>Stats</h2>
         <app-stat-list [statList]="(pokemon$ | async)?.stats"></app-stat-list>
     </div>
-</div> 
+</main> 
 </div>
 

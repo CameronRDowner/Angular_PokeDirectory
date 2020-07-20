@@ -1,7 +1,7 @@
 <div class="stat--wrapper" [ngStyle]="getWrapperStyles()">
-    <h4 class="stat__name stat__text stat__text--bold">{{ stat.stat.name | abbrevSpecialString | titlecase }}: </h4>
-    <h4 class="stat__stat-base stat__text">{{ stat.base_stat }}</h4>
+    <span class="stat__name stat__text stat__text--bold">{{ stat.stat.name | abbrevSpecialString | titlecase }}: </span>
+    <span class="stat__stat-base stat__text">{{ stat.base_stat }}</span>
         <div class="stat__bar-container"><div [ngStyle]="getBarStyles()" class="stat__bar"></div></div>
-    <div class="stat__stat-50"><h4 class="stat__text">{{this.stat.stat.name !== 'hp' ? getEstimatedStat(50): getEstimatedHealth(50)}}-</h4><h4 class="stat__text">{{this.stat.stat.name !== 'hp' ? getEstimatedStat(50,31,252) : getEstimatedHealth(50,31,252)}}</h4></div>
-    <div class="stat__stat-100"><h4 class="stat__text">{{this.stat.stat.name !== 'hp' ? getEstimatedStat(100): getEstimatedHealth(100)}}-</h4><h4 class="stat__text">{{this.stat.stat.name !== 'hp' ? getEstimatedStat(100,31,252) : getEstimatedHealth(100,31,252)}}</h4></div>
+    <div class="stat__stat-50"><span class="stat__text">{{this.stat.stat.name !== 'hp' ? getEstimatedStat(50): getEstimatedHealth(50)}}-</span><span class="stat__text">{{this.stat.stat.name !== 'hp' ? getEstimatedStat(50,31,252) : getEstimatedHealth(50,31,252)}}</span></div>
+    <div class="stat__stat-100"><span class="stat__text">{{this.stat.stat.name !== 'hp' ? getEstimatedStat(100): getEstimatedHealth(100)}}-</span><span class="stat__text">{{this.stat.stat.name !== 'hp' ? getEstimatedStat(100,31,252) : getEstimatedHealth(100,31,252)}}</span></div>
 </div>
