@@ -14,6 +14,10 @@
     "type1 type2"
     "hidden-abilities abilities";
 }
+.pokemon-info__info-list{
+    list-style: none;
+    padding-left: 0;
+}
 .pokemon-info__type-1{
 grid-area: type1;
 }

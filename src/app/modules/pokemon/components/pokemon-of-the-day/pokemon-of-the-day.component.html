@@ -1,15 +1,15 @@
 
 <div class="panel pokemon-of-the-day inset-shadow-sink animation-delay-500ms">
 <a (click)="openPokemonPage()" class="pokemon-of-the-day__wrapper fade-in animation-delay-1000ms">
-    <h3 class="pokemon-of-the-day__id">#{{this.pokemonOfTheDay?.id.toString().padStart(3, '0')}}</h3>
+    <span class="pokemon-of-the-day__id">#{{this.pokemonOfTheDay?.id.toString().padStart(3, '0')}}</span>
 <img class="pokemon-of-the-day__sprite-image" src={{this.pokemonOfTheDay?.sprites.front_default}}>
-<h3 class="pokemon-of-the-day__name">{{this.pokemonOfTheDay?.name | titlecase}}</h3>
+<span class="pokemon-of-the-day__name">{{this.pokemonOfTheDay?.name | titlecase}}</span>
 <div class="flex-container-row-center">
     <app-pokemon-type *ngFor="let pokemonType of (pokemonOfTheDay?.types | reverse)" [typeName] = "pokemonType.type.name"></app-pokemon-type>
 </div>
 <div class="flex-container-row-center">
-<h3 class="pokemon-of-the-day__information">Height: {{(this.pokemonOfTheDay?.height*0.1).toFixed(1)}}m</h3>
-<h3 class="pokemon-of-the-day__information">Weight: {{(this.pokemonOfTheDay?.weight*0.1).toFixed(1)}}kg</h3>
+<span class="pokemon-of-the-day__information">Height: {{(this.pokemonOfTheDay?.height*0.1).toFixed(1)}}m</span>
+<span class="pokemon-of-the-day__information">Weight: {{(this.pokemonOfTheDay?.weight*0.1).toFixed(1)}}kg</span>
 </div>
 </a>
 </div>

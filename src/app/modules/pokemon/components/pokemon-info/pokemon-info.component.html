@@ -1,10 +1,10 @@
 <div class="pokemon-info flex-container-row-center panel inset-shadow-sink animation-delay-500ms">
-    <div class="animation-delay-1000ms fade-in">
-        <div><h4 class="pokemon-info__text--bold">Id: </h4><h4 class="pokemon-info__text">#{{pokemon?.id?.toString().padStart(3, '0')}}</h4></div>
-        <div><h4 class="pokemon-info__text--bold">Height: </h4><h4 class="pokemon-info__text">{{(pokemon?.height * 0.1).toFixed(1)}}m ({{(pokemon?.height * 0.328084).toFixed(1)}}ft)</h4></div>
-        <div><h4  class="pokemon-info__text--bold">Weight: </h4><h4 class="pokemon-info__text">{{(pokemon?.weight * 0.1).toFixed(1)}}kg ({{(pokemon?.weight * 0.220462).toFixed(1)}}lbs)</h4></div>
-        <div><h4 class="pokemon-info__text--bold">Order: </h4><h4 class="pokemon-info__text">{{pokemon?.order}}</h4></div>
-    </div>
+    <ul class="pokemon-info__info-list animation-delay-1000ms fade-in">
+        <li><span class="pokemon-info__text--bold">Id: </span><span class="pokemon-info__text">#{{pokemon?.id?.toString().padStart(3, '0')}}</span></li>
+        <li><span class="pokemon-info__text--bold">Height: </span><span class="pokemon-info__text">{{(pokemon?.height * 0.1).toFixed(1)}}m ({{(pokemon?.height * 0.328084).toFixed(1)}}ft)</span></li>
+        <li><span  class="pokemon-info__text--bold">Weight: </span><span class="pokemon-info__text">{{(pokemon?.weight * 0.1).toFixed(1)}}kg ({{(pokemon?.weight * 0.220462).toFixed(1)}}lbs)</span></li>
+        <li><span class="pokemon-info__text--bold">Order: </span><span class="pokemon-info__text">{{pokemon?.order}}</span></li>
+    </ul>
     <div class="pokemon-info__ability-type-wrapper animation-delay-1000ms fade-in">
                 <app-pokemon-type [class]="'pokemon-info__type' + (typeIndex + 1).toString()" *ngFor="let pokemonType of (pokemon?.types | reverse); let typeIndex = index" [size]="'small'" [typeName]="pokemonType.type.name"></app-pokemon-type>
             <div class="pokemon-info__abilities flex-container-column-center"><h5 class="pokemon-info__abilities-title pokemon-info__text--bold">Abilities</h5><app-ability *ngFor="let ability of abilities" [pokemonAbility]="ability"></app-ability></div>

@@ -1,6 +1,6 @@
 <header class='app'>
 <app-navbar></app-navbar>
 </header>
-<main class="app__router-wrapper" [@routeAnimations]="prepareRoute(outlet)">
+<div class="app__router-wrapper" [@routeAnimations]="prepareRoute(outlet)">
     <router-outlet #outlet="outlet"></router-outlet>
-</main>
+</div>
