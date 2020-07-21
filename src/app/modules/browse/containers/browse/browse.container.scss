@@ -4,8 +4,7 @@
 }
 .search-results__panel{
     margin: 2rem 1rem;
-    width: 51.5rem;
-    height: 42rem;
+    max-width: 51.5rem;
 }
 .search-results__container{
     display: flex;
@@ -13,7 +12,5 @@
     align-items: flex-start;
     justify-content: center;
     flex-wrap: wrap;
-    max-width: 51.5rem;
-    max-height: 39rem;
     margin: 0 auto;
 }

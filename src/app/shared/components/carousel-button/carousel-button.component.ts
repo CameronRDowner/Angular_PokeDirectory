@@ -13,11 +13,7 @@ export class CarouselButtonComponent implements OnInit {
   emitButtonClick(){
     this.buttonClick.emit(null);
   }
-  constructor() {
-    
-   }
-
-  ngOnInit(): void {
+  setIconClasses():void{
     if(this.orientation === "left"){
       this.iconClasses = ["fa", "fa-caret-left", "carousel-button__icon--left"];
     }
@@ -27,6 +23,13 @@ export class CarouselButtonComponent implements OnInit {
     else{
       console.log("please provide an orientation input value");
     }
+  }
+  constructor() {
+    
+   }
+
+  ngOnInit(): void {
+    this.setIconClasses();
   }
 
 }

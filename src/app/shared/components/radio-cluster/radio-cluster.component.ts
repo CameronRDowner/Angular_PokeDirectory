@@ -18,7 +18,6 @@ export class RadioClusterComponent implements OnInit {
     this.emitButtonClick(buttonName);
   }
   emitButtonClick(buttonName:string){
-    console.log('radiobuttonclicked')
     this.radioButtonClick.emit(buttonName);
   }
   constructor() { }

@@ -11,14 +11,14 @@ export class PokemonSearchResultComponent implements OnInit {
   @Input() searchResult: NamedAPIResource;
   id:number;
   spriteUrl:string;
-  private extractId(){
+  private extractId():number{
     const idString = this.searchResult.url.substring(34,this.searchResult.url.length -1);
     return parseInt(idString, 10);
   }
-  private generateSpriteUrl(){
+  private generateSpriteUrl():string{
   const baseUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
   const fileExtension = ".png"
-  return baseUrl + this.id.toString() + fileExtension;
+  return `${baseUrl}${this.id.toString()}${fileExtension}`;
   }
   openPokemonPage(){
     this.router.navigate(['/pokemon', this.id]);

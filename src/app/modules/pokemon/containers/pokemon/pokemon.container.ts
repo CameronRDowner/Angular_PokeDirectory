@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../../models/pokemon';
-import { Router } from '@angular/router';
-import { take, takeWhile } from 'rxjs/operators';
-import { Subscription, Observable } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Location } from '@angular/common';
 import { RadioCluster } from 'src/app/shared/models/radio-cluster/radio-cluster';
 import { MoveLists } from '../../models/move-lists';
@@ -12,6 +11,7 @@ import * as pokemonSelectors from '../../state/';
 import { Store, select } from '@ngrx/store';
 import { LocationAreaEncounter } from '../../models/location-area-encounter';
 import { PokemonAbility } from '../../models/pokemon-ability';
+import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pokemon',
@@ -35,15 +35,21 @@ export class PokemonContainer implements OnInit {
   setSelectedGame(_selectedGame:string){
     this.store.dispatch(new pokemonActions.SetSelectedGame(_selectedGame));
   }
-  constructor(private router: Router, private location: Location, private store: Store<pokemonSelectors.State>) {
-    this.store.dispatch(new pokemonActions.LoadPokemon(this.retrievePokemonId()));
-   }
-  retrievePokemonId(): number {
-    return parseInt(this.router.url.split('/')[2])
+  getPokemon(id:number):void{
+    this.store.dispatch(new pokemonActions.LoadPokemon(id));
   }
-  ngOnInit(): void {
-    
+  retrievePokemonId(): number {
+    let pokemonId = undefined;
+    this.route.params.pipe(takeWhile(()=>this.componentActive)).subscribe(params=>{
+      pokemonId = params.id
+    })
+    return pokemonId
+  }
+  constructor(private route: ActivatedRoute, private location: Location, private store: Store<pokemonSelectors.State>) {
     this.componentActive = true;
+   }
+  ngOnInit(): void {
+    this.getPokemon(this.retrievePokemonId());
     this.moveLists$ = this.store.pipe(select(pokemonSelectors.getMoveLists));
     this.pokemon$ = this.store.pipe(select(pokemonSelectors.getPokemon));
     this.selectedGame$ = this.store.pipe(select(pokemonSelectors.getSelectedGame));

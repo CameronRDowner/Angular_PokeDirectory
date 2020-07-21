@@ -2,13 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { StatListComponent } from './components/stat-list/stat-list.component';
-import { MoveComponent } from './components/move/move.component';
-import { MovesetComponent } from './components/moveset/moveset.component';
-import { CatchLocationComponent } from './components/catch-location/catch-location.component';
 import { PokemonOfTheDayComponent } from './components/pokemon-of-the-day/pokemon-of-the-day.component';
 import { PokemonSearchResultComponent } from './components/pokemon-search-result/pokemon-search-result.component';
 import { PokemonContainer } from './containers/pokemon/pokemon.container';
-import { TextButtonComponent } from 'src/app/shared/components/text-button/text-button.component';
+
 import { PokemonTypeComponent } from './components/pokemon-type/pokemon-type.component';
 import { RadioClusterComponent } from '../../shared/components/radio-cluster/radio-cluster.component';
 import { SpritesComponent } from './components/sprites/sprites.component';
@@ -32,14 +29,10 @@ import { ClickedOutsideDirective } from '../../shared/directives/clicked-outside
 
 @NgModule({
   declarations: [
-    StatListComponent, 
-    MoveComponent,
-    MovesetComponent, 
-    CatchLocationComponent,
+    StatListComponent,
     PokemonOfTheDayComponent,
     PokemonSearchResultComponent,
     PokemonContainer,
-    TextButtonComponent,
     PokemonTypeComponent,
     RadioClusterComponent,
     SpritesComponent,
@@ -64,7 +57,6 @@ import { ClickedOutsideDirective } from '../../shared/directives/clicked-outside
   ],
   exports: [
     PokemonOfTheDayComponent,
-    TextButtonComponent,
     PokemonSearchResultComponent,
     RadioClusterComponent,
     SelectBoxComponent,
