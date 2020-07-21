@@ -1,7 +1,7 @@
 <a class="fade-in" (click)="openPokemonPage()">
     <div class="pokemon-search-result">
         <span class="pokemon-search-result__id">{{ '#' + id.toString().padStart(3, '0') }}</span>
-        <img class="pokemon-search-result__sprite" [src]="spriteUrl" alt="pokemon sprite image">
+        <img class="pokemon-search-result__sprite fade-in" [src]="spriteUrl" alt="pokemon sprite image">
         <span class="pokemon-search-result__name">{{searchResult?.name | trimNameString | titlecase}}</span>
     </div>
 </a>

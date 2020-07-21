@@ -1,5 +1,5 @@
-<div *ngIf="modalVisible" class="alert-modal--backdrop" (click)="emitCloseModal()"></div>
-<div *ngIf="modalVisible" class="alert-modal--modal">
+<div @fade *ngIf="modalVisible" class="alert-modal--backdrop" (click)="emitCloseModal()"></div>
+<div @fafe *ngIf="modalVisible" class="alert-modal--modal">
     <a class="alert-modal__close-button" (click)="emitCloseModal()">x</a>
     <p class="alert-modal__message">{{ message }}</p>
 </div>

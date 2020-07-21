@@ -43,7 +43,10 @@ export class BrowseEffects {
   @Effect()
   searchPokemonFailure$: Observable<Action> = this.actions$.pipe(
     ofType<browseActions.SearchPokemonFailure>(browseActions.BrowseActionTypes.SearchPokemonFailure),
-    map(action => new browseActions.OpenAlertModal(action.payload))
+    switchMap(action => [
+      new browseActions.OpenAlertModal(action.payload),
+      new browseActions.SetAllPokemonInView()
+    ])
   )
   @Effect()
   updateCurrentPage$: Observable<Action> = this.actions$.pipe(
