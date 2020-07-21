@@ -1,6 +1,6 @@
 <div class="pokemon-container">
     <div class="pokemon-container__back-button-wrapper">
-        <app-icon-button [iconClasses]="'fa fa-arrow-left'" (buttonClick)="openBrowsePage()"></app-icon-button>
+        <app-icon-button [iconClasses]="'fa fa-arrow-left'" (buttonClick)="navigateBackBrowsePage()"></app-icon-button>
     </div>
     <h1 class="pokemon-container__name">{{(pokemon$ | async )?.name | titlecase}}</h1>
 <main class="flex-container-row-start">

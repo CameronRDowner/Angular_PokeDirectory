@@ -3,6 +3,7 @@ import { Pokemon } from '../../models/pokemon';
 import { Router } from '@angular/router';
 import { take, takeWhile } from 'rxjs/operators';
 import { Subscription, Observable } from 'rxjs';
+import { Location } from '@angular/common';
 import { RadioCluster } from 'src/app/shared/models/radio-cluster/radio-cluster';
 import { MoveLists } from '../../models/move-lists';
 
@@ -28,13 +29,13 @@ export class PokemonContainer implements OnInit {
   encounters$:Observable<Array<LocationAreaEncounter>>
   abilities$:Observable<Array<PokemonAbility>>
   hiddenAbilities$:Observable<Array<PokemonAbility>>
-  openBrowsePage(): void{
-    this.router.navigate(['browse'])
+  navigateBackBrowsePage(): void{
+    this.location.back();
   }
   setSelectedGame(_selectedGame:string){
     this.store.dispatch(new pokemonActions.SetSelectedGame(_selectedGame));
   }
-  constructor(private router: Router, private store: Store<pokemonSelectors.State>) {
+  constructor(private router: Router, private location: Location, private store: Store<pokemonSelectors.State>) {
     this.store.dispatch(new pokemonActions.LoadPokemon(this.retrievePokemonId()));
    }
   retrievePokemonId(): number {

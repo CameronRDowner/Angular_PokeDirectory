@@ -4,14 +4,6 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 const getBrowseFeatureState = createFeatureSelector<browse.BrowseState>('browse');
 
-export const getCurrentList = createSelector(
-    getBrowseFeatureState,
-    state => state.currentList
-);
-export const getSearchTerm = createSelector(
-    getBrowseFeatureState,
-    state => state.searchTerm
-);
 export const getAllPokemon = createSelector(
     getBrowseFeatureState,
     state => state.allPokemon

@@ -27,11 +27,10 @@ export class BrowseEffects {
   searchPokemon$: Observable<Action> = this.actions$.pipe(
     ofType<browseActions.SearchPokemon>(browseActions.BrowseActionTypes.SearchPokemon),
     withLatestFrom(
-      this.store$.select(browseSelectors.getAllPokemon),
-      this.store$.select(browseSelectors.getSearchTerm)
+      this.store$.select(browseSelectors.getAllPokemon)
     ),
-    map(([action, allPokemon, searchTerm]) => {
-      const searchResults = allPokemon.filter(pokemon => pokemon.name.includes(searchTerm))
+    map(([action, allPokemon]) => {
+      const searchResults = allPokemon.filter(pokemon => pokemon.name.includes(action.payload))
       if(searchResults.length === 0){
         return (new browseActions.SearchPokemonFailure("No Pokemon were found matching that name"))
       }
@@ -65,12 +64,13 @@ export class BrowseEffects {
   )
   @Effect()
   initializeTotalPages$: Observable<Action> = this.actions$.pipe(
-    ofType<browseActions.SetResultsInView>(browseActions.BrowseActionTypes.SetResultsInView),
+    ofType<browseActions.SetAllPokemonInView>(browseActions.BrowseActionTypes.SetResultsInView, browseActions.BrowseActionTypes.SearchPokemonSuccess),
     withLatestFrom(
-      this.store$.select(browseSelectors.getMaxResultsPerPage)
+      this.store$.select(browseSelectors.getMaxResultsPerPage),
+      this.store$.select(browseSelectors.getResultsInView)
     ),
-    map(([action, maxResultsPerPage])=>{
-      const totalPages = Math.ceil(action.payload.length / maxResultsPerPage)
+    map(([action, maxResultsPerPage, resultsInView])=>{
+      const totalPages = Math.ceil(resultsInView.length / maxResultsPerPage)
       return new browseActions.SetTotalPages(totalPages);
     })
   )
@@ -82,25 +82,6 @@ export class BrowseEffects {
       new browseActions.SetStartOffset(0),
       new browseActions.SetEndOffset(maxResultsPerPage)
     ])
-  )
-  @Effect()
-  clearResultsInView$: Observable<Action> = this.actions$.pipe(
-    ofType(browseActions.BrowseActionTypes.ClearSearchTerm),
-    mapTo( new browseActions.ClearResultsInView)
-  )
-  @Effect()
-  initializeResultsInView$: Observable<Action> = this.actions$.pipe(
-    ofType(browseActions.BrowseActionTypes.LoadAllPokemonSuccess, browseActions.BrowseActionTypes.ClearResultsInView),
-    withLatestFrom(
-      this.store$.select(browseSelectors.getCurrentList),
-      this.store$.select(browseSelectors.getResultsInView),
-      this.store$.select(browseSelectors.getAllPokemon),
-    ),
-    map(([action, currentList, resultsInView, allPokemon])=>{
-      if(currentList === "Pokemon" && resultsInView === null){
-        return new browseActions.SetResultsInView(allPokemon)
-      }
-    })
   )
   @Effect()
   sortPokemonById$: Observable<Action> = this.actions$.pipe(
@@ -135,5 +116,13 @@ export class BrowseEffects {
       })
         return new browseActions.SetResultsInView(sortedResults);
     })
+  )
+  @Effect()
+  setAllPokemonInView$: Observable<Action> = this.actions$.pipe(
+    ofType(browseActions.BrowseActionTypes.SetAllPokemonInView),
+    withLatestFrom(this.store$.select(browseSelectors.getAllPokemon)),
+    map(([action, allPokemon])=>
+    new browseActions.SetResultsInView(allPokemon)
+    )
   )
 }

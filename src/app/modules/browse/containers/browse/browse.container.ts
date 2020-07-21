@@ -8,6 +8,7 @@ import { Store, select } from '@ngrx/store';
 import * as app from '../../../../app.state';
 import * as browseSelectors from '../../state';
 import * as browseActions from '../../state/browse.actions';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-browse',
@@ -21,7 +22,6 @@ export class BrowseContainer implements OnInit {
   totalPages$:Observable<number>;
   currentPage$:Observable<number>;
   pokemonSortingButtons: RadioCluster;
-  currentList$: Observable<string>;
   startOffset$: Observable<number>;
   endOffset$: Observable<number>;
   alertModalMessage$:Observable<string>;
@@ -54,9 +54,6 @@ export class BrowseContainer implements OnInit {
   closeModal():void{
     this.store.dispatch(new browseActions.CloseAlertModal())
   }
-  clearSearchTerm():void {
-    this.store.dispatch(new browseActions.ClearSearchTerm());
-  }
   handlePokemonSort(buttonName:string):void{
     if(buttonName === "Id"){
       this.sortPokemonById();
@@ -71,17 +68,25 @@ export class BrowseContainer implements OnInit {
   sortPokemonByName():void{
     this.store.dispatch(new browseActions.SortPokemonByName)
   }
-  clearResultsInView():void{
-    this.store.dispatch(new browseActions.ClearResultsInView)
+  searchPokemon(searchTerm:string):void{
+    this.store.dispatch(new browseActions.SearchPokemon(searchTerm))
   }
-
-  constructor(private store: Store<app.State>) {
+  setAllPokemonInView():void{
+    this.store.dispatch(new browseActions.SetAllPokemonInView);
+  }
+  handleContainerLoad():void{
+    this.route.queryParams.pipe(takeWhile(()=>this.componentActive)).subscribe(queryParams=>{
+      if(queryParams.list === "pokemon"){
+        (queryParams.name !== undefined ? this.searchPokemon(queryParams.name) : this.setAllPokemonInView())
+      }
+    })
+  }
+  constructor(private route: ActivatedRoute, private store: Store<app.State>) {
     this.pokemonSortingButtons = new RadioCluster(["Id", "Name"], false);
     this.componentActive = true;
    }
 
   ngOnInit(): void {
-    this.currentList$ = this.store.pipe(select(browseSelectors.getCurrentList));
     this.allPokemon$ = this.store.pipe(select(browseSelectors.getAllPokemon));
     this.startOffset$ = this.store.pipe(select(browseSelectors.getStartOffset));
     this.endOffset$ = this.store.pipe(select(browseSelectors.getEndOffset));
@@ -94,11 +99,11 @@ export class BrowseContainer implements OnInit {
       if(allPokemon === null){
         this.store.dispatch(new browseActions.LoadAllPokemon)
       }
+    this.handleContainerLoad();
      })
   }
   ngOnDestroy(): void{
     this.componentActive = false;
-    this.clearSearchTerm();
   }
 
 }

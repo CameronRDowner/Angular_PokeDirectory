@@ -6,8 +6,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./textbox.component.scss']
 })
 export class TextboxComponent implements OnInit {
-  @Input() length: string;
   @Input() clearButton: boolean;
+  @Input() initialValue: string;
   @Output() clearButtonClick = new EventEmitter(); 
   textboxValue: string;
   emitClearButtonClick():void{
@@ -22,17 +22,23 @@ export class TextboxComponent implements OnInit {
   }
   handleClearButtonClick():void {
     this.emitClearButtonClick();
-    this.initializeTextboxValue();
+    this.setTextboxValue("");
   }
   initializeTextboxValue(){
-    this.textboxValue = ""
+    if(this.initialValue === undefined){
+      this.textboxValue = ""
+    }
+    else{
+      this.textboxValue = this.initialValue
+    }
   }
   constructor() {
-    this.clearButton = false,
-    this.initializeTextboxValue();
+    this.clearButton = false
    }
 
   ngOnInit(): void {
+    this.initializeTextboxValue();
+
   }
 
 }

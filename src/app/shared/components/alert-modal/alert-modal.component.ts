@@ -16,7 +16,6 @@ export class AlertModalComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log(this.modalVisible)
   }
 
 }

@@ -1,13 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import * as app from '../../../../app.state';
 import * as browseActions from '../../state/browse.actions';
 import { Store, select } from '@ngrx/store';
-import { take } from 'rxjs/operators';
+import { take, takeWhile } from 'rxjs/operators';
 import * as browseSelectors from '../../state';
 import { TextboxComponent } from 'src/app/shared/components/textbox/textbox.component';
+import { SelectBoxComponent } from 'src/app/shared/components/select-box/select-box.component';
 
 @Component({
   selector: 'app-search-controls',
@@ -17,41 +18,43 @@ export class SearchControlsContainer implements OnInit {
   componentActive: boolean;
   selectBoxOptions: string[];
   searchButtonIconClasses: string;
-  searchTerm$: Observable<string>;
-  currentList$: Observable<string>;
   @ViewChild(TextboxComponent) textbox:TextboxComponent;
-  setCurrentList(_listToSearch): void{
-    this.store.dispatch(new browseActions.SetCurrentList(_listToSearch));
+  @ViewChild(SelectBoxComponent) selectBox:SelectBoxComponent;
+  getQueryParamName():string{
+    let queryParamName = undefined;
+    this.route.queryParams.pipe(takeWhile(()=>this.componentActive)).subscribe(queryParams=>{
+      if(queryParams.name !== undefined){
+        queryParamName = queryParams.name
+      }
+    })
+    return queryParamName
   }
-  setSearchTerm(_searchTerm:string): void {
-    this.store.dispatch(new browseActions.SetSearchTerm(_searchTerm))
+  setAllPokemonInView():void{
+    this.store.dispatch(new browseActions.SetAllPokemonInView)
   }
-  handleClearTextbox():void{
-    this.clearSearchTerm();
-    
+
+  handleClearedTextbox():void{
+    this.navigateBrowseAllPokemon();
   }
-  clearSearchTerm():void {
-    this.store.dispatch(new browseActions.ClearSearchTerm())
-  }
-  searchForPokemon(){
-    this.store.dispatch(new browseActions.SearchPokemon())
+  navigateBrowseAllPokemon():void{
+    this.router.navigate(['browse'], {queryParams:{ list: 'pokemon'}})
   }
   handleSearchButtonClick(){
-    if(this.textbox.textboxValue !== ""){
-      this.setSearchTerm(this.textbox.textboxValue)
-      this.searchForPokemon();
-      this.openBrowsePage();
+    const textboxValue = this.textbox.textboxValue;
+    const selectedList = this.selectBox.selectedOption;
+    if(textboxValue !== ""){
+      this.openBrowsePage(selectedList, textboxValue);
     }
   }
-  openBrowsePage(): void{
-    this.router.navigate(['browse'])
+  openBrowsePage(_list:string, searchTerm:string): void{
+    this.router.navigate(['browse'], {queryParams:{ list:_list, name: searchTerm}})
   }
   loadAllPokemon():void{
     this.store.dispatch(new browseActions.LoadAllPokemon());
   }
   checkIfAllPokemonLoaded():boolean {
     let allPokemonLoaded = null;
-    this.store.pipe(select(browseSelectors.getAllPokemon)).subscribe(allPokemon=>{
+    this.store.pipe(takeWhile(()=>this.componentActive), select(browseSelectors.getAllPokemon)).subscribe(allPokemon=>{
       if(allPokemon === null){
         allPokemonLoaded = false
       }
@@ -61,27 +64,29 @@ export class SearchControlsContainer implements OnInit {
     })
     return allPokemonLoaded
   }
-  constructor(private router: Router, private store: Store<app.State>) {
+  initializeTextboxValue():void{
+     this.route.queryParams.pipe(takeWhile(()=>this.componentActive)).subscribe(queryParams=>{
+       if(queryParams.name !== undefined){
+         this.textbox.setTextboxValue(queryParams.name)
+       }
+     })
+  }
+  constructor(private router: Router, private route:ActivatedRoute, private store: Store<app.State>) {
     this.componentActive = true;
     this.searchButtonIconClasses = "fa fa-search";
     this.selectBoxOptions = [
-      "Pokemon"
+      "pokemon"
     ]
   }
 
   ngOnInit(): void {
-    this.currentList$ = this.store.pipe(select(browseSelectors.getCurrentList));
-    this.searchTerm$ = this.store.pipe(select(browseSelectors.getSearchTerm));
     if(!this.checkIfAllPokemonLoaded()){
       this.loadAllPokemon();
     }
+    this.initializeTextboxValue();
   }
   ngAfterViewInit(){
-    this.searchTerm$.pipe(take(1)).subscribe(searchTerm=>{
-      if(searchTerm !== null){
-        this.textbox.setTextboxValue(searchTerm)
-      }
-    })
+    
   }
   ngOnDestroy():void {
     this.componentActive = false;

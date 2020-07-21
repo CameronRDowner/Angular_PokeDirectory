@@ -3,12 +3,9 @@ import { NamedAPIResource } from 'src/app/shared/models/named-apiresource';
 
 export enum BrowseActionTypes {
     SetResultsInView = '[Browse] Set Results In View',
-    SetCurrentList = '[Browse] Set Current List',
     LoadAllPokemonSuccess = '[Browse] Load All Pokemon Success',
     LoadAllPokemonFailure = '[Browse] Load All Pokemon Failure',
     LoadAllPokemon = '[Browse] Load All Pokemon',
-    SetSearchTerm = '[Browse] Set Search Term',
-    ClearSearchTerm = '[Browse] Clear Search Term',
     SearchPokemon = '[Browse] Search Pokemon',
     SearchPokemonSuccess = '[Browse] Search Pokemon Success',
     SearchPokemonFailure = '[Browse] Search Pokemon Failure',
@@ -22,7 +19,10 @@ export enum BrowseActionTypes {
     SortPokemonById = '[Browse] Sort Pokemon By Id',
     OpenAlertModal = '[Browse] Open Alert Modal',
     CloseAlertModal = '[Browse] Close Alert Modal',
-    ClearResultsInView = '[Browse] Clear Results In View'
+    SetAllPokemonInView = '[Browse] Set All Pokemon In View'
+}
+export class SetAllPokemonInView implements Action {
+    readonly type = BrowseActionTypes.SetAllPokemonInView;
 }
 export class CloseAlertModal implements Action {
     readonly type = BrowseActionTypes.CloseAlertModal;
@@ -33,17 +33,11 @@ export class OpenAlertModal implements Action {
 }
 export class SearchPokemon implements Action {
     readonly type = BrowseActionTypes.SearchPokemon;
+    constructor(public payload: string){}
 }
 export class SearchPokemonSuccess implements Action {
     readonly type = BrowseActionTypes.SearchPokemonSuccess;
     constructor(public payload: Array<NamedAPIResource>) { }
-}
-export class SetSearchTerm implements Action {
-    readonly type = BrowseActionTypes.SetSearchTerm;
-    constructor(public payload: string) { }
-}
-export class ClearSearchTerm implements Action {
-    readonly type = BrowseActionTypes.ClearSearchTerm;
 }
 export class SearchPokemonFailure implements Action {
     readonly type = BrowseActionTypes.SearchPokemonFailure;
@@ -53,11 +47,6 @@ export class SetResultsInView implements Action {
     readonly type = BrowseActionTypes.SetResultsInView;
   
     constructor(public payload: NamedAPIResource[]) { }
-}
-export class SetCurrentList implements Action {
-    readonly type = BrowseActionTypes.SetCurrentList;
-  
-    constructor(public payload: string) { }
 }
 export class LoadAllPokemonSuccess implements Action {
     readonly type = BrowseActionTypes.LoadAllPokemonSuccess;
@@ -100,11 +89,7 @@ export class SortPokemonByName implements Action {
 export class SortPokemonById implements Action {
     readonly type = BrowseActionTypes.SortPokemonById;
 }
-export class ClearResultsInView implements Action {
-    readonly type = BrowseActionTypes.ClearResultsInView;
-}
 export type BrowseActions = SetResultsInView
-  | SetCurrentList
   | LoadAllPokemonSuccess
   | LoadAllPokemonFailure
   | LoadAllPokemon
@@ -121,6 +106,4 @@ export type BrowseActions = SetResultsInView
   | SortPokemonById
   | OpenAlertModal
   | CloseAlertModal
-  | SetSearchTerm
-  | ClearSearchTerm
-  | ClearResultsInView;
+  | SetAllPokemonInView;
