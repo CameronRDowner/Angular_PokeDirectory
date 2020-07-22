@@ -2,7 +2,7 @@
     <div class="flex-container-row-center">
         <app-alert-modal [message]="alertModalMessage$ | async" [modalVisible]="alertModalVisible$ | async" (closeModalClicks)="closeModal()"></app-alert-modal>
         <app-search-controls></app-search-controls>
-        <app-radio-cluster *ngIf="(route.queryParams | async).list === 'pokemon'" [radioCluster]="pokemonSortingButtons" (radioButtonClick)="handlePokemonSort($event)"></app-radio-cluster>
+        <app-radio-cluster *ngIf="currentList === 'pokemon'" [radioCluster]="pokemonSortingButtons" (radioButtonClick)="handlePokemonSort($event)"></app-radio-cluster>
     </div >
     <main class="flex-container-row-center search-results--wrapper">
         <app-carousel-button *ngIf="(totalPages$ | async) > 1" [orientation]="'left'" (buttonClick)="handleLoadPreviousPage()"></app-carousel-button> 

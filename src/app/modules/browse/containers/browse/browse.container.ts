@@ -17,6 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BrowseContainer implements OnInit {
   componentActive: boolean;
+  currentList: string;
   resultsInView$:Observable<NamedAPIResource[]>;
   allPokemon$:Observable<NamedAPIResource[]>;
   totalPages$:Observable<number>;
@@ -95,6 +96,9 @@ export class BrowseContainer implements OnInit {
       if(allPokemon === null){
         this.store.dispatch(new browseActions.LoadAllPokemon)
       }
+    this.route.queryParams.pipe(takeWhile(()=>this.componentActive)).subscribe(queryParams=>{
+      this.currentList = queryParams.list
+    })
     this.handleContainerLoad();
      })
   }
