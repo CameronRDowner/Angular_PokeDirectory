@@ -17,10 +17,17 @@
 .navbar__logo--poke{
 font-family: 'pokemon-solid', 'Montserrat';
 color: $medium-yellow;
+@media #{$medium}{
+font-size: 3rem;
+}
 }
 .navbar__logo--directory{
 color: $light-white;
 font-weight: 700;
+font-style: italic;
+@media #{$medium}{
+    font-size: 3.2rem;
+}
 }
 .navbar__logo{
 font-size: 3rem;
@@ -46,7 +53,6 @@ font-weight: 500;
 }
 .navbar-logo--short{
     display: none;
-    font-size: 3rem;
     letter-spacing: 0.2rem;
     @media #{$medium}{
         display: inline-block;
@@ -54,17 +60,13 @@ font-weight: 500;
 }
 .navbar__list{
     list-style: none;
+    margin: 0;
     padding: 0.5rem 0.5rem;
     @media #{$medium}{
-        display: none;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.7);
+        background-color: $medium-gray;
+        position: absolute;
+        right: 4.5rem;
+        top: 1.05rem;
     }  
-}
-.navbar__list--open{
-    display: inline-block;
-    position: absolute;
-    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.7);
-    background-color: $medium-gray;
-    right: 4.5rem;
-    top: 0.05rem;
-
 }
