@@ -1,4 +1,8 @@
-    <nav class="navbar flex-container-row-center">
-    <a class="navbar__logo" routerLink='' ><span class="navbar__logo--poke">Poke</span><span class="navbar__logo--directory">Directory</span></a>  
-    <a [routerLink]="['browse']" (click)="navigateBrowseAllPokemon()"><span class="navbar__link">All Pokemon</span></a>
+    <nav class="navbar flex-container-row-center" (clickedOutside)="handleClickedOutside()">
+        <a class="navbar-logo--short"><span class="navbar__logo--poke">P</span><span class="navbar__logo--directory">D</span></a>
+        <a class="navbar__logo" routerLink='' ><span class="navbar__logo--poke">Poke</span><span class="navbar__logo--directory">Directory</span></a>  
+        <ul [@openClose]="linksVisible ? 'true' : 'false'" class="navbar__list" [class.navbar__list--open]="linksVisible">
+            <li><a class="navbar__link" [routerLink]="['browse']" (click)="navigateBrowseAllPokemon()">All Pokemon</a></li>
+        </ul>
+        <span class="navbar__hamburger-button-wrapper"><app-icon-button [iconClasses]="hamburgerMenuIconClasses" (buttonClick)="toggleMobileNav()"></app-icon-button></span>
     </nav>

@@ -1,15 +1,18 @@
 @import '../../../../../assets/sass/variables';
 @import '../../../../../assets/sass/fonts';
+@import '../../../../../assets/sass/breakpoints';
 .navbar{
     justify-content: space-between;
-    max-width: 75rem;
+    max-width: 71rem;
     margin: 0 auto;
     background-color: $medium-red;
-    height: 6.25rem;
     box-shadow: 0px 2px 3px rgba(75,11,24,0.9);
     position: relative;
     z-index: 2;
-    
+    padding: 0.6rem 2rem;
+    @media #{$medium}{
+        padding: 0.3rem 1rem;
+    }
 }
 .navbar__logo--poke{
 font-family: 'pokemon-solid', 'Montserrat';
@@ -18,15 +21,50 @@ color: $medium-yellow;
 .navbar__logo--directory{
 color: $light-white;
 font-weight: 700;
-font-style: italic;
 }
 .navbar__logo{
 font-size: 3rem;
-margin: 0 2rem;
+@media #{$medium}{
+    display: none;
+}
 }
 .navbar__link{
-margin: 0 2rem;
+margin: 0 0;
 color: $light-white;
 font-size: 2rem;
 font-weight: 500;
+@media #{$medium}{
+    color: $medium-black
+}
+}
+.navbar__hamburger-button-wrapper{
+    display: none;
+    margin: 0;
+    @media #{$medium}{
+        display: inline-block;
+    }
+}
+.navbar-logo--short{
+    display: none;
+    font-size: 3rem;
+    letter-spacing: 0.2rem;
+    @media #{$medium}{
+        display: inline-block;
+    }
+}
+.navbar__list{
+    list-style: none;
+    padding: 0.5rem 0.5rem;
+    @media #{$medium}{
+        display: none;
+    }  
+}
+.navbar__list--open{
+    display: inline-block;
+    position: absolute;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.7);
+    background-color: $medium-gray;
+    right: 4.5rem;
+    top: 0.05rem;
+
 }
