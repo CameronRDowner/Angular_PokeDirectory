@@ -1,10 +1,14 @@
 @import '../../../../assets/sass/variables';
+@import '../../../../assets/sass/breakpoints';
 .textbox--wrapper{
     display: inline-block;
     position: relative;
-    margin: 0 0.3rem;
+    margin: 0;
     min-width: 15rem;
     max-width: 21rem;
+    @media #{$medium}{
+        margin: 0 0.5rem;
+    }
 }
 .textbox__textbox {
     background-color: $dark-white;

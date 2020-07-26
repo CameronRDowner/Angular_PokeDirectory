@@ -1,13 +1,19 @@
 @import '../../../../../assets/sass/variables';
 @import '../../../../../assets/sass/animations';
+@import '../../../../../assets/sass/breakpoints';
 .pokemon-sprites{
 margin: 0 1.5rem;
+max-width: 22rem;
+@media #{$medium}{
+    margin: 0 0.5rem;
+}
 }
 .pokemon-sprites__title{
     text-align: center;
 }
 .pokemon-sprites__sprite{
-    width: 22rem;
+    display: block;
+    width: 100%;
     margin: 0 auto;
 }
 .pokemon-sprites__control-title{
