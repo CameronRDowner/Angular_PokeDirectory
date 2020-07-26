@@ -51,14 +51,6 @@ export class SearchControlsContainer implements OnInit {
       return false;
     }
   }
-  initializeTextboxWidth():void{
-    if(this.checkIfMobileWidth()){
-      this.textboxWidth ='14rem';
-    }
-    else{
-      this.textboxWidth = '21rem';
-    }
-  }
   constructor(private router: Router, private route:ActivatedRoute, private store: Store<app.State>) {
     this.componentActive = true;
     this.searchButtonIconClasses = "fa fa-search";
@@ -68,7 +60,6 @@ export class SearchControlsContainer implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initializeTextboxWidth();
   }
   ngOnDestroy():void {
     this.componentActive = false;

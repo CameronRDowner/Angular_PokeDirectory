@@ -32,18 +32,12 @@ export class TextboxComponent implements OnInit {
       this.textboxValue = this.initialValue
     }
   }
-  initializeWidth():void{
-    if(this.width === undefined){
-      this.width = "21rem"
-    }
-  }
   constructor() {
     this.clearButton = false
    }
 
   ngOnInit(): void {
     this.initializeValue();
-    this.initializeWidth();
 
   }
 
