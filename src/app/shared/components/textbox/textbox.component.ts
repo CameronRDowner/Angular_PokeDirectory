@@ -8,10 +8,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class TextboxComponent implements OnInit {
   @Input() clearButton: boolean;
   @Input() initialValue: string;
+  @Input() width: string;
   @Output() clearButtonClick = new EventEmitter(); 
   textboxValue: string;
   emitClearButtonClick():void{
-    console.log('clear ran')
     this.clearButtonClick.emit(null);
   }
   clearTextbox():void {
@@ -24,7 +24,7 @@ export class TextboxComponent implements OnInit {
     this.emitClearButtonClick();
     this.setTextboxValue("");
   }
-  initializeTextboxValue(){
+  initializeValue(){
     if(this.initialValue === undefined){
       this.textboxValue = ""
     }
@@ -32,12 +32,18 @@ export class TextboxComponent implements OnInit {
       this.textboxValue = this.initialValue
     }
   }
+  initializeWidth():void{
+    if(this.width === undefined){
+      this.width = "21rem"
+    }
+  }
   constructor() {
     this.clearButton = false
    }
 
   ngOnInit(): void {
-    this.initializeTextboxValue();
+    this.initializeValue();
+    this.initializeWidth();
 
   }
 

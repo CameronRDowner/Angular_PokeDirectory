@@ -1,5 +1,5 @@
 <div class="flex-container-row-center">
-    <app-textbox [initialValue]="getQueryParamName()" [clearButton]="true" (clearButtonClick)="handleClearedTextbox()"></app-textbox>
+    <div class="search-controls__textbox-wrapper"><app-textbox [initialValue]="getQueryParamName()" [clearButton]="true" (clearButtonClick)="handleClearedTextbox()" [width]="textboxWidth"></app-textbox></div>
     <app-select-box [optionsList] = "selectBoxOptions"></app-select-box>
     <app-icon-button [iconClasses] = "searchButtonIconClasses" (buttonClick)="handleSearchButtonClick()"></app-icon-button>
 </div>

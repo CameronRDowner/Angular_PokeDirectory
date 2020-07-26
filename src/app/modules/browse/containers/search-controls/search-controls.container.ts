@@ -15,6 +15,7 @@ export class SearchControlsContainer implements OnInit {
   componentActive: boolean;
   selectBoxOptions: string[];
   searchButtonIconClasses: string;
+  textboxWidth:string;
   @ViewChild(TextboxComponent) textbox:TextboxComponent;
   @ViewChild(SelectBoxComponent) selectBox:SelectBoxComponent;
   getQueryParamName():string{
@@ -42,6 +43,22 @@ export class SearchControlsContainer implements OnInit {
   openBrowsePage(_list:string, searchTerm:string): void{
     this.router.navigate(['browse'], {queryParams:{ list:_list, name: searchTerm}})
   }
+  checkIfMobileWidth():boolean{
+    if(window.innerWidth <= 700){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  initializeTextboxWidth():void{
+    if(this.checkIfMobileWidth()){
+      this.textboxWidth ='14rem';
+    }
+    else{
+      this.textboxWidth = '21rem';
+    }
+  }
   constructor(private router: Router, private route:ActivatedRoute, private store: Store<app.State>) {
     this.componentActive = true;
     this.searchButtonIconClasses = "fa fa-search";
@@ -51,7 +68,7 @@ export class SearchControlsContainer implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.initializeTextboxWidth();
   }
   ngOnDestroy():void {
     this.componentActive = false;
