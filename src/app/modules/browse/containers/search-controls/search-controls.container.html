@@ -1,5 +1,5 @@
-<div class="flex-container-row-center">
+<form class="flex-container-row-center">
     <app-textbox [initialValue]="getQueryParamName()" [clearButton]="true" (clearButtonClick)="handleClearedTextbox()"></app-textbox>
     <span class="flex-container-row-center"><app-select-box [optionsList] = "selectBoxOptions"></app-select-box><app-icon-button [iconClasses] = "searchButtonIconClasses" (buttonClick)="handleSearchButtonClick()"></app-icon-button></span>
-</div>
+</form>
 
