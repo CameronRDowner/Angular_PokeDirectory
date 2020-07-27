@@ -3,12 +3,13 @@
 .pokemon-info{
     max-width: 33rem;
     justify-content: space-evenly;
-    @media #{$medium}{
+    @media #{$small-medium}{
+        font-size: small;
         margin: 0 0.5rem;
     }
 }
 .pokemon-info__ability-type-wrapper{
-    width: 15rem;
+    width: 18rem;
     display: grid;
     justify-items: center;
     align-items: flex-start;
@@ -17,20 +18,29 @@
     grid-template-areas: 
     "type1 type2"
     "hidden-abilities abilities";
+    @media #{$small-medium}{
+        width: 13rem;
+    }
 }
 .pokemon-info__info-list{
     width: 15rem;
-    height: 10rem;
     text-align: left;
     list-style: none;
     padding-left: 0;
     margin: 0;
+    @media #{$small-medium}{
+        width: 12rem;
+    }
 }
 .pokemon-info__type-1{
 grid-area: type1;
 }
 .pokemon-info__type-2{
 grid-area: type2;
+}
+.pokemon-info__abilities-title{
+    margin: 0 0;
+    white-space: nowrap;
 }
 .pokemon-info__abilities{
     grid-area: abilities;

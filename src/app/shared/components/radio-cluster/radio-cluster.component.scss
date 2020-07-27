@@ -1,5 +1,6 @@
 @import "../../../../assets/sass/variables";
 @import "../../../../assets/sass/animations";
+@import "../../../../assets/sass/breakpoints";
 .radio-cluster{
     margin: 1rem 1rem;
 }
@@ -8,6 +9,9 @@
     margin: 0 0.4rem;
     border: 1px dashed #484646;
     padding: 0.1rem;
+    @media #{$small-medium}{
+        margin: 0 0.2rem;
+    }
 }
 .radio-cluster__button{
     display: inline-block;
@@ -25,6 +29,11 @@
     font-weight: 600;
     padding: 0.6rem;
     cursor: pointer;
+    @media #{$small-medium}{
+        font-size: small;
+        padding: 0.4rem;
+        margin: 0.15rem 0.1rem;
+    }
 }
 .radio-cluster__button--alternate-toggled{
     color: $dark-white;

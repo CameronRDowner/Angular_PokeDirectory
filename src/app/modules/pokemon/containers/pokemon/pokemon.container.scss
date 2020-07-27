@@ -1,4 +1,5 @@
 @import '../../../../../assets/sass/variables';
+@import '../../../../../assets/sass/breakpoints';
 .pokemon-container{
     text-align: center;
     margin: 0;
@@ -15,4 +16,7 @@
     position: absolute;
     display: inline-block;
     left: 5.5rem;
+    @media #{$medium}{
+        display: none;
+    }
 }

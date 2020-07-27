@@ -7,7 +7,7 @@
     </ul>
     <div class="pokemon-info__ability-type-wrapper animation-delay-1000ms fade-in">
                 <app-pokemon-type [class]="'pokemon-info__type' + (typeIndex + 1).toString()" *ngFor="let pokemonType of (pokemon?.types | reverse); let typeIndex = index" [size]="'small'" [typeName]="pokemonType.type.name"></app-pokemon-type>
-            <div class="pokemon-info__abilities flex-container-column-center"><h5 class="pokemon-info__abilities-title pokemon-info__text--bold">Abilities</h5><app-ability *ngFor="let ability of abilities" [pokemonAbility]="ability"></app-ability></div>
-            <div class="pokemon-info__hidden-abilities flex-container-column-center"><h5 class="pokemon-info__abilities-title pokemon-info__text--bold">Hidden Abilities</h5><app-ability *ngFor="let hiddenAbility of hiddenAbilities" [pokemonAbility]="hiddenAbility"></app-ability></div>
+            <div class="pokemon-info__abilities flex-container-column-center"><h4 class="pokemon-info__abilities-title pokemon-info__text--bold">Abilities</h4><app-ability *ngFor="let ability of abilities" [pokemonAbility]="ability"></app-ability></div>
+            <div class="pokemon-info__hidden-abilities flex-container-column-center"><h4 class="pokemon-info__abilities-title pokemon-info__text--bold">Hidden Abilities</h4><app-ability *ngFor="let hiddenAbility of hiddenAbilities" [pokemonAbility]="hiddenAbility"></app-ability></div>
     </div>
 </div>

@@ -1,3 +1,4 @@
+@import '../../../../../assets/sass/breakpoints';
 .stat--wrapper{
     display: grid;
     justify-items: center;
@@ -6,21 +7,28 @@
     grid-template-rows: 2.5rem;
     grid-template-areas: 
     "stat-name stat-base stat-bar stat-50 stat-100";
+    @media #{$small-medium}{
+        font-size: x-small;
+        grid-template-columns: 4.25rem 1.75rem 4rem 3rem 3.5rem;
+        grid-template-rows: 2rem;
+    }
 }
 .stat__name{
     grid-area: stat-name;
-    justify-self: left;
-    padding-left: 1rem;
+    justify-self: right;
 }
 .stat_stat-base{
     grid-area: stat-base;
 }
 .stat__bar{
     height: 1.5rem;
+    @media #{$small-medium}{
+        height: 1rem;
+    }
 }
 .stat__bar-container{
     display: inline-block;
-    width: 10rem;
+    width: 100%;
     grid-area: stat-bar;
 }
 .stat__text{

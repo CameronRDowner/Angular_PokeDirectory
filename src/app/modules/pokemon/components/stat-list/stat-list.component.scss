@@ -1,4 +1,10 @@
 @import '../../../../../assets/sass/animations';
+@import '../../../../../assets/sass/breakpoints';
+.stat-list{
+    @media #{$small-medium}{
+        margin: 0 0.5rem;
+    }
+}
 .stat-list__wrapper{
     margin: 0;
     display: grid;
@@ -10,6 +16,11 @@
     "empty1 header-base empty2 header-50 header-100"
     "stats stats stats stats stats"
     "total-title total-base empty3 empty4 empty5";
+    @media #{$small-medium}{
+        font-size: x-small;
+        grid-template-columns: 4rem 1.5rem 5rem 3rem 3.5rem;
+        grid-template-rows: 2rem auto 2rem;
+    }
 }
 .stat-list__base-header{
     grid-area: header-base;
