@@ -1,3 +1,4 @@
+@import '../../../../../assets/sass/breakpoints';
 .home-container{
     padding: 3rem 0rem 3rem 0rem;
     align-items: flex-start;
@@ -14,6 +15,11 @@ line-height: 2rem;
 word-wrap:break-word;
 max-width: 35rem;
 padding: 1rem;
+}
+.home-container__lists-wrapper{
+    @media #{$small}{
+        justify-content: flex-start;
+    }
 }
 .home-container__list{
     margin: 0.5rem 0 1rem 0;

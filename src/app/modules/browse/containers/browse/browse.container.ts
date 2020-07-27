@@ -96,10 +96,12 @@ export class BrowseContainer implements OnInit {
       if(allPokemon === null){
         this.store.dispatch(new browseActions.LoadAllPokemon)
       }
+      else{
+        this.handleContainerLoad();
+      }
     this.route.queryParams.pipe(takeWhile(()=>this.componentActive)).subscribe(queryParams=>{
       this.currentList = queryParams.list
     })
-    this.handleContainerLoad();
      })
   }
   ngOnDestroy(): void{

@@ -9,7 +9,7 @@ export class TextboxComponent implements OnInit {
   @Input() clearButton: boolean;
   @Input() initialValue: string;
   @Input() width: string;
-  @Output() clearButtonClick = new EventEmitter(); 
+  @Output() clearButtonClick = new EventEmitter();
   textboxValue: string;
   emitClearButtonClick():void{
     this.clearButtonClick.emit(null);
@@ -38,7 +38,6 @@ export class TextboxComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeValue();
-
   }
 
 }

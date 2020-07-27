@@ -28,7 +28,9 @@ export class SearchControlsContainer implements OnInit {
     return queryParamName
   }
   handleClearedTextbox():void{
-    this.navigateBrowseAllPokemon();
+    if(this.router.url !== '/'){
+      this.navigateBrowseAllPokemon();
+    }
   }
   navigateBrowseAllPokemon():void{
     this.router.navigate(['browse'], {queryParams:{ list: 'pokemon'}})
@@ -60,6 +62,7 @@ export class SearchControlsContainer implements OnInit {
   }
 
   ngOnInit(): void {
+ 
   }
   ngOnDestroy():void {
     this.componentActive = false;
