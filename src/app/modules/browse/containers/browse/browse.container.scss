@@ -25,4 +25,7 @@
     grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
     margin: 0 auto;
     width: 100%;
+    @media #{$small}{
+        grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+    }
 }

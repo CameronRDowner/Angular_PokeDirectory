@@ -1,5 +1,6 @@
 @import '../../../../../assets/sass/variables';
 @import '../../../../../assets/sass/animations';
+@import '../../../../../assets/sass/breakpoints';
 .pokemon-search-result{
     display: inline-block;
     border: solid 2px $medium-black;
@@ -9,12 +10,19 @@
     font-weight: bold;
     cursor: pointer;
     &:hover{
-        border: solid 2px $medium-red;  
+        border: solid 2px $medium-red; 
+    }
+    @media #{$small}{
+        width: 6rem;
+        height: 7.5rem;
     }
 }
 .pokemon-search-result__id{
 font-size: 3rem;
 margin: 0rem;
+@media #{$small}{
+ display: none;       
+}
 }
 .pokemon-search-result__sprite{
 margin: 0 auto;
@@ -25,4 +33,7 @@ width: 6rem;
 color: $medium-red;
 font-size: 1.3rem;
 margin: 0rem 0rem 0.3rem 0rem;
+@media #{$small}{
+   font-size: 0.8rem;       
+   }
 }
