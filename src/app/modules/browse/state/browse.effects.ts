@@ -30,7 +30,7 @@ export class BrowseEffects {
       this.store$.select(browseSelectors.getAllPokemon)
     ),
     map(([action, allPokemon]) => {
-      const searchResults = allPokemon.filter(pokemon => pokemon.name.includes(action.payload))
+      const searchResults = allPokemon.filter(pokemon => pokemon.name.includes(action.payload.toLowerCase()))
       if(searchResults.length === 0){
         return (new browseActions.SearchPokemonFailure("No Pokemon were found matching that name"))
       }
