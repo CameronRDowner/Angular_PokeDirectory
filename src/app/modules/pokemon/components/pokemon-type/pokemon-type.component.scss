@@ -9,16 +9,20 @@
 .pokemon-type--wrapper--medium{
     font-size: 1.2rem;
     padding: 0.6rem 0.8rem;
+    width: 6.5rem;
     @media #{$small-medium}{
         font-size: 0.9rem;
         padding: 0.6rem 0.7rem;
+        width: 5rem;
     }
 }
 .pokemon-type--wrapper--small{
-    padding: 0.7rem;
+    padding: 0.4rem 1rem;
+    width: 5rem;
     font-size: 0.9rem;
     @media #{$small-medium}{
+        width: 4rem;
         font-size: small;
-        padding: 0.5rem;
+        padding: 0.3rem 0.5rem;
     }
 }

@@ -4,14 +4,16 @@
         <app-search-controls></app-search-controls>
         <app-radio-cluster *ngIf="currentList === 'pokemon'" [radioCluster]="pokemonSortingButtons" (radioButtonClick)="handlePokemonSort($event)"></app-radio-cluster>
     </div >
-    <main class="flex-container-row-center search-results--wrapper">
-        <app-carousel-button *ngIf="(totalPages$ | async) > 1" [orientation]="'left'" (buttonClick)="handleLoadPreviousPage()"></app-carousel-button> 
+    <main class="flex-container-column-center search-results--wrapper">
         <div class="search-results__panel panel flex-container-column-center inset-shadow-sink animation-delay-500ms">
             <div class="search-results__container fade-in animation-delay-1000ms">
             <app-pokemon-search-result *ngFor="let result of resultsInView$ | async | slice:(startOffset$ | async):(endOffset$ | async)" [searchResult] = "result"></app-pokemon-search-result>
             </div>
             <app-page-indicator *ngIf="(totalPages$ | async) > 1" [currentPage]="currentPage$ | async" [totalPages]="totalPages$ | async"></app-page-indicator>
         </div>
-        <app-carousel-button *ngIf="(totalPages$ | async) > 1" [orientation]="'right'" (buttonClick)="handleLoadNextPage()"></app-carousel-button>
     </main>
+    <div class="flex-container-row-center">
+        <app-carousel-button *ngIf="(totalPages$ | async) > 1" [orientation]="'left'" (buttonClick)="handleLoadPreviousPage()"></app-carousel-button>
+        <app-carousel-button *ngIf="(totalPages$ | async) > 1" [orientation]="'right'" (buttonClick)="handleLoadNextPage()"></app-carousel-button>
+        </div>
 </div>
