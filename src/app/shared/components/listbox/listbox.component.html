@@ -1,0 +1,3 @@
+<ul class="listbox--list panel">
+    <li class="listbox__list-item" *ngFor="let option of optionsList"><a (click)="emitClick(option)">{{ option | replaceDash | titlecase }}</a></li>
+</ul>

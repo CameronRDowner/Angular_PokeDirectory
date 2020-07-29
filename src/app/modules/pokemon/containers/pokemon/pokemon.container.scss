@@ -3,7 +3,7 @@
 .pokemon-container{
     text-align: center;
     margin: 0;
-    padding: 2rem 0 3rem 0;
+    padding: 3rem 0 5rem 0;
     position: relative;
 }
 .pokemon-container__name{
@@ -18,14 +18,22 @@
 .pokemon-container__back-button-wrapper{
     position: absolute;
     display: inline-block;
-    left: 5.5rem;
+    left: 4.2rem;
     @media #{$medium}{
         display: none;
     }
+}
+.pokemon-container__game-selectbox-wrapper{
+    position: absolute;
+    right: 4.2rem;
+    top: 0rem;
 }
 .pokemon-container__header{
     margin: 1rem 1rem 0.5rem 1rem;
     @media #{$small-medium}{
         font-size: 1.25rem;
     }
+}
+.pokemon-container__content-wrapper{
+    justify-content: space-evenly;
 }

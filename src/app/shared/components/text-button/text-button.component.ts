@@ -9,7 +9,7 @@ import { EventEmitter } from '@angular/core';
 })
 export class TextButtonComponent implements OnInit {
   @Output() buttonClick = new EventEmitter();
-  @Input() textButton: TextButton;
+  @Input() buttonText: string;
   buttonStyles:any;
   emitButtonClick(){
     this.buttonClick.emit(null);
@@ -19,8 +19,8 @@ export class TextButtonComponent implements OnInit {
    }
   ngOnInit(): void {
     this.buttonStyles = {
-      'background-color':this.textButton.buttonColor,
-      'color': this.textButton.textColor
+      'background-color':'#BE3638',
+      'color': '#FFFFFF'
     }
   }
 

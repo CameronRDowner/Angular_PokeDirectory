@@ -1,7 +1,7 @@
 @import '../../../../../assets/sass/animations';
 @import '../../../../../assets/sass/breakpoints';
 .pokemon-info{
-    max-width: 33rem;
+    max-width: 22rem;
     justify-content: space-evenly;
     @media #{$small-medium}{
         font-size: small;
@@ -23,11 +23,12 @@
     }
 }
 .pokemon-info__info-list{
-    width: 14rem;
+    width: 13rem;
     text-align: left;
     list-style: none;
     padding-left: 0;
     margin: 0;
+    white-space: nowrap;
     @media #{$small-medium}{
         width: 12rem;
     }

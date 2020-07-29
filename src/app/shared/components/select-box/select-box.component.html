@@ -1,6 +1,6 @@
 <div class="select-box" (clickedOutside)="handleClickOutside()" >
     <div (click)="toggleOptionsVisibility()" class="select-box__box flex-container-row-center shadow-drop-red">    
-        <span class="select-box__selected-title">{{ selectedOption | titlecase }}</span>
+        <span class="select-box__selected-title">{{ selectedOption | replaceDash | titlecase }}</span>
         <i class="select-box__caret fa fa-caret-down"></i>
     </div>
     <ul @fadeInY *ngIf="optionsVisible" class="select-box__list">

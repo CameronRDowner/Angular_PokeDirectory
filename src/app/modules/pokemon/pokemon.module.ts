@@ -14,6 +14,7 @@ import { PokemonInfoComponent } from './components/pokemon-info/pokemon-info.com
 import { AbilityComponent } from './components/ability/ability.component';
 import { StatComponent } from './components/stat/stat.component';
 import { IconButtonComponent } from '../../shared/components/icon-button/icon-button.component';
+import { PickerComponent } from '../../shared/components/picker/picker.component';
 
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './state/pokemon.reducer';
@@ -26,9 +27,13 @@ import { KeysArrayPipe } from '../../shared/pipes/keys-array.pipe';
 import { AbbrevSpecialStringPipe } from './pipes/abbrev-special-string.pipe';
 import { TrimNameStringPipe } from './pipes/trim-name-string.pipe';
 import { ClickedOutsideDirective } from '../../shared/directives/clicked-outside.directive';
+import { TextButtonComponent } from '../../shared/components/text-button/text-button.component';
+import { ListboxComponent } from '../../shared/components/listbox/listbox.component';
+import { TruncateEllipsisStringPipe } from '../../shared/pipes/truncate-ellipsis-string.pipe';
 
 @NgModule({
   declarations: [
+    PickerComponent,
     StatListComponent,
     PokemonOfTheDayComponent,
     PokemonSearchResultComponent,
@@ -46,7 +51,10 @@ import { ClickedOutsideDirective } from '../../shared/directives/clicked-outside
     AbbrevSpecialStringPipe,
     IconButtonComponent,
     TrimNameStringPipe,
-    ClickedOutsideDirective
+    ClickedOutsideDirective,
+    TextButtonComponent,
+    ListboxComponent,
+    TruncateEllipsisStringPipe
   ],
   imports: [
     StoreModule.forFeature('pokemon', reducer),

@@ -5,7 +5,7 @@
 <img class="pokemon-of-the-day__sprite-image" src={{this.pokemonOfTheDay?.sprites.front_default}}>
 <span class="pokemon-of-the-day__name">{{this.pokemonOfTheDay?.name | titlecase}}</span>
 <div class="flex-container-row-center">
-    <app-pokemon-type *ngFor="let pokemonType of (pokemonOfTheDay?.types | reverse)" [typeName] = "pokemonType.type.name"></app-pokemon-type>
+    <app-pokemon-type *ngFor="let pokemonType of (pokemonOfTheDay?.types | reverse)" [typeName] = "pokemonType.type.name" [size]="'small'"></app-pokemon-type>
 </div>
 </a>
 </div>

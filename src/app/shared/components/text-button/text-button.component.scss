@@ -1,0 +1,14 @@
+@import '../../../../assets/sass/variables';
+@import '../../../../assets/sass/animations';
+.text-button--button{
+    background-color: $medium-red;
+    color: white;
+    height: 3.5rem;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    &:focus{
+        outline: none;
+    }
+}

@@ -2,22 +2,27 @@
     <div class="pokemon-container__back-button-wrapper">
         <app-icon-button [iconClasses]="'fa fa-arrow-left'" (buttonClick)="navigateBackBrowsePage()"></app-icon-button>
     </div>
+    <div class="pokemon-container__game-selectbox-wrapper">
+        <h3 class="pokemon-container__header">Game Data</h3>
+        <app-picker [optionsList]="moveLists$ | async | keysArray"></app-picker>
+    </div>
     <h1 class="pokemon-container__name">{{(pokemon$ | async )?.name | titlecase}}</h1>
-<main class="flex-container-row-start">
+<main class="pokemon-container__content-wrapper flex-container-row-start">
     <section>
         <h2 class="pokemon-container__header">Sprites</h2>
         <app-sprites [sprites]="(pokemon$ | async ).sprites"></app-sprites>
-    </section>
-    <div class="">
         <section>
-        <h2 class="pokemon-container__header">Info</h2>
-        <app-pokemon-info [pokemon]="pokemon$ | async" [abilities]="abilities$ | async" [hiddenAbilities]="hiddenAbilities$ | async"></app-pokemon-info>
-        </section>
+            <h2 class="pokemon-container__header">Info</h2>
+            <app-pokemon-info [pokemon]="pokemon$ | async" [abilities]="abilities$ | async" [hiddenAbilities]="hiddenAbilities$ | async"></app-pokemon-info>
+            </section>
+    </section>
+    <div>
         <section>
         <h2 class="pokemon-container__header">Stats</h2>
         <app-stat-list [statList]="(pokemon$ | async)?.stats"></app-stat-list>
         </section>
     </div>
+
 </main> 
 </div>
 

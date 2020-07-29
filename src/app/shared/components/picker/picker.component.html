@@ -1,0 +1,6 @@
+<div (clickedOutside)="handleClickOutside()">
+    <app-text-button [buttonText]="toggledOption | replaceDash | titlecase | truncateEllipsis" (buttonClick)="toggleModal()"></app-text-button>
+    <div @fade *ngIf="modalVisible" class="picker__modal">
+        <app-listbox [optionsList]="optionsList" (optionClick)="handleOptionClick($event)"></app-listbox>
+    </div>
+</div>

@@ -60,7 +60,10 @@ export class SelectBoxComponent implements OnInit {
     this.optionsVisible = false;
    }
   ngOnInit(): void {
-    this.initializeSelectedOption();
+    
+  }
+  ngOnChanges():void{
+    this.initializeSelectedOption();''
   }
 
 }

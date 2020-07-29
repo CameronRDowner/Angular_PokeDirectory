@@ -12,7 +12,6 @@ export interface PokemonState {
     encounters:Array<LocationAreaEncounter>,
     abilities:Array<PokemonAbility>,
     hiddenAbilities: Array<PokemonAbility>
-
 }
 
 const initialState: PokemonState = {

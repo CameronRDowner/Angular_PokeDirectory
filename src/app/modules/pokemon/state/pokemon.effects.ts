@@ -51,29 +51,29 @@ buildMoveLists$: Observable<Action> = this.actions$.pipe(
 
   })
 )
-// @Effect()
-//   loadMoveList$: Observable<Action> = this.actions$.pipe(
-//     ofType(pokemonActions.PokemonActionTypes.SetSelectedGame),
-//     withLatestFrom(
-//       this.store$.select(pokemonSelectors.getMoveLists), 
-//       this.store$.select(pokemonSelectors.getSelectedGame),
-//       ),
-//     map(([action, moveLists, selectedGame])=> {
-//       let newMoveList = []
-//       if(moveLists[selectedGame][0].moveInfo === null){
-//         moveLists[selectedGame].map(_move=>{
-//           this.pokemonService.getMoveTest(_move.moveUrl).subscribe(_moveInfo => {
-//             console.log(_moveInfo)
-//             newMoveList.push({..._move, moveInfo: _moveInfo } as Move)
-//           })
-//         })
-//       }
-//       console.log('movelist', newMoveList)
-//       const newMoveLists = {...moveLists, [selectedGame]: newMoveList} as MoveLists
-//       console.log('moveLists', newMoveLists)
-//       return new pokemonActions.LoadMoveListSuccess(newMoveLists)
-//     })
-//   )
+@Effect()
+  loadMoveList$: Observable<Action> = this.actions$.pipe(
+    ofType(pokemonActions.PokemonActionTypes.SetSelectedGame),
+    withLatestFrom(
+      this.store$.select(pokemonSelectors.getMoveLists), 
+      this.store$.select(pokemonSelectors.getSelectedGame),
+      ),
+    map(([action, moveLists, selectedGame])=> {
+      let newMoveList = []
+      if(moveLists[selectedGame][0].moveInfo === null){
+        moveLists[selectedGame].map(_move=>{
+          this.pokemonService.getMove(_move.moveUrl).subscribe(_moveInfo => {
+            console.log(_moveInfo)
+            newMoveList.push({..._move, moveInfo: _moveInfo } as Move)
+          })
+        })
+      }
+      console.log('movelist', newMoveList)
+      const newMoveLists = {...moveLists, [selectedGame]: newMoveList} as MoveLists
+      console.log('moveLists', newMoveLists)
+      return new pokemonActions.LoadMoveListSuccess(newMoveLists)
+    })
+  )
 @Effect()
   buildGamesFeatured$: Observable<Action> = this.actions$.pipe(
     ofType<pokemonActions.SetMoveLists>(pokemonActions.PokemonActionTypes.SetMoveLists),
