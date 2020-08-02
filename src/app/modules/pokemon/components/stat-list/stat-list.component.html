@@ -2,6 +2,6 @@
 <div class="stat-list__wrapper fade-in animation-delay-1000ms">
     <span class="stat-list__text--bold stat-list__base-header">Base</span><span class="stat-list__text--bold stat-list__50-header">At Lv. 50</span><span class="stat-list__text--bold stat-list__100-header">At Lv. 100</span>
     <div class="stat-list__stats"><app-stat *ngFor="let stat of statList; let indexOfStat = index;" [stat]="stat" [statIndex]="indexOfStat"></app-stat></div>
-    <span class="stat-list__total-title">Total:</span><span class="stat-list__total-base">{{ getBaseStatTotal() }}</span>
+    <span class="stat-list__total-title">Total:</span><span class="stat-list__total-base">{{ baseStatTotal }}</span>
 </div>
 </div>

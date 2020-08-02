@@ -4,7 +4,7 @@
     </div>
     <div class="pokemon-container__game-selectbox-wrapper">
         <h3 class="pokemon-container__header">Game Data</h3>
-        <app-picker [optionsList]="moveLists$ | async | keysArray"></app-picker>
+        <app-picker [optionsList]="gamesFeatured$ | async" (optionClick)="setSelectedGame($event)"></app-picker>
     </div>
     <h1 class="pokemon-container__name">{{(pokemon$ | async )?.name | titlecase}}</h1>
 <main class="pokemon-container__content-wrapper flex-container-row-start">
@@ -20,6 +20,10 @@
         <section>
         <h2 class="pokemon-container__header">Stats</h2>
         <app-stat-list [statList]="(pokemon$ | async)?.stats"></app-stat-list>
+        </section>
+        <section>
+        <h2>Move List</h2>
+        <app-move-list [moveList]="(moveLists$ | async)[selectedGame$ | async]"></app-move-list>
         </section>
     </div>
 

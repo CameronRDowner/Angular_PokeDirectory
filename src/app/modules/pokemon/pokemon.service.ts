@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, EMPTY} from 'rxjs';
+import { Observable, EMPTY, throwError} from 'rxjs';
 import { NamedAPIResourceList } from '../../shared/models/named-apiresource-list';
 import { HttpClient } from '@angular/common/http';
 import { Pokemon } from './models/pokemon';
 import { Move } from './models/move';
-import { shareReplay, catchError } from 'rxjs/operators';
+import { shareReplay, catchError, tap } from 'rxjs/operators';
 import { MoveInfo } from './models/move-info';
 import { LocationAreaEncounter } from './models/location-area-encounter';
 
@@ -41,11 +41,13 @@ export class PokemonService {
       return this.movesCache[moveUrl];
     }
     else{
-      this.movesCache[moveUrl] = this.httpClient.get<MoveInfo>(moveUrl).pipe(
-        shareReplay(1),
-        catchError(err=>{
+      return this.httpClient.get<MoveInfo>(moveUrl).pipe(
+        tap(move=> this.movesCache[moveUrl] = move),
+        catchError(error=>{
           delete this.movesCache[moveUrl];
-          return EMPTY;
+          console.log(error);
+          throwError(error.message);
+          return EMPTY
         }));
     }
   }

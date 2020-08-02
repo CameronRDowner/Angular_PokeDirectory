@@ -30,6 +30,8 @@ import { ClickedOutsideDirective } from '../../shared/directives/clicked-outside
 import { TextButtonComponent } from '../../shared/components/text-button/text-button.component';
 import { ListboxComponent } from '../../shared/components/listbox/listbox.component';
 import { TruncateEllipsisStringPipe } from '../../shared/pipes/truncate-ellipsis-string.pipe';
+import { MoveListComponent } from './components/move-list/move-list.component';
+import { MoveComponent } from './components/move/move.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { TruncateEllipsisStringPipe } from '../../shared/pipes/truncate-ellipsis
     ClickedOutsideDirective,
     TextButtonComponent,
     ListboxComponent,
-    TruncateEllipsisStringPipe
+    TruncateEllipsisStringPipe,
+    MoveComponent,
+    MoveListComponent
   ],
   imports: [
     StoreModule.forFeature('pokemon', reducer),

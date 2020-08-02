@@ -7,11 +7,11 @@ import { MoveLists } from '../../models/move-lists';
 
 
 @Component({
-  selector: 'app-moveset',
-  templateUrl: './moveset.component.html',
-  styleUrls: ['./moveset.component.scss']
+  selector: 'app-move-list',
+  templateUrl: './move-list.component.html',
+  styleUrls: ['./move-list.component.scss']
 })
-export class MovesetComponent implements OnInit {
+export class MoveListComponent implements OnInit {
   @Input() moveList:MoveLists[];
   constructor() {
     

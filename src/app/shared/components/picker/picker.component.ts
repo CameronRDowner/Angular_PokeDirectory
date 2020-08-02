@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { TextButton } from '../../models/text-button/text-button';
 import { EventEmitter } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-picker',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './picker.component.html',
   styleUrls: ['./picker.component.scss'],
   animations: [

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MovesetComponent } from './moveset.component';
+import { MovesetComponent } from './move-list.component';
 
 describe('MovesetComponent', () => {
   let component: MovesetComponent;

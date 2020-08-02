@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Observable, of, from } from 'rxjs';
+import { Observable, of, from, forkJoin } from 'rxjs';
 import { PokemonService } from '../pokemon.service';
 import { Action, Store, select } from '@ngrx/store';
 import * as pokemonActions from './pokemon.actions';
@@ -58,20 +58,19 @@ buildMoveLists$: Observable<Action> = this.actions$.pipe(
       this.store$.select(pokemonSelectors.getMoveLists), 
       this.store$.select(pokemonSelectors.getSelectedGame),
       ),
-    map(([action, moveLists, selectedGame])=> {
-      let newMoveList = []
+    switchMap(([action, moveLists, selectedGame])=> {
+      let apiCalls = []
       if(moveLists[selectedGame][0].moveInfo === null){
-        moveLists[selectedGame].map(_move=>{
-          this.pokemonService.getMove(_move.moveUrl).subscribe(_moveInfo => {
-            console.log(_moveInfo)
-            newMoveList.push({..._move, moveInfo: _moveInfo } as Move)
+        apiCalls = [moveLists[selectedGame].map(_move=> this.pokemonService.getMove(_move.moveUrl))]
+        return forkJoin(...apiCalls).pipe(
+          map(response=>{
+            let newMoveList = moveLists[selectedGame].map((_move, index)=> {
+              return { ..._move, moveInfo: response[index] }
+            })
+            return new pokemonActions.LoadMoveListSuccess({...moveLists, [selectedGame]: newMoveList } as MoveLists)
           })
-        })
+        ) 
       }
-      console.log('movelist', newMoveList)
-      const newMoveLists = {...moveLists, [selectedGame]: newMoveList} as MoveLists
-      console.log('moveLists', newMoveLists)
-      return new pokemonActions.LoadMoveListSuccess(newMoveLists)
     })
   )
 @Effect()
@@ -84,8 +83,8 @@ buildMoveLists$: Observable<Action> = this.actions$.pipe(
 @Effect()
   initializeSelectedGame$: Observable<Action> = this.actions$.pipe(
     ofType<pokemonActions.SetGamesFeatured>(pokemonActions.PokemonActionTypes.SetGamesFeatured),
-    map(action => {
-     return new pokemonActions.SetSelectedGame(action.payload[0])
+    map((action)=>{
+      return (new pokemonActions.SetSelectedGame(action.payload[0]))
     })
   )
 // @Effect()

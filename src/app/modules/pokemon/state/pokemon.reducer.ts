@@ -15,7 +15,7 @@ export interface PokemonState {
 }
 
 const initialState: PokemonState = {
-    selectedGame: "",
+    selectedGame: null,
     pokemon: {} as Pokemon,
     moveLists: {} as MoveLists,
     gamesFeatured: [],

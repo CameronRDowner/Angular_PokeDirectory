@@ -8,12 +8,15 @@ import { PokemonStat } from '../../models/pokemon-stat';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StatListComponent implements OnInit {
-  @Input() statList: PokemonStat[]
-  getBaseStatTotal(): number{
-    return this.statList.reduce((baseStatTotal, stat)=> baseStatTotal + stat.base_stat, 0)
+  @Input() statList: PokemonStat[];
+  baseStatTotal: number;
+  initializeBaseStatTotal(): void{
+    this.baseStatTotal = this.statList.reduce((baseStatTotal, stat)=> baseStatTotal + stat.base_stat, 0)
   } 
   constructor() { }
-  
+  ngOnChanges():void{
+    this.initializeBaseStatTotal();
+  }
   ngOnInit(): void {
   }
 
