@@ -10,6 +10,7 @@ import { take } from 'rxjs/operators';
 })
 export class MoveComponent implements OnInit {
   @Input() move:Move;
+  @Input() index:number;
   constructor() {
 
    }
