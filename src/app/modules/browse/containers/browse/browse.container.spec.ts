@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BrowsePageContainer } from './browse.container';
+import { BrowseContainer } from './browse.container';
 
-describe('BrowsePageComponent', () => {
-  let component: BrowsePageContainer;
-  let fixture: ComponentFixture<BrowsePageContainer>;
+describe('BrowseContainer', () => {
+  let component: BrowseContainer;
+  let fixture: ComponentFixture<BrowseContainer>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BrowsePageContainer ]
+      declarations: [ BrowseContainer ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BrowsePageContainer);
+    fixture = TestBed.createComponent(BrowseContainer);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

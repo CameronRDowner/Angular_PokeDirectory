@@ -5,4 +5,15 @@ describe('AbbrevSpecialStringPipe', () => {
     const pipe = new AbbrevSpecialStringPipe();
     expect(pipe).toBeTruthy();
   });
+
+  it('should abbreviate special as sp. if special is in string', () => {
+    const pipe = new AbbrevSpecialStringPipe();
+
+    const pipeResult = pipe.transform('special-attack');
+
+    expect(pipeResult).toEqual('Sp. attack')
+  })
+
 });
+
+

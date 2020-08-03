@@ -9,7 +9,7 @@ import { slide } from './route-animations';
   animations: [ slide ]
 })
 export class AppComponent {
-  title = 'angular-pokedex';
+  title = 'PokeDirectory';
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }

@@ -20,10 +20,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-pokedex'`, () => {
+  it(`should have as title 'PokeDirectory'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('angular-pokedex');
+    expect(app.title).toEqual('PokeDirectory');
   });
 
   it('should render title', () => {
