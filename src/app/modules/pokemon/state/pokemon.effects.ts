@@ -28,10 +28,9 @@ constructor(private pokemonService: PokemonService, private actions$: Actions, p
 @Effect()
   buildAbilityLists$: Observable<Action>=this.actions$.pipe(
     ofType<pokemonActions.LoadPokemonSuccess>(pokemonActions.PokemonActionTypes.LoadPokemonSuccess),
-    map(action => action.payload),
-    switchMap(payload => [
-      new pokemonActions.SetAbilities(payload.abilities.filter(ability=> ability.is_hidden === false)),
-      new pokemonActions.SetHiddenAbilities(payload.abilities.filter(ability => ability.is_hidden === true))
+    switchMap(action => [
+      new pokemonActions.SetAbilities(action.payload.abilities.filter(ability=> ability.is_hidden === false)),
+      new pokemonActions.SetHiddenAbilities(action.payload.abilities.filter(ability => ability.is_hidden === true))
     ])
   )
 @Effect()

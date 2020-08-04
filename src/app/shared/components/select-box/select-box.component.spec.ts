@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectBoxComponent } from './select-box.component';
+import { ReplaceDashPipe } from '../../pipes/replace-dash-string';
 
 describe('SelectBoxComponent', () => {
   let component: SelectBoxComponent;
@@ -8,7 +9,8 @@ describe('SelectBoxComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SelectBoxComponent ]
+      imports:[],
+      declarations: [ SelectBoxComponent, ReplaceDashPipe ]
     })
     .compileComponents();
   }));
