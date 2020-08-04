@@ -4,6 +4,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 export class ReplaceDashPipe implements PipeTransform {
     transform(value : string): string {
+      if(value === null || value === undefined){
+        return value
+      }
+      else{
       return value.replace(/-/g, " ");
+      }
     }
   }
