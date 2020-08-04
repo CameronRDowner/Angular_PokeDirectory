@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { PokemonSprites } from '../../models/pokemon-sprites';
 import { RadioCluster } from '../../../../shared/models/radio-cluster/radio-cluster';
 @Component({
   selector: 'app-sprites',
   templateUrl: './sprites.component.html',
-  styleUrls: ['./sprites.component.scss']
+  styleUrls: ['./sprites.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpritesComponent implements OnInit {
   @Input() sprites:PokemonSprites;
@@ -29,6 +30,9 @@ export class SpritesComponent implements OnInit {
   }
   updateSpriteInView(){
     this.spriteInView = this.sprites[`${this.orientationToggled.toLowerCase()}_${this.colorToggled.toLowerCase()}`];
+  }
+  initializeSpriteInView():void{
+    this.spriteInView = this.sprites.front_default;
   } 
   constructor() {
     this.orientationRadioCluster = new RadioCluster(["Front", "Back"], true);
@@ -37,7 +41,9 @@ export class SpritesComponent implements OnInit {
     this.colorToggled = "Default";
    }
   ngOnChanges(): void {
-    this.spriteInView = this.sprites.front_default;
+    if(this.sprites !== undefined){
+      this.initializeSpriteInView();
+    }
   }
   ngOnInit(): void {
     
