@@ -15,7 +15,9 @@ export class StatListComponent implements OnInit {
   } 
   constructor() { }
   ngOnChanges():void{
-    this.initializeBaseStatTotal();
+    if(this.statList !== undefined){
+      this.initializeBaseStatTotal();
+    }
   }
   ngOnInit(): void {
   }
