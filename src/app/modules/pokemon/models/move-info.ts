@@ -5,5 +5,7 @@ export interface MoveInfo {
     name: string;
     pp: number;
     power: number;
+    accuracy: number;
+    type: NamedAPIResource;
     damage_class:NamedAPIResource;
 }
