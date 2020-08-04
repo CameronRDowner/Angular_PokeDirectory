@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BrowseContainer } from './browse.container';
+import { RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
 
 describe('BrowseContainer', () => {
   let component: BrowseContainer;
@@ -8,6 +10,7 @@ describe('BrowseContainer', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterModule.forRoot([]), StoreModule.forRoot([])],
       declarations: [ BrowseContainer ]
     })
     .compileComponents();
