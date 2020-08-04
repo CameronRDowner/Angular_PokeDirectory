@@ -1,14 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AbilityComponent } from './ability.component';
+import { ReplaceDashPipe } from 'src/app/shared/pipes/replace-dash-string';
 
-describe('PokemonAbilitiesComponent', () => {
+describe('PokemonAbilityComponent', () => {
   let component: AbilityComponent;
   let fixture: ComponentFixture<AbilityComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AbilityComponent ]
+      declarations: [ AbilityComponent, ReplaceDashPipe ]
     })
     .compileComponents();
   }));
