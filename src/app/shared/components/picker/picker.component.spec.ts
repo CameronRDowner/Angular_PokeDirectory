@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PickerComponent } from './picker.component';
+import { TruncateEllipsisStringPipe } from '../../pipes/truncate-ellipsis-string.pipe';
 
 describe('PickerComponent', () => {
   let component: PickerComponent;
@@ -8,7 +9,7 @@ describe('PickerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PickerComponent ]
+      declarations: [ PickerComponent, TruncateEllipsisStringPipe ]
     })
     .compileComponents();
   }));
