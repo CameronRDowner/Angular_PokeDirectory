@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PokemonOfTheDayComponent } from './pokemon-of-the-day.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ReversePipe } from 'src/app/shared/pipes/reverse-array.pipe';
 
 describe('PokemonOfTheDayComponent', () => {
   let component: PokemonOfTheDayComponent;
@@ -8,7 +11,8 @@ describe('PokemonOfTheDayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PokemonOfTheDayComponent ]
+      declarations: [ PokemonOfTheDayComponent, ReversePipe ],
+      imports: [HttpClientTestingModule, RouterTestingModule]
     })
     .compileComponents();
   }));
