@@ -52,21 +52,20 @@ buildMoveLists$: Observable<Action> = this.actions$.pipe(
 )
 @Effect()
   loadMoveList$: Observable<Action> = this.actions$.pipe(
-    ofType(pokemonActions.PokemonActionTypes.SetSelectedGame),
+    ofType<pokemonActions.SetSelectedGame>(pokemonActions.PokemonActionTypes.SetSelectedGame),
     withLatestFrom(
-      this.store$.select(pokemonSelectors.getMoveLists), 
-      this.store$.select(pokemonSelectors.getSelectedGame),
+      this.store$.select(pokemonSelectors.getMoveLists)
       ),
-    switchMap(([action, moveLists, selectedGame])=> {
+    switchMap(([action, moveLists])=> {
       let apiCalls = []
-      if(moveLists[selectedGame][0].moveInfo === null){
-        apiCalls = [moveLists[selectedGame].map(_move=> this.pokemonService.getMove(_move.moveUrl))]
+      if(moveLists[action.payload][0].moveInfo === null){
+        apiCalls = [moveLists[action.payload].map(_move=> this.pokemonService.getMove(_move.moveUrl))]
         return forkJoin(...apiCalls).pipe(
           map(response=>{
-            let newMoveList = moveLists[selectedGame].map((_move, index)=> {
+            let newMoveList = moveLists[action.payload].map((_move, index)=> {
               return { ..._move, moveInfo: response[index] }
             })
-            return new pokemonActions.LoadMoveListSuccess({...moveLists, [selectedGame]: newMoveList } as MoveLists)
+            return new pokemonActions.LoadMoveListSuccess({...moveLists, [action.payload]: newMoveList } as MoveLists)
           })
         ) 
       }
