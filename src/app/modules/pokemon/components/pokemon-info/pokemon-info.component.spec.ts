@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PokemonInfoComponent } from './pokemon-info.component';
+import { ReversePipe } from 'src/app/shared/pipes/reverse-array.pipe';
 
 describe('PokemonInfoComponent', () => {
   let component: PokemonInfoComponent;
@@ -8,7 +9,7 @@ describe('PokemonInfoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PokemonInfoComponent ]
+      declarations: [ PokemonInfoComponent, ReversePipe ]
     })
     .compileComponents();
   }));
