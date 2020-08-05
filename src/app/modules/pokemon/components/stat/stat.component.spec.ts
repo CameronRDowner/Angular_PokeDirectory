@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StatComponent } from './stat.component';
+import { AbbrevSpecialStringPipe } from '../../pipes/abbrev-special-string.pipe';
 
 describe('StatComponent', () => {
   let component: StatComponent;
@@ -8,7 +9,7 @@ describe('StatComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StatComponent ]
+      declarations: [ StatComponent, AbbrevSpecialStringPipe ]
     })
     .compileComponents();
   }));
