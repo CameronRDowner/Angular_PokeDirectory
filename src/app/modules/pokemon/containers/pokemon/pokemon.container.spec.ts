@@ -1,14 +1,17 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PokemonContainer } from './pokemon.container';
+import { RouterTestingModule } from '@angular/router/testing';
+import { StoreModule } from '@ngrx/store';
 
-describe('PokemonPageComponent', () => {
+describe('PokemonContainer', () => {
   let component: PokemonContainer;
   let fixture: ComponentFixture<PokemonContainer>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PokemonContainer ]
+      declarations: [ PokemonContainer ],
+      imports: [ RouterTestingModule, StoreModule.forRoot({}) ]
     })
     .compileComponents();
   }));
