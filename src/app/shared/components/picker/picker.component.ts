@@ -26,7 +26,6 @@ export class PickerComponent implements OnInit {
   @Input() optionsList:Array<string>;
   @Output() optionClick = new EventEmitter();
   handleOptionClick(optionName:string):void{
-    console.log('ran', optionName)
     this.setToggledOption(optionName);
     this.toggleModal();
     this.emitOptionClick(optionName);

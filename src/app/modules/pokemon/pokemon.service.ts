@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, EMPTY, throwError} from 'rxjs';
+import { Observable, EMPTY, throwError, of} from 'rxjs';
 import { NamedAPIResourceList } from '../../shared/models/named-apiresource-list';
 import { HttpClient } from '@angular/common/http';
 import { Pokemon } from './models/pokemon';
@@ -42,10 +42,9 @@ export class PokemonService {
     }
     else{
       return this.httpClient.get<MoveInfo>(moveUrl).pipe(
-        tap(move=> this.movesCache[moveUrl] = move),
+        tap(move=> this.movesCache[moveUrl] = of(move)),
         catchError(error=>{
           delete this.movesCache[moveUrl];
-          console.log(error);
           throwError(error.message);
           return EMPTY
         }));
