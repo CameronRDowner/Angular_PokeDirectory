@@ -1,4 +1,6 @@
 @import '../../../../assets/sass/variables';
+@import '../../../../assets/sass/animations';
+@import '../../../../assets/sass/breakpoints';
 .picker__modal{
     position: fixed;
     background-color: $medium-white;
@@ -8,4 +10,9 @@
     top: 35%;
     transform: translateX(-50%);
     padding: 0 1rem 0 1rem;
+    @media #{$small-medium} {
+        left: 0;
+        transform: none;
+        right: 0;
+    }
 }
