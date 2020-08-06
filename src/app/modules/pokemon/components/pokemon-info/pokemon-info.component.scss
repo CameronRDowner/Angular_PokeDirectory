@@ -8,19 +8,21 @@
         margin: 0 0.5rem;
     }
 }
-.pokemon-info__ability-type-wrapper{
-    width: 15rem;
+.pokemon-info__type-wrapper{
+    margin: 0.7rem 0rem;
     display: grid;
     justify-items: center;
     align-items: flex-start;
+    grid-template-columns: 7rem 7rem;
+    grid-template-rows: auto;
+}
+.pokemon-info__abilities-wrapper{
+    display: grid;
+    align-items: flex-start;
     grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-    grid-template-areas: 
-    "type1 type2"
-    "hidden-abilities abilities";
-    @media #{$small-medium}{
-        width: 13rem;
-    }
+    grid-template-rows: auto;
+    grid-gap: 1rem;
+    margin: 0.5rem 0rem;
 }
 .pokemon-info__info-list{
     width: 13rem;
@@ -40,22 +42,11 @@ grid-area: type1;
 grid-area: type2;
 }
 .pokemon-info__abilities-title{
-    margin: 0 0;
+    margin: 0 0 0.3rem 0;
     white-space: nowrap;
-}
-.pokemon-info__abilities{
-    grid-area: abilities;
-}
-.pokemon-info__hidden-abilities{
-grid-area: hidden-abilities;    
 }
 .pokemon-info__text{
     font-weight: 500;
-    display: inline-block;
-    margin: 0.5rem 0.2rem;
-}
-.pokemon-info__text--bold{
-    font-weight: 900;
     display: inline-block;
     margin: 0.5rem 0.2rem;
 }

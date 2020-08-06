@@ -25,6 +25,9 @@ body{
 div, p, h1, h2, h3, h4, h5, h6 {
     color: $medium-black;
 }
+.bold-text{
+    font-weight: bold;
+}
 .flex-container-row-center{
     display: flex;
     flex-direction: row;
