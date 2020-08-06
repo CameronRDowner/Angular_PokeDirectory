@@ -11,6 +11,18 @@ import { take } from 'rxjs/operators';
 export class MoveComponent implements OnInit {
   @Input() move:Move;
   @Input() index:number;
+  getWrapperStyles(){
+    let _backgroundColor = null;
+    if(this.index % 2 === 0){
+      _backgroundColor = "#D0D0D0"
+    }
+    else{
+      _backgroundColor = "#E9E9E9"
+    }
+    return {
+      backgroundColor: _backgroundColor
+    }
+  }
   constructor() {
 
    }

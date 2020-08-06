@@ -1,0 +1,8 @@
+.move-list__header-wrapper{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 0.3rem;
+    grid-template-columns: 2rem 8rem 5.5rem 5.5rem 3rem 3rem 2rem;
+    grid-template-rows: 2.5rem;
+}

@@ -1,5 +1,6 @@
 <div class="moveset">
     <div class="panel">
+        <span class="move-list__header-wrapper"><h4>Lvl</h4><h4>Name</h4><h4>Type</h4><h4>Class</h4><h4>Pwr</h4><h4>Acc</h4><h4>PP</h4></span>
         <app-move *ngFor="let move of moveList; let moveIndex = index;" [move]="move" [index]="moveIndex"></app-move>
     </div>
 </div>
