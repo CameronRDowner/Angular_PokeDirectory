@@ -2,7 +2,7 @@
     <div class="pokemon-container__back-button-wrapper">
         <app-icon-button [iconClasses]="'fa fa-arrow-left'" (buttonClick)="navigateBackBrowsePage()"></app-icon-button>
     </div>
-    <div class="pokemon-container__game-selectbox-wrapper">
+    <div class="pokemon-container__game-picker-wrapper">
         <h3 class="pokemon-container__header">Game Data</h3>
         <app-picker [optionsList]="gamesFeatured$ | async" (optionClick)="setSelectedGame($event)"></app-picker>
     </div>
