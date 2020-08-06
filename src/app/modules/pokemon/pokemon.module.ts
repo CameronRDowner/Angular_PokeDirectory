@@ -32,6 +32,7 @@ import { ListboxComponent } from '../../shared/components/listbox/listbox.compon
 import { TruncateEllipsisStringPipe } from '../../shared/pipes/truncate-ellipsis-string.pipe';
 import { MoveListComponent } from './components/move-list/move-list.component';
 import { MoveComponent } from './components/move/move.component';
+import { ConcatPercentStringPipe } from '../../shared/pipes/concat-percent-string.pipe';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { MoveComponent } from './components/move/move.component';
     ListboxComponent,
     TruncateEllipsisStringPipe,
     MoveComponent,
-    MoveListComponent
+    MoveListComponent,
+    ConcatPercentStringPipe
   ],
   imports: [
     StoreModule.forFeature('pokemon', reducer),

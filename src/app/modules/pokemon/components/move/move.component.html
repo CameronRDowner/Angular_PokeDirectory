@@ -4,6 +4,6 @@
     <app-pokemon-type [typeName]="move?.moveInfo?.type.name" [size]="'small'"></app-pokemon-type>
     <span>{{ move?.moveInfo?.damage_class.name }}</span>
     <span>{{ move?.moveInfo?.power }}</span>
-    <span>{{ move?.moveInfo?.accuracy }}</span>
+    <span>{{ move?.moveInfo?.accuracy | concatPercent }}</span>
     <span>{{ move?.moveInfo?.pp }}</span>
 </div>
