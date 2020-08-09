@@ -33,6 +33,7 @@ import { TruncateEllipsisStringPipe } from '../../shared/pipes/truncate-ellipsis
 import { MoveListComponent } from './components/move-list/move-list.component';
 import { MoveComponent } from './components/move/move.component';
 import { ConcatPercentStringPipe } from '../../shared/pipes/concat-percent-string.pipe';
+import { DamageClassComponent } from './components/damage-class/damage-class.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { ConcatPercentStringPipe } from '../../shared/pipes/concat-percent-strin
     TruncateEllipsisStringPipe,
     MoveComponent,
     MoveListComponent,
-    ConcatPercentStringPipe
+    ConcatPercentStringPipe,
+    DamageClassComponent
   ],
   imports: [
     StoreModule.forFeature('pokemon', reducer),
