@@ -3,9 +3,10 @@
 .pokemon-info{
     max-width: 22rem;
     justify-content: space-evenly;
+    margin: 0 0.5rem;
+    font-weight: 500;
     @media #{$small-medium}{
         font-size: small;
-        margin: 0 0.5rem;
     }
 }
 .pokemon-info__type-wrapper{
@@ -42,11 +43,20 @@ grid-area: type1;
 grid-area: type2;
 }
 .pokemon-info__abilities-title{
-    margin: 0 0 0.3rem 0;
+    margin: 0;
     white-space: nowrap;
+    text-align: left;
 }
-.pokemon-info__text{
-    font-weight: 500;
+.pokemon-info__list-value{
     display: inline-block;
-    margin: 0.5rem 0.2rem;
+    margin: 0 0.2rem;
+}
+.pokemon-info__list-item{
+    margin: 0.5rem 0;
+}
+.pokemon-info__abilities-list{
+    text-align: left;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
 }

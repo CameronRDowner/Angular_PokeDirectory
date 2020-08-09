@@ -11,7 +11,6 @@ export class PokemonInfoComponent implements OnInit {
   @Input() pokemon : Pokemon
   @Input() abilities : Array<PokemonAbility>
   @Input() hiddenAbilities: Array<PokemonAbility>
-  constructor() { }
 
   ngOnInit(): void {
   }

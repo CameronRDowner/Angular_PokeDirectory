@@ -11,7 +11,6 @@ import { RadioClusterComponent } from '../../shared/components/radio-cluster/rad
 import { SpritesComponent } from './components/sprites/sprites.component';
 import { SelectBoxComponent } from '../../shared/components/select-box/select-box.component';
 import { PokemonInfoComponent } from './components/pokemon-info/pokemon-info.component';
-import { AbilityComponent } from './components/ability/ability.component';
 import { StatComponent } from './components/stat/stat.component';
 import { IconButtonComponent } from '../../shared/components/icon-button/icon-button.component';
 import { PickerComponent } from '../../shared/components/picker/picker.component';
@@ -48,7 +47,6 @@ import { SortByLevelArrayPipe } from './pipes/sort-by-level-array.pipe';
     SpritesComponent,
     SelectBoxComponent,
     PokemonInfoComponent,
-    AbilityComponent,
     StatComponent,
     ReversePipe,
     ReplaceDashPipe,
@@ -64,7 +62,7 @@ import { SortByLevelArrayPipe } from './pipes/sort-by-level-array.pipe';
     MoveListComponent,
     ConcatPercentStringPipe,
     DamageClassComponent,
-    SortByLevelArrayPipe
+    SortByLevelArrayPipe,
   ],
   imports: [
     StoreModule.forFeature('pokemon', reducer),
