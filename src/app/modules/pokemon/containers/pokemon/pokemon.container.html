@@ -23,7 +23,7 @@
         </section>
         <section>
         <h2>Move List (by leveling)</h2>
-        <app-move-list [moveList]="(moveLists$ | async)[selectedGame$ | async]"></app-move-list>
+        <app-move-list [moveList]="(moveLists$ | async)[selectedGame$ | async] | sortByLevel"></app-move-list>
         </section>
     </div>
 
