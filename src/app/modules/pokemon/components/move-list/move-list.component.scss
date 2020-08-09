@@ -1,8 +1,10 @@
 @import '../../../../../assets/sass/breakpoints';
 .move-list--wrapper{
     margin: 0 0.5rem;
+    max-width: 33rem;
 }
 .move-list__header-wrapper{
+    box-sizing: border-box;
     display: grid;
     align-items: center;
     justify-content: center;

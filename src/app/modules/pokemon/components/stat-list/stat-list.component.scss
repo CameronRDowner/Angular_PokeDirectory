@@ -1,11 +1,12 @@
 @import '../../../../../assets/sass/animations';
 @import '../../../../../assets/sass/breakpoints';
 .stat-list{
-    @media #{$small-medium}{
-        margin: 0 0.5rem;
-    }
+    max-width: 31rem;
+    margin: 0 0.5rem;
 }
 .stat-list__wrapper{
+    width: 100%;
+    box-sizing: border-box;
     margin: 0;
     display: grid;
     justify-items: center;
