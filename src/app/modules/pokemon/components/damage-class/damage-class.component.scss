@@ -1,5 +1,10 @@
+@import '../../../../../assets/sass/breakpoints';
 .damage-class{
     padding: 0.4rem 0;
     width: 5rem;
     font-size: 0.9rem;
+    @media #{$small-medium}{
+        font-size: x-small;
+        width: 3rem;
+    }
 }

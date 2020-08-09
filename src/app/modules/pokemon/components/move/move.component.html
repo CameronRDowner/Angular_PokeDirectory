@@ -2,7 +2,7 @@
     <span>{{move?.levelLearnedAt}}</span>
     <span>{{ move?.moveInfo?.name | replaceDash | titlecase }}</span>
     <app-pokemon-type [typeName]="move?.moveInfo?.type.name" [size]="'small'"></app-pokemon-type>
-    <app-damage-class [className]="move?.moveInfo?.damage_class.name"></app-damage-class>
+    <span class="move__class-wrapper"><app-damage-class [className]="move?.moveInfo?.damage_class.name"></app-damage-class></span>
     <span>{{ move?.moveInfo?.power }}</span>
     <span>{{ move?.moveInfo?.accuracy | concatPercent }}</span>
     <span>{{ move?.moveInfo?.pp }}</span>

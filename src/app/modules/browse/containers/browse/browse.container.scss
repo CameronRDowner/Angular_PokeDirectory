@@ -12,6 +12,7 @@
 .search-results__panel{
     margin: 2rem 1rem;
     width: 100%;
+    min-height: 30rem;
     box-sizing: border-box;
     @media #{$medium}{
         margin: 0.05rem 0rem 0.5rem 0rem; 

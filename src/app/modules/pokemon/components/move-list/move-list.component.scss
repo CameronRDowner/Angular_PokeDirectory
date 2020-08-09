@@ -1,3 +1,7 @@
+@import '../../../../../assets/sass/breakpoints';
+.move-list--wrapper{
+    margin: 0 0.5rem;
+}
 .move-list__header-wrapper{
     display: grid;
     align-items: center;
@@ -5,4 +9,18 @@
     grid-gap: 0.3rem;
     grid-template-columns: 2rem 8rem 5.5rem 5.5rem 3rem 3rem 2rem;
     grid-template-rows: 2.5rem;
+    @media #{$small-medium}{
+        font-size: x-small;
+        grid-gap: 0.2rem;
+        grid-template-columns: 1rem 6rem 3rem 3rem 1.5rem 2rem 1rem;
+        grid-template-rows: 2rem;
+    }
+    @media #{$small}{
+        grid-template-columns: 1rem 6rem 3rem 1.5rem 2rem 1rem;
+    }
+}
+.move-list__class-header{
+    @media #{$small}{
+        display: none;
+    }
 }
