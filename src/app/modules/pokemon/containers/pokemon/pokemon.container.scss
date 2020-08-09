@@ -5,6 +5,9 @@
     margin: 0;
     padding: 3rem 0 5rem 0;
     position: relative;
+    @media #{$medium}{
+        padding: 1rem 0 2rem 0;
+    }
 }
 .pokemon-container__name{
     color: $medium-red;
