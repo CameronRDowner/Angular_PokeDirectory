@@ -15,12 +15,12 @@ export class HomeContainer implements OnInit {
       "Pokemon Stats",
       "Pokemon Info",
       "view Pokemon Sprites",
-      "mobile support"
+      "mobile support",
+      "Pokemon moves learned"
   ]
     this.upcomingFeatureList = [
-      "pokemon moves learned",
       "Pokemon Catch Location",
-      "pokemon ability info on click"
+      "Pokemon ability info on click"
     ]
    }
 
