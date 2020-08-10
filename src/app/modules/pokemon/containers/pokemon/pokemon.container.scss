@@ -21,14 +21,14 @@
 .pokemon-container__back-button-wrapper{
     position: absolute;
     display: inline-block;
-    left: 4.2rem;
+    left: 4.6rem;
     @media #{$medium}{
         display: none;
     }
 }
 .pokemon-container__game-picker-wrapper{
     position: absolute;
-    right: 4.2rem;
+    right: 6rem;
     top: 0rem;
     @media #{$medium}{
         position: relative;
