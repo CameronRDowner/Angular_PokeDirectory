@@ -1,32 +1,39 @@
 <div class="pokemon-container">
-    <div class="pokemon-container__back-button-wrapper">
-        <app-icon-button [iconClasses]="'fa fa-arrow-left'" (buttonClick)="navigateBackBrowsePage()"></app-icon-button>
-    </div>
-    <div class="pokemon-container__game-picker-wrapper">
-        <h3 class="pokemon-container__header">Game Data</h3>
-        <app-picker [optionsList]="gamesFeatured$ | async" (optionClick)="setSelectedGame($event)"></app-picker>
-    </div>
-    <h1 class="pokemon-container__name">{{(pokemon$ | async )?.name | titlecase}}</h1>
-<main class="pokemon-container__content-wrapper flex-container-row-start">
-    <section>
+  <div class="pokemon-container__back-button-wrapper">
+    <app-icon-button [iconClasses]="'fa fa-arrow-left'" (buttonClick)="navigateBackBrowsePage()"></app-icon-button>
+  </div>
+  <div class="pokemon-container__game-picker-wrapper">
+    <h3 class="pokemon-container__header">Game Data</h3>
+    <app-picker [optionsList]="gamesFeatured$ | async" (optionClick)="setSelectedGame($event)"></app-picker>
+  </div>
+  <h1 class="pokemon-container__name">{{(pokemon$ | async )?.name | titlecase}}</h1>
+  <main class="pokemon-container__content-wrapper flex-container-row-start">
+    <div>
+      <section>
         <h2 class="pokemon-container__header">Sprites</h2>
         <app-sprites [sprites]="(pokemon$ | async ).sprites"></app-sprites>
-        <section>
-            <h2 class="pokemon-container__header">Info</h2>
-            <app-pokemon-info [pokemon]="pokemon$ | async" [abilities]="abilities$ | async" [hiddenAbilities]="hiddenAbilities$ | async"></app-pokemon-info>
-            </section>
-    </section>
+      </section>
+      <section>
+        <h2 class="pokemon-container__header">Info</h2>
+        <app-pokemon-info [pokemon]="pokemon$ | async" [abilities]="abilities$ | async"
+          [hiddenAbilities]="hiddenAbilities$ | async"></app-pokemon-info>
+      </section>
+      <section>
+          <h2 class="pokemon-container__header">Catch Location</h2>
+          <app-catch-location></app-catch-location>
+      </section>
+    </div>
     <div>
-        <section>
+      <section>
         <h2 class="pokemon-container__header">Stats</h2>
         <app-stat-list [statList]="(pokemon$ | async)?.stats"></app-stat-list>
-        </section>
-        <section>
+      </section>
+      <section>
         <h2>Move List (by leveling)</h2>
         <app-move-list [moveList]="(moveLists$ | async)[selectedGame$ | async] | sortByLevel"></app-move-list>
-        </section>
+      </section>
     </div>
 
-</main> 
+  </main>
 </div>
 

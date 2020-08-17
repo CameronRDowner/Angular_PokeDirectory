@@ -85,14 +85,14 @@ buildMoveLists$: Observable<Action> = this.actions$.pipe(
       return (new pokemonActions.SetSelectedGame(action.payload[0]))
     })
   )
-// @Effect()
-//   loadEncounters$: Observable<Action> = this.actions$.pipe(
-//     ofType<pokemonActions.LoadPokemonSuccess>(pokemonActions.PokemonActionTypes.LoadPokemonSuccess),
-//     switchMap( action =>
-//       this.pokemonService.getEncounters(action.payload.location_area_encounters).pipe(
-//         map(result => (new pokemonActions.LoadEncountersSuccess(result))),
-//         catchError(error=> of(new pokemonActions.LoadEncountersFailure(error)))
-//         )
-//   )
-//   );
+@Effect()
+  loadEncounters$: Observable<Action> = this.actions$.pipe(
+    ofType<pokemonActions.LoadPokemonSuccess>(pokemonActions.PokemonActionTypes.LoadPokemonSuccess),
+    switchMap( action =>
+      this.pokemonService.getEncounters(action.payload.location_area_encounters).pipe(
+        map(result => (new pokemonActions.LoadEncountersSuccess(result))),
+        catchError(error=> of(new pokemonActions.LoadEncountersFailure(error)))
+        )
+  )
+  );
  }

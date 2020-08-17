@@ -57,6 +57,9 @@ export class PokemonContainer implements OnInit {
     this.encounters$ = this.store.pipe(select(pokemonSelectors.getEncounters));
     this.abilities$ = this.store.pipe(select(pokemonSelectors.getAbilities));
     this.hiddenAbilities$ = this.store.pipe(select(pokemonSelectors.getHiddenAbilities));
+    this.encounters$.subscribe(encounters=>{
+      console.log(encounters)
+    })
   }
   ngOnDestroy(): void{
     this.componentActive = false;

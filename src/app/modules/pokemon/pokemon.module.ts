@@ -34,6 +34,7 @@ import { MoveComponent } from './components/move/move.component';
 import { ConcatPercentStringPipe } from '../../shared/pipes/concat-percent-string.pipe';
 import { DamageClassComponent } from './components/damage-class/damage-class.component';
 import { SortByLevelArrayPipe } from './pipes/sort-by-level-array.pipe';
+import { CatchLocationComponent } from './components/catch-location/catch-location.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { SortByLevelArrayPipe } from './pipes/sort-by-level-array.pipe';
     ConcatPercentStringPipe,
     DamageClassComponent,
     SortByLevelArrayPipe,
+    CatchLocationComponent
   ],
   imports: [
     StoreModule.forFeature('pokemon', reducer),
