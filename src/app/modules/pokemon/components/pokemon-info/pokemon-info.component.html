@@ -5,10 +5,8 @@
         <li class="pokemon-info__list-item"><span class="bold-text">Height: </span><span class="pokemon-info__list-value">{{(pokemon?.height * 0.1).toFixed(1)}}m ({{(pokemon?.height * 0.328084).toFixed(1)}}ft)</span></li>
         <li class="pokemon-info__list-item"><span  class="bold-text">Weight: </span><span class="pokemon-info__list-value">{{(pokemon?.weight * 0.1).toFixed(1)}}kg ({{(pokemon?.weight * 0.220462).toFixed(1)}}lbs)</span></li>
         <li class="pokemon-info__list-item"><span class="bold-text">Order: </span><span class="pokemon-info__list-value">{{pokemon?.order}}</span></li>
+        <li class="pokemon-info__list-item"><span class="bold-text">Type: </span><span class="pokemon-info__type-wrapper" *ngFor="let pokemonType of (pokemon?.types | reverse); let typeIndex = index"><app-pokemon-type [class]="'pokemon-info__type' + (typeIndex + 1).toString()" [size]="'xsmall'" [typeName]="pokemonType.type.name"></app-pokemon-type></span></li>
     </ul>
-    <div class="pokemon-info__type-wrapper animation-delay-1000ms fade-in">
-                <app-pokemon-type [class]="'pokemon-info__type' + (typeIndex + 1).toString()" *ngFor="let pokemonType of (pokemon?.types | reverse); let typeIndex = index" [size]="'small'" [typeName]="pokemonType.type.name"></app-pokemon-type>
-    </div>
 </div>
     <div class="pokemon-info__abilities-wrapper animation-delay-1000ms fade-in">
             <div>

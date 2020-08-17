@@ -25,3 +25,12 @@
         font-size: x-small;
     }
 }
+.pokemon-type--wrapper--xsmall{
+    padding: 0.2rem 0rem;
+    width: 3.5rem;
+    font-size: 0.7rem;
+    @media #{$small-medium}{
+        width: 3rem;
+        font-size: x-small;
+    }
+}

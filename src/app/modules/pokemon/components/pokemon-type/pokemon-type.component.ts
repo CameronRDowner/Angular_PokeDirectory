@@ -14,8 +14,11 @@ export class PokemonTypeComponent implements OnInit {
     if(this.size === "small"){
       return "pokemon-type--wrapper--small"
     }
-    else{
+    else if(this.size === "medium"){
       return "pokemon-type--wrapper--medium"
+    }
+    else{
+      return "pokemon-type--wrapper--xsmall"
     }
   }
   constructor() {

@@ -9,17 +9,7 @@
     }
 }
 .pokemon-info__type-wrapper{
-    margin: 1.3rem 0rem;
-    display: grid;
-    justify-items: center;
-    align-items: flex-start;
-    grid-template-columns: 5rem 5rem;
-    grid-gap: 0.5rem;
-    grid-template-rows: auto;
-    @media #{$small-medium}{
-        grid-template-columns: 3rem 3rem;
-        margin: 1rem 0rem;  
-    }
+    margin: 0rem 0.1rem;
 }
 .pokemon-info__abilities-wrapper{
     display: grid;
