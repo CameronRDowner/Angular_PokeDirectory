@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { RadioCluster } from '../../models/radio-cluster/radio-cluster';
 
 @Component({
   selector: 'app-radio-cluster',
@@ -25,7 +24,6 @@ export class RadioClusterComponent implements OnInit {
     this.alternateStyling = false;
    }
   ngOnChanges():void{
-    console.log(this.buttonNames)
     this.setToggledButton(this.buttonNames[0])
   
   }
