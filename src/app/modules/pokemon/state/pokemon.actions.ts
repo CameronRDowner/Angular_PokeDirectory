@@ -3,6 +3,7 @@ import { Pokemon } from '../models/pokemon';
 import { MoveLists } from '../models/move-lists';
 import { LocationAreaEncounter } from '../models/location-area-encounter';
 import { PokemonAbility } from '../models/pokemon-ability';
+import { EncounterLists } from '../models/encounter-lists';
 
 export enum PokemonActionTypes {
     SetSelectedGame = '[Pokemon] Set Selected Game',
@@ -16,6 +17,7 @@ export enum PokemonActionTypes {
     LoadEncounters = '[Pokemon] Load Encounters',
     LoadEncountersSuccess = '[Pokemon] Load Encounters Success',
     LoadEncountersFailure = '[Pokemon] Load Encounters Failure',
+    SetEncounterLists = '[Pokemon] Set Encounter Lists',
     SetAbilities = '[Pokemon] Set Abilities',
     SetHiddenAbilities = '[Pokemon] Set Hidden Abilities'
 }
@@ -69,6 +71,10 @@ export class LoadEncountersFailure implements Action {
   readonly type = PokemonActionTypes.LoadEncountersFailure;
   constructor(public payload: Array<LocationAreaEncounter>){}
 }
+export class SetEncounterLists implements Action{
+  readonly type = PokemonActionTypes.SetEncounterLists;
+  constructor(public payload: EncounterLists){}
+}
 export class SetAbilities implements Action {
   readonly type = PokemonActionTypes.SetAbilities;
   constructor(public payload: Array<PokemonAbility>){}
@@ -87,6 +93,7 @@ export type PokemonActions = LoadPokemon
 | LoadEncounters
 | LoadEncountersSuccess
 | LoadEncountersFailure
+| SetEncounterLists
 | SetSelectedGame
 | SetAbilities
 | SetHiddenAbilities;

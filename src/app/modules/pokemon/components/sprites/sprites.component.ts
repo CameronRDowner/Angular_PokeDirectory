@@ -12,8 +12,8 @@ export class SpritesComponent implements OnInit {
   spriteInView:string;
   orientationToggled: string;
   colorToggled: string;
-  orientationRadioCluster: any;
-  colorRadioCluster: any;
+  orientationButtons: Array<string>;
+  colorButtons: Array<string>;
   handleOrientationButtonClick(buttonClicked:string):void{
     this.setOrientationToggled(buttonClicked);
     this.updateSpriteInView();
@@ -35,10 +35,10 @@ export class SpritesComponent implements OnInit {
     this.spriteInView = this.sprites.front_default;
   } 
   constructor() {
-    this.orientationRadioCluster = new RadioCluster(["Front", "Back"], true);
-    this.colorRadioCluster = new RadioCluster(["Default", "Shiny"], true);
-    this.orientationToggled = "Front";
-    this.colorToggled = "Default";
+    this.orientationButtons = ["front", "back"];
+    this.colorButtons = ["default", "shiny"];
+    this.orientationToggled = "front";
+    this.colorToggled = "default";
    }
   ngOnChanges(): void {
     if(this.sprites !== undefined){

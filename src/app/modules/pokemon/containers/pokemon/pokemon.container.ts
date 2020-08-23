@@ -12,6 +12,7 @@ import { Store, select } from '@ngrx/store';
 import { LocationAreaEncounter } from '../../models/location-area-encounter';
 import { PokemonAbility } from '../../models/pokemon-ability';
 import { takeWhile } from 'rxjs/operators';
+import { EncounterLists } from '../../models/encounter-lists';
 
 @Component({
   selector: 'app-pokemon',
@@ -26,7 +27,7 @@ export class PokemonContainer implements OnInit {
   selectedGame$:Observable<string>;
   moveLists$:Observable<MoveLists>;
   gamesFeatured$:Observable<Array<string>>;
-  encounters$:Observable<Array<LocationAreaEncounter>>
+  encounterLists$:Observable<EncounterLists>
   abilities$:Observable<Array<PokemonAbility>>
   hiddenAbilities$:Observable<Array<PokemonAbility>>
   navigateBackBrowsePage(): void{
@@ -54,12 +55,9 @@ export class PokemonContainer implements OnInit {
     this.pokemon$ = this.store.pipe(select(pokemonSelectors.getPokemon));
     this.selectedGame$ = this.store.pipe(select(pokemonSelectors.getSelectedGame));
     this.gamesFeatured$ = this.store.pipe(select(pokemonSelectors.getGamesFeatured));
-    this.encounters$ = this.store.pipe(select(pokemonSelectors.getEncounters));
+    this.encounterLists$ = this.store.pipe(select(pokemonSelectors.getEncounterLists));
     this.abilities$ = this.store.pipe(select(pokemonSelectors.getAbilities));
     this.hiddenAbilities$ = this.store.pipe(select(pokemonSelectors.getHiddenAbilities));
-    this.encounters$.subscribe(encounters=>{
-      console.log(encounters)
-    })
   }
   ngOnDestroy(): void{
     this.componentActive = false;

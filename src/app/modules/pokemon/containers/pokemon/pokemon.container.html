@@ -20,7 +20,7 @@
       </section>
       <section>
           <h2 class="pokemon-container__header">Catch Location</h2>
-          <app-catch-location></app-catch-location>
+          <app-catch-location [encounterLists]="encounterLists$ | async" [selectedGames]="selectedGame$ | async"></app-catch-location>
       </section>
     </div>
     <div>

@@ -1,6 +1,6 @@
-<div class="flex-container-row-center" [ngClass]="radioCluster.alternateStyling ? 'radio-cluster--alternate' : 'radio-cluster' ">   
-    <a *ngFor="let buttonName of radioCluster.buttonNames" (click)="handleButtonClick(buttonName)" >
-        <span *ngIf="!radioCluster.alternateStyling" class="radio-cluster__button" [ngClass]="toggledButton === buttonName ? 'radio-cluster__button--toggled' : 'radio-cluster__button--untoggled shadow-drop-red'">{{ buttonName }}</span>
-        <span *ngIf="radioCluster.alternateStyling" class="radio-cluster__button-alternate" [ngClass]="toggledButton === buttonName ? 'radio-cluster__button--alternate-toggled' : 'radio-cluster__button--alternate-untoggled'">{{ buttonName }}</span>
+<div class="flex-container-row-center" [ngClass]="alternateStyling ? 'radio-cluster--alternate' : 'radio-cluster' ">   
+    <a *ngFor="let buttonName of buttonNames" (click)="handleButtonClick(buttonName)" >
+        <span *ngIf="!alternateStyling" class="radio-cluster__button" [ngClass]="toggledButton === buttonName ? 'radio-cluster__button--toggled' : 'radio-cluster__button--untoggled shadow-drop-red'">{{ buttonName | replaceDash | titlecase }}</span>
+        <span *ngIf="alternateStyling" class="radio-cluster__button-alternate" [ngClass]="toggledButton === buttonName ? 'radio-cluster__button--alternate-toggled' : 'radio-cluster__button--alternate-untoggled'">{{ buttonName | replaceDash | titlecase }}</span>
     </a>
 </div>

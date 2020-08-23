@@ -1,1 +1,11 @@
-<div class="panel"></div>
+<div class="catch-location--wrapper panel">
+    <app-radio-cluster [alternateStyling]="true" [buttonNames]="buttonNames" (radioButtonClick)="setSelectedGame($event)"></app-radio-cluster>
+    <div>
+        <div class="flex-container-column-center">
+            <ul class="catch-location__location-list" *ngIf="selectedGame !== undefined && encounterLists[selectedGame].length > 0">
+                <li class="catch-location__location-item" *ngFor="let encounterLocation of encounterLists[selectedGame]"><span class="bold-text">{{encounterLocation.locationName | replaceDash | titlecase }}</span><div>At Lv: <span class="catch-location__level-text underline-text" *ngFor="let level of encounterLocation.levelsEncountered">{{ level.atLevel }}</span></div></li>
+            </ul>
+            <div class="catch-location__no-results-message" *ngIf="!(selectedGame !== undefined && encounterLists[selectedGame].length > 0)">Cannot be encountered in the wild for this game</div>
+        </div>
+    </div>
+</div>
