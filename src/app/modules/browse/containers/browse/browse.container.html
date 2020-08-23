@@ -2,7 +2,7 @@
     <div class="flex-container-row-center">
         <app-alert-modal [message]="alertModalMessage$ | async" [modalVisible]="alertModalVisible$ | async" (closeModalClicks)="closeModal()"></app-alert-modal>
         <app-search-controls></app-search-controls>
-        <app-radio-cluster *ngIf="currentList === 'pokemon'" [radioCluster]="pokemonSortingButtons" (radioButtonClick)="handlePokemonSort($event)"></app-radio-cluster>
+        <app-radio-cluster *ngIf="currentList === 'pokemon'" [buttonNames]="pokemonSortingButtons" (radioButtonClick)="handlePokemonSort($event)"></app-radio-cluster>
     </div >
     <main class="flex-container-column-center search-results--wrapper">
         <div class="search-results__panel panel flex-container-column-center inset-shadow-sink animation-delay-500ms">

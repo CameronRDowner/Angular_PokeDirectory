@@ -22,7 +22,7 @@ export class BrowseContainer implements OnInit {
   allPokemon$:Observable<NamedAPIResource[]>;
   totalPages$:Observable<number>;
   currentPage$:Observable<number>;
-  pokemonSortingButtons: RadioCluster;
+  pokemonSortingButtons: Array<string>;
   startOffset$: Observable<number>;
   endOffset$: Observable<number>;
   alertModalMessage$:Observable<string>;
@@ -80,7 +80,7 @@ export class BrowseContainer implements OnInit {
     })
   }
   constructor(private route: ActivatedRoute, private store: Store<app.State>) {
-    this.pokemonSortingButtons = new RadioCluster(["Id", "Name"], false);
+    this.pokemonSortingButtons = ["Id", "Name"];
     this.componentActive = true;
    }
   ngOnInit(): void {
