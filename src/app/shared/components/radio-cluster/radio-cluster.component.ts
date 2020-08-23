@@ -22,11 +22,12 @@ export class RadioClusterComponent implements OnInit {
     this.radioButtonClick.emit(buttonName);
   }
   constructor() {
-    this.alternateStyling = false
-    this.buttonNames = []
+    this.alternateStyling = false;
    }
   ngOnChanges():void{
+    console.log(this.buttonNames)
     this.setToggledButton(this.buttonNames[0])
+  
   }
   ngOnInit(): void {
     
