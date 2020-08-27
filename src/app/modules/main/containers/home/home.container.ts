@@ -10,17 +10,14 @@ export class HomeContainer implements OnInit {
   upcomingFeatureList:Array<string>;
   constructor() {
     this.newFeatureList = [
-      "Pokemon Of The Day",
-      "search all Pokemon by name",
-      "Pokemon Stats",
-      "Pokemon Info",
       "view Pokemon Sprites",
-      "mobile support",
-      "Pokemon moves learned"
+      "Pokemon moves learned",
+      "Pokemon Catch Location"
   ]
     this.upcomingFeatureList = [
-      "Pokemon Catch Location",
-      "Pokemon ability info on click"
+      "Pokemon ability info on mouseover or click",
+      "Pokemon catch info on mouseover or click",
+      "Pokemon TM and HM moveList"
     ]
    }
 
