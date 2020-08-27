@@ -20,7 +20,7 @@
       </section>
       <section>
           <h2 class="pokemon-container__header">Catch Location</h2>
-          <app-catch-location [encounterLists]="encounterLists$ | async" [selectedGames]="selectedGame$ | async"></app-catch-location>
+          <app-catch-location [encounterLocationList]="(encounterLists$ | async)[(selectedGame$ | async)]"></app-catch-location>
       </section>
     </div>
     <div>
@@ -30,7 +30,7 @@
       </section>
       <section>
         <h2>Move List (by leveling)</h2>
-        <app-move-list [moveList]="(moveLists$ | async)[selectedGame$ | async] | sortByLevel"></app-move-list>
+        <app-move-list [moveList]="(moveLists$ | async)[gameToGamesHelper[(selectedGame$ | async)]] | sortByLevel"></app-move-list>
       </section>
     </div>
 

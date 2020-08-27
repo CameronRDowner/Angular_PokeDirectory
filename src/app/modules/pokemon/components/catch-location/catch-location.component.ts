@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { EncounterLists } from '../../models/encounter-lists';
 import { RadioCluster } from 'src/app/shared/models/radio-cluster/radio-cluster';
-import { SelectedGameHelper } from '../../models/selected-game-helper';
+import { GamesToGameHelper } from '../../models/games-to-game-helper';
+import { EncounterLocation } from '../../models/encounter-location';
 
 @Component({
   selector: 'app-catch-location',
@@ -9,28 +10,13 @@ import { SelectedGameHelper } from '../../models/selected-game-helper';
   styleUrls: ['./catch-location.component.scss']
 })
 export class CatchLocationComponent implements OnInit {
-  @Input() selectedGames: string;
-  @Input() encounterLists: EncounterLists;
-  buttonNames:Array<string>;
-  selectedGameHelper:SelectedGameHelper;
-  selectedGame:string;
-  setGameButtonNames():void{
-    this.buttonNames = [
-      ...this.selectedGameHelper[this.selectedGames]
-    ]
-  }
-  setSelectedGame(_selectedGame:string):void{
-    this.selectedGame = _selectedGame;
-  }
+  @Input() encounterLocationList: Array<EncounterLocation>;
+  selectedGameHelper:GamesToGameHelper;
   constructor() {
-    this.buttonNames = []
-    this.selectedGameHelper = new SelectedGameHelper();
+    this.selectedGameHelper = new GamesToGameHelper();
    }
    ngOnChanges():void{
-     if(this.selectedGames !== null){
-      this.setGameButtonNames();
-      this.setSelectedGame(this.buttonNames[0]);
-     }
+     
    }
   ngOnInit(): void {
     

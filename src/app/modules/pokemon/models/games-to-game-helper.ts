@@ -1,4 +1,4 @@
-export class SelectedGameHelper {
+export class GamesToGameHelper {
     "red-blue": Array<string>;
     "yellow": Array<string>;
     "gold-silver": Array<string>;

@@ -1,19 +1,20 @@
 import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Observable, of, from, forkJoin } from 'rxjs';
+import { Observable, of, forkJoin } from 'rxjs';
 import { PokemonService } from '../pokemon.service';
-import { Action, Store, select } from '@ngrx/store';
+import { Action, Store } from '@ngrx/store';
 import * as pokemonActions from './pokemon.actions';
 import { State } from '../../../app.state'
-import { switchMap, map, catchError, withLatestFrom, concatMap, toArray } from 'rxjs/operators';
+import { switchMap, map, catchError, withLatestFrom} from 'rxjs/operators';
 import * as pokemonSelectors from '../state'
 import { MoveLists } from '../models/move-lists';
 import { Move } from '../models/move';
 import { EncounterLists } from '../models/encounter-lists';
-import { Encounter } from 'src/app/shared/models/encounter';
 import { EncounterCondition } from '../models/encounter-condition';
 import { EncounterLocation } from '../models/encounter-location';
 import { PokemonEncounter } from '../models/pokemon-encounter';
+import { GamesToGameHelper } from '../../pokemon/models/games-to-game-helper';
+import { GameToGamesHelper } from '../models/game-to-games-helper';
 
 @Injectable()
 export class PokemonEffects {
@@ -63,14 +64,15 @@ buildMoveLists$: Observable<Action> = this.actions$.pipe(
       ),
     switchMap(([action, moveLists])=> {
       let apiCalls = []
-      if(moveLists[action.payload][0].moveInfo === null){
-        apiCalls = [moveLists[action.payload].map(_move=> this.pokemonService.getMove(_move.moveUrl))]
+      let gameToGamesHelper = new GameToGamesHelper();
+      if(moveLists[gameToGamesHelper[action.payload]][0].moveInfo === null){
+        apiCalls = [moveLists[gameToGamesHelper[action.payload]].map(_move=> this.pokemonService.getMove(_move.moveUrl))]
         return forkJoin(...apiCalls).pipe(
           map(response=>{
-            let newMoveList = moveLists[action.payload].map((_move, index)=> {
+            let newMoveList = moveLists[gameToGamesHelper[action.payload]].map((_move, index)=> {
               return { ..._move, moveInfo: response[index] }
             })
-            return new pokemonActions.LoadMoveListSuccess({...moveLists, [action.payload]: newMoveList } as MoveLists)
+            return new pokemonActions.LoadMoveListSuccess({...moveLists, [gameToGamesHelper[action.payload]]: newMoveList } as MoveLists)
           })
         ) 
       }
@@ -79,8 +81,15 @@ buildMoveLists$: Observable<Action> = this.actions$.pipe(
 @Effect()
   buildGamesFeatured$: Observable<Action> = this.actions$.pipe(
     ofType<pokemonActions.SetMoveLists>(pokemonActions.PokemonActionTypes.SetMoveLists),
-    map((action)=>{ 
-      return new pokemonActions.SetGamesFeatured(Object.keys(action.payload).filter(key=> action.payload[key].length !== 0))
+    map((action)=>{
+      const gamesToGameHelper = new GamesToGameHelper();
+      let gamesFeatured = [];
+      Object.keys(action.payload).map(key=>{
+        if(action.payload[key].length !== 0){
+          gamesFeatured = gamesFeatured.concat(gamesToGameHelper[key])
+        }
+      })
+      return new pokemonActions.SetGamesFeatured(gamesFeatured)
     })
   )
 @Effect()

@@ -9,10 +9,10 @@ import { MoveLists } from '../../models/move-lists';
 import * as pokemonActions from '../../state/pokemon.actions';
 import * as pokemonSelectors from '../../state/';
 import { Store, select } from '@ngrx/store';
-import { LocationAreaEncounter } from '../../models/location-area-encounter';
 import { PokemonAbility } from '../../models/pokemon-ability';
 import { takeWhile } from 'rxjs/operators';
 import { EncounterLists } from '../../models/encounter-lists';
+import { GameToGamesHelper } from '../../models/game-to-games-helper';
 
 @Component({
   selector: 'app-pokemon',
@@ -30,6 +30,7 @@ export class PokemonContainer implements OnInit {
   encounterLists$:Observable<EncounterLists>
   abilities$:Observable<Array<PokemonAbility>>
   hiddenAbilities$:Observable<Array<PokemonAbility>>
+  gameToGamesHelper:GameToGamesHelper;
   navigateBackBrowsePage(): void{
     this.location.back();
   }
@@ -48,6 +49,7 @@ export class PokemonContainer implements OnInit {
   }
   constructor(private route: ActivatedRoute, private location: Location, private store: Store<pokemonSelectors.State>) {
     this.componentActive = true;
+    this.gameToGamesHelper = new GameToGamesHelper();
    }
   ngOnInit(): void {
     this.getPokemon(this.retrievePokemonId());
@@ -58,6 +60,9 @@ export class PokemonContainer implements OnInit {
     this.encounterLists$ = this.store.pipe(select(pokemonSelectors.getEncounterLists));
     this.abilities$ = this.store.pipe(select(pokemonSelectors.getAbilities));
     this.hiddenAbilities$ = this.store.pipe(select(pokemonSelectors.getHiddenAbilities));
+    this.encounterLists$.subscribe(lists=>{
+      console.log(lists)
+    })
   }
   ngOnDestroy(): void{
     this.componentActive = false;
