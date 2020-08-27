@@ -1,7 +1,12 @@
+@import '../../../../../assets/sass/breakpoints';
+@import '../../../../../assets/sass/animations';
 .catch-location--wrapper{
     font-weight: 500;
     max-width: 22rem;
     margin: 0 0.5rem;
+    @media #{$small-medium}{
+        font-size: small;
+    }
 }
 .catch-location__location-list{
     list-style: none;

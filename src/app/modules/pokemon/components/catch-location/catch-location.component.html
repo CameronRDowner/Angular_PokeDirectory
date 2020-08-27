@@ -1,6 +1,8 @@
-<div class="catch-location--wrapper panel flex-container-column-center">
+<div class="catch-location--wrapper panel flex-container-column-center  inset-shadow-sink animation-delay-500ms">
+    <div class="animation-delay-1000ms fade-in">
             <ul class="catch-location__location-list" *ngIf="encounterLocationList?.length > 0">
                 <li class="catch-location__location-item" *ngFor="let encounterLocation of encounterLocationList"><span class="bold-text">{{encounterLocation.locationName | replaceDash | titlecase }}</span><div>At Lv: <span class="catch-location__level-text underline-text" *ngFor="let level of encounterLocation.levelsEncountered">{{ level.atLevel }}</span></div></li>
             </ul>
             <div class="catch-location__no-results-message" *ngIf="!(encounterLocationList?.length > 0)">This pokemon cannot be encountered in the wild within this game.</div>
+    </div>
 </div>
